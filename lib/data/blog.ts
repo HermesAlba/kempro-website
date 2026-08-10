@@ -1,0 +1,809 @@
+import { routing, type Locale } from "@/i18n/routing";
+import { getTeam } from "@/lib/data/team";
+
+export type BlogBlock =
+  | { type: "paragraph"; text: string }
+  | { type: "heading"; text: string }
+  | { type: "list"; items: string[] };
+
+export type BlogPost = {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  author: string;
+  authorRole: string;
+  authorInitials: string;
+  category: string;
+  categoryKey: string;
+  readingTime: string;
+  content: BlogBlock[];
+  coverImage?: string;
+};
+
+const AUTHOR_FALLBACKS: Record<string, { role: Record<Locale, string>; initials: string }> = {
+  "Marketing Kempro": {
+    role: { es: "Equipo de Marketing", en: "Marketing Team" },
+    initials: "MK",
+  },
+};
+
+function resolveAuthor(locale: Locale, name: string): { role: string; initials: string } {
+  const teamMember = getTeam(locale).find((member) => member.name === name);
+  if (teamMember) {
+    return { role: teamMember.role, initials: teamMember.initials };
+  }
+
+  const fallback = AUTHOR_FALLBACKS[name];
+  if (fallback) {
+    return { role: fallback.role[locale], initials: fallback.initials };
+  }
+
+  const initials = name
+    .split(" ")
+    .map((part) => part[0])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+  return { role: "", initials };
+}
+
+const data: {
+  id: string;
+  slug: Record<Locale, string>;
+  date: string;
+  author: string;
+  title: Record<Locale, string>;
+  excerpt: Record<Locale, string>;
+  category: Record<Locale, string>;
+  categoryKey: string;
+  readingTime: Record<Locale, string>;
+  content: Record<Locale, BlogBlock[]>;
+  coverImage?: string;
+}[] = [
+  {
+    id: "primer-caso-de-uso-de-ia",
+    slug: {
+      es: "primer-caso-de-uso-de-ia",
+      en: "primer-caso-de-uso-de-ia",
+    },
+    date: "2026-06-12",
+    author: "Camila Torres",
+    title: {
+      es: "Cómo elegir el primer caso de uso de IA para tu empresa",
+      en: "How to choose your company's first AI use case",
+    },
+    excerpt: {
+      es: "Elegir bien el primer proyecto de IA marca la diferencia entre generar confianza en la organización o quemar el presupuesto del próximo año.",
+      en: "Choosing the right first AI project makes the difference between building organizational trust or burning next year's budget.",
+    },
+    category: { es: "Estrategia", en: "Strategy" },
+    categoryKey: "estrategia",
+    readingTime: { es: "6 min de lectura", en: "6 min read" },
+    content: {
+      es: [
+        {
+          type: "paragraph",
+          text: "La mayoría de las iniciativas de IA que fracasan no lo hacen por falta de tecnología, sino por elegir el caso de uso equivocado como punto de partida. Un primer proyecto demasiado ambicioso agota el presupuesto y la paciencia del equipo antes de mostrar resultados.",
+        },
+        {
+          type: "heading",
+          text: "1. Prioriza impacto visible sobre complejidad técnica",
+        },
+        {
+          type: "paragraph",
+          text: "Un buen primer caso de uso debe ser lo suficientemente simple para implementarse en semanas, no meses, y lo suficientemente visible para que el resto de la organización entienda su valor.",
+        },
+        {
+          type: "heading",
+          text: "2. Busca procesos con datos disponibles y reglas claras",
+        },
+        {
+          type: "list",
+          items: [
+            "Procesos con alto volumen y baja variabilidad",
+            "Datos históricos accesibles y de calidad razonable",
+            "Un dueño de proceso comprometido con el proyecto",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "En Kempro solemos empezar con un diagnóstico de dos semanas que cruza estos criterios contra el catálogo de procesos de la empresa, priorizando por impacto y viabilidad antes de escribir una sola línea de código.",
+        },
+      ],
+      en: [
+        {
+          type: "paragraph",
+          text: "Most AI initiatives that fail don't fail because of the technology — they fail because the wrong use case was chosen as a starting point. An overly ambitious first project burns through budget and patience before showing any results.",
+        },
+        {
+          type: "heading",
+          text: "1. Prioritize visible impact over technical complexity",
+        },
+        {
+          type: "paragraph",
+          text: "A good first use case should be simple enough to ship in weeks, not months, and visible enough that the rest of the organization understands its value.",
+        },
+        {
+          type: "heading",
+          text: "2. Look for processes with available data and clear rules",
+        },
+        {
+          type: "list",
+          items: [
+            "High-volume, low-variability processes",
+            "Accessible historical data of reasonable quality",
+            "A process owner committed to the project",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "At Kempro we typically start with a two-week assessment that maps these criteria against the company's process catalog, prioritizing by impact and feasibility before writing a single line of code.",
+        },
+      ],
+    },
+  },
+  {
+    id: "agentes-vs-automatizacion-tradicional",
+    slug: {
+      es: "agentes-vs-automatizacion-tradicional",
+      en: "agentes-vs-automatizacion-tradicional",
+    },
+    date: "2026-05-20",
+    author: "Santiago Londoño",
+    title: {
+      es: "Agentes de IA vs. automatización tradicional: qué las diferencia",
+      en: "AI agents vs. traditional automation: what sets them apart",
+    },
+    excerpt: {
+      es: "RPA y agentes de IA no compiten entre sí, pero confundirlos lleva a proyectos sobredimensionados o subutilizados. Así se diferencian en la práctica.",
+      en: "RPA and AI agents aren't competitors, but confusing them leads to oversized or underused projects. Here's how they differ in practice.",
+    },
+    category: { es: "Automatización", en: "Automation" },
+    categoryKey: "automatizacion",
+    readingTime: { es: "5 min de lectura", en: "5 min read" },
+    content: {
+      es: [
+        {
+          type: "paragraph",
+          text: "La automatización tradicional (RPA) ejecuta pasos predefinidos sobre entradas estructuradas. Los agentes de IA, en cambio, razonan sobre entradas ambiguas, toman decisiones intermedias y pueden adaptar su plan de acción sobre la marcha.",
+        },
+        {
+          type: "heading",
+          text: "Cuándo usar RPA",
+        },
+        {
+          type: "paragraph",
+          text: "Cuando el proceso es determinístico: mismas entradas, mismos pasos, mismas salidas. Migración de datos entre sistemas, generación de reportes recurrentes o validaciones de formularios son buenos candidatos.",
+        },
+        {
+          type: "heading",
+          text: "Cuándo usar agentes de IA",
+        },
+        {
+          type: "paragraph",
+          text: "Cuando el proceso requiere interpretar lenguaje natural, priorizar entre opciones o combinar múltiples fuentes de información antes de actuar, como responder consultas de soporte o triage de solicitudes.",
+        },
+        {
+          type: "paragraph",
+          text: "En la práctica, las implementaciones más robustas combinan ambos enfoques: agentes de IA para las decisiones que requieren criterio, y automatización tradicional para la ejecución determinística que viene después.",
+        },
+      ],
+      en: [
+        {
+          type: "paragraph",
+          text: "Traditional automation (RPA) executes predefined steps over structured inputs. AI agents, on the other hand, reason over ambiguous inputs, make intermediate decisions, and can adapt their plan of action on the fly.",
+        },
+        {
+          type: "heading",
+          text: "When to use RPA",
+        },
+        {
+          type: "paragraph",
+          text: "When the process is deterministic: same inputs, same steps, same outputs. Data migration between systems, recurring report generation, or form validation are good candidates.",
+        },
+        {
+          type: "heading",
+          text: "When to use AI agents",
+        },
+        {
+          type: "paragraph",
+          text: "When the process requires interpreting natural language, prioritizing between options, or combining multiple sources of information before acting — like answering support inquiries or triaging requests.",
+        },
+        {
+          type: "paragraph",
+          text: "In practice, the most robust implementations combine both approaches: AI agents for decisions that require judgment, and traditional automation for the deterministic execution that follows.",
+        },
+      ],
+    },
+  },
+  {
+    id: "rag-explicado",
+    slug: {
+      es: "rag-explicado",
+      en: "rag-explicado",
+    },
+    date: "2026-04-08",
+    author: "Andrés Gómez",
+    title: {
+      es: "RAG explicado: cómo conectar LLMs con tus datos de forma segura",
+      en: "RAG explained: how to connect LLMs to your data securely",
+    },
+    excerpt: {
+      es: "Retrieval-Augmented Generation permite que un modelo responda con información actualizada y propia de tu empresa, sin reentrenarlo. Así funciona.",
+      en: "Retrieval-Augmented Generation lets a model answer with your company's own, up-to-date information without retraining it. Here's how it works.",
+    },
+    category: { es: "Tecnología", en: "Technology" },
+    categoryKey: "tecnologia",
+    readingTime: { es: "7 min de lectura", en: "7 min read" },
+    content: {
+      es: [
+        {
+          type: "paragraph",
+          text: "Un modelo de lenguaje entrenado de forma general no conoce los datos internos de tu empresa ni eventos posteriores a su entrenamiento. RAG resuelve esto recuperando información relevante desde tus propias fuentes antes de generar una respuesta.",
+        },
+        {
+          type: "heading",
+          text: "Las tres piezas de una arquitectura RAG",
+        },
+        {
+          type: "list",
+          items: [
+            "Indexación: tus documentos se dividen en fragmentos y se convierten en vectores",
+            "Recuperación: ante una consulta, se buscan los fragmentos más relevantes",
+            "Generación: el modelo redacta la respuesta usando esos fragmentos como contexto",
+          ],
+        },
+        {
+          type: "heading",
+          text: "Seguridad y gobernanza",
+        },
+        {
+          type: "paragraph",
+          text: "Una implementación de RAG en un entorno empresarial debe respetar permisos de acceso por usuario, registrar qué fuentes se usaron en cada respuesta y permitir auditar el proceso completo, no solo la respuesta final.",
+        },
+        {
+          type: "paragraph",
+          text: "En los proyectos de integración de LLMs de Kempro, la arquitectura RAG es habitualmente el primer bloque que construimos, porque es la base sobre la que después se apoyan los agentes de automatización.",
+        },
+      ],
+      en: [
+        {
+          type: "paragraph",
+          text: "A generally trained language model doesn't know your company's internal data or events after its training cutoff. RAG solves this by retrieving relevant information from your own sources before generating a response.",
+        },
+        {
+          type: "heading",
+          text: "The three pieces of a RAG architecture",
+        },
+        {
+          type: "list",
+          items: [
+            "Indexing: your documents are split into chunks and converted into vectors",
+            "Retrieval: for a given query, the most relevant chunks are found",
+            "Generation: the model drafts the answer using those chunks as context",
+          ],
+        },
+        {
+          type: "heading",
+          text: "Security and governance",
+        },
+        {
+          type: "paragraph",
+          text: "A RAG implementation in an enterprise setting needs to respect per-user access permissions, log which sources were used in each answer, and allow the full process to be audited — not just the final response.",
+        },
+        {
+          type: "paragraph",
+          text: "In Kempro's LLM integration projects, the RAG architecture is usually the first building block we put in place, since it's the foundation that automation agents rely on afterward.",
+        },
+      ],
+    },
+  },
+  {
+    id: "ia-no-es-una-formula",
+    slug: {
+      es: "ia-no-es-una-formula",
+      en: "ai-is-not-a-formula",
+    },
+    date: "2026-08-07",
+    author: "Marketing Kempro",
+    title: {
+      es: "La IA no es una fórmula: por qué su adopción depende de las condiciones de cada empresa",
+      en: "AI is not a formula: why its adoption depends on each company's conditions",
+    },
+    excerpt: {
+      es: "La inteligencia artificial no falla por la tecnología, sino por ignorar las condiciones reales de cada empresa. Así abordamos la IA en Kempro.",
+      en: "Artificial intelligence doesn't fail because of the technology — it fails when it ignores each company's real conditions. Here's how we approach AI at Kempro.",
+    },
+    category: { es: "Estrategia", en: "Strategy" },
+    categoryKey: "estrategia",
+    readingTime: { es: "6 min de lectura", en: "6 min read" },
+    content: {
+      es: [
+        {
+          type: "paragraph",
+          text: "En los últimos años hemos visto a decenas de empresas lanzarse a implementar inteligencia artificial casi como quien sigue una receta: comprar la herramienta de moda, copiar el caso de éxito que leyeron en un artículo, replicar lo que hizo la competencia. Y en la mayoría de los casos, el resultado se parece más a un experimento fallido que a una transformación real.",
+        },
+        {
+          type: "paragraph",
+          text: "No es un problema de la tecnología. Los modelos de IA disponibles hoy son, en términos generales, más que suficientes para resolver problemas reales de negocio. El problema está en cómo se decide implementarlos.",
+        },
+        {
+          type: "heading",
+          text: "La misma lección que aprendimos con los procesos, ahora con la IA",
+        },
+        {
+          type: "paragraph",
+          text: "Cuando fundamos Kempro, entendimos que ninguna solución de procesos, estructura o tecnología puede aplicarse igual en dos empresas distintas, porque cada una tiene su propia cultura, su propio nivel de compromiso gerencial, su propio presupuesto y su propio apetito de riesgo. La inteligencia artificial no es la excepción a esa regla — es, si acaso, el ejemplo más claro de ella.",
+        },
+        {
+          type: "paragraph",
+          text: "Una IA que automatiza brillantemente un proceso en una empresa con datos limpios, procesos documentados y un equipo capacitado para supervisarla, puede ser un desastre costoso en una empresa donde esos mismos datos están dispersos, los procesos viven en la cabeza de tres personas clave, y nadie tiene tiempo de validar lo que la IA está haciendo. La herramienta es la misma. Las condiciones, no.",
+        },
+        {
+          type: "paragraph",
+          text: "Volviendo a nuestra propia analogía: así como una reacción química no ocurre solo porque existan los reactivos correctos, sino porque también están presentes la temperatura, la presión y el catalizador adecuados, un proyecto de IA no tiene éxito solo porque la tecnología funcione — necesita que las condiciones organizacionales estén dadas para que esa tecnología realmente reaccione con el negocio.",
+        },
+        {
+          type: "heading",
+          text: "Cómo abordamos la IA en Kempro",
+        },
+        {
+          type: "paragraph",
+          text: "Antes de recomendar cualquier herramienta o modelo, diagnosticamos las condiciones reales: qué tan confiables y accesibles son los datos disponibles, qué tan dispuesto está el liderazgo a sostener el cambio más allá del entusiasmo inicial, qué nivel de riesgo está la organización dispuesta a asumir con decisiones parcialmente automatizadas, y qué tan preparado está el equipo para trabajar junto a estas herramientas, no reemplazado por ellas.",
+        },
+        {
+          type: "paragraph",
+          text: "Solo después de ese diagnóstico definimos si el primer paso debe ser un caso de uso pequeño y visible, o si, por el contrario, la empresa necesita primero ordenar sus procesos y sus datos antes de pensar siquiera en automatizar algo con IA. A veces la recomendación más honesta que podemos dar es: todavía no.",
+        },
+        {
+          type: "heading",
+          text: "La IA amplifica lo que ya existe",
+        },
+        {
+          type: "paragraph",
+          text: "Quizás la idea más importante que hemos aprendido es esta: la inteligencia artificial no arregla procesos desordenados, los amplifica. Un proceso ineficiente ejecutado más rápido por una IA sigue siendo un proceso ineficiente — solo que ahora falla a mayor escala y con menos supervisión humana.",
+        },
+        {
+          type: "paragraph",
+          text: "Por eso, para nosotros, hablar de IA nunca es solo hablar de tecnología. Es hablar, otra vez, de las mismas variables que llevan definiendo nuestro trabajo desde el origen de Kempro: la cultura de la empresa, su disciplina de procesos, y su honestidad para reconocer en qué condiciones reales está partiendo.",
+        },
+      ],
+      en: [
+        {
+          type: "paragraph",
+          text: "In recent years we've watched dozens of companies rush into implementing artificial intelligence almost like following a recipe: buy the trendy tool, copy the success story they read in an article, replicate whatever the competition did. And in most cases, the result looks more like a failed experiment than a real transformation.",
+        },
+        {
+          type: "paragraph",
+          text: "It's not a technology problem. The AI models available today are, generally speaking, more than capable of solving real business problems. The problem lies in how the decision to implement them is made.",
+        },
+        {
+          type: "heading",
+          text: "The same lesson we learned with processes, now applied to AI",
+        },
+        {
+          type: "paragraph",
+          text: "When we founded Kempro, we understood that no process, structure, or technology solution can be applied the same way across two different companies, because each one has its own culture, its own level of management commitment, its own budget, and its own appetite for risk. Artificial intelligence is no exception to that rule — if anything, it's the clearest example of it.",
+        },
+        {
+          type: "paragraph",
+          text: "An AI that brilliantly automates a process in a company with clean data, documented processes, and a team trained to oversee it can be a costly disaster in a company where that same data is scattered, processes live in the heads of three key people, and no one has time to validate what the AI is doing. The tool is the same. The conditions are not.",
+        },
+        {
+          type: "paragraph",
+          text: "Going back to our own analogy: just as a chemical reaction doesn't happen simply because the right reactants are present, but because the right temperature, pressure, and catalyst are also in place, an AI project doesn't succeed just because the technology works — it needs the right organizational conditions for that technology to actually react with the business.",
+        },
+        {
+          type: "heading",
+          text: "How we approach AI at Kempro",
+        },
+        {
+          type: "paragraph",
+          text: "Before recommending any tool or model, we diagnose the real conditions: how reliable and accessible the available data is, how willing leadership is to sustain the change beyond initial enthusiasm, what level of risk the organization is willing to take on with partially automated decisions, and how prepared the team is to work alongside these tools, not be replaced by them.",
+        },
+        {
+          type: "paragraph",
+          text: "Only after that diagnosis do we define whether the first step should be a small, visible use case, or whether the company instead needs to first put its processes and data in order before even considering automating anything with AI. Sometimes the most honest recommendation we can give is: not yet.",
+        },
+        {
+          type: "heading",
+          text: "AI amplifies what already exists",
+        },
+        {
+          type: "paragraph",
+          text: "Perhaps the most important idea we've learned is this: artificial intelligence doesn't fix disorganized processes, it amplifies them. An inefficient process executed faster by an AI is still an inefficient process — it just now fails at greater scale and with less human oversight.",
+        },
+        {
+          type: "paragraph",
+          text: "That's why, for us, talking about AI is never just talking about technology. It's talking, once again, about the same variables that have defined our work since Kempro's founding: a company's culture, its process discipline, and its honesty in recognizing the real conditions it's starting from.",
+        },
+      ],
+    },
+  },
+  {
+    id: "primera-decision-de-ia",
+    slug: {
+      es: "primera-decision-de-ia",
+      en: "first-ai-decision",
+    },
+    date: "2026-08-07",
+    author: "Marketing Kempro",
+    title: {
+      es: "La primera decisión de IA no es qué modelo usar, sino qué plataforma ya tienes",
+      en: "The first AI decision isn't which model to use, but which platform you already have",
+    },
+    excerpt: {
+      es: "Antes de comparar modelos de IA, la pregunta correcta es dónde vive ya el trabajo de tu organización. Gobierno, seguridad y datos primero — el piloto viene después.",
+      en: "Before comparing AI models, the right question is where your organization's work already lives. Governance, security, and data come first — the pilot comes after.",
+    },
+    category: { es: "Estrategia", en: "Strategy" },
+    categoryKey: "estrategia",
+    coverImage: "/featured-corporate-brain.png",
+    readingTime: { es: "8 min de lectura", en: "8 min read" },
+    content: {
+      es: [
+        {
+          type: "paragraph",
+          text: "Cada vez con más frecuencia, la pregunta que reciben los comités directivos ya no es si deben adoptar inteligencia artificial. Es cómo hacerlo de forma gobernada, segura y enfocada en valor real — para sus usuarios, sus equipos y su operación.",
+        },
+        {
+          type: "paragraph",
+          text: "Y sin embargo, la mayoría de las organizaciones sigue empezando esta conversación por el lado equivocado: comparando modelos de lenguaje entre sí, en vez de preguntarse primero dónde vive hoy el trabajo real de su gente.",
+        },
+        {
+          type: "heading",
+          text: "Elegir la plataforma antes que el modelo",
+        },
+        {
+          type: "paragraph",
+          text: "Antes de decidir qué inteligencia artificial usar, vale la pena preguntarse algo más simple: ¿dónde están ya los correos, los documentos, las reuniones y el conocimiento institucional de la organización? Para la mayoría de las empresas medianas y grandes en la región, la respuesta es Microsoft 365.",
+        },
+        {
+          type: "paragraph",
+          text: "Esa respuesta debería pesar más en la decisión de lo que normalmente pesa. Una IA que opera nativamente sobre el tenant y los permisos que ya existen —integrada en Outlook, Word, Excel, Teams y SharePoint— reduce la fricción cultural de adopción, porque no le pide a nadie aprender una herramienta nueva desde cero. Herramientas de propósito general como ChatGPT Enterprise o Claude Enterprise pueden ser extraordinarias para tareas específicas de análisis o redacción, pero como plataforma inicial de una organización que ya vive dentro del ecosistema Microsoft, funcionan como complementos especializados, no como el punto de partida.",
+        },
+        {
+          type: "paragraph",
+          text: "Aquí aplica la misma idea que hemos repetido en otros artículos: la decisión correcta no depende de cuál herramienta es \"mejor\" en abstracto, sino de qué tan bien encaja con las condiciones reales — tecnológicas, culturales y de gobierno — que la organización ya tiene.",
+        },
+        {
+          type: "heading",
+          text: "Por qué ciertos sectores son candidatos de alto valor",
+        },
+        {
+          type: "paragraph",
+          text: "No todas las organizaciones se benefician igual de esta primera ola de IA. Los casos de mayor valor suelen compartir cuatro características: múltiples líneas de servicio operando en paralelo, alta carga documental (políticas, requisitos, convenios, evidencia de cumplimiento), atención omnicanal donde el usuario espera continuidad entre canales presenciales y digitales, y una exigencia fuerte de transparencia y trazabilidad frente a terceros o entes de control.",
+        },
+        {
+          type: "paragraph",
+          text: "Cuanto más amplio es el portafolio de servicios y más distribuida la operación, mayor es el valor potencial de una IA que ayude a unificar conocimiento disperso, acelerar la respuesta y reducir la fricción operativa entre áreas.",
+        },
+        {
+          type: "heading",
+          text: "Los dolores más probables — y la trampa de asumirlos sin validarlos",
+        },
+        {
+          type: "paragraph",
+          text: "En este tipo de organizaciones, casi siempre aparecen los mismos síntomas: información dispersa entre áreas, correos y sitios distintos; dependencia excesiva del conocimiento de un puñado de personas clave; tiempo desproporcionado invertido en consolidar reportes, minutas y presentaciones; variabilidad en la calidad de respuesta al usuario final; y sobrecarga operativa en tareas repetitivas de búsqueda, resumen y redacción.",
+        },
+        {
+          type: "paragraph",
+          text: "Es tentador asumir estos dolores como un diagnóstico ya hecho. No lo son — son hipótesis razonables que deben validarse formalmente al inicio de cualquier proyecto, no supuestos sobre los que se construye un roadmap completo.",
+        },
+        {
+          type: "heading",
+          text: "Gobierno antes que pilotos",
+        },
+        {
+          type: "paragraph",
+          text: "El orden importa más de lo que parece. Antes de lanzar cualquier piloto de IA, una organización necesita resolver, en secuencia: gobierno (ownership claro, política de uso, un comité que combine negocio, TI, seguridad y datos), seguridad (acceso condicional, revisión de permisos heredados, principio de mínimo privilegio), y calidad de datos (clasificación, limpieza de repositorios críticos, contenido priorizado). Solo después de eso tiene sentido hablar de piloto y, más adelante, de adopción a escala.",
+        },
+        {
+          type: "paragraph",
+          text: "Saltarse este orden — empezar comprando licencias y \"ya veremos\" con la seguridad — es la forma más común de convertir una oportunidad real en un riesgo reputacional.",
+        },
+        {
+          type: "heading",
+          text: "El riesgo real no es la IA en sí misma",
+        },
+        {
+          type: "paragraph",
+          text: "Vale la pena decirlo con claridad: la inteligencia artificial generativa no crea permisos nuevos. Acelera el acceso a lo que ya estaba ahí. El riesgo principal casi nunca es la tecnología — es el contenido sobreexpuesto, mal clasificado o mal gobernado que esa tecnología ahora puede encontrar y usar mucho más rápido que una persona.",
+        },
+        {
+          type: "paragraph",
+          text: "Por eso la mejor adopción de IA no comienza comprando licencias. Comienza reduciendo el riesgo de sobreexposición y ganando visibilidad real sobre dónde vive el dato sensible.",
+        },
+        {
+          type: "heading",
+          text: "Escalar con evidencia, no con entusiasmo",
+        },
+        {
+          type: "paragraph",
+          text: "Un roadmap responsable suele verse así: unas semanas de preparación (gobierno, permisos, datos), seguidas de un piloto de dos a tres meses con casos de uso medibles y visibles para el negocio, luego una fase de escalamiento controlado apoyada en evidencia real de valor, y finalmente una etapa continua de optimización.",
+        },
+        {
+          type: "paragraph",
+          text: "Los indicadores que importan no son los que generan entusiasmo interno, sino los que demuestran valor de negocio: tiempo ahorrado en redacción y búsqueda, reducción real en tiempos de respuesta, nivel de adopción por área, y ausencia de incidentes de seguridad o cumplimiento asociados al uso de estas herramientas.",
+        },
+        {
+          type: "heading",
+          text: "La decisión que de verdad importa",
+        },
+        {
+          type: "paragraph",
+          text: "La mejor primera decisión de una organización frente a la IA no es comprar varias herramientas a la vez, con la esperanza de que alguna funcione. Es elegir una plataforma gobernable que encaje con las condiciones que ya tiene, demostrar valor rápido con casos concretos, y escalar solo cuando la evidencia — no el entusiasmo — lo respalde.",
+        },
+      ],
+      en: [
+        {
+          type: "paragraph",
+          text: "More and more often, the question boards and executive committees are asking isn't whether to adopt artificial intelligence. It's how to do it in a governed, secure way that's focused on real value — for their users, their teams, and their operations.",
+        },
+        {
+          type: "paragraph",
+          text: "And yet, most organizations still start this conversation from the wrong angle: comparing language models against each other, instead of first asking where their people's actual work already lives.",
+        },
+        {
+          type: "heading",
+          text: "Choosing the platform before the model",
+        },
+        {
+          type: "paragraph",
+          text: "Before deciding which AI to use, it's worth asking something simpler: where do the organization's emails, documents, meetings, and institutional knowledge already live? For most mid-size and large companies in the region, the answer is Microsoft 365.",
+        },
+        {
+          type: "paragraph",
+          text: "That answer should carry more weight in the decision than it usually does. An AI that operates natively on the existing tenant and permissions — integrated into Outlook, Word, Excel, Teams, and SharePoint — reduces the cultural friction of adoption, because it doesn't ask anyone to learn a new tool from scratch. General-purpose tools like ChatGPT Enterprise or Claude Enterprise can be excellent for specific analysis or writing tasks, but as the initial platform for an organization that already lives inside the Microsoft ecosystem, they work as specialized complements, not as the starting point.",
+        },
+        {
+          type: "paragraph",
+          text: "The same idea we've repeated in other articles applies here: the right decision doesn't depend on which tool is \"best\" in the abstract, but on how well it fits the real conditions — technological, cultural, and governance-related — the organization already has.",
+        },
+        {
+          type: "heading",
+          text: "Why certain sectors are high-value candidates",
+        },
+        {
+          type: "paragraph",
+          text: "Not every organization benefits equally from this first wave of AI. The highest-value cases tend to share four traits: multiple service lines running in parallel, heavy documentation load (policies, requirements, agreements, compliance evidence), omnichannel service where users expect continuity between in-person and digital channels, and strong transparency and traceability requirements toward third parties or regulators.",
+        },
+        {
+          type: "paragraph",
+          text: "The broader the service portfolio and the more distributed the operation, the greater the potential value of an AI that helps unify scattered knowledge, speed up response times, and reduce operational friction between departments.",
+        },
+        {
+          type: "heading",
+          text: "The most likely pain points — and the trap of assuming them without validation",
+        },
+        {
+          type: "paragraph",
+          text: "In this type of organization, the same symptoms tend to show up: information scattered across departments, emails, and sites; excessive dependency on a handful of key people's knowledge; disproportionate time spent consolidating reports, minutes, and presentations; inconsistent response quality to end users; and operational overload from repetitive search, summarization, and drafting tasks.",
+        },
+        {
+          type: "paragraph",
+          text: "It's tempting to treat these pain points as an already-completed diagnosis. They're not — they're reasonable hypotheses that must be formally validated at the start of any project, not assumptions a full roadmap gets built on.",
+        },
+        {
+          type: "heading",
+          text: "Governance before pilots",
+        },
+        {
+          type: "paragraph",
+          text: "Order matters more than it seems. Before launching any AI pilot, an organization needs to resolve, in sequence: governance (clear ownership, a usage policy, a committee combining business, IT, security, and data), security (conditional access, review of inherited permissions, least-privilege principle), and data quality (classification, cleanup of critical repositories, prioritized content). Only after that does it make sense to talk about a pilot and, later, adoption at scale.",
+        },
+        {
+          type: "paragraph",
+          text: "Skipping this order — starting by buying licenses and figuring out security \"later\" — is the most common way to turn a real opportunity into a reputational risk.",
+        },
+        {
+          type: "heading",
+          text: "The real risk isn't AI itself",
+        },
+        {
+          type: "paragraph",
+          text: "It's worth saying clearly: generative AI doesn't create new permissions. It accelerates access to what was already there. The main risk is almost never the technology — it's overexposed, poorly classified, or poorly governed content that this technology can now find and use far faster than a person could.",
+        },
+        {
+          type: "paragraph",
+          text: "That's why the best AI adoption doesn't start by buying licenses. It starts by reducing overexposure risk and gaining real visibility into where sensitive data lives.",
+        },
+        {
+          type: "heading",
+          text: "Scaling with evidence, not enthusiasm",
+        },
+        {
+          type: "paragraph",
+          text: "A responsible roadmap usually looks like this: a few weeks of preparation (governance, permissions, data), followed by a two-to-three-month pilot with measurable, business-visible use cases, then a controlled scaling phase backed by real evidence of value, and finally an ongoing optimization stage.",
+        },
+        {
+          type: "paragraph",
+          text: "The metrics that matter aren't the ones that generate internal excitement, but the ones that demonstrate business value: time saved on drafting and search, real reduction in response times, adoption levels by department, and the absence of security or compliance incidents tied to the use of these tools.",
+        },
+        {
+          type: "heading",
+          text: "The decision that actually matters",
+        },
+        {
+          type: "paragraph",
+          text: "An organization's best first decision when facing AI isn't buying several tools at once, hoping one of them works. It's choosing a governable platform that fits the conditions it already has, demonstrating value quickly with concrete cases, and scaling only when evidence — not enthusiasm — supports it.",
+        },
+      ],
+    },
+  },
+  {
+    id: "corporate-brain-sharepoint-copilot",
+    slug: {
+      es: "corporate-brain-sharepoint-copilot",
+      en: "corporate-brain-sharepoint-copilot",
+    },
+    date: "2026-08-07",
+    author: "Marketing Kempro",
+    title: {
+      es: "Cómo construimos un \"Corporate Brain\" con SharePoint y Copilot Chat, sin licencias adicionales",
+      en: "How we built a \"Corporate Brain\" with SharePoint and Copilot Chat, with no additional licenses",
+    },
+    excerpt: {
+      es: "Antes de la IA, la arquitectura de información y la seguridad documental. Un caso real de cómo estructurar SharePoint hizo posible un asistente conversacional sin licencias adicionales.",
+      en: "Before AI comes information architecture and document security. A real case of how structuring SharePoint made a conversational assistant possible without additional licenses.",
+    },
+    category: { es: "Tecnología", en: "Technology" },
+    categoryKey: "tecnologia",
+    readingTime: { es: "6 min de lectura", en: "6 min read" },
+    content: {
+      es: [
+        {
+          type: "paragraph",
+          text: "En un artículo anterior hablamos de un principio que repetimos con frecuencia: el gobierno y la organización de la información deben resolverse antes de poner una capa de inteligencia artificial encima. Este proyecto es un ejemplo concreto de esa idea llevada a la práctica, con una empresa cliente de operación multirregional.",
+        },
+        {
+          type: "heading",
+          text: "Primero, el sitio: un hub de comunicación moderno",
+        },
+        {
+          type: "paragraph",
+          text: "El punto de partida no fue la IA. Fue construir, sobre SharePoint, un sitio moderno de comunicación corporativa que funcionara como concentrador real de información — no como otro repositorio más donde los documentos van a perderse.",
+        },
+        {
+          type: "paragraph",
+          text: "La arquitectura se definió en dos niveles: un espacio corporativo, con acceso abierto a toda la organización, para políticas, procesos y comunicaciones que aplican a todos; y espacios por región o país, donde cada operación local gestiona su propia información sin exponerla innecesariamente al resto de la compañía.",
+        },
+        {
+          type: "paragraph",
+          text: "Ese segundo nivel es el que más se suele subestimar. La seguridad de SharePoint permite definir permisos desde el sitio completo hasta el documento individual, y aprovechar esa granularidad fue lo que hizo posible tener un solo ecosistema de información con múltiples niveles de confidencialidad conviviendo de forma ordenada, en vez de decenas de sitios aislados sin relación entre sí.",
+        },
+        {
+          type: "heading",
+          text: "Solo después, la capa de inteligencia",
+        },
+        {
+          type: "paragraph",
+          text: "Una vez resuelta la seguridad y la organización documental — es decir, una vez que cada documento vivía en el lugar correcto, con los permisos correctos, y con una estructura de información coherente — recién ahí tuvo sentido agregar Copilot Chat sobre ese ecosistema.",
+        },
+        {
+          type: "paragraph",
+          text: "El orden no es un detalle menor. Copilot Chat no organiza el conocimiento de una empresa; responde preguntas basándose en el conocimiento que ya está bien organizado y correctamente gobernado. Si se agrega esa capa de IA sobre una estructura documental caótica o mal permisada, lo único que se logra es encontrar el desorden más rápido — no resolverlo.",
+        },
+        {
+          type: "paragraph",
+          text: "Con la base ya sólida, Copilot Chat se convirtió en lo que llamamos el \"Corporate Brain\": un punto de acceso conversacional donde cualquier persona autorizada puede preguntar por una política, un proceso o una norma corporativa, y recibir una respuesta construida sobre el contenido real de la organización, respetando exactamente los mismos permisos que ya existían en SharePoint.",
+        },
+        {
+          type: "heading",
+          text: "Por qué este enfoque cambia la conversación sobre adopción de IA",
+        },
+        {
+          type: "paragraph",
+          text: "El resultado no fue solo una herramienta de búsqueda más rápida. Fue una forma distinta de distribuir el conocimiento dentro de la empresa: se masifica (cualquier persona autorizada accede sin depender de preguntarle a alguien más), se unifica (una sola fuente de verdad en vez de versiones dispersas en correos y carpetas personales), y se vuelve omnicanal (la misma base de conocimiento puede alimentar consultas desde Teams, desde el navegador o desde flujos automatizados).",
+        },
+        {
+          type: "paragraph",
+          text: "Y quizás lo más relevante para cualquier comité que esté evaluando esta inversión: no requirió licencias adicionales. Copilot Chat viene incluido dentro de los planes comerciales de Microsoft 365 que la mayoría de las organizaciones medianas y grandes ya tienen contratados. La inversión real no estuvo en comprar una nueva plataforma de IA — estuvo en el trabajo, muchas veces invisible, de definir bien la arquitectura de información y la seguridad documental.",
+        },
+        {
+          type: "paragraph",
+          text: "Es la misma lección de siempre, ahora con evidencia de un caso real: la IA no reemplaza el trabajo de organizar el conocimiento de una empresa. Lo hace visible y accesible, pero solo si ese trabajo ya se hizo bien.",
+        },
+      ],
+      en: [
+        {
+          type: "paragraph",
+          text: "In a previous article, we talked about a principle we repeat often: governance and information organization must be resolved before adding a layer of artificial intelligence on top. This project is a concrete example of that idea in practice, with a client organization operating across multiple regions.",
+        },
+        {
+          type: "heading",
+          text: "First, the site: a modern communication hub",
+        },
+        {
+          type: "paragraph",
+          text: "The starting point wasn't AI. It was building, on SharePoint, a modern corporate communication site that worked as a real information hub — not just another repository where documents go to get lost.",
+        },
+        {
+          type: "paragraph",
+          text: "The architecture was defined at two levels: a corporate space, openly accessible to the whole organization, for policies, processes, and communications that apply to everyone; and region or country-level spaces, where each local operation manages its own information without unnecessarily exposing it to the rest of the company.",
+        },
+        {
+          type: "paragraph",
+          text: "That second level is the one most often underestimated. SharePoint's security model allows permissions to be defined from the entire site down to the individual document, and taking advantage of that granularity is what made it possible to have a single information ecosystem with multiple confidentiality levels coexisting in an orderly way, instead of dozens of isolated sites with no relationship to each other.",
+        },
+        {
+          type: "heading",
+          text: "Only afterward, the intelligence layer",
+        },
+        {
+          type: "paragraph",
+          text: "Once security and document organization were resolved — meaning every document lived in the right place, with the right permissions, within a coherent information structure — only then did it make sense to add Copilot Chat on top of that ecosystem.",
+        },
+        {
+          type: "paragraph",
+          text: "The order isn't a minor detail. Copilot Chat doesn't organize a company's knowledge; it answers questions based on knowledge that is already well organized and properly governed. Adding that AI layer on top of a chaotic or poorly permissioned document structure only helps you find the mess faster — it doesn't solve it.",
+        },
+        {
+          type: "paragraph",
+          text: "With a solid foundation already in place, Copilot Chat became what we call the \"Corporate Brain\": a conversational access point where any authorized person can ask about a policy, a process, or a corporate standard, and get an answer built on the organization's actual content, respecting the exact same permissions already defined in SharePoint.",
+        },
+        {
+          type: "heading",
+          text: "Why this approach changes the conversation about AI adoption",
+        },
+        {
+          type: "paragraph",
+          text: "The result wasn't just a faster search tool. It was a different way of distributing knowledge across the company: it becomes massified (any authorized person can access it without depending on asking someone else), unified (a single source of truth instead of scattered versions in emails and personal folders), and omnichannel (the same knowledge base can power queries from Teams, from the browser, or from automated workflows).",
+        },
+        {
+          type: "paragraph",
+          text: "And perhaps most relevant for any committee evaluating this kind of investment: it required no additional licenses. Copilot Chat is included within the Microsoft 365 commercial plans that most mid-size and large organizations already have. The real investment wasn't in buying a new AI platform — it was in the often-invisible work of properly defining information architecture and document-level security.",
+        },
+        {
+          type: "paragraph",
+          text: "It's the same lesson as always, now backed by a real case: AI doesn't replace the work of organizing a company's knowledge. It makes that knowledge visible and accessible — but only if that work was already done well.",
+        },
+      ],
+    },
+  },
+];
+
+// Every post must define a slug for every supported locale (see the
+// "Convenciones de contenido bilingüe" section in CLAUDE.md) — the locale
+// switcher relies on this relation to resolve the equivalent slug when
+// changing language. Catch a missing translation at build time rather than
+// producing a broken link or a silent 404 in production.
+for (const post of data) {
+  for (const locale of routing.locales) {
+    if (!post.slug[locale]) {
+      throw new Error(
+        `[lib/data/blog.ts] Post "${post.id}" is missing a "${locale}" slug. Every post must define a slug for every locale — see "Convenciones de contenido bilingüe" in CLAUDE.md.`,
+      );
+    }
+  }
+}
+
+export function getBlogPosts(locale: Locale): BlogPost[] {
+  return data
+    .map((p) => {
+      const author = resolveAuthor(locale, p.author);
+      return {
+        id: p.id,
+        slug: p.slug[locale],
+        date: p.date,
+        author: p.author,
+        authorRole: author.role,
+        authorInitials: author.initials,
+        title: p.title[locale],
+        excerpt: p.excerpt[locale],
+        category: p.category[locale],
+        categoryKey: p.categoryKey,
+        readingTime: p.readingTime[locale],
+        content: p.content[locale],
+        coverImage: p.coverImage,
+      };
+    })
+    .sort((a, b) => (a.date === b.date ? 0 : a.date < b.date ? 1 : -1));
+}
+
+export function getBlogPost(locale: Locale, slug: string): BlogPost | undefined {
+  return getBlogPosts(locale).find((p) => p.slug === slug);
+}

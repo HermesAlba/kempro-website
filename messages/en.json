@@ -1,0 +1,501 @@
+{
+  "Metadata": {
+    "titleTemplate": "%s | Kempro SAS",
+    "home": {
+      "title": "Kempro SAS — AI consulting and implementation for businesses",
+      "description": "We help companies design their AI strategy, implement automation agents, and integrate LLMs into their existing systems."
+    },
+    "services": {
+      "title": "AI consulting and implementation services",
+      "description": "AI strategy, automation agents, and LLM integration into business processes, tailored to your company."
+    },
+    "caseStudies": {
+      "title": "AI implementation success stories",
+      "description": "Real results from AI strategy, automation, and integration projects across industries."
+    },
+    "about": {
+      "title": "About Kempro SAS",
+      "description": "Meet the mission, vision, and team behind Kempro, the AI consultancy that turns strategy into measurable results."
+    },
+    "blog": {
+      "title": "AI blog and resources for businesses",
+      "description": "Articles on AI strategy, automation agents, and LLM integration for business and technology teams."
+    },
+    "contact": {
+      "title": "Contact — Book a consultation",
+      "description": "Let's talk about how AI can drive your business forward. Book a consultation with the Kempro SAS team."
+    },
+    "privacyNotice": {
+      "title": "Privacy notice",
+      "description": "Learn how Kempro SAS collects, uses, and protects your personal data."
+    },
+    "termsOfService": {
+      "title": "Terms of service",
+      "description": "Terms of use for the Kempro SAS website."
+    }
+  },
+  "Nav": {
+    "home": "Home",
+    "services": "Services",
+    "caseStudies": "Case Studies",
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact",
+    "cta": "Contact us",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "es": "Español",
+    "en": "English"
+  },
+  "Footer": {
+    "followUs": "Follow us",
+    "privacy": "Privacy notice",
+    "terms": "Terms of service",
+    "rights": "All rights reserved."
+  },
+  "Home": {
+    "hero": {
+      "eyebrow": "AI consulting and implementation",
+      "title": "Turn AI into measurable business results",
+      "subtitle": "We design your AI strategy, implement automation agents, and integrate LLMs into your systems so your company can move fast, with control.",
+      "trustLabel": "Business and technology teams trust Kempro"
+    },
+    "services": {
+      "title": "How we help your business",
+      "subtitle": "Our service lines cover the full path: from strategy to production operation.",
+      "cta": "View all services"
+    },
+    "logos": {
+      "title": "Companies that already trust Kempro"
+    },
+    "metrics": {
+      "title": "Results that speak for themselves",
+      "subtitle": "A snapshot of the impact we've generated across our AI implementation projects.",
+      "items": [
+        { "value": "+35", "label": "AI projects implemented" },
+        { "value": "48%", "label": "average reduction in process time" },
+        { "value": "12", "label": "industries served" },
+        { "value": "90 days", "label": "average time to first result" }
+      ]
+    },
+    "ctaBand": {
+      "title": "Ready to bring AI into your operation?",
+      "subtitle": "Book a free 30-minute consultation and find out where to start.",
+      "cta": "Contact us"
+    }
+  },
+  "Services": {
+    "eyebrow": "Services",
+    "title": "Strategy, automation, and AI integration",
+    "subtitle": "We support your company through every stage of AI adoption, from defining strategy to the daily operation of your systems.",
+    "benefitsTitle": "Benefits",
+    "processTitle": "How we work",
+    "processSubtitle": "A proven approach on every project, regardless of your team's size.",
+    "process": [
+      {
+        "title": "Assessment",
+        "description": "We analyze your processes, data, and goals to identify high-impact opportunities."
+      },
+      {
+        "title": "Design",
+        "description": "We define the solution architecture, success metrics, and implementation plan."
+      },
+      {
+        "title": "Implementation",
+        "description": "We build and integrate the solution with your systems, with iterative, visible delivery."
+      },
+      {
+        "title": "Scaling",
+        "description": "We measure results, adjust, and support expansion to new processes or teams."
+      }
+    ],
+    "ctaBand": {
+      "title": "Let's talk about your next AI project",
+      "subtitle": "Tell us about your challenge and we'll help you define the best starting point.",
+      "cta": "Contact us"
+    }
+  },
+  "CaseStudies": {
+    "eyebrow": "Case studies",
+    "title": "Real results across industries",
+    "subtitle": "Here are some of the projects where we've helped our clients turn AI into measurable results.",
+    "problemLabel": "Problem",
+    "solutionLabel": "Solution",
+    "resultLabel": "Result",
+    "ctaBand": {
+      "title": "Your next success story could be the next one",
+      "subtitle": "Tell us about your operation and let's explore the AI opportunities together.",
+      "cta": "Contact us"
+    }
+  },
+  "About": {
+    "eyebrow": "About us",
+    "title": "We help companies adopt AI with judgment",
+    "subtitle": "We're a team of consultants and engineers specialized in AI strategy, automation, and integration.",
+    "origin": {
+      "eyebrow": "Our origin",
+      "title": "Why Kempro exists",
+      "paragraphs": [
+        "During our early years helping companies transform their processes, structures, technology, and enterprise architecture, we tried—like almost every consultant starting out—to apply standard methodologies: proven frameworks, industry best practices, templates that had worked on other projects.",
+        "And yes, they worked. Until they didn't.",
+        "Over time, we understood why. Every organization is its own system, unrepeatable. Its culture is nothing like the company next door. Leadership style, the real level of management commitment to change, the budget available for investment, the appetite for risk they're willing to take on, the way information flows—or stalls—between departments: all of these variables, often invisible in a surface-level diagnosis, determine whether a solution will actually work or end up as a well-designed presentation nobody implements.",
+        "We realized this challenge closely resembles designing a chemical process. Knowing the general formula for a reaction isn't enough; you have to understand the specific conditions of the system—pressure, temperature, catalysts, purity of materials—for that reaction to actually happen as expected. Changing a single variable can completely change the outcome. Ignoring it can mean nothing reacts at all."
+      ],
+      "quote": "That's where our name comes from: Kem, from “chemical,” and pro, from “process.” Kempro.",
+      "closingParagraph": "That analogy stopped being just an idea and became how we work. Before proposing a solution, we diagnose the real conditions of each company. We listen before we prescribe. We design every project to the exact conditions of that company, not a mold we brought from another client. Because just as in chemistry there are no two identical reactions, there are no two companies that need exactly the same thing—and a solution that ignores those differences, however well-intentioned, rarely transforms anything real.",
+      "symbolTitle": "The symbol",
+      "symbolParagraph": "Our logo carries the same philosophy: the hexagon with atoms represents the molecule that inspired the \"Kem\" in our name, drawn as an open outline rather than a closed shape—because no solution is rigid. From one of its vertices, waves emerge and grow thicker, the \"Pro\" of process: they don't point to a fixed destination, but suggest flow and progressive transformation. Purple identifies the structure; the more discreet dark blue accompanies the process. The subtlety of the linework reflects something we learned in practice: the most lasting transformations are rarely the loudest."
+    },
+    "mission": {
+      "title": "Mission",
+      "description": "To help Spanish-speaking companies adopt artificial intelligence strategically, safely, and with measurable results, without relying on large internal AI teams."
+    },
+    "vision": {
+      "title": "Vision",
+      "description": "To be the go-to AI implementation consultancy for companies across Latin America, known for turning complex technology into real competitive advantage."
+    },
+    "approach": {
+      "title": "Our way of working",
+      "subtitle": "We combine strategic judgment with hands-on implementation capability, so every project delivers value from the first few weeks.",
+      "items": [
+        {
+          "title": "Results before technology",
+          "description": "We start with the business problem, not the tool. Technology is a means, not the goal."
+        },
+        {
+          "title": "Iterative implementation",
+          "description": "We deliver in short cycles with visible value, instead of long projects with uncertain outcomes."
+        },
+        {
+          "title": "Knowledge transfer",
+          "description": "We train your internal team so they can maintain and evolve the solutions independently."
+        },
+        {
+          "title": "Accountability and governance",
+          "description": "We design every solution with human oversight, data security, and traceability from day one."
+        }
+      ]
+    },
+    "team": {
+      "title": "Our team",
+      "subtitle": "A multidisciplinary team across strategy, AI engineering, and product."
+    }
+  },
+  "Blog": {
+    "backToBlog": "Back to blog",
+    "by": "By",
+    "newsletterCompactTitle": "Get our ideas",
+    "newsletterCompactDescription": "Strategy and applied AI, every two weeks.",
+    "newsletterPlaceholder": "you@company.com",
+    "newsletterSubmit": "Subscribe",
+    "newsletterSuccess": "You're in! Check your inbox to confirm.",
+    "newsletterError": "We couldn't process your subscription. Please try again.",
+    "newsletterErrorInvalid": "Enter a valid email address."
+  },
+  "Contact": {
+    "overline": "Strategic consulting",
+    "eyebrow": "Contact",
+    "title": "Let's talk about your next project",
+    "subtitle": "Have an automation or AI challenge? Fill out the form and we'll respond within 24 hours, or explore direct scheduling options.",
+    "infoTitle": "Contact information",
+    "infoLabels": {
+      "email": "Write to us",
+      "whatsapp": "WhatsApp",
+      "location": "Medellín office"
+    },
+    "email": "marketing@kemprocol.com",
+    "location": "Calle 7 Sur #42 - 70, Barrio El Poblado, Medellín, Antioquia, Colombia",
+    "scheduleTitle": "Prefer to book directly?",
+    "scheduleDescription": "Pick a slot on our calendar for a free 30-minute technical consulting session.",
+    "whatsapp": {
+      "chat": "Chat with {number}",
+      "copy": "Copy phone number",
+      "copied": "Copied"
+    },
+    "addToContacts": "Add to contacts",
+    "scheduleCta": "Book a call",
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "E.g. Carlos Mendoza",
+      "email": "Corporate email address",
+      "emailPlaceholder": "carlos@company.com",
+      "company": "Company",
+      "companyPlaceholder": "Your organization's name",
+      "message": "How can we help you?",
+      "messagePlaceholder": "Tell us briefly about your project, goals, or the technologies you'd like to implement...",
+      "submit": "Send message",
+      "submitting": "Sending...",
+      "disclaimer": "By submitting this form you accept our <link>personal data processing policy</link>.",
+      "successTitle": "Message sent!",
+      "successDescription": "Thanks for reaching out. We'll get back to you within 24 business hours.",
+      "sendAnother": "Send another message",
+      "errorTitle": "We couldn't send your message",
+      "errorDescription": "An unexpected error occurred. Please try again or email us directly at marketing@kemprocol.com.",
+      "errors": {
+        "nameRequired": "Enter your name",
+        "emailRequired": "Enter your email address",
+        "emailInvalid": "Enter a valid email address",
+        "messageRequired": "Tell us briefly about your project",
+        "messageMin": "Your message must be at least 10 characters"
+      }
+    }
+  },
+  "PrivacyNotice": {
+    "heroBadge": "Legal",
+    "title": "Privacy Notice",
+    "lastUpdated": "Last updated: August 7, 2026",
+    "sections": [
+      {
+        "number": 1,
+        "title": "Data Controller",
+        "shortDescription": "Who is responsible for your personal data.",
+        "layout": "contactCard",
+        "companyName": "Kempro SAS",
+        "paragraphs": [
+          "Kempro SAS (\"Kempro,\" \"we,\" \"us\"), located at Calle 7 Sur #42-70, Barrio El Poblado, Medellín, Antioquia, Colombia, is responsible for processing the personal data you provide through this website. You can contact us at:"
+        ],
+        "address": "Calle 7 Sur #42-70, Barrio El Poblado, Medellín, Antioquia, Colombia",
+        "email": "marketing@kemprocol.com",
+        "phone": "+57 310 462 3473"
+      },
+      {
+        "number": 2,
+        "title": "Applicable Legal Framework",
+        "shortDescription": "The Colombian laws that govern this notice.",
+        "layout": "legalFramework",
+        "paragraphs": [
+          "This notice is governed by Colombian Law 1581 of 2012 and Decree 1377 of 2013 (personal data protection and Habeas Data regime), and takes as reference international privacy best practices (such as the principles of data minimization, transparency, and informed consent found in frameworks like the European GDPR), without this implying legal subjection to foreign regulations."
+        ],
+        "cards": [
+          {
+            "title": "Law 1581 of 2012",
+            "description": "General personal data protection and Habeas Data regime in Colombia."
+          },
+          {
+            "title": "Decree 1377 of 2013",
+            "description": "Regulates Law 1581 of 2012 on personal data protection."
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Data We Collect",
+        "shortDescription": "The personal information we collect and how.",
+        "layout": "dataList",
+        "paragraphs": ["We collect the following personal data:"],
+        "list": [
+          "Through the contact form: full name, email address, company, and the content of the message sent.",
+          "Through our call scheduling system (Cal.com): name, email address, and selected time slot.",
+          "Aggregated and anonymized browsing data through web analytics tools (Google Analytics), such as pages visited and session duration.",
+          "If you contact us via WhatsApp, your phone number and the content of the conversation."
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Purpose of Processing",
+        "shortDescription": "What we use your data for.",
+        "layout": "numbered",
+        "items": [
+          "Respond to your contact or consulting requests.",
+          "Coordinate and confirm scheduled calls.",
+          "Improve the experience and content of our website.",
+          "Send you information related to the services you requested."
+        ],
+        "closingNote": "We do not use your data for purposes other than those described here, nor do we sell it to third parties."
+      },
+      {
+        "number": 5,
+        "title": "Data Transfer",
+        "shortDescription": "Who we share your information with.",
+        "layout": "plain",
+        "paragraphs": [
+          "To operate this site, we share information with the following providers, who act as data processors under our instructions: Resend (email delivery), Sanity (storage of contact messages), Cal.com (call scheduling management), and Google Analytics (web analytics). Some of these providers process information on servers located outside Colombia; by using this site, you authorize this international transfer necessary for the provision of the service."
+        ]
+      },
+      {
+        "number": 6,
+        "title": "Data Subject Rights (Habeas Data)",
+        "shortDescription": "Your rights over your personal data.",
+        "layout": "rightsGrid",
+        "rights": [
+          {
+            "label": "Know and update",
+            "description": "Know, update, and rectify your personal data."
+          },
+          {
+            "label": "Proof of authorization",
+            "description": "Request proof of the authorization granted."
+          },
+          {
+            "label": "Be informed",
+            "description": "Be informed about the use given to your data."
+          },
+          {
+            "label": "File complaints",
+            "description": "File complaints with the Superintendencia de Industria y Comercio (SIC) for violations of the law."
+          },
+          {
+            "label": "Revoke or delete",
+            "description": "Revoke authorization and/or request deletion of your data when there is no legal or contractual duty preventing it."
+          },
+          {
+            "label": "Free access",
+            "description": "Access your personal data free of charge."
+          }
+        ],
+        "closingNote": "To exercise these rights, write to us at marketing@kemprocol.com.",
+        "email": "marketing@kemprocol.com"
+      },
+      {
+        "id": "cookies",
+        "number": 7,
+        "title": "Cookies and Similar Technologies",
+        "shortDescription": "How we use cookies on this site.",
+        "layout": "plain",
+        "paragraphs": [
+          "This site uses first-party and third-party cookies (such as Google Analytics) to improve your experience and analyze site usage. On your first visit, a banner lets you accept all cookies, reject them, or manage your preferences by category (necessary and analytics). You can change your decision at any time from that same banner, or by configuring your browser to reject cookies, although this may affect some functionality."
+        ]
+      },
+      {
+        "number": 8,
+        "title": "Data Security",
+        "shortDescription": "How we protect your personal data.",
+        "layout": "plain",
+        "paragraphs": [
+          "We implement reasonable technical and administrative measures to protect your personal data against loss, misuse, unauthorized access, or alteration."
+        ]
+      },
+      {
+        "number": 9,
+        "title": "Effective Date and Changes",
+        "shortDescription": "When it takes effect and how it's updated.",
+        "layout": "plain",
+        "paragraphs": [
+          "This privacy notice is effective as of its publication date and may be modified at any time. We recommend reviewing it periodically."
+        ]
+      },
+      {
+        "number": 10,
+        "title": "Data Protection Officer Contact",
+        "shortDescription": "How to reach us about Habeas Data matters.",
+        "layout": "contactHighlight",
+        "question": "Questions about Habeas Data?",
+        "paragraphs": [
+          "If you have questions or want to exercise your Habeas Data rights over your personal data, write to us and we'll be glad to help."
+        ],
+        "email": "marketing@kemprocol.com"
+      }
+    ]
+  },
+  "TermsOfService": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: August 8, 2026",
+    "heroBadge": "Legal",
+    "sections": [
+      {
+        "number": 1,
+        "title": "Acceptance of terms",
+        "shortDescription": "What using this website means.",
+        "layout": "plain",
+        "paragraphs": [
+          "By accessing and using this website, you accept these Terms of Use in full."
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Intellectual property",
+        "shortDescription": "Who owns the content on this site.",
+        "layout": "plain",
+        "paragraphs": [
+          "All content on this site — including text, blog articles, logo, graphic design, and structure — is the property of Kempro SAS or used under license, and is protected by Colombian and international intellectual property laws. Reproduction, distribution, or commercial use without prior written authorization is not permitted."
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Permitted use of the site",
+        "shortDescription": "The informational nature of published content.",
+        "layout": "plain",
+        "paragraphs": [
+          "The information published on this site, including blog articles, is of a general and informational nature. It does not constitute binding professional advice nor replace a service contract. Any consulting services provided by Kempro SAS are governed by the specific terms agreed upon in the corresponding contract with each client, regardless of the content published on this site."
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Third-party links",
+        "shortDescription": "Responsibility for external platforms.",
+        "layout": "plain",
+        "paragraphs": [
+          "This site may include links to third-party platforms (such as Cal.com, WhatsApp, or social media). Kempro SAS does not control and is not responsible for the content, policies, or practices of such external sites."
+        ]
+      },
+      {
+        "number": 5,
+        "title": "Limitation of liability",
+        "shortDescription": "The scope of our liability for site use.",
+        "layout": "plain",
+        "paragraphs": [
+          "This site is provided \"as is,\" without guarantees of uninterrupted or error-free availability. Kempro SAS will not be liable for direct or indirect damages arising from the use or inability to use this site."
+        ]
+      },
+      {
+        "number": 6,
+        "title": "Governing law",
+        "shortDescription": "The jurisdiction governing these terms.",
+        "layout": "plain",
+        "paragraphs": [
+          "These terms are governed by the laws of the Republic of Colombia. Any dispute related to the use of this site shall be submitted to the competent courts of Colombia."
+        ]
+      },
+      {
+        "number": 7,
+        "title": "Changes",
+        "shortDescription": "How and when these terms may change.",
+        "layout": "plain",
+        "paragraphs": [
+          "Kempro SAS may modify these terms at any time. We recommend reviewing them periodically."
+        ]
+      },
+      {
+        "number": 8,
+        "title": "Contact",
+        "shortDescription": "How to reach us with questions about these terms.",
+        "layout": "contactHighlight",
+        "question": "Questions about these terms?",
+        "paragraphs": [
+          "For questions about these terms, write to us at marketing@kemprocol.com."
+        ],
+        "email": "marketing@kemprocol.com"
+      }
+    ]
+  },
+  "Cookies": {
+    "bannerIntro": "We use cookies to improve your experience. Read our",
+    "policyLink": "cookie policy",
+    "or": "or",
+    "manageLink": "manage cookies",
+    "acceptAll": "Accept all",
+    "rejectAll": "Reject all",
+    "modalTitle": "Cookie preferences",
+    "modalDescription": "Choose which cookie categories you want to allow. You can change this decision at any time.",
+    "necessaryTitle": "Necessary",
+    "necessaryDescription": "Essential for the site to function. These can't be turned off.",
+    "alwaysActive": "Always active",
+    "analyticsTitle": "Analytics",
+    "analyticsDescription": "Help us understand how the site is used (Google Analytics). Only loaded if you enable them.",
+    "cancel": "Cancel",
+    "save": "Save preferences",
+    "close": "Close"
+  },
+  "Common": {
+    "learnMore": "Learn more",
+    "backHome": "Back to home"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "cta": "Back to home"
+  }
+}

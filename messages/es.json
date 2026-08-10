@@ -1,0 +1,501 @@
+{
+  "Metadata": {
+    "titleTemplate": "%s | Kempro SAS",
+    "home": {
+      "title": "Kempro SAS — Consultoría e implementación de IA para empresas",
+      "description": "Ayudamos a las empresas a diseñar su estrategia de IA, implementar agentes de automatización e integrar LLMs en sus sistemas existentes."
+    },
+    "services": {
+      "title": "Servicios de consultoría e implementación de IA",
+      "description": "Estrategia de IA, agentes de automatización e integración de LLMs en procesos de negocio, adaptados a tu empresa."
+    },
+    "caseStudies": {
+      "title": "Casos de éxito en implementación de IA",
+      "description": "Resultados reales de proyectos de estrategia, automatización e integración de IA en distintas industrias."
+    },
+    "about": {
+      "title": "Sobre Kempro SAS",
+      "description": "Conoce la misión, visión y equipo de Kempro, la consultora de IA que convierte estrategia en resultados medibles."
+    },
+    "blog": {
+      "title": "Blog y recursos sobre IA para empresas",
+      "description": "Artículos sobre estrategia de IA, agentes de automatización e integración de LLMs para equipos de negocio y tecnología."
+    },
+    "contact": {
+      "title": "Contacto — Agenda una consultoría",
+      "description": "Conversemos sobre cómo la IA puede impulsar tu negocio. Agenda una consultoría con el equipo de Kempro SAS."
+    },
+    "privacyNotice": {
+      "title": "Aviso de privacidad",
+      "description": "Conoce cómo Kempro SAS recolecta, usa y protege tus datos personales."
+    },
+    "termsOfService": {
+      "title": "Términos de servicio",
+      "description": "Condiciones de uso del sitio web de Kempro SAS."
+    }
+  },
+  "Nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "caseStudies": "Casos de éxito",
+    "about": "Sobre nosotros",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "cta": "Contáctanos",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "LocaleSwitcher": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "English"
+  },
+  "Footer": {
+    "followUs": "Síguenos",
+    "privacy": "Aviso de privacidad",
+    "terms": "Términos de servicio",
+    "rights": "Todos los derechos reservados."
+  },
+  "Home": {
+    "hero": {
+      "eyebrow": "Consultoría e implementación de IA",
+      "title": "Convierte la IA en resultados de negocio medibles",
+      "subtitle": "Diseñamos tu estrategia de IA, implementamos agentes de automatización e integramos LLMs en tus sistemas para que tu empresa avance con velocidad y control.",
+      "trustLabel": "Equipos de negocio y tecnología confían en Kempro"
+    },
+    "services": {
+      "title": "Cómo ayudamos a tu empresa",
+      "subtitle": "Nuestras líneas de servicio cubren todo el camino: desde la estrategia hasta la operación en producción.",
+      "cta": "Ver todos los servicios"
+    },
+    "logos": {
+      "title": "Empresas que ya confían en Kempro"
+    },
+    "metrics": {
+      "title": "Resultados que hablan por sí solos",
+      "subtitle": "Un resumen del impacto que hemos generado en nuestros proyectos de implementación de IA.",
+      "items": [
+        { "value": "+35", "label": "proyectos de IA implementados" },
+        { "value": "48%", "label": "reducción promedio en tiempos de proceso" },
+        { "value": "12", "label": "industrias atendidas" },
+        { "value": "90 días", "label": "tiempo promedio al primer resultado" }
+      ]
+    },
+    "ctaBand": {
+      "title": "¿Listo para llevar la IA a tu operación?",
+      "subtitle": "Agenda una consultoría gratuita de 30 minutos y descubre por dónde empezar.",
+      "cta": "Contáctanos"
+    }
+  },
+  "Services": {
+    "eyebrow": "Servicios",
+    "title": "Estrategia, automatización e integración de IA",
+    "subtitle": "Acompañamos a tu empresa en cada etapa de la adopción de IA, desde la definición de la estrategia hasta la operación diaria de los sistemas.",
+    "benefitsTitle": "Beneficios",
+    "processTitle": "Cómo trabajamos",
+    "processSubtitle": "Un enfoque probado en cada proyecto, sin importar el tamaño de tu equipo.",
+    "process": [
+      {
+        "title": "Diagnóstico",
+        "description": "Analizamos tus procesos, datos y objetivos para identificar oportunidades de alto impacto."
+      },
+      {
+        "title": "Diseño",
+        "description": "Definimos la arquitectura de la solución, los indicadores de éxito y el plan de implementación."
+      },
+      {
+        "title": "Implementación",
+        "description": "Construimos e integramos la solución con tus sistemas, con entregas iterativas y visibles."
+      },
+      {
+        "title": "Escalamiento",
+        "description": "Medimos resultados, ajustamos y acompañamos la expansión a nuevos procesos o equipos."
+      }
+    ],
+    "ctaBand": {
+      "title": "Hablemos sobre tu próximo proyecto de IA",
+      "subtitle": "Cuéntanos tu reto y te ayudamos a definir el mejor punto de partida.",
+      "cta": "Contáctanos"
+    }
+  },
+  "CaseStudies": {
+    "eyebrow": "Casos de éxito",
+    "title": "Resultados reales en distintas industrias",
+    "subtitle": "Estos son algunos de los proyectos en los que hemos ayudado a nuestros clientes a convertir la IA en resultados medibles.",
+    "problemLabel": "Problema",
+    "solutionLabel": "Solución",
+    "resultLabel": "Resultado",
+    "ctaBand": {
+      "title": "Tu próximo caso de éxito puede ser el siguiente",
+      "subtitle": "Cuéntanos sobre tu operación y exploremos juntos las oportunidades de IA.",
+      "cta": "Contáctanos"
+    }
+  },
+  "About": {
+    "eyebrow": "Sobre nosotros",
+    "title": "Ayudamos a las empresas a adoptar IA con criterio",
+    "subtitle": "Somos un equipo de consultores e ingenieros especializados en estrategia, automatización e integración de inteligencia artificial.",
+    "origin": {
+      "eyebrow": "Nuestro origen",
+      "title": "Por qué existe Kempro",
+      "paragraphs": [
+        "Durante los primeros años acompañando empresas en la transformación de sus procesos, estructuras, tecnología y arquitectura empresarial, intentamos —como hace casi todo consultor al comenzar— aplicar metodologías estándar: marcos de referencia probados, mejores prácticas de la industria, plantillas que habían funcionado en otros proyectos.",
+        "Y sí, funcionaban. Hasta que dejaban de funcionar.",
+        "Con el tiempo entendimos por qué. Cada organización es un sistema propio, irrepetible. Su cultura no se parece a la de la empresa de al lado. El estilo de dirección de sus líderes, el nivel real de compromiso de la gerencia con el cambio, el presupuesto disponible para invertir, el apetito de riesgo que están dispuestos a asumir, la forma en que fluye —o se estanca— la información entre áreas: todas estas variables, muchas veces invisibles en un diagnóstico superficial, determinan si una solución va a funcionar o va a quedarse en una presentación bien diseñada que nadie implementa.",
+        "Nos dimos cuenta de que ese reto se parece mucho al diseño de un proceso químico. No basta con conocer la fórmula general de una reacción; hay que entender las condiciones específicas del sistema —presión, temperatura, catalizadores, pureza de los materiales— para que esa reacción realmente ocurra como se espera. Cambiar una sola variable puede cambiar por completo el resultado. Ignorarla puede hacer que nada reaccione en absoluto."
+      ],
+      "quote": "De ahí nace nuestro nombre: Kem, por “chemical”, y pro, por “process”. Kempro.",
+      "closingParagraph": "Esa analogía dejó de ser solo una idea y se convirtió en nuestra forma de trabajar. Antes de proponer una solución, diagnosticamos las condiciones reales de cada empresa. Escuchamos antes de prescribir. Diseñamos cada proyecto a la medida exacta de esas condiciones, no de un molde que trajimos de otro cliente. Porque así como en química no hay dos reacciones idénticas, tampoco hay dos empresas que necesiten exactamente lo mismo — y una solución que ignora esas diferencias, por bien intencionada que sea, rara vez transforma algo de verdad.",
+      "symbolTitle": "El símbolo",
+      "symbolParagraph": "Nuestro logo traduce esa misma filosofía: el hexágono con átomos representa la molécula que inspiró el \"Kem\" de nuestro nombre, dibujado como un contorno abierto, no una figura cerrada — porque ninguna solución es rígida. De uno de sus vértices emergen ondas que crecen en grosor, el \"Pro\" de proceso: no apuntan a un destino fijo, sino que sugieren flujo y transformación progresiva. El morado identifica la estructura; el azul oscuro, más discreto, acompaña el proceso. La sutileza del trazo refleja algo que aprendimos en la práctica: las transformaciones más duraderas rara vez son las más ruidosas."
+    },
+    "mission": {
+      "title": "Misión",
+      "description": "Ayudar a las empresas de habla hispana a adoptar la inteligencia artificial de forma estratégica, segura y con resultados medibles, sin depender de grandes equipos internos de IA."
+    },
+    "vision": {
+      "title": "Visión",
+      "description": "Ser la consultora de referencia en implementación de IA para empresas en Latinoamérica, reconocida por convertir tecnología compleja en ventaja competitiva real."
+    },
+    "approach": {
+      "title": "Nuestro enfoque de trabajo",
+      "subtitle": "Combinamos criterio estratégico con capacidad técnica de implementación, para que cada proyecto genere valor desde las primeras semanas.",
+      "items": [
+        {
+          "title": "Resultados antes que tecnología",
+          "description": "Empezamos por el problema de negocio, no por la herramienta. La tecnología es un medio, no el objetivo."
+        },
+        {
+          "title": "Implementación iterativa",
+          "description": "Entregamos en ciclos cortos con valor visible, en lugar de proyectos largos con resultados inciertos."
+        },
+        {
+          "title": "Transferencia de conocimiento",
+          "description": "Formamos a tu equipo interno para que puedan mantener y evolucionar las soluciones con autonomía."
+        },
+        {
+          "title": "Responsabilidad y gobernanza",
+          "description": "Diseñamos cada solución con supervisión humana, seguridad de datos y trazabilidad desde el primer día."
+        }
+      ]
+    },
+    "team": {
+      "title": "Nuestro equipo",
+      "subtitle": "Un equipo multidisciplinario de estrategia, ingeniería de IA y producto."
+    }
+  },
+  "Blog": {
+    "backToBlog": "Volver al blog",
+    "by": "Por",
+    "newsletterCompactTitle": "Recibe nuestras ideas",
+    "newsletterCompactDescription": "Estrategia e IA aplicada, cada dos semanas.",
+    "newsletterPlaceholder": "tu@empresa.com",
+    "newsletterSubmit": "Suscribirme",
+    "newsletterSuccess": "¡Listo! Revisa tu correo para confirmar la suscripción.",
+    "newsletterError": "No pudimos procesar tu suscripción. Intenta de nuevo.",
+    "newsletterErrorInvalid": "Ingresa un correo válido."
+  },
+  "Contact": {
+    "overline": "Consultoría estratégica",
+    "eyebrow": "Contacto",
+    "title": "Hablemos de tu próximo proyecto",
+    "subtitle": "¿Tienes un reto de automatización o IA? Completa el formulario y te responderemos en menos de 24 horas, o explora las opciones de agendamiento directo.",
+    "infoTitle": "Información de contacto",
+    "infoLabels": {
+      "email": "Escríbenos",
+      "whatsapp": "WhatsApp",
+      "location": "Sede Medellín"
+    },
+    "email": "marketing@kemprocol.com",
+    "location": "Calle 7 Sur #42 - 70, Barrio El Poblado, Medellín, Antioquia, Colombia",
+    "scheduleTitle": "¿Prefieres agendar directamente?",
+    "scheduleDescription": "Elige un espacio en nuestra agenda para una sesión de consultoría técnica gratuita de 30 minutos.",
+    "scheduleCta": "Agendar llamada",
+    "whatsapp": {
+      "chat": "Chatear con {number}",
+      "copy": "Copiar número de teléfono",
+      "copied": "Copiado"
+    },
+    "addToContacts": "Agregar a contactos",
+    "form": {
+      "name": "Nombre completo",
+      "namePlaceholder": "Ej. Carlos Mendoza",
+      "email": "Correo electrónico corporativo",
+      "emailPlaceholder": "carlos@empresa.com",
+      "company": "Empresa",
+      "companyPlaceholder": "Nombre de tu organización",
+      "message": "¿En qué podemos ayudarte?",
+      "messagePlaceholder": "Cuéntanos brevemente sobre tu proyecto, objetivos o tecnologías que deseas implementar...",
+      "submit": "Enviar mensaje",
+      "submitting": "Enviando...",
+      "disclaimer": "Al enviar este formulario aceptas nuestra <link>política de tratamiento de datos personales</link>.",
+      "successTitle": "¡Mensaje enviado!",
+      "successDescription": "Gracias por escribirnos. Te contactaremos en menos de 24 horas hábiles.",
+      "sendAnother": "Enviar otro mensaje",
+      "errorTitle": "No pudimos enviar tu mensaje",
+      "errorDescription": "Ocurrió un error inesperado. Por favor intenta nuevamente o escríbenos directamente a marketing@kemprocol.com.",
+      "errors": {
+        "nameRequired": "Ingresa tu nombre",
+        "emailRequired": "Ingresa tu correo electrónico",
+        "emailInvalid": "Ingresa un correo electrónico válido",
+        "messageRequired": "Cuéntanos brevemente sobre tu proyecto",
+        "messageMin": "El mensaje debe tener al menos 10 caracteres"
+      }
+    }
+  },
+  "PrivacyNotice": {
+    "heroBadge": "Legal",
+    "title": "Aviso de Privacidad",
+    "lastUpdated": "Última actualización: 7 de agosto de 2026",
+    "sections": [
+      {
+        "number": 1,
+        "title": "Responsable del Tratamiento",
+        "shortDescription": "Quién es responsable de sus datos personales.",
+        "layout": "contactCard",
+        "companyName": "Kempro SAS",
+        "paragraphs": [
+          "Kempro SAS (\"Kempro\", \"nosotros\"), con domicilio en Calle 7 Sur #42-70, Barrio El Poblado, Medellín, Antioquia, Colombia, es responsable del tratamiento de los datos personales que usted nos proporciona a través de este sitio web. Puede contactarnos en:"
+        ],
+        "address": "Calle 7 Sur #42-70, Barrio El Poblado, Medellín, Antioquia, Colombia",
+        "email": "marketing@kemprocol.com",
+        "phone": "+57 310 462 3473"
+      },
+      {
+        "number": 2,
+        "title": "Marco Legal Aplicable",
+        "shortDescription": "Las normas colombianas que rigen este aviso.",
+        "layout": "legalFramework",
+        "paragraphs": [
+          "Este aviso se rige por la Ley 1581 de 2012 y el Decreto 1377 de 2013 de la República de Colombia (régimen de protección de datos personales y Habeas Data), y adopta como referencia buenas prácticas internacionales de privacidad (como los principios de minimización, transparencia y consentimiento informado presentes en marcos como el RGPD europeo), sin que esto implique sujeción legal a normativa extranjera."
+        ],
+        "cards": [
+          {
+            "title": "Ley 1581 de 2012",
+            "description": "Régimen general de protección de datos personales y Habeas Data en Colombia."
+          },
+          {
+            "title": "Decreto 1377 de 2013",
+            "description": "Reglamenta la Ley 1581 de 2012 en materia de protección de datos personales."
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Datos que Recopilamos",
+        "shortDescription": "La información personal que recolectamos y cómo.",
+        "layout": "dataList",
+        "paragraphs": ["Recolectamos los siguientes datos personales:"],
+        "list": [
+          "A través del formulario de contacto: nombre completo, correo electrónico, empresa y el contenido del mensaje enviado.",
+          "A través de nuestro sistema de agendamiento de llamadas (Cal.com): nombre, correo electrónico y horario seleccionado.",
+          "Datos de navegación agregados y anonimizados a través de herramientas de analítica web (Google Analytics), como páginas visitadas y duración de la sesión.",
+          "Si nos contacta por WhatsApp, su número de teléfono y el contenido de la conversación."
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Finalidades del Tratamiento",
+        "shortDescription": "Para qué usamos sus datos personales.",
+        "layout": "numbered",
+        "items": [
+          "Responder a sus solicitudes de contacto o consultoría.",
+          "Coordinar y confirmar llamadas agendadas.",
+          "Mejorar la experiencia y el contenido de nuestro sitio web.",
+          "Enviarle información relacionada con los servicios que usted solicitó."
+        ],
+        "closingNote": "No usamos sus datos con fines distintos a los aquí descritos, ni los vendemos a terceros."
+      },
+      {
+        "number": 5,
+        "title": "Transferencia de Datos",
+        "shortDescription": "Con quién compartimos su información.",
+        "layout": "plain",
+        "paragraphs": [
+          "Para operar este sitio, compartimos información con los siguientes proveedores, quienes actúan como encargados del tratamiento bajo nuestras instrucciones: Resend (envío de correos electrónicos), Sanity (almacenamiento de mensajes de contacto), Cal.com (gestión de agendamiento de llamadas), y Google Analytics (analítica web). Algunos de estos proveedores procesan información en servidores ubicados fuera de Colombia; al usar este sitio, usted autoriza esta transferencia internacional necesaria para la prestación del servicio."
+        ]
+      },
+      {
+        "number": 6,
+        "title": "Derechos del Titular (Habeas Data)",
+        "shortDescription": "Sus derechos sobre sus datos personales.",
+        "layout": "rightsGrid",
+        "rights": [
+          {
+            "label": "Conocer y actualizar",
+            "description": "Conocer, actualizar y rectificar sus datos personales."
+          },
+          {
+            "label": "Prueba de autorización",
+            "description": "Solicitar prueba de la autorización otorgada."
+          },
+          {
+            "label": "Ser informado",
+            "description": "Ser informado sobre el uso dado a sus datos."
+          },
+          {
+            "label": "Presentar quejas",
+            "description": "Presentar quejas ante la Superintendencia de Industria y Comercio (SIC) por infracciones a la ley."
+          },
+          {
+            "label": "Revocar o suprimir",
+            "description": "Revocar la autorización y/o solicitar la supresión de sus datos cuando no exista un deber legal o contractual que lo impida."
+          },
+          {
+            "label": "Acceso gratuito",
+            "description": "Acceder de forma gratuita a sus datos personales."
+          }
+        ],
+        "closingNote": "Para ejercer estos derechos, escríbanos a marketing@kemprocol.com.",
+        "email": "marketing@kemprocol.com"
+      },
+      {
+        "id": "cookies",
+        "number": 7,
+        "title": "Cookies y Tecnologías Similares",
+        "shortDescription": "Cómo usamos las cookies en este sitio.",
+        "layout": "plain",
+        "paragraphs": [
+          "Este sitio utiliza cookies propias y de terceros (como Google Analytics) para mejorar su experiencia y analizar el uso del sitio. Al visitar el sitio por primera vez, un banner te permite aceptar todas las cookies, rechazarlas, o gestionar tus preferencias por categoría (necesarias y analíticas). Puedes cambiar tu decisión en cualquier momento desde el mismo banner o configurando tu navegador para rechazar cookies, aunque esto podría afectar algunas funcionalidades."
+        ]
+      },
+      {
+        "number": 8,
+        "title": "Seguridad de la Información",
+        "shortDescription": "Cómo protegemos sus datos personales.",
+        "layout": "plain",
+        "paragraphs": [
+          "Implementamos medidas técnicas y administrativas razonables para proteger sus datos personales contra pérdida, uso indebido, acceso no autorizado o alteración."
+        ]
+      },
+      {
+        "number": 9,
+        "title": "Vigencia y Modificaciones",
+        "shortDescription": "Cuándo entra en vigor y cómo se actualiza.",
+        "layout": "plain",
+        "paragraphs": [
+          "Este aviso de privacidad rige a partir de su publicación y podrá ser modificado en cualquier momento. Le recomendamos consultarlo periódicamente."
+        ]
+      },
+      {
+        "number": 10,
+        "title": "Contacto del Oficial de Datos",
+        "shortDescription": "Cómo comunicarse por temas de Habeas Data.",
+        "layout": "contactHighlight",
+        "question": "¿Inquietudes sobre Habeas Data?",
+        "paragraphs": [
+          "Si tiene inquietudes o desea ejercer sus derechos de Habeas Data sobre sus datos personales, escríbanos y le responderemos con gusto."
+        ],
+        "email": "marketing@kemprocol.com"
+      }
+    ]
+  },
+  "TermsOfService": {
+    "title": "Términos de Servicio",
+    "lastUpdated": "Última actualización: 8 de agosto de 2026",
+    "heroBadge": "Legal",
+    "sections": [
+      {
+        "number": 1,
+        "title": "Aceptación de los términos",
+        "shortDescription": "Qué implica usar este sitio web.",
+        "layout": "plain",
+        "paragraphs": [
+          "Al acceder y utilizar este sitio web, usted acepta estos Términos de uso en su totalidad."
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Propiedad intelectual",
+        "shortDescription": "Quién es dueño del contenido del sitio.",
+        "layout": "plain",
+        "paragraphs": [
+          "Todo el contenido de este sitio —incluyendo textos, artículos del blog, logo, diseño gráfico y estructura— es propiedad de Kempro SAS o se utiliza bajo licencia, y está protegido por las leyes de propiedad intelectual colombianas e internacionales. No está permitida su reproducción, distribución o uso comercial sin autorización escrita previa."
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Uso permitido del sitio",
+        "shortDescription": "Carácter informativo del contenido publicado.",
+        "layout": "plain",
+        "paragraphs": [
+          "La información publicada en este sitio, incluyendo los artículos del blog, tiene carácter general e informativo. No constituye asesoría profesional vinculante ni sustituye un contrato de servicios. Cualquier servicio de consultoría prestado por Kempro SAS se rige por los términos específicos acordados en el contrato correspondiente con cada cliente, independientemente del contenido publicado en este sitio."
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Enlaces a terceros",
+        "shortDescription": "Responsabilidad sobre plataformas externas.",
+        "layout": "plain",
+        "paragraphs": [
+          "Este sitio puede incluir enlaces a plataformas de terceros (como Cal.com, WhatsApp o redes sociales). Kempro SAS no controla ni se responsabiliza por el contenido, políticas o prácticas de dichos sitios externos."
+        ]
+      },
+      {
+        "number": 5,
+        "title": "Limitación de responsabilidad",
+        "shortDescription": "Alcance de nuestra responsabilidad por el uso del sitio.",
+        "layout": "plain",
+        "paragraphs": [
+          "Este sitio se ofrece \"tal cual\", sin garantías de disponibilidad ininterrumpida o libre de errores. Kempro SAS no será responsable por daños directos o indirectos derivados del uso o la imposibilidad de uso de este sitio."
+        ]
+      },
+      {
+        "number": 6,
+        "title": "Ley aplicable",
+        "shortDescription": "Jurisdicción que rige estos términos.",
+        "layout": "plain",
+        "paragraphs": [
+          "Estos términos se rigen por las leyes de la República de Colombia. Cualquier controversia relacionada con el uso de este sitio se someterá a los tribunales competentes de Colombia."
+        ]
+      },
+      {
+        "number": 7,
+        "title": "Modificaciones",
+        "shortDescription": "Cómo y cuándo pueden cambiar estos términos.",
+        "layout": "plain",
+        "paragraphs": [
+          "Kempro SAS podrá modificar estos términos en cualquier momento. Le recomendamos consultarlos periódicamente."
+        ]
+      },
+      {
+        "number": 8,
+        "title": "Contacto",
+        "shortDescription": "Cómo comunicarse por dudas sobre estos términos.",
+        "layout": "contactHighlight",
+        "question": "¿Preguntas sobre estos términos?",
+        "paragraphs": [
+          "Para preguntas sobre estos términos, escríbanos a marketing@kemprocol.com."
+        ],
+        "email": "marketing@kemprocol.com"
+      }
+    ]
+  },
+  "Cookies": {
+    "bannerIntro": "Usamos cookies para mejorar tu experiencia. Lee nuestra",
+    "policyLink": "política de cookies",
+    "or": "o",
+    "manageLink": "gestiona las cookies",
+    "acceptAll": "Aceptar todas",
+    "rejectAll": "Rechazar todas",
+    "modalTitle": "Preferencias de cookies",
+    "modalDescription": "Elige qué categorías de cookies quieres permitir. Puedes cambiar esta decisión en cualquier momento.",
+    "necessaryTitle": "Necesarias",
+    "necessaryDescription": "Esenciales para el funcionamiento del sitio. No se pueden desactivar.",
+    "alwaysActive": "Siempre activas",
+    "analyticsTitle": "Analíticas",
+    "analyticsDescription": "Nos ayudan a entender cómo se usa el sitio (Google Analytics). Se cargan solo si las activas.",
+    "cancel": "Cancelar",
+    "save": "Guardar preferencias",
+    "close": "Cerrar"
+  },
+  "Common": {
+    "learnMore": "Conocer más",
+    "backHome": "Volver al inicio"
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o fue movida.",
+    "cta": "Volver al inicio"
+  }
+}
