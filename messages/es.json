@@ -49,7 +49,20 @@
     "contact": "Contacto",
     "cta": "Contáctanos",
     "openMenu": "Abrir menú",
-    "closeMenu": "Cerrar menú"
+    "closeMenu": "Cerrar menú",
+    "search": "Buscar"
+  },
+  "Search": {
+    "openSearch": "Buscar",
+    "closeSearch": "Cerrar búsqueda",
+    "placeholder": "Buscar servicios, casos de éxito, artículos…",
+    "noResults": "No encontramos resultados para \"{query}\".",
+    "hint": "Escribe para buscar en todo el sitio.",
+    "sections": {
+      "services": "Servicios",
+      "caseStudies": "Historias de clientes",
+      "blog": "Blog"
+    }
   },
   "LocaleSwitcher": {
     "label": "Idioma",

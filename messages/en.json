@@ -49,7 +49,20 @@
     "contact": "Contact",
     "cta": "Contact us",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "search": "Search"
+  },
+  "Search": {
+    "openSearch": "Search",
+    "closeSearch": "Close search",
+    "placeholder": "Search services, case studies, articles…",
+    "noResults": "We couldn't find any results for \"{query}\".",
+    "hint": "Start typing to search the whole site.",
+    "sections": {
+      "services": "Services",
+      "caseStudies": "Customer Stories",
+      "blog": "Blog"
+    }
   },
   "LocaleSwitcher": {
     "label": "Language",

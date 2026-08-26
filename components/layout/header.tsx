@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/layout/locale-switcher";
+import { SiteSearch } from "@/components/layout/site-search";
 import { KemproLogo } from "@/components/ui/kempro-logo";
 import { MenuIcon, CloseIcon } from "@/components/ui/icons";
 import { ctaButtonClasses } from "@/components/ui/cta-button-classes";
@@ -69,6 +70,7 @@ export function Header() {
             </nav>
 
             <div className="hidden items-center gap-4 lg:flex">
+              <SiteSearch />
               <LocaleSwitcher />
               <Link
                 href="/contacto"
@@ -78,15 +80,23 @@ export function Header() {
               </Link>
             </div>
 
-            <button
-              type="button"
-              className="flex items-center justify-center rounded-md p-2 text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-primary-600 lg:hidden"
-              aria-expanded={open}
-              aria-label={open ? t("closeMenu") : t("openMenu")}
-              onClick={() => setOpen((v) => !v)}
-            >
-              {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
-            </button>
+            {/* Mobile: search trigger stays visible next to the hamburger
+                (rather than tucked inside the slide-down panel) so it's
+                reachable in one tap regardless of menu state — SiteSearch's
+                own overlay already covers the full viewport, so it doesn't
+                need the menu open first. */}
+            <div className="flex items-center gap-1 lg:hidden">
+              <SiteSearch />
+              <button
+                type="button"
+                className="flex items-center justify-center rounded-md p-2 text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-primary-600"
+                aria-expanded={open}
+                aria-label={open ? t("closeMenu") : t("openMenu")}
+                onClick={() => setOpen((v) => !v)}
+              >
+                {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+              </button>
+            </div>
           </div>
 
           {open ? (
