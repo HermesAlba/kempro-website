@@ -40,7 +40,7 @@ export function PageHero({
             // top-left corner and has faded out by the bottom of the
             // section, instead of staying strong all the way down.
             backgroundImage:
-              "radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px), radial-gradient(ellipse 1400px 600px at top left, #93C5FD 0%, #BFDBFE 45%, transparent 85%)",
+              "radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px), radial-gradient(ellipse 1400px 600px at top left, #B1C4FF 0%, #CFDCFF 45%, transparent 85%)",
             backgroundSize: "14px 14px, 100% 100%",
           }}
         />

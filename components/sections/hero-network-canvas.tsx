@@ -23,24 +23,23 @@ import { useEffect, useRef } from "react";
 const NODE_COUNT = 55;
 const MAX_LINK_DISTANCE = 140; // css px, pre-DPR scaling
 const NODE_RADIUS = 2.5;
-// Each node gets a random color from here (not the primary-* indigo scale —
-// see the eyebrow color note in hero.tsx) instead of one flat blue, so the
-// network reads as drawing from the site's actual blue range: the
-// hc-blue/hc-blue-dark tokens, the CtaBand/"Empieza aquí" gradient blues,
-// and accent-600 (the cyan family used for the blog's "tecnología" and
-// "tendencias" categories).
+// Each node gets a random color from here, drawing from the site's indigo
+// range: the hc-blue/hc-blue-dark tokens, the CtaBand/"Empieza aquí"
+// gradient indigos, a lighter primary-400 tone for variety, and accent-600
+// (the cyan family used for the blog's "tecnología" and "tendencias"
+// categories — the one entry NOT part of the indigo remap).
 const NODE_PALETTE = [
-  "#104281", // hc-blue-dark
-  "#3987e5", // hc-blue
-  "#4A90D9", // CtaBand/"Empieza aquí" gradient start
-  "#2E6DA8", // CtaBand/"Empieza aquí" gradient end
+  "#2F3293", // hc-blue-dark (primary-900)
+  "#7682F8", // hc-blue (primary-500)
+  "#5D5FEF", // CtaBand/"Empieza aquí" gradient start (primary-600)
+  "#4949D6", // CtaBand/"Empieza aquí" gradient end (primary-700)
   "#0891b2", // accent-600
-  "#60A5FA", // TREND_BANDS middle stop
+  "#90A2FE", // lighter accent tone for variety (primary-400)
 ];
-// Lines stay a single neutral blue regardless of which two node colors they
-// connect — only the dots vary, so the network doesn't turn into visual
-// noise.
-const LINK_COLOR_RGB = "46, 109, 168"; // "#2E6DA8" as an rgb() triple, for alpha blending
+// Lines stay a single neutral indigo regardless of which two node colors
+// they connect — only the dots vary, so the network doesn't turn into
+// visual noise.
+const LINK_COLOR_RGB = "73, 73, 214"; // "#4949D6" as an rgb() triple, for alpha blending
 const LINK_MAX_ALPHA = 0.35;
 
 // -28° from horizontal: rightward and gently upward — an "ascending" flow

@@ -11,22 +11,22 @@ import {
 
 type IconProps = { className?: string; style?: React.CSSProperties };
 
-// Shared blue every category crosses over to on hover — the exact pair
+// Shared indigo every category crosses over to on hover — the exact pair
 // used in the "Sobre nosotros" Hero block (see
 // app/[locale]/sobre-nosotros/page.tsx). Both the background and the icon
 // converge on this same tone on hover, regardless of category.
-const HOVER_FROM = "#4A90D9";
-const HOVER_TO = "#2E6DA8";
+const HOVER_FROM = "#5D5FEF";
+const HOVER_TO = "#4949D6";
 
-// Single shared background for all 5 categories — a flat dark blue
+// Single shared background for all 5 categories — a flat dark indigo
 // (previously neutral-900 → neutral-800, which read as a blue-vs-black
-// contrast against the page's own blue Hero block above). #104281 keeps
-// the thumbnail in the same blue family as that Hero's own gradient
-// (#3987e5 / #5598e7) for a coherent monochromatic composition instead.
-// Both stops share the same value (a flat fill) rather than reintroducing
-// a two-tone gradient, per explicit request.
-const BACKGROUND_FROM = "#104281";
-const BACKGROUND_TO = "#104281";
+// contrast against the page's own indigo Hero block above). #2F3293 keeps
+// the thumbnail in the same indigo family as that Hero's own gradient for
+// a coherent monochromatic composition instead. Both stops share the same
+// value (a flat fill) rather than reintroducing a two-tone gradient, per
+// explicit request.
+const BACKGROUND_FROM = "#2F3293";
+const BACKGROUND_TO = "#2F3293";
 
 // Every icon shares the same brand indigo (primary-600, see
 // app/globals.css) instead of its own hue — only the icon shape still

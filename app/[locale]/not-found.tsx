@@ -19,7 +19,7 @@ export default function NotFound() {
       className="relative -mt-[54px] flex min-h-[calc(100vh-92px)] items-center overflow-hidden pt-[54px] lg:-mt-[70px] lg:min-h-[calc(100vh-108px)] lg:pt-[70px]"
     >
       {/* Same two-layer treatment as the home Hero (see
-          components/sections/hero.tsx): a static top-to-bottom blue-to-white
+          components/sections/hero.tsx): a static top-to-bottom indigo-to-white
           gradient, plus a separate animated white-dot layer on top (drifts
           down on a loop via .animate-dot-wave, see app/globals.css) —
           replaces the old bespoke blurred-fog + grain background so this
@@ -27,7 +27,7 @@ export default function NotFound() {
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
-        style={{ backgroundImage: "linear-gradient(to bottom, #93C5FD 0%, #BFDBFE 45%, white 100%)" }}
+        style={{ backgroundImage: "linear-gradient(to bottom, #B1C4FF 0%, #CFDCFF 45%, white 100%)" }}
       />
       <div
         aria-hidden="true"

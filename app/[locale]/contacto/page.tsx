@@ -127,7 +127,7 @@ export default async function ContactPage({
       <FadeIn
         direction="right"
         delay={100}
-        className="relative flex flex-1 flex-col overflow-hidden rounded-xl bg-[#4A90D9] md:-mt-[54px] lg:-mt-[70px]"
+        className="relative flex flex-1 flex-col overflow-hidden rounded-xl bg-[#5D5FEF] md:-mt-[54px] lg:-mt-[70px]"
       >
         <div aria-hidden="true" className="relative flex-1">
           <GrainOverlay />

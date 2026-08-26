@@ -61,7 +61,7 @@ type FallbackBackgroundProps = {
   squareCorners?: boolean;
 };
 
-// Generic/default pattern: a diagonal blue gradient with a lighter "step"
+// Generic/default pattern: a diagonal indigo gradient with a lighter "step"
 // overlay (two color planes meeting on a soft diagonal seam) plus grain.
 // Hover: only the light "step" layer slides ~6px along its own diagonal
 // offset (down-right) — the base gradient underneath stays put.
@@ -72,11 +72,11 @@ function DiagonalStepFallback({ className }: FallbackBackgroundProps) {
         <div
           aria-hidden="true"
           className="absolute inset-0"
-          style={{ backgroundImage: "linear-gradient(135deg, #4A90D9 0%, #BFDBFE 100%)" }}
+          style={{ backgroundImage: "linear-gradient(135deg, #5D5FEF 0%, #CFDCFF 100%)" }}
         />
         <div
           aria-hidden="true"
-          className={`absolute left-[45%] top-[40%] right-0 bottom-0 bg-[#DBEAFE] ${HOVER_TRANSITION} motion-safe:group-hover:translate-x-1.5 motion-safe:group-hover:translate-y-1.5`}
+          className={`absolute left-[45%] top-[40%] right-0 bottom-0 bg-[#E5EDFF] ${HOVER_TRANSITION} motion-safe:group-hover:translate-x-1.5 motion-safe:group-hover:translate-y-1.5`}
         />
         <GrainOverlay />
       </div>
@@ -98,12 +98,12 @@ function EstrategiaBandsFallback({ className, squareCorners }: FallbackBackgroun
       <div
         className={`relative h-full w-full overflow-hidden${squareCorners ? "" : " rounded-l-[28px] sm:rounded-l-[40px]"}`}
       >
-        <div className="absolute inset-y-0 left-0 w-[30%]" style={{ backgroundColor: "#7EB6F5" }}>
+        <div className="absolute inset-y-0 left-0 w-[30%]" style={{ backgroundColor: "#90A2FE" }}>
           <GrainOverlay />
         </div>
         <div
           className={`absolute inset-y-0 -right-3 left-[30%] ${HOVER_TRANSITION} motion-safe:group-hover:-translate-x-1.5`}
-          style={{ backgroundColor: "#4A90D9" }}
+          style={{ backgroundColor: "#5D5FEF" }}
         >
           <GrainOverlay />
         </div>
@@ -113,7 +113,7 @@ function EstrategiaBandsFallback({ className, squareCorners }: FallbackBackgroun
 }
 
 // "Automatización" pattern: two large overlapping circles ("petals"), each
-// with its own grain, sitting on an intense-blue base (also grained) —
+// with its own grain, sitting on an intense-indigo base (also grained) —
 // centered outside the container past its bottom-left/bottom-right
 // corners so only their curved edges show, meeting near horizontal center
 // to leave a pointed arc of the base color visible at the top. Hover:
@@ -126,12 +126,12 @@ function AutomatizacionPetalsFallback({ className, squareCorners }: FallbackBack
       <div
         className={`relative h-full w-full overflow-hidden${squareCorners ? "" : " rounded-l-[28px] sm:rounded-l-[40px]"}`}
       >
-        <div className="absolute inset-0" style={{ backgroundColor: "#5FA8E8" }} />
+        <div className="absolute inset-0" style={{ backgroundColor: "#7682F8" }} />
         <GrainOverlay />
         <div
           className={`absolute rounded-full ${HOVER_TRANSITION} motion-safe:group-hover:-translate-x-1`}
           style={{
-            backgroundColor: "#BFE0FA",
+            backgroundColor: "#B1C4FF",
             width: "95%",
             height: "170%",
             left: "-30%",
@@ -143,7 +143,7 @@ function AutomatizacionPetalsFallback({ className, squareCorners }: FallbackBack
         <div
           className={`absolute rounded-full ${HOVER_TRANSITION} motion-safe:group-hover:translate-x-1`}
           style={{
-            backgroundColor: "#D6EDFB",
+            backgroundColor: "#CFDCFF",
             width: "95%",
             height: "170%",
             right: "-30%",
@@ -171,9 +171,9 @@ function AutomatizacionPetalsFallback({ className, squareCorners }: FallbackBack
 // page's own 3-band split) can reuse these exact tones instead of
 // redefining them and risking color drift.
 export const TREND_BANDS = [
-  { from: "#BFDBFE", to: "#93C5FD" },
-  { from: "#60A5FA", to: "#7DB8F5" },
-  { from: "#93C5FD", to: "#BFDBFE" },
+  { from: "#CFDCFF", to: "#B1C4FF" },
+  { from: "#7682F8", to: "#90A2FE" },
+  { from: "#B1C4FF", to: "#CFDCFF" },
 ];
 
 function TendenciasBandsFallback({ className, squareCorners }: FallbackBackgroundProps) {

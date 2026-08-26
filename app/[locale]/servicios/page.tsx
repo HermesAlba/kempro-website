@@ -82,7 +82,7 @@ export default async function ServicesPage({
           section (edge to edge, like CtaBand) instead of an inset rounded
           card — same height (py-20/py-24) and graph-paper grid, same
           centered text layout and dark button as the CtaBand "Hablemos
-          sobre..." block below. Background is #93C5FD — same blue as the
+          sobre..." block below. Background is #B1C4FF — same indigo as the
           top of the home Hero's gradient (see components/sections/hero.tsx).
           Text stays dark (neutral-900/700) since this light fill needs it. */}
       <section
@@ -92,7 +92,7 @@ export default async function ServicesPage({
         // Same 384px (6 grid cells) as CtaBand's "Hablemos sobre..." — see
         // comment there.
         className="relative flex min-h-[384px] items-center overflow-hidden py-12"
-        style={{ backgroundColor: "#93C5FD" }}
+        style={{ backgroundColor: "#B1C4FF" }}
       >
         <div
           aria-hidden="true"

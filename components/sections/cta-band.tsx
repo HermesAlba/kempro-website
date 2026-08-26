@@ -13,10 +13,9 @@ export function CtaBand({
   subtitle: string;
   cta: string;
   /** "dark" (default) = plain bg-dark-900, used on Home/Servicios. "blue-grid"
-   * = the same #4A90D9→#2E6DA8 brand gradient and white graph-paper grid
-   * used by the "Recibe nuestras ideas" newsletter block on /blog (was a
-   * flat #104281 fill — replaced sitewide per request), but no card/icon
-   * — just the colored grid backdrop behind the text. */
+   * = the same #5D5FEF→#4949D6 brand gradient and white graph-paper grid
+   * used by the "Recibe nuestras ideas" newsletter block on /blog, but no
+   * card/icon — just the colored grid backdrop behind the text. */
   background?: "dark" | "blue-grid";
 }) {
   return (
@@ -34,7 +33,7 @@ export function CtaBand({
       className={`relative flex min-h-[384px] items-center overflow-hidden py-12 ${background === "dark" ? "bg-dark-900" : ""}`}
       style={
         background === "blue-grid"
-          ? { backgroundImage: "linear-gradient(135deg, #4A90D9 0%, #2E6DA8 100%)" }
+          ? { backgroundImage: "linear-gradient(135deg, #5D5FEF 0%, #4949D6 100%)" }
           : undefined
       }
     >

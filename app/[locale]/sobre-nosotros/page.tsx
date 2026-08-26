@@ -71,7 +71,7 @@ export default async function AboutPage({
                 rather than a plain fade/slide of the whole rectangle. */}
             <JoiningQuadrants
               className="relative h-full w-full overflow-hidden rounded-xl"
-              style={{ backgroundImage: "linear-gradient(135deg, #4A90D9 0%, #2E6DA8 100%)" }}
+              style={{ backgroundImage: "linear-gradient(135deg, #5D5FEF 0%, #4949D6 100%)" }}
             >
               {/* Graph-paper grid — two repeating linear gradients (one
                   horizontal, one vertical) rather than a background image, so
@@ -221,7 +221,7 @@ export default async function AboutPage({
 
         <div className="relative mx-auto max-w-[1280px]">
           <FadeIn>
-            <h2 className="text-[24px] font-bold leading-tight text-[#8284FF] sm:text-[28px]">
+            <h2 className="text-[24px] font-bold leading-tight text-[#90A2FE] sm:text-[28px]">
               {t("values.title")}
             </h2>
           </FadeIn>
@@ -232,7 +232,7 @@ export default async function AboutPage({
               return (
                 <FadeIn key={item.number} delay={index * 100}>
                   <div className="hover-lift">
-                    <ValueIcon className="h-7 w-7 text-[#8284FF]/70" />
+                    <ValueIcon className="h-7 w-7 text-[#90A2FE]/70" />
                     <h3 className="mt-4 text-[24px] font-bold leading-[1.3] text-white">
                       {item.title}
                     </h3>

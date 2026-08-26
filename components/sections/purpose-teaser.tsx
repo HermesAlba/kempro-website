@@ -35,13 +35,13 @@ export function PurposeTeaser() {
           </FadeIn>
 
           {/* Reduced version of the gradient block used on the Sobre
-              nosotros / SN hero (same #4A90D9→#2E6DA8 gradient, grid
+              nosotros / SN hero (same #5D5FEF→#4949D6 gradient, grid
               pattern, and white icon tile) — establishes the same visual
               identity without duplicating the full-size hero treatment. */}
           <FadeIn direction="right" delay={100} className="mx-auto aspect-square w-full max-w-[420px]">
             <JoiningHalves
               className="relative h-full w-full overflow-hidden rounded-xl"
-              style={{ backgroundImage: "linear-gradient(135deg, #4A90D9 0%, #2E6DA8 100%)" }}
+              style={{ backgroundImage: "linear-gradient(135deg, #5D5FEF 0%, #4949D6 100%)" }}
             >
               <div
                 className="absolute inset-0"

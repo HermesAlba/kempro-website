@@ -38,14 +38,13 @@ export default async function BlogPage({
       {featured ? <FeaturedLatestHero featured={featured} latest={latest} roundedImages /> : null}
       {posts.length > 0 ? <AllArticlesGrid posts={posts} roundedImages /> : null}
 
-      {/* Was a flat bg-[#104281]. Per request, swapped for the site's brand
-          gradient (same #4A90D9→#2E6DA8 diagonal used by the "Empieza
+      {/* Brand gradient (same #5D5FEF→#4949D6 diagonal used by the "Empieza
           aquí" band on /servicios and the "Quiénes somos" tile on the
-          home page) — the "bluer", subtly-gradient tone the request asked
-          for, instead of the single flat dark tone. */}
+          home page) — a subtly-gradient indigo tone instead of a single
+          flat dark fill. */}
       <section
         className="relative overflow-hidden px-6 py-16 sm:px-10 sm:py-20 lg:px-20"
-        style={{ backgroundImage: "linear-gradient(135deg, #4A90D9 0%, #2E6DA8 100%)" }}
+        style={{ backgroundImage: "linear-gradient(135deg, #5D5FEF 0%, #4949D6 100%)" }}
       >
         <div
           aria-hidden="true"

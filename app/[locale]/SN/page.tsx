@@ -77,13 +77,13 @@ export default async function SNPage({
                 plain fade/slide of the whole rectangle. */}
             <JoiningHalves
               className="relative h-full w-full overflow-hidden rounded-xl"
-              style={{ backgroundImage: "linear-gradient(135deg, #4A90D9 0%, #2E6DA8 100%)" }}
+              style={{ backgroundImage: "linear-gradient(135deg, #5D5FEF 0%, #4949D6 100%)" }}
             >
               {/* Graph-paper grid — two repeating linear gradients (one
                   horizontal, one vertical) rather than a background image, so
                   the line weight/color stay crisp at any size. White lines,
-                  since this mid-blue base would swallow the dark-blue grid
-                  the pattern normally uses. */}
+                  since this mid-indigo base would swallow the dark-indigo
+                  grid the pattern normally uses. */}
               <div
                 className="absolute inset-0"
                 style={{
@@ -157,7 +157,7 @@ export default async function SNPage({
         </div>
       </section>
 
-      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-[95px]" style={{ backgroundColor: "#BFE0FA" }}>
+      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-[95px]" style={{ backgroundColor: "#B1C4FF" }}>
         <div className="mx-auto max-w-[1280px]">
           <div className="grid gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             <FadeIn direction="left">
@@ -181,11 +181,11 @@ export default async function SNPage({
         </div>
       </section>
 
-      <div className="px-6 py-8 sm:px-10 lg:px-[95px]" style={{ backgroundColor: "#BFE0FA" }}>
+      <div className="px-6 py-8 sm:px-10 lg:px-[95px]" style={{ backgroundColor: "#B1C4FF" }}>
         <div className="relative -top-[38px] mx-auto max-w-[1280px] border-t border-neutral-400" />
       </div>
 
-      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-[95px]" style={{ backgroundColor: "#BFE0FA" }}>
+      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-[95px]" style={{ backgroundColor: "#B1C4FF" }}>
         <div className="relative -top-[76px] mx-auto max-w-[1280px]">
           <div className="grid gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             <FadeIn direction="left">

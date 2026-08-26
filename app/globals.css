@@ -86,8 +86,8 @@
   /* "HC" (customer stories hub) palette — kore.ai-inspired blues, distinct
      from the primary-50..900 scale so they don't reshade the rest of the
      site. Used by app/[locale]/HC/page.tsx and its section components. */
-  --color-hc-blue: #3987e5;
-  --color-hc-blue-dark: #104281;
+  --color-hc-blue: #7682f8;
+  --color-hc-blue-dark: #2f3293;
 
   --background: var(--color-neutral-0);
   --foreground: var(--color-neutral-900);
@@ -258,8 +258,8 @@ body {
 .hero-gradient-ribbon__inner {
   background-image: repeating-linear-gradient(
     108deg,
-    #bfdbfe 0%,
-    #93c5fd 8%,
+    #cfdcff 0%,
+    #b1c4ff 8%,
     #818cf8 15%,
     #a78bfa 21%,
     #f59e0b 29%,
@@ -267,7 +267,7 @@ body {
     #ec4899 43%,
     #f472b6 49%,
     #fbcfe8 55%,
-    #bfdbfe 63%
+    #cfdcff 63%
   );
   background-size: 220% 220%;
   filter: blur(70px) saturate(115%);

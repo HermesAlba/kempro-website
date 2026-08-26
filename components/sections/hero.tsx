@@ -26,7 +26,7 @@ export function Hero() {
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
-        style={{ backgroundImage: "linear-gradient(to bottom, #93C5FD 0%, #BFDBFE 45%, white 100%)" }}
+        style={{ backgroundImage: "linear-gradient(to bottom, #B1C4FF 0%, #CFDCFF 45%, white 100%)" }}
       />
       {/* White-dot grid, on its own layer (separate from the gradient
           above) so its background-position can animate independently —
@@ -42,10 +42,9 @@ export function Hero() {
       />
       <Container className="relative pb-4 pt-8 sm:pb-4 sm:pt-10 lg:pb-4 lg:pt-8">
         <FadeIn className="mx-auto max-w-3xl text-center">
-          {/* text-hc-blue-dark (#104281) instead of the primary-* scale —
-              primary is actually an indigo (#5D5FEF family), and this is the
-              same blue already used for the blog's newsletter section
-              background (app/[locale]/blog/page.tsx). */}
+          {/* text-hc-blue-dark (#2F3293) — same indigo tone already used for
+              the blog's newsletter section background
+              (app/[locale]/blog/page.tsx). */}
           <p className="text-sm font-semibold uppercase tracking-wide text-hc-blue-dark">
             {t("eyebrow")}
           </p>

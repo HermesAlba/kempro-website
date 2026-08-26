@@ -82,7 +82,7 @@ export default async function ServiceDetailPage({
             // corner, tapering off going down and toward both bottom
             // corners).
             backgroundImage:
-              "radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px), radial-gradient(ellipse 1400px 600px at top left, #93C5FD 0%, #BFDBFE 45%, transparent 85%)",
+              "radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px), radial-gradient(ellipse 1400px 600px at top left, #B1C4FF 0%, #CFDCFF 45%, transparent 85%)",
             backgroundSize: "14px 14px, 100% 100%",
           }}
         />
@@ -158,15 +158,14 @@ export default async function ServiceDetailPage({
           {/* Beneficios — pulled out of the generic content blocks (it used
               to be a plain "Qué incluye" text list, same data duplicated)
               into its own highlighted card. Uses the site's own brand
-              gradient (#4A90D9 → #2E6DA8, 135deg — same one already used
+              gradient (#5D5FEF → #4949D6, 135deg — same one already used
               a few sections up on this very page's "Cómo trabajamos" band,
-              plus Sobre nosotros/SN/CtaBand) instead of the bright indigo
-              primary-600, which read as too loud/off-brand here. Checks
-              use the lighter accent-300 for contrast on the dark fill. */}
+              plus Sobre nosotros/SN/CtaBand). Checks use the lighter
+              accent-300 for contrast on the dark fill. */}
           <FadeIn direction="right" delay={100} className="lg:sticky lg:top-24">
             <div
-              className="rounded-2xl p-6 text-white shadow-xl shadow-[#2E6DA8]/20"
-              style={{ backgroundImage: "linear-gradient(135deg, #4A90D9 0%, #2E6DA8 100%)" }}
+              className="rounded-2xl p-6 text-white shadow-xl shadow-[#4949D6]/20"
+              style={{ backgroundImage: "linear-gradient(135deg, #5D5FEF 0%, #4949D6 100%)" }}
             >
               <h2 className="text-lg font-bold text-white">
                 {tServices("benefitsTitle")}

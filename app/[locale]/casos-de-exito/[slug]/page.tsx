@@ -64,13 +64,13 @@ export default async function CaseStudyPage({
 
   return (
     <article className="relative overflow-hidden bg-slate-50 lg:min-h-screen">
-      {/* Subtle blue gradient in the top-left corner, fading into
+      {/* Subtle indigo gradient in the top-left corner, fading into
           bg-slate-50 — same "quiet" background treatment as the listing
           page, just corner-anchored instead of full-bleed. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
-        style={{ backgroundImage: "radial-gradient(ellipse 900px 700px at top left, #DBEAFE, transparent 60%)" }}
+        style={{ backgroundImage: "radial-gradient(ellipse 900px 700px at top left, #E5EDFF, transparent 60%)" }}
       />
 
       {/* Desktop-only photo: absolutely positioned against <article> itself
@@ -163,7 +163,7 @@ export default async function CaseStudyPage({
           {/* Category + date, same meta-row size as CaseCard on that same
               listing page (see components/sections/case-card.tsx). */}
           <p className="mt-6 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide">
-            <span style={{ color: "#3987e5" }}>{caseStudy.industry}</span>
+            <span style={{ color: "#7682F8" }}>{caseStudy.industry}</span>
             <span className="text-slate-300">&bull;</span>
             <span className="text-slate-500">{formattedDate}</span>
           </p>

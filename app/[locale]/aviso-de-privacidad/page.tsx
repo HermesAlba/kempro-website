@@ -38,7 +38,7 @@ function linkifyEmail(text: string, email?: string) {
       {before}
       <a
         href={`mailto:${email}`}
-        className="inline-flex items-center gap-1 align-middle text-hc-blue-dark hover:text-[#2E6DA8] hover:underline"
+        className="inline-flex items-center gap-1 align-middle text-hc-blue-dark hover:text-[#4949D6] hover:underline"
       >
         <MailIcon className="h-3.5 w-3.5 flex-shrink-0" />
         {email}
@@ -149,7 +149,7 @@ function SectionContent({ section }: { section: PrivacySection }) {
                 key={item}
                 className="flex items-start gap-3 rounded-xl border border-neutral-200 bg-white p-4"
               >
-                <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-[#4A90D9]" />
+                <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-[#5D5FEF]" />
                 <span className="text-sm text-neutral-700">{item}</span>
               </li>
             ))}
@@ -166,7 +166,7 @@ function SectionContent({ section }: { section: PrivacySection }) {
                 key={item}
                 className="flex items-start gap-3 rounded-xl border border-neutral-200 bg-white p-4"
               >
-                <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-[#4A90D9]" />
+                <span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-[#5D5FEF]" />
                 <span className="text-sm text-neutral-700">{item}</span>
               </li>
             ))}
@@ -198,7 +198,7 @@ function SectionContent({ section }: { section: PrivacySection }) {
 
     case "contactHighlight":
       return (
-        <div className="rounded-2xl bg-[#EAF4FE] p-6">
+        <div className="rounded-2xl bg-[#F1F5FF] p-6">
           <h3 className="text-lg font-bold text-neutral-900">{section.question}</h3>
           {section.paragraphs?.map((paragraph) => (
             <p key={paragraph} className="mt-2 leading-relaxed text-neutral-700">
@@ -208,7 +208,7 @@ function SectionContent({ section }: { section: PrivacySection }) {
           {section.email ? (
             <a
               href={`mailto:${section.email}`}
-              className="mt-4 inline-flex items-center gap-2 text-hc-blue-dark hover:text-[#2E6DA8]"
+              className="mt-4 inline-flex items-center gap-2 text-hc-blue-dark hover:text-[#4949D6]"
             >
               <MailIcon className="h-4 w-4 flex-shrink-0" />
               {section.email}
@@ -249,29 +249,29 @@ export default async function PrivacyNoticePage({
           strip; the matching top padding keeps the visible content's
           position unchanged. Same corner-gradient + dot texture as
           PageHero's `gradient` prop (see components/sections/page-hero.tsx)
-          instead of the old flat from-primary-50 (indigo) fill, so this
-          page's hero matches the blue treatment used on servicios/home/
-          sobre nosotros. */}
+          instead of the old flat from-primary-50 fill, so this page's hero
+          matches the indigo treatment used on servicios/home/sobre
+          nosotros. */}
       <section className="relative -mt-[54px] overflow-hidden bg-white pb-16 pt-[118px] sm:pb-24 sm:pt-[150px] lg:-mt-[70px] lg:pt-[166px]">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px), radial-gradient(ellipse 1400px 600px at top left, #93C5FD 0%, #BFDBFE 45%, transparent 85%)",
+              "radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px), radial-gradient(ellipse 1400px 600px at top left, #B1C4FF 0%, #CFDCFF 45%, transparent 85%)",
             backgroundSize: "14px 14px, 100% 100%",
           }}
         />
         <Container className="relative z-10">
           <FadeIn className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center rounded-full bg-[#DBEAFE] px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-hc-blue-dark">
+            <span className="inline-flex items-center rounded-full bg-[#E5EDFF] px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-hc-blue-dark">
               {t("heroBadge")}
             </span>
             <h1 className="mt-6 text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
               {t("title")}
             </h1>
             <p className="mt-4 text-neutral-600">{t("lastUpdated")}</p>
-            <div className="mx-auto mt-6 h-1 w-16 rounded-full bg-[#4A90D9]" aria-hidden="true" />
+            <div className="mx-auto mt-6 h-1 w-16 rounded-full bg-[#5D5FEF]" aria-hidden="true" />
           </FadeIn>
         </Container>
       </section>

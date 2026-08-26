@@ -132,7 +132,7 @@ export function ContactForm({
     // (pale green fill, green border/icon, dark text) unconditionally —
     // not the dark-panel-aware styling the rest of this component uses —
     // since a solid, universally-recognized success color reads better
-    // here than anything tinted to match the surrounding bg-[#4A90D9]
+    // here than anything tinted to match the surrounding bg-[#5D5FEF]
     // panel on /contacto (see that page's AccentSide-style column).
     return (
       <div
