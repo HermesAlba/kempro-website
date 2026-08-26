@@ -10,18 +10,7 @@ import { getServices } from "@/lib/data/services";
 import { getBlogPosts } from "@/lib/data/blog";
 import { getCaseStudies } from "@/lib/data/case-studies";
 import { SearchIcon, CloseIcon } from "@/components/ui/icons";
-
-// Strips accents before matching ("automatizacion" also matches
-// "automatización") — the site's content is Spanish-first, so this makes the
-// search noticeably more forgiving without pulling in a fuzzy-search
-// dependency for what is still a small, static dataset (~6 services, ~10
-// posts, ~8 case studies).
-function normalize(value: string): string {
-  return value
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-}
+import { normalizeSearch as normalize } from "@/lib/normalize-search";
 
 type ResultItem = {
   id: string;

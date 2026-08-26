@@ -6,6 +6,8 @@ import type { CaseStudy, IndustryKey } from "@/lib/data/case-studies";
 import { CaseCard } from "@/components/sections/case-card";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ctaButtonClasses } from "@/components/ui/cta-button-classes";
+import { normalizeSearch } from "@/lib/normalize-search";
+import { SearchIcon } from "@/components/ui/icons";
 
 // Same filter-pill + show-more/show-less pattern as
 // components/blog/all-articles-grid.tsx, adapted for case studies:
@@ -57,6 +59,7 @@ export function AllCaseStudiesGrid({
   const t = useTranslations("CaseStudies");
   const locale = useLocale();
   const [activeIndustry, setActiveIndustry] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   // Real industries only, derived from the case studies themselves, sorted
@@ -65,15 +68,30 @@ export function AllCaseStudiesGrid({
   const industries = Array.from(new Set(caseStudies.map((c) => c.industry))).sort((a, b) =>
     a.localeCompare(b, locale),
   );
-  const filtered = activeIndustry
+  const byIndustry = activeIndustry
     ? caseStudies.filter((c) => c.industry === activeIndustry)
     : caseStudies;
+  const trimmedQuery = query.trim();
+  const normalizedQuery = normalizeSearch(trimmedQuery);
+  // Same client/industry/result matching as the global header search (see
+  // components/layout/site-search.tsx) — scoped to `byIndustry` so the
+  // industry pill and the search box narrow the same list together.
+  const filtered = normalizedQuery
+    ? byIndustry.filter((c) =>
+        normalizeSearch(`${c.client} ${c.industry} ${c.result}`).includes(normalizedQuery),
+      )
+    : byIndustry;
   const visible = filtered.slice(0, visibleCount);
   const hasMore = visibleCount < filtered.length;
   const canCollapse = !hasMore && filtered.length > PAGE_SIZE;
 
   function handleIndustryChange(industry: string | null) {
     setActiveIndustry(industry);
+    setVisibleCount(PAGE_SIZE);
+  }
+
+  function handleQueryChange(value: string) {
+    setQuery(value);
     setVisibleCount(PAGE_SIZE);
   }
 
@@ -103,23 +121,47 @@ export function AllCaseStudiesGrid({
           </div>
         </FadeIn>
 
+        {/* Placed after the industry pills (own row, below them), same
+            pattern as the blog's search box (see
+            components/blog/all-articles-grid.tsx) — filters the same
+            `filtered` list the pills do, so industry + keyword combine
+            instead of competing. */}
+        <FadeIn className="mt-4 max-w-sm">
+          <label className="relative block">
+            <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
+            <input
+              type="text"
+              value={query}
+              onChange={(event) => handleQueryChange(event.target.value)}
+              placeholder={t("searchPlaceholder")}
+              className="w-full rounded-full border border-neutral-200 bg-white py-2 pl-9 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-100"
+            />
+          </label>
+        </FadeIn>
+
         {/* grid-cols-1/sm:2 fluid columns below lg, fixed 342px×3 only
             from lg up — the fixed-only version overflowed narrower
             viewports (justify-center doesn't shrink fixed track widths). */}
-        <div className="mt-10 grid grid-cols-1 justify-center gap-x-[30px] gap-y-6 sm:grid-cols-2 lg:grid-cols-[repeat(3,342px)]">
-          {visible.map((caseStudy, index) => {
-            const override = industryImageOverrides?.[caseStudy.industryKey];
-            return (
-              <FadeIn key={caseStudy.slug} delay={index * 100}>
-                <CaseCard
-                  caseStudy={caseStudy}
-                  headerImageSrc={override?.src}
-                  headerImageGrayscale={override?.grayscale}
-                />
-              </FadeIn>
-            );
-          })}
-        </div>
+        {filtered.length === 0 ? (
+          <p className="mt-10 text-center text-sm text-neutral-500">
+            {t("searchNoResults", { query: trimmedQuery })}
+          </p>
+        ) : (
+          <div className="mt-10 grid grid-cols-1 justify-center gap-x-[30px] gap-y-6 sm:grid-cols-2 lg:grid-cols-[repeat(3,342px)]">
+            {visible.map((caseStudy, index) => {
+              const override = industryImageOverrides?.[caseStudy.industryKey];
+              return (
+                <FadeIn key={caseStudy.slug} delay={index * 100}>
+                  <CaseCard
+                    caseStudy={caseStudy}
+                    headerImageSrc={override?.src}
+                    headerImageGrayscale={override?.grayscale}
+                  />
+                </FadeIn>
+              );
+            })}
+          </div>
+        )}
 
         {hasMore ? (
           <div className="mt-14 flex justify-center">

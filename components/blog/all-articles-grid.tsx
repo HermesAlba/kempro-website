@@ -8,6 +8,8 @@ import { CoverImage } from "@/components/blog/cover-image";
 import { paletteFor } from "@/lib/blog-categories";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ctaButtonClasses } from "@/components/ui/cta-button-classes";
+import { normalizeSearch } from "@/lib/normalize-search";
+import { SearchIcon } from "@/components/ui/icons";
 
 const PAGE_SIZE = 6;
 
@@ -131,6 +133,7 @@ export function AllArticlesGrid({
   const t = useTranslations("Blog");
   const locale = useLocale();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   // Real categories only, derived from the posts themselves — never a
@@ -143,15 +146,33 @@ export function AllArticlesGrid({
   ).sort(([, labelA], [, labelB]) => labelA.localeCompare(labelB, locale));
   const categories: [string, string][] =
     categoryLabels?.map((label) => [label, label]) ?? derivedCategories;
-  const filtered = activeCategory
+  const byCategory = activeCategory
     ? posts.filter((post) => post.categoryKey === activeCategory)
     : posts;
+  const trimmedQuery = query.trim();
+  const normalizedQuery = normalizeSearch(trimmedQuery);
+  // Same title/excerpt/category matching as the global header search (see
+  // components/layout/site-search.tsx) — kept scoped to `byCategory` so the
+  // category pill and the search box narrow the same list together instead
+  // of being two independent filters.
+  const filtered = normalizedQuery
+    ? byCategory.filter((post) =>
+        normalizeSearch(`${post.title} ${post.excerpt} ${post.category}`).includes(
+          normalizedQuery,
+        ),
+      )
+    : byCategory;
   const visible = filtered.slice(0, visibleCount);
   const hasMore = visibleCount < filtered.length;
   const canCollapse = !hasMore && filtered.length > PAGE_SIZE;
 
   function handleCategoryChange(key: string | null) {
     setActiveCategory(key);
+    setVisibleCount(PAGE_SIZE);
+  }
+
+  function handleQueryChange(value: string) {
+    setQuery(value);
     setVisibleCount(PAGE_SIZE);
   }
 
@@ -176,17 +197,41 @@ export function AllArticlesGrid({
             ))}
           </div>
         </FadeIn>
-        <div className="mt-10 grid gap-x-7 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-          {visible.map((post, index) => (
-            <ArticleCard
-              key={post.slug}
-              post={post}
-              index={index}
-              basePath={basePath}
-              roundedImages={roundedImages}
+        {/* Placed after the category pills (own row, below them) rather
+            than inline with the filters — keeps the pill row from wrapping
+            awkwardly on narrower widths, while still reading as "filter by
+            category, then narrow further by keyword" in that order. Filters
+            the same visible list the pills do (see `filtered` above), so
+            category + search combine instead of competing. */}
+        <FadeIn className="mt-4 max-w-sm">
+          <label className="relative block">
+            <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
+            <input
+              type="text"
+              value={query}
+              onChange={(event) => handleQueryChange(event.target.value)}
+              placeholder={t("searchPlaceholder")}
+              className="w-full rounded-full border border-neutral-200 bg-white py-2 pl-9 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-100"
             />
-          ))}
-        </div>
+          </label>
+        </FadeIn>
+        {filtered.length === 0 ? (
+          <p className="mt-10 text-center text-sm text-neutral-500">
+            {t("searchNoResults", { query: trimmedQuery })}
+          </p>
+        ) : (
+          <div className="mt-10 grid gap-x-7 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+            {visible.map((post, index) => (
+              <ArticleCard
+                key={post.slug}
+                post={post}
+                index={index}
+                basePath={basePath}
+                roundedImages={roundedImages}
+              />
+            ))}
+          </div>
+        )}
         {hasMore ? (
           <div className="mt-14 flex justify-center">
             <button
