@@ -50,6 +50,16 @@ function resolveAuthor(locale: Locale, name: string): { role: string; initials: 
   return { role: "", initials };
 }
 
+// Content replaced wholesale from "KEMPRO Artículos .docx" (uploaded
+// 2026-08-26) — every post's title/excerpt/content below is the client's
+// final approved text, transcribed as-is. The only edits made during
+// transcription were mechanical: joining a handful of words the source
+// document had split mid-word (e.g. "intoimplementing" → "into
+// implementing"), and one missing English paragraph on post #5 (the doc's
+// EN section for "Cómo construimos el sitio de Kempro usando Claude" ended
+// one paragraph short of its ES counterpart) — translated to keep parity,
+// since every localized post must define both locales (see the validator
+// below and "Convenciones de contenido bilingüe" in CLAUDE.md).
 const data: {
   id: string;
   slug: Record<Locale, string>;
@@ -63,244 +73,6 @@ const data: {
   content: Record<Locale, BlogBlock[]>;
   coverImage?: string;
 }[] = [
-  {
-    id: "primer-caso-de-uso-de-ia",
-    slug: {
-      es: "primer-caso-de-uso-de-ia",
-      en: "primer-caso-de-uso-de-ia",
-    },
-    date: "2026-06-12",
-    author: "Camila Torres",
-    title: {
-      es: "Cómo elegir el primer caso de uso de IA para tu empresa",
-      en: "How to choose your company's first AI use case",
-    },
-    excerpt: {
-      es: "Elegir bien el primer proyecto de IA marca la diferencia entre generar confianza en la organización o quemar el presupuesto del próximo año.",
-      en: "Choosing the right first AI project makes the difference between building organizational trust or burning next year's budget.",
-    },
-    category: { es: "Estrategia", en: "Strategy" },
-    categoryKey: "estrategia",
-    readingTime: { es: "6 min de lectura", en: "6 min read" },
-    content: {
-      es: [
-        {
-          type: "paragraph",
-          text: "La mayoría de las iniciativas de IA que fracasan no lo hacen por falta de tecnología, sino por elegir el caso de uso equivocado como punto de partida. Un primer proyecto demasiado ambicioso agota el presupuesto y la paciencia del equipo antes de mostrar resultados.",
-        },
-        {
-          type: "heading",
-          text: "1. Prioriza impacto visible sobre complejidad técnica",
-        },
-        {
-          type: "paragraph",
-          text: "Un buen primer caso de uso debe ser lo suficientemente simple para implementarse en semanas, no meses, y lo suficientemente visible para que el resto de la organización entienda su valor.",
-        },
-        {
-          type: "heading",
-          text: "2. Busca procesos con datos disponibles y reglas claras",
-        },
-        {
-          type: "list",
-          items: [
-            "Procesos con alto volumen y baja variabilidad",
-            "Datos históricos accesibles y de calidad razonable",
-            "Un dueño de proceso comprometido con el proyecto",
-          ],
-        },
-        {
-          type: "paragraph",
-          text: "En Kempro solemos empezar con un diagnóstico de dos semanas que cruza estos criterios contra el catálogo de procesos de la empresa, priorizando por impacto y viabilidad antes de escribir una sola línea de código.",
-        },
-      ],
-      en: [
-        {
-          type: "paragraph",
-          text: "Most AI initiatives that fail don't fail because of the technology — they fail because the wrong use case was chosen as a starting point. An overly ambitious first project burns through budget and patience before showing any results.",
-        },
-        {
-          type: "heading",
-          text: "1. Prioritize visible impact over technical complexity",
-        },
-        {
-          type: "paragraph",
-          text: "A good first use case should be simple enough to ship in weeks, not months, and visible enough that the rest of the organization understands its value.",
-        },
-        {
-          type: "heading",
-          text: "2. Look for processes with available data and clear rules",
-        },
-        {
-          type: "list",
-          items: [
-            "High-volume, low-variability processes",
-            "Accessible historical data of reasonable quality",
-            "A process owner committed to the project",
-          ],
-        },
-        {
-          type: "paragraph",
-          text: "At Kempro we typically start with a two-week assessment that maps these criteria against the company's process catalog, prioritizing by impact and feasibility before writing a single line of code.",
-        },
-      ],
-    },
-  },
-  {
-    id: "agentes-vs-automatizacion-tradicional",
-    slug: {
-      es: "agentes-vs-automatizacion-tradicional",
-      en: "agentes-vs-automatizacion-tradicional",
-    },
-    date: "2026-08-07",
-    author: "Santiago Londoño",
-    title: {
-      es: "Agentes de IA vs. automatización tradicional: qué las diferencia",
-      en: "AI agents vs. traditional automation: what sets them apart",
-    },
-    excerpt: {
-      es: "RPA y agentes de IA no compiten entre sí, pero confundirlos lleva a proyectos sobredimensionados o subutilizados. Así se diferencian en la práctica.",
-      en: "RPA and AI agents aren't competitors, but confusing them leads to oversized or underused projects. Here's how they differ in practice.",
-    },
-    category: { es: "Automatización", en: "Automation" },
-    categoryKey: "automatizacion",
-    readingTime: { es: "5 min de lectura", en: "5 min read" },
-    content: {
-      es: [
-        {
-          type: "paragraph",
-          text: "La automatización tradicional (RPA) ejecuta pasos predefinidos sobre entradas estructuradas. Los agentes de IA, en cambio, razonan sobre entradas ambiguas, toman decisiones intermedias y pueden adaptar su plan de acción sobre la marcha.",
-        },
-        {
-          type: "heading",
-          text: "Cuándo usar RPA",
-        },
-        {
-          type: "paragraph",
-          text: "Cuando el proceso es determinístico: mismas entradas, mismos pasos, mismas salidas. Migración de datos entre sistemas, generación de reportes recurrentes o validaciones de formularios son buenos candidatos.",
-        },
-        {
-          type: "heading",
-          text: "Cuándo usar agentes de IA",
-        },
-        {
-          type: "paragraph",
-          text: "Cuando el proceso requiere interpretar lenguaje natural, priorizar entre opciones o combinar múltiples fuentes de información antes de actuar, como responder consultas de soporte o triage de solicitudes.",
-        },
-        {
-          type: "paragraph",
-          text: "En la práctica, las implementaciones más robustas combinan ambos enfoques: agentes de IA para las decisiones que requieren criterio, y automatización tradicional para la ejecución determinística que viene después.",
-        },
-      ],
-      en: [
-        {
-          type: "paragraph",
-          text: "Traditional automation (RPA) executes predefined steps over structured inputs. AI agents, on the other hand, reason over ambiguous inputs, make intermediate decisions, and can adapt their plan of action on the fly.",
-        },
-        {
-          type: "heading",
-          text: "When to use RPA",
-        },
-        {
-          type: "paragraph",
-          text: "When the process is deterministic: same inputs, same steps, same outputs. Data migration between systems, recurring report generation, or form validation are good candidates.",
-        },
-        {
-          type: "heading",
-          text: "When to use AI agents",
-        },
-        {
-          type: "paragraph",
-          text: "When the process requires interpreting natural language, prioritizing between options, or combining multiple sources of information before acting — like answering support inquiries or triaging requests.",
-        },
-        {
-          type: "paragraph",
-          text: "In practice, the most robust implementations combine both approaches: AI agents for decisions that require judgment, and traditional automation for the deterministic execution that follows.",
-        },
-      ],
-    },
-  },
-  {
-    id: "rag-explicado",
-    slug: {
-      es: "rag-explicado",
-      en: "rag-explicado",
-    },
-    date: "2026-04-08",
-    author: "Andrés Gómez",
-    title: {
-      es: "RAG explicado: cómo conectar LLMs con tus datos de forma segura",
-      en: "RAG explained: how to connect LLMs to your data securely",
-    },
-    excerpt: {
-      es: "Retrieval-Augmented Generation permite que un modelo responda con información actualizada y propia de tu empresa, sin reentrenarlo. Así funciona.",
-      en: "Retrieval-Augmented Generation lets a model answer with your company's own, up-to-date information without retraining it. Here's how it works.",
-    },
-    category: { es: "Tecnología", en: "Technology" },
-    categoryKey: "tecnologia",
-    readingTime: { es: "7 min de lectura", en: "7 min read" },
-    content: {
-      es: [
-        {
-          type: "paragraph",
-          text: "Un modelo de lenguaje entrenado de forma general no conoce los datos internos de tu empresa ni eventos posteriores a su entrenamiento. RAG resuelve esto recuperando información relevante desde tus propias fuentes antes de generar una respuesta.",
-        },
-        {
-          type: "heading",
-          text: "Las tres piezas de una arquitectura RAG",
-        },
-        {
-          type: "list",
-          items: [
-            "Indexación: tus documentos se dividen en fragmentos y se convierten en vectores",
-            "Recuperación: ante una consulta, se buscan los fragmentos más relevantes",
-            "Generación: el modelo redacta la respuesta usando esos fragmentos como contexto",
-          ],
-        },
-        {
-          type: "heading",
-          text: "Seguridad y gobernanza",
-        },
-        {
-          type: "paragraph",
-          text: "Una implementación de RAG en un entorno empresarial debe respetar permisos de acceso por usuario, registrar qué fuentes se usaron en cada respuesta y permitir auditar el proceso completo, no solo la respuesta final.",
-        },
-        {
-          type: "paragraph",
-          text: "En los proyectos de integración de LLMs de Kempro, la arquitectura RAG es habitualmente el primer bloque que construimos, porque es la base sobre la que después se apoyan los agentes de automatización.",
-        },
-      ],
-      en: [
-        {
-          type: "paragraph",
-          text: "A generally trained language model doesn't know your company's internal data or events after its training cutoff. RAG solves this by retrieving relevant information from your own sources before generating a response.",
-        },
-        {
-          type: "heading",
-          text: "The three pieces of a RAG architecture",
-        },
-        {
-          type: "list",
-          items: [
-            "Indexing: your documents are split into chunks and converted into vectors",
-            "Retrieval: for a given query, the most relevant chunks are found",
-            "Generation: the model drafts the answer using those chunks as context",
-          ],
-        },
-        {
-          type: "heading",
-          text: "Security and governance",
-        },
-        {
-          type: "paragraph",
-          text: "A RAG implementation in an enterprise setting needs to respect per-user access permissions, log which sources were used in each answer, and allow the full process to be audited — not just the final response.",
-        },
-        {
-          type: "paragraph",
-          text: "In Kempro's LLM integration projects, the RAG architecture is usually the first building block we put in place, since it's the foundation that automation agents rely on afterward.",
-        },
-      ],
-    },
-  },
   {
     id: "ia-no-es-una-formula",
     slug: {
@@ -336,7 +108,7 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "Cuando fundamos Kempro, entendimos que ninguna solución de procesos, estructura o tecnología puede aplicarse igual en dos empresas distintas, porque cada una tiene su propia cultura, su propio nivel de compromiso gerencial, su propio presupuesto y su propio riesgo. La inteligencia artificial no es la excepción a esa regla — es, si acaso, el ejemplo más claro de ella.",
+          text: "Cuando fundamos Kempro, entendimos que ninguna solución de procesos, estructura o tecnología puede aplicarse igual en dos empresas distintas, porque cada una tiene su propia cultura, su propio nivel de compromiso gerencial, su propio presupuesto y su propio apetito de riesgo. La inteligencia artificial no es la excepción a esa regla — es, si acaso, el ejemplo más claro de ella.",
         },
         {
           type: "paragraph",
@@ -432,7 +204,7 @@ const data: {
     date: "2026-08-07",
     author: "Marketing Kempro",
     title: {
-      es: "La decisión de IA que la mayoría de empresas se salta",
+      es: "La decisión de IA que la mayoría de las empresas se salta",
       en: "The AI decision most companies skip",
     },
     excerpt: {
@@ -446,7 +218,7 @@ const data: {
       es: [
         {
           type: "paragraph",
-          text: "Cada vez con más frecuencia, la pregunta que reciben los comités directivos ya no es si deben adoptar inteligencia artificial. Es cómo hacerlo de forma gobernada, segura y enfocada en valor real — para sus usuarios, sus equipos y su operación.",
+          text: "Cada vez con más frecuencia, la pregunta que reciben los comités directivos ya no es si deben adoptar inteligencia artificial. Es cómo hacerlo de forma gobernada, segura y enfocada en valor real, para sus usuarios, sus equipos y su operación.",
         },
         {
           type: "paragraph",
@@ -664,7 +436,7 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "El punto de partida no fue la IA. Fue construir, sobre SharePoint, un sitio moderno de comunicación corporativa que funcionara como concentrador real de información — no como otro repositorio más donde los documentos van a perderse.",
+          text: "El punto de partida no fue la IA. Fue construir, sobre SharePoint, un sitio moderno de comunicación corporativa que funcionara como concentrador real de información, no como otro repositorio más donde los documentos van a perderse.",
         },
         {
           type: "paragraph",
@@ -680,11 +452,11 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "Una vez resuelta la seguridad y la organización documental — es decir, una vez que cada documento vivía en el lugar correcto, con los permisos correctos, y con una estructura de información coherente — recién ahí tuvo sentido agregar Copilot Chat sobre ese ecosistema.",
+          text: "Una vez resuelta la seguridad y la organización documental, es decir, una vez que cada documento vivía en el lugar correcto, con los permisos correctos, y con una estructura de información coherente — recién ahí tuvo sentido agregar Copilot Chat sobre ese ecosistema.",
         },
         {
           type: "paragraph",
-          text: "El orden no es un detalle menor. Copilot Chat no organiza el conocimiento de una empresa; responde preguntas basándose en el conocimiento que ya está bien organizado y correctamente gobernado. Si se agrega esa capa de IA sobre una estructura documental caótica o mal permisada, lo único que se logra es encontrar el desorden más rápido — no resolverlo.",
+          text: "El orden no es un detalle menor. Copilot Chat no organiza el conocimiento de una empresa; responde preguntas basándose en el conocimiento que ya está bien organizado y correctamente gobernado. Si se agrega esa capa de IA sobre una estructura documental caótica o mal permisada, lo único que se logra es encontrar el desorden más rápido, no resolverlo.",
         },
         {
           type: "paragraph",
@@ -710,7 +482,7 @@ const data: {
       en: [
         {
           type: "paragraph",
-          text: "In a previous article, we talked about a principle we repeat often: governance and information organization must be resolved before adding a layer of artificial intelligence on top. This project is a concrete example of that idea in practice, with a client organization operating across multiple regions.",
+          text: "In a previous article, we talked about a principle we repeat often: governance and information organization must be resolved before adding a layer of AI on top. This project is a concrete example of that idea in practice, with a client organization operating across multiple regions.",
         },
         {
           type: "heading",
@@ -718,7 +490,7 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "The starting point wasn't AI. It was building, on SharePoint, a modern corporate communication site that worked as a real information hub — not just another repository where documents go to get lost.",
+          text: "The starting point wasn't AI. It was building, on SharePoint, a modern corporate communication site that worked as a real information hub, not just another repository where documents go to get lost.",
         },
         {
           type: "paragraph",
@@ -738,7 +510,7 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "The order isn't a minor detail. Copilot Chat doesn't organize a company's knowledge; it answers questions based on knowledge that is already well organized and properly governed. Adding that AI layer on top of a chaotic or poorly permissioned document structure only helps you find the mess faster — it doesn't solve it.",
+          text: "The order isn't a minor detail. Copilot Chat doesn't organize a company's knowledge; it answers questions based on knowledge that is already well organized and properly governed. Adding that AI layer on top of a chaotic or poorly-permissioned document structure only helps you find the mess faster — it doesn't solve it.",
         },
         {
           type: "paragraph",
@@ -806,7 +578,7 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "Cada sección del sitio — el header, las tarjetas de artículos, los formularios, el selector de idioma — se construyó como un componente reutilizable, revisado y ajustado en varias iteraciones. La IA no escribió el sitio de una sola vez: lo construyó igual que lo haría un equipo humano, en ciclos cortos de propuesta, revisión visual en un navegador real y corrección.",
+          text: "Cada sección del sitio, el header, las tarjetas de artículos, los formularios y el selector de idioma, se construyó como un componente reutilizable, revisado y ajustado en varias iteraciones. La IA no escribió el sitio de una sola vez: lo construyó igual que lo haría un equipo humano, en ciclos cortos de propuesta, revisión visual en un navegador real y corrección.",
         },
         {
           type: "list",
@@ -823,7 +595,11 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "Este mismo artículo, y cada artículo del blog, existe en español e inglés desde el momento en que se crea, con una validación automática que impide publicar una versión sin su equivalente en el otro idioma. No es un detalle menor: muchos sitios bilingües fallan justamente ahí, con enlaces que cambian de idioma pero te dejan en una página que no existe.",
+          text: "Este mismo artículo, y cada artículo del blog, existe en español e inglés desde el momento en que se crea, con una validación automática que impide publicar una versión sin su equivalente en el otro idioma.",
+        },
+        {
+          type: "paragraph",
+          text: "No es un detalle menor: muchos sitios bilingües fallan justamente ahí, con enlaces que cambian de idioma pero te dejan en una página que no existe.",
         },
         {
           type: "heading",
@@ -845,7 +621,7 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "We didn't do this as a marketing exercise. We did it because we wanted to understand, firsthand, where AI genuinely speeds up the work and where it still needs human judgment — the same question we ask every company that comes to us for advice.",
+          text: "We didn't do this as a marketing exercise. We did it because we wanted to understand, firsthand, where AI genuinely speeds up the work and where it still needs human judgment.",
         },
         {
           type: "heading",
@@ -861,7 +637,7 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "Every section of the site — the header, article cards, forms, the language switcher — was built as a reusable component, reviewed and refined across several iterations. The AI didn't write the site in one shot: it built it the way a human team would, in short cycles of proposal, visual review in a real browser, and correction.",
+          text: "Every section of the site, the header, article cards, forms, the language switcher — was built as a reusable component, reviewed and refined across several iterations. The AI didn't write the site in one shot: it built it the way a human team would, in short cycles of proposals, visual review in a real browser, and correction.",
         },
         {
           type: "list",
@@ -878,7 +654,11 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "This very article, and every article on the blog, exists in Spanish and English from the moment it's created, with an automatic check that blocks publishing a version without its counterpart in the other language. That's not a minor detail — many bilingual sites fail exactly there, with language links that leave you on a page that doesn't exist.",
+          text: "This very article, and every article on the blog, exists in Spanish and English from the moment it's created, with an automatic check that blocks publishing a version without its counterpart in the other language.",
+        },
+        {
+          type: "paragraph",
+          text: "That's not a minor detail — many bilingual sites fail exactly there, with language links that leave you on a page that doesn't exist.",
         },
         {
           type: "heading",
@@ -896,170 +676,12 @@ const data: {
     },
   },
   {
-    id: "chatgpt-work-vs-claude-cowork",
+    id: "sitio-kempro-con-claude",
     slug: {
-      es: "chatgpt-work-vs-claude-cowork",
-      en: "chatgpt-work-vs-claude-cowork",
+      es: "como-construimos-el-sitio-de-kempro-usando-claude",
+      en: "how-we-built-the-kempro-website-using-claude",
     },
-    date: "2026-08-16",
-    author: "Marketing Kempro",
-    title: {
-      es: "ChatGPT Work vs. Claude Cowork: qué hay de nuevo y qué ya resolvía Cowork",
-      en: "ChatGPT Work vs. Claude Cowork: what's actually new and what Cowork already solved",
-    },
-    excerpt: {
-      es: "Un video viral compara el nuevo modo de trabajo de ChatGPT con un salto histórico. Lo comparamos función por función con Claude Cowork, incluyendo el modelo de seguridad detrás de cada uno.",
-      en: "A viral video compares ChatGPT's new work mode to a historic leap. We compare it feature by feature with Claude Cowork — including the safety model behind each one.",
-    },
-    category: { es: "Tendencias", en: "Trends" },
-    categoryKey: "tendencias",
-    readingTime: { es: "8 min de lectura", en: "8 min read" },
-    content: {
-      es: [
-        {
-          type: "paragraph",
-          text: "Hace unos días, el creador de contenido español Gustavo Entrala publicó un video donde presenta en vivo la nueva versión de escritorio de ChatGPT, con un tono de entusiasmo poco habitual en él: la describe como uno de esos saltos tecnológicos que solo se ven cada varios años, comparable a la llegada del iPhone. Lo interesante para quienes trabajamos a diario con herramientas de IA es que él mismo señala, casi de pasada, que este nuevo modo de trabajo de ChatGPT está inspirado en un producto que Anthropic lanzó meses antes: Claude Cowork.",
-        },
-        {
-          type: "paragraph",
-          text: "Eso despertó la pregunta obvia: si ChatGPT acaba de incorporar estas capacidades y se presenta como una revolución, ¿qué tan distinto es realmente de lo que Cowork ya permite hacer desde hace tiempo? Vale la pena comparar punto por punto.",
-        },
-        { type: "heading", text: "Voz y control del ordenador" },
-        {
-          type: "paragraph",
-          text: "En la demo, Entrala le pide a ChatGPT por voz que revise un correo, investigue información de contexto y deje una respuesta lista en Gmail sin tocar el teclado. Es una interacción fluida, casi conversacional, y él mismo advierte —con razón— que dar acceso total del ordenador a una IA implica riesgos de seguridad que hay que manejar con responsabilidad.",
-        },
-        {
-          type: "paragraph",
-          text: 'Cowork no tiene todavía un modo de voz nativo equivalente al que muestra ChatGPT; ahí OpenAI lleva ventaja en esa interacción puntual. Pero en el terreno del control del ordenador, Cowork resuelve el problema de seguridad que Entrala menciona de una forma distinta: no se trata de "dar acceso total y confiar", sino de un sistema de permisos por niveles. Un navegador conectado, por ejemplo, se puede ver pero no se puede hacer clic sin habilitarlo explícitamente; una terminal se puede observar y ejecutar comandos puntuales, pero no recibe pulsaciones de teclado libres; cualquier acción irreversible —enviar un correo, publicar algo, comprar, aceptar un formulario— requiere que la persona lo confirme antes de que ocurra. No es que Cowork sea menos capaz; es que reparte el riesgo de forma distinta desde el diseño, en lugar de dejarlo completamente en manos del usuario.',
-        },
-        { type: "heading", text: "Redactar y dejar correos listos" },
-        {
-          type: "paragraph",
-          text: "Uno de los primeros ejemplos de la demo es pedirle a ChatGPT que prepare un correo y lo deje como borrador en Gmail, sin enviarlo. Es exactamente el mismo principio que ya aplica Cowork con su conector de Gmail: puede leer hilos, investigar contexto y armar una respuesta, pero la deja como borrador — enviarla requiere una confirmación explícita de la persona. La diferencia no está en la funcionalidad, sino en que este comportamiento no es opcional en Cowork: ninguna herramienta conectada puede enviar un mensaje en nombre del usuario sin ese paso de aprobación.",
-        },
-        { type: "heading", text: "Tareas que se repiten solas" },
-        {
-          type: "paragraph",
-          text: 'Entrala muestra cómo configura un informe diario de noticias sobre IA que le llega todas las mañanas a las 10, algo que antes —según cuenta— requería montar un orquestador de agentes aparte. Cowork resuelve esto con tareas programadas nativas: se puede pedir que algo se ejecute una sola vez en el futuro ("recuérdame esto mañana a las 3") o de forma recurrente ("cada mañana a las 8, revisa y resume"), sin necesidad de infraestructura adicional. Es, en la práctica, el mismo tipo de automatización que él celebra como novedad.',
-        },
-        { type: "heading", text: "Documentos, presentaciones y hojas de cálculo" },
-        {
-          type: "paragraph",
-          text: "En la parte que más impresiona de la demo, le pide a ChatGPT que analice un video suyo y genere automáticamente una presentación de varias diapositivas, guardada en su carpeta local. Cowork tiene un equivalente directo: puede generar documentos de Word, presentaciones de PowerPoint, hojas de cálculo de Excel y PDFs de forma nativa, a partir de contenido ya investigado o proporcionado, y entregarlos como archivos reales que la persona puede abrir, editar y compartir — no como texto plano dentro del chat.",
-        },
-        {
-          type: "paragraph",
-          text: "El ejercicio de rastrear el correo en busca de facturas y armar una hoja de cálculo con los montos y enlaces a cada una —otro de los momentos fuertes del video— también es replicable con la combinación de búsqueda en el conector de correo más generación de hojas de cálculo, sin pasos intermedios manuales.",
-        },
-        { type: "heading", text: "Análisis de datos y de negocio" },
-        {
-          type: "paragraph",
-          text: "Cuando Entrala le pide a ChatGPT que analice su YouTube Studio para identificar qué videos atraen más audiencia joven, está usando la IA como analista de datos conectado a una fuente real. Es el mismo principio detrás de los conectores de Cowork: una vez vinculada una herramienta (ya sea analítica, un CRM, una base de datos), se le pueden hacer preguntas de negocio directas y obtener respuestas basadas en los datos reales, no en suposiciones genéricas.",
-        },
-        {
-          type: "heading",
-          text: "Lo que la demo tiene y Cowork, por ahora, no",
-        },
-        {
-          type: "paragraph",
-          text: "Hay que ser honesto en la comparación: el ajuste de color dentro de Final Cut Pro que muestra al final —donde la IA manipula directamente los controles de una aplicación de edición de video profesional— es un terreno donde Cowork es más conservador. El control de aplicaciones de escritorio en Cowork existe, pero está pensado sobre todo para navegación web, apps nativas de productividad y flujos de trabajo de oficina, con las mismas barreras de permisos ya mencionadas; no es el objetivo principal usarlo para edición creativa avanzada, y probablemente no debería serlo sin más salvaguardas de las que existen hoy en cualquier producto de este tipo.",
-        },
-        { type: "heading", text: "La diferencia de fondo" },
-        {
-          type: "paragraph",
-          text: "Más allá de la lista de funciones, lo que separa a los dos enfoques es filosófico. Entrala plantea el salto de ChatGPT como una cuestión de capacidad: ahora puede hacer más cosas dentro del ordenador. Cowork nació resolviendo primero la pregunta de qué tan seguro es delegarle esas cosas a una IA, y construyó el permiso, la confirmación y los límites como parte del producto desde el inicio, no como un añadido posterior.",
-        },
-        {
-          type: "paragraph",
-          text: "En Kempro nos encontramos con esta misma disyuntiva cada vez que asesoramos a un cliente sobre qué herramienta de IA adoptar: la pregunta nunca es solo qué tan potente es la tecnología, sino qué tan bien su modelo de permisos y confirmación encaja con el nivel de gobierno que la organización realmente tiene. Es la misma lógica de diagnóstico antes de prescripción que aplicamos en cualquier proyecto, ahora aplicada a elegir entre estos dos enfoques.",
-        },
-        {
-          type: "paragraph",
-          text: "En cuanto a precio, ambos productos siguen un modelo de suscripción por niveles: OpenAI ofrece esta capacidad completa en sus planes de pago más altos, mientras que Cowork viene incluido dentro de los planes Pro y Max de Claude, con la diferencia entre niveles definida principalmente por el volumen de uso disponible, no por qué funciones están habilitadas. Vale la pena confirmar los precios vigentes directamente en el sitio de cada compañía antes de decidir, ya que estos modelos cambian con frecuencia.",
-        },
-        {
-          type: "paragraph",
-          text: 'Al final, el video de Entrala confirma algo que probablemente ya intuíamos: el "chat que responde preguntas" quedó atrás. La conversación ahora es sobre qué tanto control le damos a un agente sobre nuestras herramientas de trabajo, y quién se hace responsable de que ese control se use bien.',
-        },
-      ],
-      en: [
-        {
-          type: "paragraph",
-          text: "A few days ago, Spanish content creator Gustavo Entrala published a video where he demos the new ChatGPT desktop version live, with a level of enthusiasm that's unusual for him: he describes it as one of those technological leaps that only come around every few years, comparable to the arrival of the iPhone. What's interesting for those of us who work with AI tools daily is that he himself points out, almost in passing, that this new ChatGPT work mode is inspired by a product Anthropic shipped months earlier: Claude Cowork.",
-        },
-        {
-          type: "paragraph",
-          text: "That raises the obvious question: if ChatGPT just added these capabilities and is being presented as a revolution, how different is it really from what Cowork has already been able to do for a while? It's worth comparing them point by point.",
-        },
-        { type: "heading", text: "Voice and computer control" },
-        {
-          type: "paragraph",
-          text: "In the demo, Entrala asks ChatGPT by voice to review an email, research background context, and leave a ready-to-send reply in Gmail without touching the keyboard. It's a fluid, almost conversational interaction, and he himself notes — rightly — that giving an AI full access to your computer carries security risks that need to be handled responsibly.",
-        },
-        {
-          type: "paragraph",
-          text: 'Cowork doesn\'t yet have a native voice mode equivalent to what ChatGPT shows here — OpenAI has the edge in that specific interaction. But when it comes to computer control, Cowork addresses the security problem Entrala raises in a different way: it\'s not about "granting full access and trusting it," but a tiered permission system. A connected browser, for example, can be viewed but not clicked without explicitly enabling it; a terminal can be watched and run specific commands, but doesn\'t receive free-form keystrokes; any irreversible action — sending an email, publishing something, making a purchase, submitting a form — requires the person to confirm it before it happens. It\'s not that Cowork is less capable; it\'s that it distributes risk differently by design, instead of leaving it entirely in the user\'s hands.',
-        },
-        { type: "heading", text: "Drafting and leaving emails ready to send" },
-        {
-          type: "paragraph",
-          text: "One of the first examples in the demo is asking ChatGPT to prepare an email and leave it as a draft in Gmail, unsent. It's exactly the same principle already built into Cowork's Gmail connector: it can read threads, research context, and put together a reply, but leaves it as a draft — sending it requires explicit approval from the person. The difference isn't in the functionality; it's that this behavior isn't optional in Cowork: no connected tool can send a message on the user's behalf without that approval step.",
-        },
-        { type: "heading", text: "Tasks that repeat on their own" },
-        {
-          type: "paragraph",
-          text: 'Entrala shows how he sets up a daily AI news digest that arrives every morning at 10, something that previously — by his own account — required setting up a separate agent orchestrator. Cowork solves this with native scheduled tasks: you can ask for something to run once in the future ("remind me about this tomorrow at 3") or on a recurring basis ("every morning at 8, check and summarize"), with no extra infrastructure needed. In practice, it\'s the same kind of automation he\'s celebrating as new.',
-        },
-        { type: "heading", text: "Documents, presentations, and spreadsheets" },
-        {
-          type: "paragraph",
-          text: "In the most impressive part of the demo, he asks ChatGPT to analyze one of his videos and automatically generate a multi-slide presentation, saved to his local folder. Cowork has a direct equivalent: it can natively generate Word documents, PowerPoint presentations, Excel spreadsheets, and PDFs from already-researched or provided content, and deliver them as real files the person can open, edit, and share — not as plain text inside the chat.",
-        },
-        {
-          type: "paragraph",
-          text: "The exercise of scanning email for invoices and building a spreadsheet with the amounts and a link to each one — another standout moment in the video — is also replicable by combining the email connector's search with spreadsheet generation, with no manual steps in between.",
-        },
-        { type: "heading", text: "Data and business analysis" },
-        {
-          type: "paragraph",
-          text: "When Entrala asks ChatGPT to analyze his YouTube Studio to identify which videos attract more of a younger audience, he's using the AI as a data analyst connected to a real source. It's the same principle behind Cowork's connectors: once a tool is linked — whether an analytics platform, a CRM, or a database — you can ask direct business questions and get answers grounded in real data, not generic assumptions.",
-        },
-        {
-          type: "heading",
-          text: "What the demo has that Cowork doesn't, for now",
-        },
-        {
-          type: "paragraph",
-          text: "It's worth being honest in this comparison: the color grading inside Final Cut Pro shown at the end — where the AI directly manipulates the controls of a professional video-editing application — is territory where Cowork is more conservative. Desktop app control exists in Cowork, but it's designed mainly for web browsing, native productivity apps, and office workflows, under the same permission barriers already mentioned; using it for advanced creative editing isn't really the goal, and it probably shouldn't be without more safeguards than exist today in any product of this kind.",
-        },
-        { type: "heading", text: "The underlying difference" },
-        {
-          type: "paragraph",
-          text: "Beyond the feature checklist, what separates the two approaches is philosophical. Entrala frames ChatGPT's leap as a matter of capability: it can now do more inside the computer. Cowork was built by first solving the question of how safe it is to hand those things to an AI, and built permission, confirmation, and limits into the product from the start, not as something bolted on afterward.",
-        },
-        {
-          type: "paragraph",
-          text: "At Kempro we run into this exact tension every time we advise a client on which AI tool to adopt: the question is never just how powerful the technology is, but how well its permission and confirmation model fits the level of governance the organization actually has. It's the same diagnose-before-prescribe logic we apply to any project, now applied to choosing between these two approaches.",
-        },
-        {
-          type: "paragraph",
-          text: "On pricing, both products follow a tiered subscription model: OpenAI offers this full capability in its higher-tier paid plans, while Cowork comes included within Claude's Pro and Max plans, with the difference between tiers defined mainly by available usage volume rather than which features are unlocked. It's worth confirming current pricing directly on each company's site before deciding, since these models change frequently.",
-        },
-        {
-          type: "paragraph",
-          text: 'In the end, Entrala\'s video confirms something we probably already suspected: the "chatbot that answers questions" is behind us. The conversation now is about how much control we hand an agent over our work tools — and who\'s responsible for making sure that control gets used well.',
-        },
-      ],
-    },
-  },
-  {
-    id: "como-construimos-el-sitio-con-claude",
-    slug: {
-      es: "como-construimos-nuestro-sitio-con-claude",
-      en: "how-we-built-our-website-with-claude",
-    },
-    date: "2026-08-21",
+    date: "2026-08-26",
     author: "Marketing Kempro",
     title: {
       es: "Cómo construimos el sitio de Kempro usando Claude",
@@ -1127,7 +749,7 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "Esto es solo un resumen. En las próximas semanas vamos a publicar un artículo más detallado, decisión por decisión — desde por qué elegimos cada color hasta cómo resolvimos que el sitio funcionara igual de bien en español y en inglés.",
+          text: "Esto es solo un resumen. En las próximas semanas vamos a publicar un artículo más detallado, decisión por decisión — desde por qué elegimos cada color hasta cómo resolvimos que el sitio funcionara igual de bien en español y en inglés. Si te interesa el detrás de cámaras, vuelve pronto.",
         },
       ],
       en: [
@@ -1184,26 +806,26 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "This is just a summary. Over the next few weeks we'll publish a more detailed article, decision by decision — from why we picked each color to how we made the site work equally well in Spanish and English.",
+          text: "This is just a summary. In the coming weeks we'll publish a more detailed article, decision by decision — from why we chose each color to how we made sure the site worked equally well in Spanish and English. If you're curious about what happens behind the scenes, check back soon.",
         },
       ],
     },
   },
   {
-    id: "ecosistema-digital-caja-compensacion-ia",
+    id: "ecosistema-digital-caja-compensacion",
     slug: {
-      es: "ecosistema-digital-lo-que-la-ia-habria-ahorrado",
-      en: "digital-ecosystem-what-ai-would-have-saved",
+      es: "ecosistema-digital-completo-a-mano",
+      en: "a-full-digital-ecosystem-built-by-hand",
     },
-    date: "2026-08-10",
+    date: "2026-08-20",
     author: "Marketing Kempro",
     title: {
       es: "Un ecosistema digital completo, a mano: lo que la IA nos habría ahorrado",
       en: "A full digital ecosystem, built by hand: what AI would have saved us",
     },
     excerpt: {
-      es: "Repasamos un proyecto real —definir el ecosistema digital completo de una caja de compensación colombiana— y comparamos el esfuerzo manual que tomó entonces con los pasos que hoy resolveríamos con IA.",
-      en: "We look back at a real project — mapping the complete digital ecosystem for a Colombian compensation fund — and compare the manual effort it took then with the steps we'd solve with AI today.",
+      es: "Repasamos un proyecto real — definir el ecosistema digital completo de una caja de compensación colombiana — y comparamos el esfuerzo manual que tomó entonces con los pasos que hoy resolveríamos con IA.",
+      en: "We look back at a real project, mapping the complete digital ecosystem for a Colombian compensation fund, and compare the manual effort it took then with the steps we'd solve with AI today.",
     },
     category: { es: "Automatización", en: "Automation" },
     categoryKey: "automatizacion",
@@ -1236,7 +858,7 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "Cada uno de estos frentes, por separado, ya toma tiempo. Hacerlos todos a la vez, a mano, verificando manualmente cada página y cada flujo, fue un esfuerzo considerable — semanas de trabajo cruzando información de distintas fuentes antes de poder tomar la primera decisión de diseño.",
+          text: "Cada uno de estos frentes, por separado, toma tiempo. Hacerlos todos a la vez, a mano, verificando manualmente cada página y cada flujo, fue un esfuerzo considerable — semanas de trabajo cruzando información de distintas fuentes antes de poder tomar la primera decisión de diseño.",
         },
         {
           type: "heading",
