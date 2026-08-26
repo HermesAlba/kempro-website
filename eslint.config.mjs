@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored, unmodified third-party script (Stripe's mesh-gradient —
+    // see components/sections/hero-gradient.tsx) — not held to our own
+    // lint rules since we don't hand-edit its source.
+    "lib/Gradient.js",
   ]),
 ]);
 
