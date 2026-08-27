@@ -43,7 +43,7 @@ export default async function ContactPage({
     // Getting this wrong by subtracting the header height leaves a gap
     // where Footer peeks through above the fold. Each column centers its
     // content vertically within that space.
-    <div className="relative -mt-[54px] flex flex-col overflow-hidden bg-white pt-[54px] md:min-h-screen md:flex-row lg:-mt-[90px] lg:pt-[90px]">
+    <div className="relative -mt-[54px] flex flex-col overflow-hidden bg-white pt-[54px] md:min-h-screen md:flex-row lg:-mt-[134px] lg:pt-[134px]">
       {/* IntroSide — pitch, lightweight schedule link, and the icon-only
           contact channels. */}
       <FadeIn direction="left" className="flex flex-1 flex-col justify-center px-6 py-10 sm:px-10 lg:px-14 xl:px-16">
@@ -106,7 +106,7 @@ export default async function ContactPage({
           entire height. The outer wrapper's own -mt/pt only bleeds ITS
           background to y=0; the pt then pushes every flex child (both
           columns) back down below the header, so without its own
-          correction this column's box would still start at y=54/90px, not
+          correction this column's box would still start at y=54/134px, not
           y=0. md:-mt/lg:-mt here cancels exactly that push (only once row
           layout kicks in, so mobile's stacked columns are untouched),
           pulling this column's own top back up to y=0 so its background
@@ -127,7 +127,7 @@ export default async function ContactPage({
       <FadeIn
         direction="right"
         delay={100}
-        className="relative flex flex-1 flex-col overflow-hidden rounded-xl bg-[#5D5FEF] md:-mt-[54px] lg:-mt-[90px]"
+        className="relative flex flex-1 flex-col overflow-hidden rounded-xl bg-[#5D5FEF] md:-mt-[54px] lg:-mt-[134px]"
       >
         <div aria-hidden="true" className="relative flex-1">
           <GrainOverlay />

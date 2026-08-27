@@ -45,7 +45,7 @@ export default async function AboutPage({
           components/layout/header.tsx); the inner columns keep their own
           padding untouched since the -mt/pt pair only shifts where this
           section's background starts, not where its children render. */}
-      <section className="-mt-[54px] flex min-h-[100vh] flex-col justify-center bg-primary-50/50 pt-[54px] pb-[38px] lg:-mt-[90px] lg:pt-[90px]">
+      <section className="-mt-[54px] flex min-h-[100vh] flex-col justify-center bg-primary-50/50 pt-[54px] pb-[38px] lg:-mt-[134px] lg:pt-[134px]">
         <div className="mx-auto flex w-full max-w-[1280px] flex-col lg:flex-row lg:items-center">
           <div className="flex flex-1 flex-col justify-center gap-6 px-6 py-16 sm:px-10 sm:py-20 lg:w-[640px] lg:flex-none lg:py-20 lg:pl-[95px] lg:pr-10">
             <FadeIn>

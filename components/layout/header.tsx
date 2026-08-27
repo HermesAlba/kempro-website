@@ -24,11 +24,10 @@ const navItems = [
 // back down by the same amount so its content position is unaffected — see
 // e.g. components/sections/hero.tsx and components/sections/page-hero.tsx.
 // Keep HEADER_OFFSET in sync with the nav's own rendered height below.
-// Desktop grew from 70 to 90 (44px top info bar + 46px nav bar) when the
-// header moved from a single floating card to the two-tier layout below;
-// mobile is unchanged (still one 54px bar: logo + hamburger) since the top
-// info bar only renders at lg.
-export const HEADER_OFFSET = { mobile: 54, desktop: 90 } as const;
+// Desktop is 134 (88px top info bar, doubled from its original 44px per
+// request, + 46px nav bar) — mobile is unchanged (still one 54px bar: logo
+// + hamburger) since the top info bar only renders at lg.
+export const HEADER_OFFSET = { mobile: 54, desktop: 134 } as const;
 
 // Two-tier layout (reference: a construction-industry site's header — dark
 // info bar on top, full-width accent nav bar below with the current section
@@ -44,13 +43,18 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Top info bar — desktop only. primary-900 (#2F3293), the site's
-          darkest indigo (same tone as the footer/HC dark contexts), standing
-          in for the reference's black bar. Logo + the utilities that used to
+      {/* Top info bar — desktop only, black per request (was primary-900).
+          Height doubled to 88px (from 44px) per request — logo/wordmark
+          size unchanged, so it now sits with more vertical breathing room
+          instead of filling the strip. Logo + the utilities that used to
           sit at the right of the old single-bar header (search, language,
-          CTA) — nothing new added. */}
-      <div className="hidden bg-primary-900 lg:block">
-        <div className="mx-auto flex h-11 max-w-7xl items-center justify-between px-8">
+          CTA) — nothing new added. The CTA button below deliberately does
+          NOT reuse the shared ctaButtonClasses constant (bg-neutral-900,
+          i.e. near-black) since that would nearly disappear against this
+          bar's true black — it gets its own primary-600/700 treatment
+          instead, sized down to match. */}
+      <div className="hidden bg-black lg:block">
+        <div className="mx-auto flex h-[88px] max-w-7xl items-center justify-between px-8">
           <Link href="/" className="flex-shrink-0">
             <KemproLogo variant="dark" size={26} />
           </Link>
@@ -59,7 +63,7 @@ export function Header() {
             <LocaleSwitcher dark />
             <Link
               href="/contacto"
-              className={`${ctaButtonClasses} h-[30px] px-4 py-1.5 text-[12px]`}
+              className="inline-flex h-[30px] items-center justify-center gap-2 rounded-[6px] bg-primary-600 px-4 py-1.5 text-[12px] tracking-[-0.02em] text-white transition-colors hover:bg-primary-700"
             >
               {t("cta")}
             </Link>
@@ -95,15 +99,18 @@ export function Header() {
           {/* Desktop: full-width nav row, each item its own full-height tab
               so the active one can get a solid background block (the
               reference's highlighted current-section tab) instead of just
-              an underline/color change. */}
-          <nav className="hidden h-full items-stretch lg:flex">
+              an underline/color change. flex-1 + justify-center centers the
+              whole group within the bar (nav is the only child visible at
+              lg, so it's free to claim the full row width). Lowercase, no
+              tracking — per request (was uppercase/tracking-wide). */}
+          <nav className="hidden h-full flex-1 items-stretch justify-center lg:flex">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center px-5 text-sm font-semibold uppercase tracking-wide transition-colors ${
+                  className={`flex items-center px-5 text-sm font-semibold transition-colors ${
                     isActive ? "bg-primary-800 text-white" : "text-white/85 hover:bg-primary-700"
                   }`}
                 >

@@ -11,12 +11,12 @@ export default function NotFound() {
     // Full-viewport hero. Bleeds up behind the floating nav like every other
     // page's own first section — see HEADER_OFFSET in
     // components/layout/header.tsx — so the gradient reaches the very top
-    // instead of stopping under the header. 92px/128px = the 54px/90px
+    // instead of stopping under the header. 92px/172px = the 54px/134px
     // header offset plus 38px (~1cm) less than before, which pushes the
     // block's bottom edge — and the footer right below it — back down by
     // that amount.
     <section
-      className="relative -mt-[54px] flex min-h-[calc(100vh-92px)] items-center overflow-hidden pt-[54px] lg:-mt-[90px] lg:min-h-[calc(100vh-128px)] lg:pt-[90px]"
+      className="relative -mt-[54px] flex min-h-[calc(100vh-92px)] items-center overflow-hidden pt-[54px] lg:-mt-[134px] lg:min-h-[calc(100vh-172px)] lg:pt-[134px]"
     >
       {/* Same two-layer treatment as the home Hero (see
           components/sections/hero.tsx): a static top-to-bottom indigo-to-white

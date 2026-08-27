@@ -15,7 +15,7 @@ export function Hero() {
     // page's Hero+ClientLogos wrapper (see app/[locale]/page.tsx), and
     // `flex items-center` centers the content within that extra space
     // instead of leaving it pinned to the top with a gap below.
-    <section className="relative -mt-[54px] flex flex-1 items-center overflow-hidden bg-white pt-[54px] lg:-mt-[90px] lg:pt-[90px]">
+    <section className="relative -mt-[54px] flex flex-1 items-center overflow-hidden bg-white pt-[54px] lg:-mt-[134px] lg:pt-[134px]">
       {/* Same blue tones as the /servicios hero gradient (see the
           `gradient` prop on components/sections/page-hero.tsx), but as a
           vertical variant instead of a top-left radial one: blue at the

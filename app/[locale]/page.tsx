@@ -46,7 +46,7 @@ export default async function HomePage({
           subtracted an extra 38px (~1cm) here to pull that bottom edge up
           — removed per request so the logo carousel starts lower and uses
           the full first screen instead of ending a bit short of it. */}
-      <div className="flex flex-col md:min-h-[calc(100vh-54px)] lg:min-h-[calc(100vh-90px)]">
+      <div className="flex flex-col md:min-h-[calc(100vh-54px)] lg:min-h-[calc(100vh-134px)]">
         <Hero />
         <ClientLogos />
       </div>

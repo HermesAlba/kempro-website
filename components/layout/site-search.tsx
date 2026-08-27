@@ -97,7 +97,7 @@ export function SiteSearch({ triggerClassName }: { triggerClassName?: string }) 
   // in place — rendering this modal in place would tie it to whatever
   // ancestor CSS the header happens to have (e.g. a past version used
   // backdrop-blur-md + overflow-hidden, which clips fixed-position
-  // descendants down to the header's own ~54-90px strip via CSS's
+  // descendants down to the header's own ~54-134px strip via CSS's
   // containing-block rules instead of covering the viewport). Portals
   // sidestep that regardless of what any future ancestor's own CSS does.
   // mounted gates the portal to the client only, since document.body
