@@ -8,6 +8,7 @@ import {
   KEMPRO_WHITE,
   type LogoMarkSpec,
 } from "@/lib/kempro-symbol";
+import { iceberg } from "@/lib/fonts";
 
 type KemproLogoVariant = "primary" | "standalone" | "dark";
 
@@ -127,8 +128,13 @@ export function KemproLogo({
       style={{ gap: gap ?? defaults.gap * scale }}
     >
       <KemproMark spec={spec} size={nativeMarkSize * scale} ringColor={markColor} />
+      {/* Iceberg (see lib/fonts.ts) — the closest free/Google-Fonts
+          equivalent to Bank Gothic, chosen to echo the squared, geometric,
+          industrial lettering of the Knife River wordmark. No font-bold:
+          Iceberg only ships one (already heavy) weight, so forcing bold
+          would just trigger the browser's faux-bold instead of a real one. */}
       <span
-        className="font-bold"
+        className={iceberg.className}
         style={{
           color: textColor ?? defaults.textColor,
           fontSize: textSize ?? defaults.textSize * scale,

@@ -1,4 +1,4 @@
-import { Work_Sans, Montserrat } from "next/font/google";
+import { Work_Sans, Montserrat, Iceberg } from "next/font/google";
 
 // Site-wide font (see app/[locale]/layout.tsx, which applies `.variable` to
 // <html> — globals.css points Tailwind's `font-sans` token at it). Also
@@ -19,4 +19,18 @@ export const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["600", "700"],
   variable: "--font-montserrat",
+});
+
+// Scoped to the "Kempro" wordmark ONLY (see components/ui/kempro-logo.tsx).
+// Bank Gothic — the squared-off, geometric, industrial display face the
+// Knife River logo's own lettering most resembles — isn't a free/Google
+// font; Iceberg is the closest available equivalent (unicase, squared
+// geometric caps, no curves) so the wordmark reads in the same spirit
+// without needing a licensed/self-hosted font file. Only one weight (400)
+// exists for this family — it's a display face, already heavy/blocky by
+// design, so no bold variant is needed.
+export const iceberg = Iceberg({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-iceberg",
 });
