@@ -1,26 +1,16 @@
-import { Work_Sans, Montserrat, Iceberg } from "next/font/google";
+import { Montserrat, Iceberg } from "next/font/google";
 
 // Site-wide font (see app/[locale]/layout.tsx, which applies `.variable` to
-// <html> — globals.css points Tailwind's `font-sans` token at it). Also
-// used directly via `.className` in a few places that needed Work Sans
-// before it became the sitewide default (Kempro wordmark, blog page).
-export const workSans = Work_Sans({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-work-sans",
-});
-
-// Scoped to specific components that need to match Knife River's own
-// typeface exactly, per request — the header's two bars (see
-// components/layout/header.tsx, weight 600/700) and the home hero title
-// (see components/sections/hero.tsx, weight 800 — matches KR's own
-// "BUILDING STRONG." title). Deliberately NOT wired into the sitewide
-// font-sans token: every other page/component still uses Work Sans, so
-// this is an intentional per-component exception rather than a second
-// sitewide font.
+// <html> — globals.css points Tailwind's `font-sans` token at it, see
+// `--font-sans: var(--font-montserrat)`). Replaced Work Sans as the sitewide
+// default per request; also used directly via `.className` in a few places
+// that need it explicitly regardless of inheritance (blog pages, the home
+// hero title — see components/sections/hero.tsx). Weight 400 covers body
+// copy, 600/700 match KR's own header typeface, 800 matches KR's own hero
+// title weight.
 export const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: ["400", "600", "700", "800"],
   variable: "--font-montserrat",
 });
 

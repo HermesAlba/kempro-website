@@ -10,7 +10,7 @@ import { getBlogPosts } from "@/lib/data/blog";
 import { FeaturedLatestHero } from "@/components/blog/featured-latest-hero";
 import { AllArticlesGrid } from "@/components/blog/all-articles-grid";
 import { NewsletterCard } from "@/components/blog/newsletter-card";
-import { workSans } from "@/lib/fonts";
+import { montserrat } from "@/lib/fonts";
 
 export async function generateMetadata({
   params,
@@ -39,7 +39,7 @@ export default async function BLPage({
   const latest = rest.slice(0, 4);
 
   return (
-    <div className={`${workSans.className} bg-white tracking-[-0.02em]`}>
+    <div className={`${montserrat.className} bg-white tracking-[-0.02em]`}>
       {featured ? <FeaturedLatestHero featured={featured} latest={latest} /> : null}
       {posts.length > 0 ? <AllArticlesGrid posts={posts} /> : null}
 

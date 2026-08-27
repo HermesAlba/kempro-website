@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { workSans } from "@/lib/fonts";
+import { montserrat } from "@/lib/fonts";
 import "./globals.css";
 
 export default function RootNotFound() {
   return (
-    <html lang="es" className={workSans.variable}>
+    <html lang="es" className={montserrat.variable}>
       <body
         style={{
           display: "flex",
@@ -12,7 +12,7 @@ export default function RootNotFound() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: "var(--font-work-sans), system-ui, sans-serif",
+          fontFamily: "var(--font-montserrat), system-ui, sans-serif",
           textAlign: "center",
           padding: "2rem",
         }}

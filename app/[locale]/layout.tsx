@@ -8,7 +8,7 @@ import { Footer } from "@/components/layout/footer";
 import { CookieConsentBanner } from "@/components/cookie-consent/cookie-consent-banner";
 import { GoogleAnalytics } from "@/components/cookie-consent/google-analytics";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
-import { workSans } from "@/lib/fonts";
+import { montserrat } from "@/lib/fonts";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -64,7 +64,7 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={workSans.variable}>
+    <html lang={locale} className={montserrat.variable}>
       <body className="flex min-h-screen flex-col bg-primary-50/50 font-sans text-neutral-900 antialiased">
         <NextIntlClientProvider>
           <Header />

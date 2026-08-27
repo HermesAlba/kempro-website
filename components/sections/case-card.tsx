@@ -37,7 +37,7 @@ export function CaseCard({
   return (
     // Top: IndustryHeaderBackground thumbnail (unchanged — see
     // components/sections/industry-header-background.tsx). Bottom: same
-    // white background, Work Sans + tight tracking, and content structure
+    // white background, sitewide font (Montserrat) + tight tracking, and content structure
     // (colored category + date, title, excerpt) as the blog's own
     // ArticleCard (see components/blog/all-articles-grid.tsx) — only the
     // category color source differs (industryColorFor instead of the

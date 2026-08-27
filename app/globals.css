@@ -154,7 +154,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --font-sans: var(--font-work-sans);
+  --font-sans: var(--font-montserrat);
 }
 
 body {
