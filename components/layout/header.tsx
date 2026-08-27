@@ -6,9 +6,16 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/layout/locale-switcher";
 import { SiteSearch } from "@/components/layout/site-search";
 import { KemproLogo } from "@/components/ui/kempro-logo";
-import { MenuIcon, CloseIcon } from "@/components/ui/icons";
+import { MenuIcon, CloseIcon, XIcon, YouTubeIcon } from "@/components/ui/icons";
 import { ctaButtonClasses } from "@/components/ui/cta-button-classes";
 import { montserrat } from "@/lib/fonts";
+
+// TODO: agregar URLs reales de redes sociales cuando las cuentas existan
+// (mismo placeholder que components/layout/footer.tsx).
+const socialLinks = [
+  { name: "X", icon: XIcon },
+  { name: "YouTube", icon: YouTubeIcon },
+] as const;
 
 const navItems = [
   { href: "/", key: "home" },
@@ -78,6 +85,26 @@ export function Header() {
           <Link href="/" className="flex-shrink-0">
             <KemproLogo variant="dark" size={71} markColor="#000000" />
           </Link>
+          {/* Social icons — positioned right after the logo (not bundled
+              with search/language/CTA on the right), matching KR's own top
+              bar: logo, then its social-icon cluster, then its other
+              utility blocks, spread across the row via justify-between.
+              Same placeholder pattern as the footer's socialLinks
+              (href="#", disabled) since real profile URLs don't exist yet. */}
+          <div className="flex items-center gap-3">
+            {socialLinks.map(({ name, icon: Icon }) => (
+              <a
+                key={name}
+                href="#"
+                aria-label={name}
+                aria-disabled="true"
+                onClick={(event) => event.preventDefault()}
+                className="flex h-8 w-8 cursor-not-allowed items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
           {/* Montserrat here (see lib/fonts.ts) — matches the reference's
               own header typeface. CTA below matches KR's own bold-title
               size (17px) but stays font-normal (not bold), per request. */}
