@@ -12,11 +12,10 @@ export function Hero() {
     // The -mt/pt pair (see HEADER_OFFSET in components/layout/header.tsx)
     // bleeds this section's own background up behind the floating nav; net
     // position of the content below is unchanged since the two cancel out.
-    // Flat white background, no gradient/pattern — per request. `flex-1`
-    // lets this section absorb the leftover height from the home page's
-    // Hero+ClientLogos wrapper (see app/[locale]/page.tsx). Content is
-    // top-anchored (`items-start` + the Container's own pt) again — per
-    // request the title now starts 1cm ABOVE where KR's own "BUILDING
+    // `flex-1` lets this section absorb the leftover height from the home
+    // page's Hero+ClientLogos wrapper (see app/[locale]/page.tsx). Content
+    // is top-anchored (`items-start` + the Container's own pt) — per
+    // request the title starts 1cm ABOVE where KR's own "BUILDING
     // STRONG." starts. Re-measured directly off kniferiver.com at its own
     // 1280px reference viewport: header 207px tall, title top at page-y
     // 407px (200px into the hero section). Target = 407px − 1cm (37.8px)
@@ -25,7 +24,28 @@ export function Hero() {
     // base/sm/lg values keep the same proportion to the xl value as
     // before (0.285 / 0.545 / 0.9), scaled down from the previous
     // 200px-at-xl figure to this new 162px-at-xl figure.
-    <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-white pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
+    <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-black pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
+      {/* Black-to-gray gradient, top to bottom — intense black at the very
+          top, easing down to a muted gray (not white) by the bottom of the
+          section — per request. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, #000000 0%, #1e293b 30%, #475569 60%, #94a3b8 100%)",
+        }}
+      />
+      {/* White-dot grid, moving — drifts straight down on a loop via
+          .animate-dot-wave (see app/globals.css) — per request. */}
+      <div
+        aria-hidden="true"
+        className="animate-dot-wave pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px)",
+          backgroundSize: "14px 14px",
+        }}
+      />
       <Container className="relative z-10 pt-[46px] sm:pt-[88px] lg:pt-[146px] xl:pt-[162px]">
         <FadeIn className="mx-auto text-center">
           {/* Same format as KR's own "BUILDING STRONG." title: Montserrat
@@ -39,7 +59,7 @@ export function Hero() {
               above) at every size. xl size (70px) matches KR's own title
               size exactly at their own 1280px reference viewport. */}
           <h1
-            className={`${montserrat.className} uppercase whitespace-nowrap text-[20px] font-extrabold tracking-tight text-black sm:text-[38px] lg:text-[63px] xl:text-[70px]`}
+            className={`${montserrat.className} uppercase whitespace-nowrap text-[20px] font-extrabold tracking-tight text-white sm:text-[38px] lg:text-[63px] xl:text-[70px]`}
           >
             {t("title")}
           </h1>
@@ -47,7 +67,7 @@ export function Hero() {
               subtitle size exactly (measured: 18px/400/Montserrat). mt-5
               (20px) matches the gap measured between KR's own title and
               subtitle (511px - 491px ≈ 20px). */}
-          <p className="mt-5 min-h-[3lh] text-[18px] text-black">
+          <p className="mt-5 min-h-[3lh] text-[18px] text-white">
             {t("subtitle")}
           </p>
         </FadeIn>
