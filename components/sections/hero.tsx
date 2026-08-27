@@ -68,7 +68,7 @@ export function Hero() {
               above) at every size. xl size (70px) matches KR's own title
               size exactly at their own 1280px reference viewport. */}
           <h1
-            className={`${montserrat.className} uppercase whitespace-nowrap text-[20px] font-extrabold tracking-tight text-neutral-900 sm:text-[38px] lg:text-[63px] xl:text-[70px]`}
+            className={`${montserrat.className} uppercase whitespace-nowrap text-[20px] font-extrabold tracking-tight text-white sm:text-[38px] lg:text-[63px] xl:text-[70px]`}
           >
             {t("title")}
           </h1>
@@ -76,7 +76,7 @@ export function Hero() {
               subtitle size exactly (measured: 18px/400/Montserrat). mt-5
               (20px) matches the gap measured between KR's own title and
               subtitle (511px - 491px ≈ 20px). */}
-          <p className="mt-5 min-h-[3lh] text-[18px] text-neutral-700">
+          <p className="mt-5 min-h-[3lh] text-[18px] text-white">
             {t("subtitle")}
           </p>
         </FadeIn>
