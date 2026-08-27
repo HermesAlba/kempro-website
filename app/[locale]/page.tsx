@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/sections/hero";
 import { ClientLogos } from "@/components/sections/client-logos";
 import { WhatWeDo } from "@/components/sections/what-we-do";
+import { LovingWhatWeDo } from "@/components/sections/loving-what-we-do";
 import { ServicesOverview } from "@/components/sections/services-overview";
 import { FeaturedCaseStudies } from "@/components/sections/featured-case-studies";
 import { PurposeTeaser } from "@/components/sections/purpose-teaser";
@@ -55,6 +56,10 @@ export default async function HomePage({
           body/CTA + 2x2 grid of service cards), on Kempro's indigo brand
           background, right after the logo carousel — per request. */}
       <WhatWeDo />
+      {/* LovingWhatWeDo: KR's "Loving What We Do!" block (framed photo +
+          dark panel with title/subtitle/CTA), right after WhatWeDo — per
+          request. Placeholder image/copy for now. */}
+      <LovingWhatWeDo />
       {/* PurposeTeaser ("Quiénes somos") moved ahead of ServicesOverview
           ("Cómo trabajamos") — right after the logo carousel — per request. */}
       <PurposeTeaser />
