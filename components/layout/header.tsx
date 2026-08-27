@@ -62,25 +62,26 @@ export function Header() {
           own primary-600/700 treatment instead, sized down to match. */}
       <div className="hidden bg-black lg:block">
         <div className="mx-auto flex h-[146px] max-w-7xl items-center justify-between px-8">
-          {/* size doubled (26 → 52) per request — left-aligned as the flex
-              row's first child, so growing it only extends to the right;
-              its starting x position (the bar's own px-8) is unchanged. */}
+          {/* size=71 matches KR's own logo proportion within its top bar:
+              their logo image renders at 71px tall inside a 146px-tall bar
+              (71/146 ≈ 48.6%) — measured via getBoundingClientRect. Kempro's
+              own top bar is already the same 146px height (see the bar's
+              own h-[146px] below), so using the same 71px mark size lands
+              on the same proportion. Left-aligned as the flex row's first
+              child, so growing it only extends to the right; its starting x
+              position (the bar's own px-8) is unchanged. */}
           <Link href="/" className="flex-shrink-0">
-            <KemproLogo variant="dark" size={52} />
+            <KemproLogo variant="dark" size={71} />
           </Link>
           {/* Montserrat here (see lib/fonts.ts) — matches the reference's
-              own header typeface. Its bold info-titles ("Job
-              Opportunities") measured at 17px/700, which the CTA below
-              copies; Kempro has no direct equivalent for its lighter
-              secondary text (Poppins/16px/400) since this bar carries no
-              title+subtitle pairs, so only the CTA gets a literal size
-              match — the locale switcher just inherits the family. */}
+              own header typeface. CTA below matches KR's own bold-title
+              size (17px) but stays font-normal (not bold), per request. */}
           <div className={`flex items-center gap-5 ${montserrat.className}`}>
             <SiteSearch triggerClassName="flex items-center justify-center rounded-md p-1.5 text-white/70 transition-colors hover:bg-white/10 hover:text-white" />
             <LocaleSwitcher dark />
             <Link
               href="/contacto"
-              className="inline-flex h-[34px] items-center justify-center gap-2 rounded-[6px] bg-primary-600 px-4 text-[17px] font-bold tracking-normal text-white transition-colors hover:bg-primary-700"
+              className="inline-flex h-[34px] items-center justify-center gap-2 rounded-[6px] bg-primary-600 px-4 text-[17px] font-normal tracking-normal text-white transition-colors hover:bg-primary-700"
             >
               {t("cta")}
             </Link>
