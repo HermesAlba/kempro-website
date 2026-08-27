@@ -14,11 +14,26 @@ import type { Locale } from "@/i18n/routing";
 // of all 6). No content is duplicated between the three.
 const featuredIds = ["strategy", "automation", "integration", "web"];
 
-// Kempro's own take on Knife River's "WHAT WE DO" section: same two-column
-// layout (title/tagline/body/outlined CTA on the left, 2x2 grid of dark
-// cards on the right), but on Kempro's indigo brand background instead of
-// KR's orange, and featuring real Kempro service lines instead of
-// construction materials.
+// Kempro's own take on Knife River's "WHAT WE DO" section — every measurement
+// below (column split, card size/padding/gap, icon size, font sizes, the
+// vertical rhythm of the left column) was taken directly off
+// kniferiver.com's own rendered layout at its own 1280px reference viewport
+// via getComputedStyle/getBoundingClientRect, the same method used for the
+// hero. Only the palette changes: Kempro's indigo brand background
+// (bg-primary-600) instead of KR's orange, real Kempro service lines instead
+// of construction materials. Copy is placeholder, not final.
+//
+// Measured off KR (1280px viewport):
+// - left column width 356px, right grid 724px, gap between them 50px
+// - "WHAT WE DO": 36px/800/uppercase; gap to tagline 6px
+// - tagline: 15px/800/uppercase; gap to body 26px
+// - body: 16px/400/leading-24px; gap to button 43px
+// - button: border 1px, padding 18px 30px, 15px/600/uppercase, no radius
+// - cards: 357x173(+) px, 20px padding, 10px column-gap / 20px row-gap,
+//   pure black background
+// - icon 50x50px, 15px gap to text column
+// - card title 22px/800/uppercase; 5px gap to description
+// - card description 16px/400/leading-24px
 export function WhatWeDo() {
   const t = useTranslations("Home.whatWeDo");
   const locale = useLocale() as Locale;
@@ -27,41 +42,47 @@ export function WhatWeDo() {
   return (
     <section className="bg-primary-600 py-20 sm:py-28">
       <Container>
-        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[356fr_724fr] lg:gap-x-[50px]">
           <FadeIn direction="left">
-            <h2 className="text-[32px] font-extrabold uppercase leading-tight text-white sm:text-[40px]">
+            <h2 className="text-[28px] font-extrabold uppercase leading-[1.1] text-white sm:text-[36px]">
               {t("title")}
             </h2>
-            <p className="mt-2 text-[15px] font-bold uppercase tracking-wide text-primary-200 sm:text-[16px]">
+            <p className="mt-[6px] text-[15px] font-extrabold uppercase leading-[1.1] tracking-wide text-white">
               {t("tagline")}
             </p>
-            <p className="mt-5 text-[16px] leading-[1.6] text-primary-100">
+            <p className="mt-[26px] text-[16px] leading-[24px] text-white">
               {t("subtitle")}
             </p>
-            <div className="mt-8">
+            <div className="mt-[43px]">
               <Link
                 href="/servicios"
-                className="inline-flex h-[38px] items-center justify-center rounded-[6px] border border-white/70 px-6 text-[13px] font-semibold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-primary-700"
+                className="inline-flex h-[55px] items-center justify-center border border-white px-[30px] text-[15px] font-semibold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-primary-700"
               >
                 {t("cta")}
               </Link>
             </div>
           </FadeIn>
 
-          <FadeIn direction="right" delay={100} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <FadeIn
+            direction="right"
+            delay={100}
+            className="grid grid-cols-1 gap-x-[10px] gap-y-[20px] sm:grid-cols-2"
+          >
             {services.map((service) => (
               <Link
                 key={service.id}
                 href={{ pathname: "/servicios/[slug]", params: { slug: service.slug } }}
-                className="hover-lift flex flex-col rounded-lg bg-neutral-900 p-6 transition-colors hover:bg-neutral-800"
+                className="hover-lift flex items-center gap-[15px] bg-black p-[20px] transition-colors hover:bg-neutral-900"
               >
-                <ServiceIconGlyph icon={service.icon} className="h-8 w-8 text-primary-300" />
-                <h3 className="mt-4 text-[15px] font-bold uppercase tracking-wide text-white">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-[14px] leading-[1.5] text-neutral-300">
-                  {service.description}
-                </p>
+                <ServiceIconGlyph icon={service.icon} className="h-[50px] w-[50px] flex-shrink-0 text-primary-300" />
+                <div>
+                  <h3 className="text-[22px] font-extrabold uppercase leading-[1.1] text-white">
+                    {service.title}
+                  </h3>
+                  <p className="mt-[5px] text-[16px] leading-[24px] text-white">
+                    {service.description}
+                  </p>
+                </div>
               </Link>
             ))}
           </FadeIn>
