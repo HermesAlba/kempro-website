@@ -20,14 +20,6 @@ export function Hero() {
     // the section instead of dead-center (measured: title starts ~200px
     // below the header, well above the section's vertical midpoint).
     <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-white pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
-      {/* Sober, minimal gradient — brand primary-100 fading to white, no
-          dot pattern or graphic on top (per request: decided against a
-          literal/abstract image for this section, just a clean tint). */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{ backgroundImage: "linear-gradient(to bottom, #E5EDFF 0%, white 60%)" }}
-      />
       {/* xl:pt-[200px] matches KR's own measured offset from the top of its
           hero section to its title (title top 407px − section top 207px ≈
           200px) at KR's own reference viewport (1280px). base/sm/lg scale
