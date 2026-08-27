@@ -17,12 +17,8 @@ export function Hero() {
     // logo carousel starts), not extend behind it or further down. `flex-1`
     // lets this section absorb the leftover height from the home page's
     // Hero+ClientLogos wrapper (see app/[locale]/page.tsx). Content is
-    // top-anchored (`items-start` + the Container's own generous pt) rather
-    // than vertically centered — matches Knife River's own hero layout,
-    // where the title/subtitle block sits in the upper portion of the
-    // section instead of dead-center (measured: title starts ~200px below
-    // the header, well above the section's vertical midpoint).
-    <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-white pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
+    // vertically centered (`items-center`) within that space — per request.
+    <section className="relative -mt-[81px] flex flex-1 items-center overflow-hidden bg-white pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
       {/* White base (bg-white above), then this gray-tone gradient on top —
           white at the very top, intensifying downward through gray,
           reaching its final dark tone by the very bottom of this section
@@ -47,14 +43,7 @@ export function Hero() {
           backgroundSize: "14px 14px",
         }}
       />
-      {/* xl:pt-[200px] matches KR's own measured offset from the top of its
-          hero section to its title (title top 407px − section top 207px ≈
-          200px) at KR's own reference viewport (1280px). base/sm/lg scale
-          proportionally to their own title size — an extra `lg` step (vs.
-          jumping straight to the xl/1280px size) exists because the wider
-          caps text needs a slightly smaller size to still fit on one line
-          down to 1024px before the exact 70px/1280px match kicks in. */}
-      <Container className="relative z-10 pb-4 pt-[57px] sm:pb-4 sm:pt-[109px] lg:pb-4 lg:pt-[180px] xl:pt-[200px]">
+      <Container className="relative z-10">
         <FadeIn className="mx-auto text-center">
           {/* Same format as KR's own "BUILDING STRONG." title: Montserrat
               (see lib/fonts.ts), weight 800/extrabold, uppercase — measured
