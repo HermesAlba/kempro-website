@@ -85,6 +85,12 @@
       "subtitle": "Our service lines cover the full path: from strategy to production operation.",
       "cta": "View all services"
     },
+    "whatWeDo": {
+      "title": "What we do",
+      "tagline": "Technology, automation and artificial intelligence",
+      "subtitle": "We design, integrate, and implement AI solutions that transform how your company operates.",
+      "cta": "View all services"
+    },
     "logos": {
       "title": "Companies that already trust Kempro"
     },

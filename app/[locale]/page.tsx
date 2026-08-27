@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/sections/hero";
 import { ClientLogos } from "@/components/sections/client-logos";
+import { WhatWeDo } from "@/components/sections/what-we-do";
 import { ServicesOverview } from "@/components/sections/services-overview";
 import { FeaturedCaseStudies } from "@/components/sections/featured-case-studies";
 import { PurposeTeaser } from "@/components/sections/purpose-teaser";
@@ -50,6 +51,10 @@ export default async function HomePage({
         <Hero />
         <ClientLogos />
       </div>
+      {/* WhatWeDo: Knife River's "WHAT WE DO" block (2-col: title/tagline/
+          body/CTA + 2x2 grid of service cards), on Kempro's indigo brand
+          background, right after the logo carousel — per request. */}
+      <WhatWeDo />
       {/* PurposeTeaser ("Quiénes somos") moved ahead of ServicesOverview
           ("Cómo trabajamos") — right after the logo carousel — per request. */}
       <PurposeTeaser />
