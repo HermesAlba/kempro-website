@@ -8,6 +8,7 @@ import { SiteSearch } from "@/components/layout/site-search";
 import { KemproLogo } from "@/components/ui/kempro-logo";
 import { MenuIcon, CloseIcon } from "@/components/ui/icons";
 import { ctaButtonClasses } from "@/components/ui/cta-button-classes";
+import { montserrat } from "@/lib/fonts";
 
 const navItems = [
   { href: "/", key: "home" },
@@ -24,11 +25,13 @@ const navItems = [
 // back down by the same amount so its content position is unaffected — see
 // e.g. components/sections/hero.tsx and components/sections/page-hero.tsx.
 // Keep HEADER_OFFSET in sync with the nav's own rendered height below.
-// Desktop is 157 (88px top info bar + 69px nav bar, up from 46px — the nav
-// bar grew 50% per request). Mobile is 81 (its one bar, up from 54px by the
-// same 50%, since the top info bar only renders at lg and mobile relies on
-// the nav bar alone for logo + hamburger).
-export const HEADER_OFFSET = { mobile: 81, desktop: 157 } as const;
+// Desktop is 207 (146px top info bar + 61px nav bar) — both measured
+// directly off the reference site's own two bars via getComputedStyle/
+// getBoundingClientRect (146.1px and 60.5px respectively) so Kempro's
+// header matches its exact proportions, not just its colors/layout. Mobile
+// is untouched at 81 (its one merged bar) since the reference's own mobile
+// header collapses differently and wasn't part of what was measured.
+export const HEADER_OFFSET = { mobile: 81, desktop: 207 } as const;
 
 // Two-tier layout (reference: a construction-industry site's header — dark
 // info bar on top, full-width accent nav bar below with the current section
@@ -43,34 +46,41 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50">
+    <header className="relative z-50">
       {/* Top info bar — desktop only. True black (#000000) — matches the
           reference site's own header bar exactly (confirmed via its
           computed background-color: rgb(0, 0, 0)); went through
           bg-primary-900 then bg-neutral-900 before landing back here per
-          successive requests. Height doubled to 88px (from 44px) per
-          request — logo/wordmark size unchanged, so it now sits with more
-          vertical breathing room instead of filling the strip. Logo + the
-          utilities that used to sit at the right of the old single-bar
-          header (search, language, CTA) — nothing new added. The CTA
-          button below deliberately does NOT reuse the shared
-          ctaButtonClasses constant (bg-neutral-900, a near-black that
-          would nearly disappear against true black) — it gets its own
-          primary-600/700 treatment instead, sized down to match. */}
+          successive requests. Height is 146px, matching that same
+          reference bar's own measured height (was 88px) — logo/wordmark
+          size unchanged, so it now sits with even more vertical breathing
+          room. Logo + the utilities that used to sit at the right of the
+          old single-bar header (search, language, CTA) — nothing new
+          added. The CTA button below deliberately does NOT reuse the
+          shared ctaButtonClasses constant (bg-neutral-900, a near-black
+          that would nearly disappear against true black) — it gets its
+          own primary-600/700 treatment instead, sized down to match. */}
       <div className="hidden bg-black lg:block">
-        <div className="mx-auto flex h-[88px] max-w-7xl items-center justify-between px-8">
+        <div className="mx-auto flex h-[146px] max-w-7xl items-center justify-between px-8">
           {/* size doubled (26 → 52) per request — left-aligned as the flex
               row's first child, so growing it only extends to the right;
               its starting x position (the bar's own px-8) is unchanged. */}
           <Link href="/" className="flex-shrink-0">
             <KemproLogo variant="dark" size={52} />
           </Link>
-          <div className="flex items-center gap-5">
+          {/* Montserrat here (see lib/fonts.ts) — matches the reference's
+              own header typeface. Its bold info-titles ("Job
+              Opportunities") measured at 17px/700, which the CTA below
+              copies; Kempro has no direct equivalent for its lighter
+              secondary text (Poppins/16px/400) since this bar carries no
+              title+subtitle pairs, so only the CTA gets a literal size
+              match — the locale switcher just inherits the family. */}
+          <div className={`flex items-center gap-5 ${montserrat.className}`}>
             <SiteSearch triggerClassName="flex items-center justify-center rounded-md p-1.5 text-white/70 transition-colors hover:bg-white/10 hover:text-white" />
             <LocaleSwitcher dark />
             <Link
               href="/contacto"
-              className="inline-flex h-[30px] items-center justify-center gap-2 rounded-[6px] bg-primary-600 px-4 py-1.5 text-[12px] tracking-[-0.02em] text-white transition-colors hover:bg-primary-700"
+              className="inline-flex h-[34px] items-center justify-center gap-2 rounded-[6px] bg-primary-600 px-4 text-[17px] font-bold tracking-normal text-white transition-colors hover:bg-primary-700"
             >
               {t("cta")}
             </Link>
@@ -79,11 +89,14 @@ export function Header() {
       </div>
 
       {/* Nav bar — primary-600, full width, standing in for the reference's
-          orange bar. On mobile this is the ONLY bar (top info bar is
-          hidden), so it carries the logo + hamburger there instead of the
-          desktop nav row. */}
+          orange bar. Desktop height (61px) matches that orange bar's own
+          measured height (60.5px, was 69px here). On mobile this is the
+          ONLY bar (top info bar is hidden), so it carries the logo +
+          hamburger there instead of the desktop nav row — its own height
+          (81px) is unrelated to the reference measurement above (see
+          HEADER_OFFSET). */}
       <div className="bg-primary-600">
-        <div className="mx-auto flex h-[81px] max-w-7xl items-center px-6 lg:h-[69px] lg:px-8">
+        <div className="mx-auto flex h-[81px] max-w-7xl items-center px-6 lg:h-[61px] lg:px-8">
           {/* Mobile: logo + search + hamburger */}
           <div className="flex w-full items-center justify-between lg:hidden">
             <Link href="/" onClick={() => setOpen(false)} className="flex-shrink-0">
@@ -109,15 +122,19 @@ export function Header() {
               an underline/color change. flex-1 + justify-center centers the
               whole group within the bar (nav is the only child visible at
               lg, so it's free to claim the full row width). Lowercase, no
-              tracking — per request (was uppercase/tracking-wide). */}
-          <nav className="hidden h-full flex-1 items-stretch justify-center lg:flex">
+              tracking — per request (was uppercase/tracking-wide). Font
+              matches the reference's own nav links exactly: Montserrat
+              (see lib/fonts.ts), 15px, weight 600. */}
+          <nav
+            className={`hidden h-full flex-1 items-stretch justify-center lg:flex ${montserrat.className}`}
+          >
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center px-5 text-sm font-semibold transition-colors ${
+                  className={`flex items-center px-5 text-[15px] font-semibold transition-colors ${
                     isActive ? "bg-primary-800 text-white" : "text-white/85 hover:bg-primary-700"
                   }`}
                 >

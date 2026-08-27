@@ -252,7 +252,7 @@ export default async function PrivacyNoticePage({
           instead of the old flat from-primary-50 fill, so this page's hero
           matches the indigo treatment used on servicios/home/sobre
           nosotros. */}
-      <section className="relative -mt-[81px] overflow-hidden bg-white pb-16 pt-[145px] sm:pb-24 sm:pt-[177px] lg:-mt-[157px] lg:pt-[253px]">
+      <section className="relative -mt-[81px] overflow-hidden bg-white pb-16 pt-[145px] sm:pb-24 sm:pt-[177px] lg:-mt-[207px] lg:pt-[303px]">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0"

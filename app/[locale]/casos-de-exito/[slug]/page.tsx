@@ -79,16 +79,16 @@ export default async function CaseStudyPage({
           breadcrumb or text column happen to be. <article> is the
           positioning ancestor and its own top edge already sits right at
           the header's bottom (normal document flow) — so top-[38px] (1cm
-          at 96dpi) alone gives the 1cm gap; the lg header's own 157px (see
+          at 96dpi) alone gives the 1cm gap; the lg header's own 207px (see
           HEADER_OFFSET in components/layout/header.tsx) must NOT be added
-          again here. Height is 100vh minus that same 157px header, minus
+          again here. Height is 100vh minus that same 207px header, minus
           1cm top, minus 1cm bottom, so the bottom edge lands exactly 1cm
           before the first screen ends. w-[380px] = 10cm at 96dpi.
           right-[81px]/lg:right-[105px] = the base right-6/right-12 (24px/
           48px) plus 57px (1.5cm at 96dpi), shifting the photo left. */}
       <div
         data-hero-photo
-        className="pointer-events-none absolute right-[81px] top-[38px] hidden h-[calc(100vh-157px-76px)] w-[380px] max-w-full overflow-hidden rounded-2xl lg:right-[105px] lg:block"
+        className="pointer-events-none absolute right-[81px] top-[38px] hidden h-[calc(100vh-207px-76px)] w-[380px] max-w-full overflow-hidden rounded-2xl lg:right-[105px] lg:block"
       >
         <FadeIn direction="right" className="relative h-full w-full">
           {caseStudy.image ? (
