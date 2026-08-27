@@ -44,17 +44,19 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Top info bar — desktop only, black per request (was primary-900).
-          Height doubled to 88px (from 44px) per request — logo/wordmark
-          size unchanged, so it now sits with more vertical breathing room
-          instead of filling the strip. Logo + the utilities that used to
-          sit at the right of the old single-bar header (search, language,
-          CTA) — nothing new added. The CTA button below deliberately does
-          NOT reuse the shared ctaButtonClasses constant (bg-neutral-900,
-          i.e. near-black) since that would nearly disappear against this
-          bar's true black — it gets its own primary-600/700 treatment
-          instead, sized down to match. */}
-      <div className="hidden bg-black lg:block">
+      {/* Top info bar — desktop only. neutral-900 (#0F172A — dark slate,
+          not true black; went through bg-primary-900 then bg-black before
+          landing here per successive requests). Height doubled to 88px
+          (from 44px) per request — logo/wordmark size unchanged, so it now
+          sits with more vertical breathing room instead of filling the
+          strip. Logo + the utilities that used to sit at the right of the
+          old single-bar header (search, language, CTA) — nothing new
+          added. The CTA button below deliberately does NOT reuse the
+          shared ctaButtonClasses constant (bg-neutral-900 — the same near-
+          black tone as this bar itself) since that would nearly disappear
+          against it — it gets its own primary-600/700 treatment instead,
+          sized down to match. */}
+      <div className="hidden bg-neutral-900 lg:block">
         <div className="mx-auto flex h-[88px] max-w-7xl items-center justify-between px-8">
           {/* size doubled (26 → 52) per request — left-aligned as the flex
               row's first child, so growing it only extends to the right;
