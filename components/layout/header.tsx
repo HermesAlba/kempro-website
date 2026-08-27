@@ -19,8 +19,8 @@ const socialLinks = [
 
 const navItems = [
   { href: "/", key: "home" },
-  { href: "/SN", key: "about" },
   { href: "/servicios", key: "services" },
+  { href: "/SN", key: "about" },
   { href: "/casos-de-exito", key: "caseStudies" },
   { href: "/blog", key: "blog" },
   { href: "/contacto", key: "contact" },
