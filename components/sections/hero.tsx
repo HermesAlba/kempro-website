@@ -43,17 +43,23 @@ export function Hero() {
           backgroundSize: "14px 14px",
         }}
       />
-      <Container className="relative pb-4 pt-16 sm:pb-4 sm:pt-20 lg:pb-4 lg:pt-24">
-        <FadeIn className="mx-auto max-w-3xl text-center">
-          {/* min-h reserves 3 lines (the Spanish title/subtitle's actual
-              wrap count) so the English version — shorter, so it wraps to
-              fewer lines — still occupies the same height; `lh` scales
-              with each element's own line-height, so this holds at every
-              breakpoint without hardcoding per-breakpoint pixel values.
+      {/* lg:pt-[200px] matches KR's own measured offset from the top of its
+          hero section to its title (title top 407px − section top 207px ≈
+          200px) — exact match at the reference (lg/1280px) breakpoint; sm/
+          base scale proportionally to their own title size since KR's own
+          mobile layout wasn't measured. */}
+      <Container className="relative pb-4 pt-[103px] sm:pb-4 sm:pt-[137px] lg:pb-4 lg:pt-[200px]">
+        <FadeIn className="mx-auto text-center">
+          {/* No max-w on the wrapper above and whitespace-nowrap here so the
+              title always renders as a single line, per request — matches
+              KR's own title, which is also a single line. Sizes fit on one
+              line at every breakpoint (checked via canvas.measureText):
+              26px→~318px, 48px→~571px, 70px→~833px, all within the
+              Container's available width at their respective breakpoints.
               lg size (70px) matches Knife River's own hero title size
               exactly (measured via getComputedStyle: 70px/800/Montserrat —
               only the size is matched here, not the weight/family). */}
-          <h1 className="min-h-[3lh] text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-[70px]">
+          <h1 className="whitespace-nowrap text-[26px] font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-[70px]">
             {t("title")}
           </h1>
           {/* 18px at every breakpoint — matches Knife River's own hero
