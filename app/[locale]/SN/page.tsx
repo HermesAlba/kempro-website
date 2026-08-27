@@ -51,7 +51,7 @@ export default async function SNPage({
           components/layout/header.tsx); the inner columns keep their own
           padding untouched since the -mt/pt pair only shifts where this
           section's background starts, not where its children render. */}
-      <section className="-mt-[54px] min-h-[calc(100vh+19px)] bg-primary-50/50 pt-[54px] lg:-mt-[134px] lg:pt-[134px]">
+      <section className="-mt-[81px] min-h-[calc(100vh+19px)] bg-primary-50/50 pt-[81px] lg:-mt-[157px] lg:pt-[157px]">
         <div className="mx-auto flex max-w-[1280px] flex-col lg:flex-row">
           <div className="flex flex-1 flex-col justify-center gap-6 px-6 py-16 sm:px-10 sm:py-20 lg:w-[640px] lg:flex-none lg:py-20 lg:pl-[95px] lg:pr-10">
             <FadeIn>

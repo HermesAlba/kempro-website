@@ -24,10 +24,11 @@ const navItems = [
 // back down by the same amount so its content position is unaffected — see
 // e.g. components/sections/hero.tsx and components/sections/page-hero.tsx.
 // Keep HEADER_OFFSET in sync with the nav's own rendered height below.
-// Desktop is 134 (88px top info bar, doubled from its original 44px per
-// request, + 46px nav bar) — mobile is unchanged (still one 54px bar: logo
-// + hamburger) since the top info bar only renders at lg.
-export const HEADER_OFFSET = { mobile: 54, desktop: 134 } as const;
+// Desktop is 157 (88px top info bar + 69px nav bar, up from 46px — the nav
+// bar grew 50% per request). Mobile is 81 (its one bar, up from 54px by the
+// same 50%, since the top info bar only renders at lg and mobile relies on
+// the nav bar alone for logo + hamburger).
+export const HEADER_OFFSET = { mobile: 81, desktop: 157 } as const;
 
 // Two-tier layout (reference: a construction-industry site's header — dark
 // info bar on top, full-width accent nav bar below with the current section
@@ -79,7 +80,7 @@ export function Header() {
           hidden), so it carries the logo + hamburger there instead of the
           desktop nav row. */}
       <div className="bg-primary-600">
-        <div className="mx-auto flex h-[54px] max-w-7xl items-center px-6 lg:h-[46px] lg:px-8">
+        <div className="mx-auto flex h-[81px] max-w-7xl items-center px-6 lg:h-[69px] lg:px-8">
           {/* Mobile: logo + search + hamburger */}
           <div className="flex w-full items-center justify-between lg:hidden">
             <Link href="/" onClick={() => setOpen(false)} className="flex-shrink-0">
