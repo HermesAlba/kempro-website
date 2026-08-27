@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/container";
 
 // Kempro's own take on Knife River's "Loving What We Do!" homepage block —
 // a framed photo on the left next to a panel (title/subtitle/CTA) on the
-// right, on Kempro's white background. Every number below was re-measured
+// right, on a black background. Every number below was re-measured
 // directly off kniferiver.com's own rendered layout (getBoundingClientRect/
 // getComputedStyle) at its own 1280px reference viewport, replacing an
 // earlier ad-hoc "11cm" pass:
@@ -35,21 +35,19 @@ import { Container } from "@/components/ui/container";
 // - Section padding-bottom: 80px (KR's own section padding, `0 15px
 //   80px`), kept as the gap before the next block.
 //
-// Per request the panel's dark background (KR's own) was replaced with
-// white across the whole block, so title/subtitle switched from white to
-// dark neutrals for legibility.
+// Per request the block's background is black — matching KR's own dark
+// panel — so title/subtitle use white/light-neutral text for legibility.
 //
 // Photo: a light office-desk flat lay (Envato Elements, Tirachard),
-// chosen per request for a sober, non-abstract, people-free image that
-// stays close in tone to the white background. Because it's this light,
-// a soft shadow (not a border — a border reads as the "línea divisoria"
-// removed earlier) plus a contrast boost on the image itself keep it
-// visible against the white section rather than blending away entirely.
+// chosen per request for a sober, non-abstract, people-free image. Even
+// on the black background, a soft shadow (not a border — a border reads
+// as the "línea divisoria" removed earlier) plus a contrast boost on the
+// image itself keep its edges well defined.
 export function LovingWhatWeDo() {
   const t = useTranslations("Home.lovingWhatWeDo");
 
   return (
-    <section className="bg-white lg:pb-[80px]">
+    <section className="bg-black lg:pb-[80px]">
       <Container>
         <div className="flex flex-col lg:h-[430px] lg:flex-row">
           <div className="relative aspect-[6/5] w-full lg:aspect-auto lg:h-full lg:w-1/2 lg:flex-shrink-0">
@@ -64,10 +62,10 @@ export function LovingWhatWeDo() {
             </div>
           </div>
           <div className="flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:w-1/2 lg:px-[50px] lg:py-0">
-            <h2 className="whitespace-nowrap text-[32px] font-extrabold uppercase leading-[1.1] text-neutral-900 sm:text-[40px]">
+            <h2 className="whitespace-nowrap text-[32px] font-extrabold uppercase leading-[1.1] text-white sm:text-[40px]">
               {t("title")}
             </h2>
-            <p className="mt-5 max-w-[440px] text-[16px] leading-[24px] text-neutral-600">
+            <p className="mt-5 max-w-[440px] text-[16px] leading-[24px] text-neutral-300">
               {t("subtitle")}
             </p>
             <div className="mt-[35px]">
