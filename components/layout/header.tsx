@@ -55,8 +55,11 @@ export function Header() {
           instead, sized down to match. */}
       <div className="hidden bg-black lg:block">
         <div className="mx-auto flex h-[88px] max-w-7xl items-center justify-between px-8">
+          {/* size doubled (26 → 52) per request — left-aligned as the flex
+              row's first child, so growing it only extends to the right;
+              its starting x position (the bar's own px-8) is unchanged. */}
           <Link href="/" className="flex-shrink-0">
-            <KemproLogo variant="dark" size={26} />
+            <KemproLogo variant="dark" size={52} />
           </Link>
           <div className="flex items-center gap-5">
             <SiteSearch triggerClassName="flex items-center justify-center rounded-md p-1.5 text-white/70 transition-colors hover:bg-white/10 hover:text-white" />
