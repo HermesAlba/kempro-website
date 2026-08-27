@@ -12,8 +12,13 @@ export function PurposeTeaser() {
   const tHome = useTranslations("Home.purpose");
 
   return (
-    <section className="border-t border-neutral-200 bg-primary-50/50 py-20 sm:py-28">
-      <Container>
+    // No border/background of its own — the coral gradient behind Hero +
+    // ClientLogos (see app/[locale]/page.tsx) continues down through this
+    // section and ends around the video below, per request. Container gets
+    // relative z-10 so the text/video render above that gradient instead of
+    // being covered by it.
+    <section className="py-20 sm:py-28">
+      <Container className="relative z-10">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <FadeIn direction="left">
             <p className="text-sm font-semibold uppercase tracking-wide text-primary-600">
