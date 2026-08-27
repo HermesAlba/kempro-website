@@ -1,7 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
-import { KemproLogo } from "@/components/ui/kempro-logo";
 import { Link } from "@/i18n/navigation";
 import { ctaButtonClasses } from "@/components/ui/cta-button-classes";
 
@@ -33,15 +32,24 @@ export function PurposeTeaser() {
             </div>
           </FadeIn>
 
-          {/* Per request: no more gradient card/background — just the mark
-              itself, centered and proportionally sized within the same
-              column space the old image block occupied. */}
+          {/* Same origin-story video already used on the real "Sobre
+              nosotros" page (see app/[locale]/SN/page.tsx's OriginImageFrame
+              block) — reused here instead of a static icon/image, per
+              request. autoPlay+muted+loop+playsInline for autoplay to work
+              across browsers without a play button. */}
           <FadeIn
             direction="right"
             delay={100}
-            className="mx-auto flex aspect-square w-full max-w-[420px] items-center justify-center"
+            className="mx-auto aspect-square w-full max-w-[420px] overflow-hidden rounded-xl bg-neutral-100"
           >
-            <KemproLogo variant="standalone" size={220} className="h-2/3 w-2/3" />
+            <video
+              src="/videos/about/origin-ink-flow.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="h-full w-full object-cover"
+            />
           </FadeIn>
         </div>
       </Container>
