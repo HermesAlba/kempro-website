@@ -14,7 +14,7 @@ export function PurposeTeaser() {
   const tHome = useTranslations("Home.purpose");
 
   return (
-    <section className="border-t border-neutral-200 bg-primary-50/50 py-10 sm:py-14">
+    <section className="border-t border-neutral-200 bg-primary-50/50 py-20 sm:py-28">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <FadeIn direction="left">

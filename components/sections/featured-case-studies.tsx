@@ -27,7 +27,7 @@ export function FeaturedCaseStudies() {
   );
 
   return (
-    <section className="border-t border-neutral-200 bg-primary-50/50 py-10 sm:py-14">
+    <section className="border-t border-neutral-200 bg-primary-50/50 py-20 sm:py-28">
       <Container>
         <SectionHeading title={t("title")} subtitle={t("subtitle")} />
         {/* Same lg-only fixed-width fix as all-case-studies-grid.tsx — see

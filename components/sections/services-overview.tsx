@@ -21,7 +21,7 @@ export function ServicesOverview() {
     // border-t: this section now sits directly after PurposeTeaser (see
     // app/[locale]/page.tsx) — both share the same bg-primary-50/50, so
     // without a border the two blocks would merge with no visible seam.
-    <section className="border-t border-neutral-200 bg-primary-50/50 py-10 sm:py-14">
+    <section className="border-t border-neutral-200 bg-primary-50/50 py-20 sm:py-28">
       <Container>
         <FadeIn direction="left">
           <h2 className="text-[24px] font-bold leading-tight text-neutral-900 sm:text-[28px]">
