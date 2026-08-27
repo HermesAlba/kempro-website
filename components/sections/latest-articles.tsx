@@ -14,7 +14,7 @@ export function LatestArticles() {
   const posts = getBlogPosts(locale).slice(0, 3);
 
   return (
-    <section className="border-t border-neutral-200 bg-white py-20 sm:py-28">
+    <section className="border-t border-neutral-200 bg-white py-10 sm:py-14">
       <Container>
         <SectionHeading title={t("title")} subtitle={t("subtitle")} />
         <div className="mt-14 grid gap-x-7 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
