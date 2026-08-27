@@ -23,16 +23,15 @@ export function Hero() {
     // section instead of dead-center (measured: title starts ~200px below
     // the header, well above the section's vertical midpoint).
     <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
-      {/* Gray tones (neutral-200/500/800 tokens — see app/globals.css),
-          white at the very top, intensifying downward, reaching its final
-          dark tone by the very bottom of this section (100% = bottom of
-          Hero = start of the logo carousel). */}
+      {/* Black tones, white at the very top, intensifying downward through
+          gray, reaching pure black by the very bottom of this section
+          (100% = bottom of Hero = start of the logo carousel). */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:
-            "linear-gradient(to bottom, white 0%, #e2e8f0 25%, #94a3b8 55%, #475569 85%, #1e293b 100%)",
+            "linear-gradient(to bottom, white 0%, #cbd5e1 25%, #64748b 50%, #1e293b 75%, #000000 100%)",
         }}
       />
       {/* White-dot grid, on its own layer (separate from the gradient
