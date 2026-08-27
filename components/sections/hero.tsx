@@ -20,17 +20,21 @@ export function Hero() {
     // the section instead of dead-center (measured: title starts ~200px
     // below the header, well above the section's vertical midpoint).
     <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-white pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
-      {/* Warm cream tones (replaces the earlier indigo gradient, per
-          request — "que no se vea tanto indigo"). Inverted per request:
-          white at the very top, intensifying to the richer sand tone by
-          the bottom of this section — i.e. right before ClientLogos, since
-          this section is flex-1 and fills the rest of the
-          Hero+ClientLogos viewport-height wrapper (see
+      {/* Orange tones (swapped from beige per request), inverted: white at
+          the very top, staying pale through a longer stretch (0-35%, "un
+          poco mas blanco al comienzo... mas lento"), then ramping more
+          decisively into a richer orange concentrated near the bottom of
+          this section ("enfasis al final") — i.e. right before
+          ClientLogos, since this section is flex-1 and fills the rest of
+          the Hero+ClientLogos viewport-height wrapper (see
           app/[locale]/page.tsx). */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
-        style={{ backgroundImage: "linear-gradient(to bottom, white 0%, #F0DCB8 45%, #E3C089 100%)" }}
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, white 0%, #FCEEE0 35%, #F5C99B 65%, #E8873A 100%)",
+        }}
       />
       {/* White-dot grid, on its own layer (separate from the gradient
           above) so its background-position can animate independently —
