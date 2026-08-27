@@ -657,6 +657,27 @@ export function BuildingConstructionIcon({ className, style }: IconProps) {
   );
 }
 
+export function ScaleUpIcon({ className, style }: IconProps) {
+  return (
+    <svg
+      className={className}
+      style={style}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.75}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M3 20h18" />
+      <rect x="6" y="14" width="3" height="6" />
+      <rect x="11" y="9" width="3" height="11" />
+      <rect x="16" y="4" width="3" height="16" />
+    </svg>
+  );
+}
+
 export function PlayIcon({ className, style }: IconProps) {
   return (
     <svg
