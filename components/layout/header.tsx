@@ -23,73 +23,66 @@ const navItems = [
 // nav card), pulling up underneath the nav by HEADER_OFFSET and padding
 // back down by the same amount so its content position is unaffected — see
 // e.g. components/sections/hero.tsx and components/sections/page-hero.tsx.
-// Keep HEADER_OFFSET in sync with the nav's own rendered height below (card
-// height, incl. its border).
-export const HEADER_OFFSET = { mobile: 54, desktop: 70 } as const;
+// Keep HEADER_OFFSET in sync with the nav's own rendered height below.
+// Desktop grew from 70 to 90 (44px top info bar + 46px nav bar) when the
+// header moved from a single floating card to the two-tier layout below;
+// mobile is unchanged (still one 54px bar: logo + hamburger) since the top
+// info bar only renders at lg.
+export const HEADER_OFFSET = { mobile: 54, desktop: 90 } as const;
 
+// Two-tier layout (reference: a construction-industry site's header — dark
+// info bar on top, full-width accent nav bar below with the current section
+// highlighted) reskinned with Kempro's own palette and, per request, ONLY
+// the content already in the site's nav — no invented sections like "Job
+// Opportunities" or office locations. Replaces the previous single floating
+// rounded card. Both bars are full-width and edge-to-edge (no side insets,
+// no rounding, no blur) — a deliberate contrast from the old card treatment.
 export function Header() {
   const t = useTranslations("Nav");
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  // bg-white/80 + border/shadow is uniform across every page, including
-  // the contact page (previously had its own borderless/shadowless
-  // treatment so its background gradient showed through the edges) and
-  // blog article pages (previously used a fully solid card for contrast
-  // against their own busy category-fallback background).
 
   return (
-    // The nav no longer spans edge-to-edge: it's a white, rectangular card
-    // inset from the viewport on the sides, flush with the very top of the
-    // screen — matching the Blog 8.png reference (sharp, rectangular
-    // corners, not rounded). Every page's own background bleeds up behind
-    // it (see HEADER_OFFSET above), so the header itself carries no
-    // background of its own.
     <header className="sticky top-0 z-50">
-      <div className="mx-auto w-full max-w-7xl px-10 lg:px-16">
-        <div className="overflow-hidden rounded-b-lg border-x border-b border-neutral-200/70 bg-white/80 shadow-sm backdrop-blur-md">
-          <div className="flex h-[53px] items-center justify-between gap-6 px-6 lg:h-[69px] lg:px-8">
-            <Link href="/" onClick={() => setOpen(false)} className="flex-shrink-0">
-              <KemproLogo variant="primary" size={36} />
+      {/* Top info bar — desktop only. primary-900 (#2F3293), the site's
+          darkest indigo (same tone as the footer/HC dark contexts), standing
+          in for the reference's black bar. Logo + the utilities that used to
+          sit at the right of the old single-bar header (search, language,
+          CTA) — nothing new added. */}
+      <div className="hidden bg-primary-900 lg:block">
+        <div className="mx-auto flex h-11 max-w-7xl items-center justify-between px-8">
+          <Link href="/" className="flex-shrink-0">
+            <KemproLogo variant="dark" size={26} />
+          </Link>
+          <div className="flex items-center gap-5">
+            <SiteSearch triggerClassName="flex items-center justify-center rounded-md p-1.5 text-white/70 transition-colors hover:bg-white/10 hover:text-white" />
+            <LocaleSwitcher dark />
+            <Link
+              href="/contacto"
+              className={`${ctaButtonClasses} h-[30px] px-4 py-1.5 text-[12px]`}
+            >
+              {t("cta")}
             </Link>
+          </div>
+        </div>
+      </div>
 
-            <nav className="hidden items-center gap-7 lg:flex">
-              {navItems.map((item) => {
-                const isActive = pathname === item.href;
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`text-sm font-medium transition-colors hover:text-primary-600 ${
-                      isActive ? "text-primary-600" : "text-neutral-600"
-                    }`}
-                  >
-                    {t(item.key)}
-                  </Link>
-                );
-              })}
-            </nav>
-
-            <div className="hidden items-center gap-4 lg:flex">
-              <SiteSearch />
-              <LocaleSwitcher />
-              <Link
-                href="/contacto"
-                className={`${ctaButtonClasses} h-[35px] w-[140px] px-[20px] py-[10px]`}
-              >
-                {t("cta")}
-              </Link>
-            </div>
-
-            {/* Mobile: search trigger stays visible next to the hamburger
-                (rather than tucked inside the slide-down panel) so it's
-                reachable in one tap regardless of menu state — SiteSearch's
-                own overlay already covers the full viewport, so it doesn't
-                need the menu open first. */}
-            <div className="flex items-center gap-1 lg:hidden">
-              <SiteSearch />
+      {/* Nav bar — primary-600, full width, standing in for the reference's
+          orange bar. On mobile this is the ONLY bar (top info bar is
+          hidden), so it carries the logo + hamburger there instead of the
+          desktop nav row. */}
+      <div className="bg-primary-600">
+        <div className="mx-auto flex h-[54px] max-w-7xl items-center px-6 lg:h-[46px] lg:px-8">
+          {/* Mobile: logo + search + hamburger */}
+          <div className="flex w-full items-center justify-between lg:hidden">
+            <Link href="/" onClick={() => setOpen(false)} className="flex-shrink-0">
+              <KemproLogo variant="dark" size={30} />
+            </Link>
+            <div className="flex items-center gap-1">
+              <SiteSearch triggerClassName="flex items-center justify-center rounded-md p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white" />
               <button
                 type="button"
-                className="flex items-center justify-center rounded-md p-2 text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-primary-600"
+                className="flex items-center justify-center rounded-md p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
                 aria-expanded={open}
                 aria-label={open ? t("closeMenu") : t("openMenu")}
                 onClick={() => setOpen((v) => !v)}
@@ -99,34 +92,60 @@ export function Header() {
             </div>
           </div>
 
-          {open ? (
-            <div className="border-t border-neutral-200 bg-white lg:hidden">
-              <div className="flex flex-col gap-1 px-6 py-4">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="rounded-md px-3 py-2.5 text-base font-medium text-neutral-700 hover:bg-neutral-50 hover:text-primary-600"
-                    onClick={() => setOpen(false)}
-                  >
-                    {t(item.key)}
-                  </Link>
-                ))}
-                <div className="mt-2 flex items-center justify-between px-3">
-                  <LocaleSwitcher />
-                </div>
+          {/* Desktop: full-width nav row, each item its own full-height tab
+              so the active one can get a solid background block (the
+              reference's highlighted current-section tab) instead of just
+              an underline/color change. */}
+          <nav className="hidden h-full items-stretch lg:flex">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
                 <Link
-                  href="/contacto"
-                  onClick={() => setOpen(false)}
-                  className={`${ctaButtonClasses} mt-3 w-full px-[20px] py-[10px]`}
+                  key={item.href}
+                  href={item.href}
+                  className={`flex items-center px-5 text-sm font-semibold uppercase tracking-wide transition-colors ${
+                    isActive ? "bg-primary-800 text-white" : "text-white/85 hover:bg-primary-700"
+                  }`}
                 >
-                  {t("cta")}
+                  {t(item.key)}
                 </Link>
-              </div>
-            </div>
-          ) : null}
+              );
+            })}
+          </nav>
         </div>
       </div>
+
+      {open ? (
+        <div className="border-t border-primary-700 bg-primary-600 lg:hidden">
+          <div className="flex flex-col gap-1 px-6 py-4">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`rounded-md px-3 py-2.5 text-base font-medium transition-colors ${
+                    isActive ? "bg-primary-800 text-white" : "text-white/85 hover:bg-primary-700"
+                  }`}
+                  onClick={() => setOpen(false)}
+                >
+                  {t(item.key)}
+                </Link>
+              );
+            })}
+            <div className="mt-2 flex items-center justify-between px-3">
+              <LocaleSwitcher dark />
+            </div>
+            <Link
+              href="/contacto"
+              onClick={() => setOpen(false)}
+              className={`${ctaButtonClasses} mt-3 w-full px-[20px] py-[10px]`}
+            >
+              {t("cta")}
+            </Link>
+          </div>
+        </div>
+      ) : null}
     </header>
   );
 }

@@ -89,7 +89,7 @@ export default async function BlogPostPage({
           live below, in the white block with the indigo divider, not
           overlaid on this image — see the FadeIn right after this
           section closes. */}
-      <section className="relative -mt-[54px] flex flex-col justify-center overflow-hidden rounded-xl pt-[54px] lg:-mt-[70px] lg:min-h-[328px] lg:pt-[70px]">
+      <section className="relative -mt-[54px] flex flex-col justify-center overflow-hidden rounded-xl pt-[54px] lg:-mt-[90px] lg:min-h-[328px] lg:pt-[90px]">
         <CategoryFallbackBackground
           categoryKey={post.categoryKey}
           className="absolute inset-0 h-full w-full"

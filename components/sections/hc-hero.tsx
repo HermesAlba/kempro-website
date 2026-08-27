@@ -23,7 +23,7 @@ export function HcHero({
     // renders its children twice, clipped to each half), so the real
     // breadcrumb/heading content is a separate sibling layered on top, not
     // passed through it.
-    <section className="-mt-[54px] pt-[54px] lg:-mt-[70px] lg:pt-[70px]">
+    <section className="-mt-[54px] pt-[54px] lg:-mt-[90px] lg:pt-[90px]">
       <div className="relative min-h-[420px] overflow-hidden sm:min-h-[480px] lg:min-h-[560px]">
         <JoiningHalves
           className="absolute inset-0"

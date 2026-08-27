@@ -8,7 +8,7 @@ import { getBlogPost, getBlogPosts } from "@/lib/data/blog";
 import { getService, getServices } from "@/lib/data/services";
 import { getCaseStudy, getCaseStudies } from "@/lib/data/case-studies";
 
-export function LocaleSwitcher() {
+export function LocaleSwitcher({ dark = false }: { dark?: boolean }) {
   const t = useTranslations("LocaleSwitcher");
   const locale = useLocale() as Locale;
   const router = useRouter();
@@ -92,7 +92,7 @@ export function LocaleSwitcher() {
       {routing.locales.map((loc, index) => (
         <span key={loc} className="flex items-center gap-1.5">
           {index > 0 ? (
-            <span className="text-neutral-300" aria-hidden="true">
+            <span className={dark ? "text-white/30" : "text-neutral-300"} aria-hidden="true">
               |
             </span>
           ) : null}
@@ -101,9 +101,13 @@ export function LocaleSwitcher() {
             onClick={() => handleChange(loc)}
             aria-current={locale === loc}
             className={`uppercase transition-colors ${
-              locale === loc
-                ? "font-semibold text-dark-800"
-                : "text-neutral-400 hover:text-neutral-600"
+              dark
+                ? locale === loc
+                  ? "font-semibold text-white"
+                  : "text-white/60 hover:text-white"
+                : locale === loc
+                  ? "font-semibold text-dark-800"
+                  : "text-neutral-400 hover:text-neutral-600"
             }`}
           >
             {loc}

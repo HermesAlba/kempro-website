@@ -66,7 +66,7 @@ export default async function ServiceDetailPage({
           bottom-right) instead of a flat tint — same treatment as the
           /servicios listing hero (see gradient prop on PageHero) and the
           case-study detail hero. */}
-      <section className="relative -mt-[54px] overflow-hidden bg-white pb-16 pt-[118px] lg:-mt-[70px] lg:pt-[150px]">
+      <section className="relative -mt-[54px] overflow-hidden bg-white pb-16 pt-[118px] lg:-mt-[90px] lg:pt-[170px]">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0"

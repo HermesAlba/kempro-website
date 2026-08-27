@@ -94,14 +94,14 @@ export function SiteSearch({ triggerClassName }: { triggerClassName?: string }) 
   const inputRef = useRef<HTMLInputElement>(null);
   // The overlay below is rendered via a portal straight into document.body
   // (see the createPortal call at the bottom of this component) instead of
-  // in place — the header card it would otherwise nest inside uses both
-  // backdrop-blur-md and overflow-hidden, and CSS spec has any non-none
-  // filter/backdrop-filter establish a new containing block for fixed-
-  // position descendants; combined with overflow-hidden that silently clips
-  // this modal down to the header's own ~54-70px strip instead of covering
-  // the viewport. Portals sidestep that regardless of what any future
-  // ancestor's own CSS does. mounted gates the portal to the client only,
-  // since document.body doesn't exist during SSR.
+  // in place — rendering this modal in place would tie it to whatever
+  // ancestor CSS the header happens to have (e.g. a past version used
+  // backdrop-blur-md + overflow-hidden, which clips fixed-position
+  // descendants down to the header's own ~54-90px strip via CSS's
+  // containing-block rules instead of covering the viewport). Portals
+  // sidestep that regardless of what any future ancestor's own CSS does.
+  // mounted gates the portal to the client only, since document.body
+  // doesn't exist during SSR.
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

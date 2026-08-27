@@ -25,7 +25,7 @@ export function PageHero({
     // (original py-16/sm:py-24 plus the offset), so the heading's position
     // is unchanged while the background reaches the very top of the screen.
     <section
-      className={`relative -mt-[54px] overflow-hidden border-b border-neutral-200 ${gradient ? "bg-white" : "bg-primary-50/50"} pb-16 pt-[118px] sm:pb-24 sm:pt-[150px] lg:-mt-[70px] lg:pt-[166px]`}
+      className={`relative -mt-[54px] overflow-hidden border-b border-neutral-200 ${gradient ? "bg-white" : "bg-primary-50/50"} pb-16 pt-[118px] sm:pb-24 sm:pt-[150px] lg:-mt-[90px] lg:pt-[186px]`}
     >
       {gradient && (
         <div
