@@ -5,7 +5,6 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FadeIn } from "@/components/ui/fade-in";
 import { Link } from "@/i18n/navigation";
-import { ctaButtonClasses } from "@/components/ui/cta-button-classes";
 import { CaseCard } from "@/components/sections/case-card";
 
 // Three different industries and three different automation capabilities
@@ -27,9 +26,9 @@ export function FeaturedCaseStudies() {
   );
 
   return (
-    <section className="border-t border-neutral-200 bg-primary-50/50 py-20 sm:py-28">
+    <section className="bg-black py-20 sm:py-28">
       <Container>
-        <SectionHeading title={t("title")} subtitle={t("subtitle")} />
+        <SectionHeading title={t("title")} subtitle={t("subtitle")} light />
         {/* Same lg-only fixed-width fix as all-case-studies-grid.tsx — see
             its comment for why the fixed-only version overflowed mobile. */}
         <div className="mt-14 grid grid-cols-1 justify-center gap-x-[30px] gap-y-8 sm:grid-cols-2 lg:grid-cols-[repeat(3,342px)]">
@@ -44,7 +43,16 @@ export function FeaturedCaseStudies() {
           ))}
         </div>
         <div className="mt-12 text-center">
-          <Link href="/casos-de-exito" className={`${ctaButtonClasses} h-[35px] px-[20px] py-[10px]`}>
+          {/* Explicit classes instead of ctaButtonClasses (bg-neutral-900):
+              on this section's bg-black that button is nearly invisible
+              until hover, the same unfixed issue documented in
+              cta-band.tsx. Solid primary-600 matches the CTA treatment
+              already used on dark/colored sections (WhatWeDo,
+              LovingWhatWeDo). */}
+          <Link
+            href="/casos-de-exito"
+            className="inline-flex h-[35px] items-center justify-center gap-2 rounded-[6px] bg-primary-600 px-[20px] text-[13px] tracking-[-0.02em] text-white transition-colors hover:bg-primary-700"
+          >
             {t("homeCta")}
           </Link>
         </div>
