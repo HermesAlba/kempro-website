@@ -119,8 +119,14 @@ export function ContactForm({
     }
   }
 
+  // The "dark" variant sits on the solid bg-[#5D5FEF] panel on /contacto
+  // (see that page's AccentSide-style column). A translucent field there
+  // read poorly against the saturated purple, so it uses a solid white
+  // field instead — same treatment as the light variant's input, just with
+  // a soft shadow to read as "lifted" off the purple rather than blending
+  // into the light variant's own white page background.
   const inputClasses = dark
-    ? "mt-1.5 block w-full rounded-lg border border-white/40 bg-white/[0.18] px-3.5 py-2 text-[13px] text-white placeholder:text-neutral-700 focus:border-white focus:outline-none focus:ring-2 focus:ring-white/40"
+    ? "mt-1.5 block w-full rounded-lg border border-transparent bg-white px-3.5 py-2 text-[13px] text-neutral-900 shadow-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-white/60"
     : "mt-1.5 block w-full rounded-lg border border-neutral-300 bg-white px-3.5 py-2 text-[13px] text-neutral-900 placeholder:text-neutral-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30";
   const labelClasses = dark
     ? "text-[13px] font-semibold text-white/90"
