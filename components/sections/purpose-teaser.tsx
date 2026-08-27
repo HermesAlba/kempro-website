@@ -35,30 +35,22 @@ export function PurposeTeaser() {
           </FadeIn>
 
           {/* Reduced version of the gradient block used on the Sobre
-              nosotros / SN hero (same #5D5FEF→#4949D6 gradient, grid
-              pattern, and white icon tile) — establishes the same visual
-              identity without duplicating the full-size hero treatment. */}
+              nosotros / SN hero (same #5D5FEF→#4949D6 gradient) —
+              establishes the same visual identity without duplicating the
+              full-size hero treatment. Flat indigo only (no grid-line
+              overlay, no white icon tile) per request — the mark sits
+              directly on the gradient, scaled up to read as the block's
+              main visual instead of a small centered icon. */}
           <FadeIn direction="right" delay={100} className="mx-auto aspect-square w-full max-w-[420px]">
             <JoiningHalves
-              className="relative h-full w-full overflow-hidden rounded-xl"
+              className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-xl"
               style={{ backgroundImage: "linear-gradient(135deg, #5D5FEF 0%, #4949D6 100%)" }}
             >
-              <div
-                className="absolute inset-0"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)," +
-                    "linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px)",
-                  backgroundSize: "64px 64px",
-                }}
+              <KemproLogo
+                variant="standalone"
+                size={220}
+                className="h-[45%] w-[45%]"
               />
-              <div className="absolute left-1/2 top-1/2 flex h-[100px] w-[100px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl border border-white/20 bg-white sm:h-[120px] sm:w-[120px]">
-                <KemproLogo
-                  variant="standalone"
-                  size={72}
-                  className="h-[50px] w-[50px] sm:h-[60px] sm:w-[60px]"
-                />
-              </div>
             </JoiningHalves>
           </FadeIn>
         </div>
