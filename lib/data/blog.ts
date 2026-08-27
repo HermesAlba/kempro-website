@@ -957,6 +957,158 @@ const data: {
       ],
     },
   },
+  {
+    id: "chatgpt-work-vs-claude-cowork",
+    slug: {
+      es: "chatgpt-work-vs-claude-cowork",
+      en: "chatgpt-work-vs-claude-cowork",
+    },
+    date: "2026-08-16",
+    author: "Marketing Kempro",
+    title: {
+      es: "ChatGPT Work vs. Claude Cowork: qué hay de nuevo y qué ya resolvía Cowork",
+      en: "ChatGPT Work vs. Claude Cowork: what's actually new and what Cowork already solved",
+    },
+    excerpt: {
+      es: "Un video viral compara el nuevo modo de trabajo de ChatGPT con un salto histórico. Lo comparamos función por función con Claude Cowork, incluyendo el modelo de seguridad detrás de cada uno.",
+      en: "A viral video compares ChatGPT's new work mode to a historic leap. We compare it feature by feature with Claude Cowork — including the safety model behind each one.",
+    },
+    category: { es: "Tendencias", en: "Trends" },
+    categoryKey: "tendencias",
+    readingTime: { es: "8 min de lectura", en: "8 min read" },
+    content: {
+      es: [
+        {
+          type: "paragraph",
+          text: "Hace unos días, el creador de contenido español Gustavo Entrala publicó un video donde presenta en vivo la nueva versión de escritorio de ChatGPT, con un tono de entusiasmo poco habitual en él: la describe como uno de esos saltos tecnológicos que solo se ven cada varios años, comparable a la llegada del iPhone. Lo interesante para quienes trabajamos a diario con herramientas de IA es que él mismo señala, casi de pasada, que este nuevo modo de trabajo de ChatGPT está inspirado en un producto que Anthropic lanzó meses antes: Claude Cowork.",
+        },
+        {
+          type: "paragraph",
+          text: "Eso despertó la pregunta obvia: si ChatGPT acaba de incorporar estas capacidades y se presenta como una revolución, ¿qué tan distinto es realmente de lo que Cowork ya permite hacer desde hace tiempo? Vale la pena comparar punto por punto.",
+        },
+        { type: "heading", text: "Voz y control del ordenador" },
+        {
+          type: "paragraph",
+          text: "En la demo, Entrala le pide a ChatGPT por voz que revise un correo, investigue información de contexto y deje una respuesta lista en Gmail sin tocar el teclado. Es una interacción fluida, casi conversacional, y él mismo advierte —con razón— que dar acceso total del ordenador a una IA implica riesgos de seguridad que hay que manejar con responsabilidad.",
+        },
+        {
+          type: "paragraph",
+          text: 'Cowork no tiene todavía un modo de voz nativo equivalente al que muestra ChatGPT; ahí OpenAI lleva ventaja en esa interacción puntual. Pero en el terreno del control del ordenador, Cowork resuelve el problema de seguridad que Entrala menciona de una forma distinta: no se trata de "dar acceso total y confiar", sino de un sistema de permisos por niveles. Un navegador conectado, por ejemplo, se puede ver pero no se puede hacer clic sin habilitarlo explícitamente; una terminal se puede observar y ejecutar comandos puntuales, pero no recibe pulsaciones de teclado libres; cualquier acción irreversible —enviar un correo, publicar algo, comprar, aceptar un formulario— requiere que la persona lo confirme antes de que ocurra. No es que Cowork sea menos capaz; es que reparte el riesgo de forma distinta desde el diseño, en lugar de dejarlo completamente en manos del usuario.',
+        },
+        { type: "heading", text: "Redactar y dejar correos listos" },
+        {
+          type: "paragraph",
+          text: "Uno de los primeros ejemplos de la demo es pedirle a ChatGPT que prepare un correo y lo deje como borrador en Gmail, sin enviarlo. Es exactamente el mismo principio que ya aplica Cowork con su conector de Gmail: puede leer hilos, investigar contexto y armar una respuesta, pero la deja como borrador — enviarla requiere una confirmación explícita de la persona. La diferencia no está en la funcionalidad, sino en que este comportamiento no es opcional en Cowork: ninguna herramienta conectada puede enviar un mensaje en nombre del usuario sin ese paso de aprobación.",
+        },
+        { type: "heading", text: "Tareas que se repiten solas" },
+        {
+          type: "paragraph",
+          text: 'Entrala muestra cómo configura un informe diario de noticias sobre IA que le llega todas las mañanas a las 10, algo que antes —según cuenta— requería montar un orquestador de agentes aparte. Cowork resuelve esto con tareas programadas nativas: se puede pedir que algo se ejecute una sola vez en el futuro ("recuérdame esto mañana a las 3") o de forma recurrente ("cada mañana a las 8, revisa y resume"), sin necesidad de infraestructura adicional. Es, en la práctica, el mismo tipo de automatización que él celebra como novedad.',
+        },
+        { type: "heading", text: "Documentos, presentaciones y hojas de cálculo" },
+        {
+          type: "paragraph",
+          text: "En la parte que más impresiona de la demo, le pide a ChatGPT que analice un video suyo y genere automáticamente una presentación de varias diapositivas, guardada en su carpeta local. Cowork tiene un equivalente directo: puede generar documentos de Word, presentaciones de PowerPoint, hojas de cálculo de Excel y PDFs de forma nativa, a partir de contenido ya investigado o proporcionado, y entregarlos como archivos reales que la persona puede abrir, editar y compartir — no como texto plano dentro del chat.",
+        },
+        {
+          type: "paragraph",
+          text: "El ejercicio de rastrear el correo en busca de facturas y armar una hoja de cálculo con los montos y enlaces a cada una —otro de los momentos fuertes del video— también es replicable con la combinación de búsqueda en el conector de correo más generación de hojas de cálculo, sin pasos intermedios manuales.",
+        },
+        { type: "heading", text: "Análisis de datos y de negocio" },
+        {
+          type: "paragraph",
+          text: "Cuando Entrala le pide a ChatGPT que analice su YouTube Studio para identificar qué videos atraen más audiencia joven, está usando la IA como analista de datos conectado a una fuente real. Es el mismo principio detrás de los conectores de Cowork: una vez vinculada una herramienta (ya sea analítica, un CRM, una base de datos), se le pueden hacer preguntas de negocio directas y obtener respuestas basadas en los datos reales, no en suposiciones genéricas.",
+        },
+        { type: "heading", text: "Lo que la demo tiene y Cowork, por ahora, no" },
+        {
+          type: "paragraph",
+          text: "Hay que ser honesto en la comparación: el ajuste de color dentro de Final Cut Pro que muestra al final —donde la IA manipula directamente los controles de una aplicación de edición de video profesional— es un terreno donde Cowork es más conservador. El control de aplicaciones de escritorio en Cowork existe, pero está pensado sobre todo para navegación web, apps nativas de productividad y flujos de trabajo de oficina, con las mismas barreras de permisos ya mencionadas; no es el objetivo principal usarlo para edición creativa avanzada, y probablemente no debería serlo sin más salvaguardas de las que existen hoy en cualquier producto de este tipo.",
+        },
+        { type: "heading", text: "La diferencia de fondo" },
+        {
+          type: "paragraph",
+          text: "Más allá de la lista de funciones, lo que separa a los dos enfoques es filosófico. Entrala plantea el salto de ChatGPT como una cuestión de capacidad: ahora puede hacer más cosas dentro del ordenador. Cowork nació resolviendo primero la pregunta de qué tan seguro es delegarle esas cosas a una IA, y construyó el permiso, la confirmación y los límites como parte del producto desde el inicio, no como un añadido posterior.",
+        },
+        {
+          type: "paragraph",
+          text: "En Kempro nos encontramos con esta misma disyuntiva cada vez que asesoramos a un cliente sobre qué herramienta de IA adoptar: la pregunta nunca es solo qué tan potente es la tecnología, sino qué tan bien su modelo de permisos y confirmación encaja con el nivel de gobierno que la organización realmente tiene. Es la misma lógica de diagnóstico antes de prescripción que aplicamos en cualquier proyecto, ahora aplicada a elegir entre estos dos enfoques.",
+        },
+        {
+          type: "paragraph",
+          text: "En cuanto a precio, ambos productos siguen un modelo de suscripción por niveles: OpenAI ofrece esta capacidad completa en sus planes de pago más altos, mientras que Cowork viene incluido dentro de los planes Pro y Max de Claude, con la diferencia entre niveles definida principalmente por el volumen de uso disponible, no por qué funciones están habilitadas. Vale la pena confirmar los precios vigentes directamente en el sitio de cada compañía antes de decidir, ya que estos modelos cambian con frecuencia.",
+        },
+        {
+          type: "paragraph",
+          text: 'Al final, el video de Entrala confirma algo que probablemente ya intuíamos: el "chat que responde preguntas" quedó atrás. La conversación ahora es sobre qué tanto control le damos a un agente sobre nuestras herramientas de trabajo, y quién se hace responsable de que ese control se use bien.',
+        },
+      ],
+      en: [
+        {
+          type: "paragraph",
+          text: "A few days ago, Spanish content creator Gustavo Entrala published a video where he demos the new ChatGPT desktop version live, with a level of enthusiasm that's unusual for him: he describes it as one of those technological leaps that only come around every few years, comparable to the arrival of the iPhone. What's interesting for those of us who work with AI tools daily is that he himself points out, almost in passing, that this new ChatGPT work mode is inspired by a product Anthropic shipped months earlier: Claude Cowork.",
+        },
+        {
+          type: "paragraph",
+          text: "That raises the obvious question: if ChatGPT just added these capabilities and is being presented as a revolution, how different is it really from what Cowork has already been able to do for a while? It's worth comparing them point by point.",
+        },
+        { type: "heading", text: "Voice and computer control" },
+        {
+          type: "paragraph",
+          text: "In the demo, Entrala asks ChatGPT by voice to review an email, research background context, and leave a ready-to-send reply in Gmail without touching the keyboard. It's a fluid, almost conversational interaction, and he himself notes — rightly — that giving an AI full access to your computer carries security risks that need to be handled responsibly.",
+        },
+        {
+          type: "paragraph",
+          text: 'Cowork doesn\'t yet have a native voice mode equivalent to what ChatGPT shows here — OpenAI has the edge in that specific interaction. But when it comes to computer control, Cowork addresses the security problem Entrala raises in a different way: it\'s not about "granting full access and trusting it," but a tiered permission system. A connected browser, for example, can be viewed but not clicked without explicitly enabling it; a terminal can be watched and run specific commands, but doesn\'t receive free-form keystrokes; any irreversible action — sending an email, publishing something, making a purchase, submitting a form — requires the person to confirm it before it happens. It\'s not that Cowork is less capable; it\'s that it distributes risk differently by design, instead of leaving it entirely in the user\'s hands.',
+        },
+        { type: "heading", text: "Drafting and leaving emails ready to send" },
+        {
+          type: "paragraph",
+          text: "One of the first examples in the demo is asking ChatGPT to prepare an email and leave it as a draft in Gmail, unsent. It's exactly the same principle already built into Cowork's Gmail connector: it can read threads, research context, and put together a reply, but leaves it as a draft — sending it requires explicit approval from the person. The difference isn't in the functionality; it's that this behavior isn't optional in Cowork: no connected tool can send a message on the user's behalf without that approval step.",
+        },
+        { type: "heading", text: "Tasks that repeat on their own" },
+        {
+          type: "paragraph",
+          text: 'Entrala shows how he sets up a daily AI news digest that arrives every morning at 10, something that previously — by his own account — required setting up a separate agent orchestrator. Cowork solves this with native scheduled tasks: you can ask for something to run once in the future ("remind me about this tomorrow at 3") or on a recurring basis ("every morning at 8, check and summarize"), with no extra infrastructure needed. In practice, it\'s the same kind of automation he\'s celebrating as new.',
+        },
+        { type: "heading", text: "Documents, presentations, and spreadsheets" },
+        {
+          type: "paragraph",
+          text: "In the most impressive part of the demo, he asks ChatGPT to analyze one of his videos and automatically generate a multi-slide presentation, saved to his local folder. Cowork has a direct equivalent: it can natively generate Word documents, PowerPoint presentations, Excel spreadsheets, and PDFs from already-researched or provided content, and deliver them as real files the person can open, edit, and share — not as plain text inside the chat.",
+        },
+        {
+          type: "paragraph",
+          text: "The exercise of scanning email for invoices and building a spreadsheet with the amounts and a link to each one — another standout moment in the video — is also replicable by combining the email connector's search with spreadsheet generation, with no manual steps in between.",
+        },
+        { type: "heading", text: "Data and business analysis" },
+        {
+          type: "paragraph",
+          text: "When Entrala asks ChatGPT to analyze his YouTube Studio to identify which videos attract more of a younger audience, he's using the AI as a data analyst connected to a real source. It's the same principle behind Cowork's connectors: once a tool is linked — whether an analytics platform, a CRM, or a database — you can ask direct business questions and get answers grounded in real data, not generic assumptions.",
+        },
+        { type: "heading", text: "What the demo has that Cowork doesn't, for now" },
+        {
+          type: "paragraph",
+          text: "It's worth being honest in this comparison: the color grading inside Final Cut Pro shown at the end — where the AI directly manipulates the controls of a professional video-editing application — is territory where Cowork is more conservative. Desktop app control exists in Cowork, but it's designed mainly for web browsing, native productivity apps, and office workflows, under the same permission barriers already mentioned; using it for advanced creative editing isn't really the goal, and it probably shouldn't be without more safeguards than exist today in any product of this kind.",
+        },
+        { type: "heading", text: "The underlying difference" },
+        {
+          type: "paragraph",
+          text: "Beyond the feature checklist, what separates the two approaches is philosophical. Entrala frames ChatGPT's leap as a matter of capability: it can now do more inside the computer. Cowork was built by first solving the question of how safe it is to hand those things to an AI, and built permission, confirmation, and limits into the product from the start, not as something bolted on afterward.",
+        },
+        {
+          type: "paragraph",
+          text: "At Kempro we run into this exact tension every time we advise a client on which AI tool to adopt: the question is never just how powerful the technology is, but how well its permission and confirmation model fits the level of governance the organization actually has. It's the same diagnose-before-prescribe logic we apply to any project, now applied to choosing between these two approaches.",
+        },
+        {
+          type: "paragraph",
+          text: "On pricing, both products follow a tiered subscription model: OpenAI offers this full capability in its higher-tier paid plans, while Cowork comes included within Claude's Pro and Max plans, with the difference between tiers defined mainly by available usage volume rather than which features are unlocked. It's worth confirming current pricing directly on each company's site before deciding, since these models change frequently.",
+        },
+        {
+          type: "paragraph",
+          text: 'In the end, Entrala\'s video confirms something we probably already suspected: the "chatbot that answers questions" is behind us. The conversation now is about how much control we hand an agent over our work tools — and who\'s responsible for making sure that control gets used well.',
+        },
+      ],
+    },
+  },
 ];
 
 // Every post must define a slug for every supported locale (see the
