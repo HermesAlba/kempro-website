@@ -21,14 +21,18 @@ export function ProcessSteps({
     <ol className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {steps.map((step, index) => (
         <FadeIn key={step.title} delay={index * 100}>
-          <li className="h-full rounded-2xl border border-primary-800 bg-primary-900 p-6">
-            <span className="text-[13px] font-semibold uppercase tracking-wide text-primary-300">
+          {/* Same indigo used for the blog's newsletter band (see the
+              gradient section in app/[locale]/blog/page.tsx) — #5D5FEF is
+              also primary-600, so this reuses a color already established
+              elsewhere on the site instead of introducing a new one. */}
+          <li className="h-full rounded-2xl bg-primary-600 p-6">
+            <span className="text-[13px] font-semibold uppercase tracking-wide text-primary-100">
               {phaseLabel} 0{index + 1}
             </span>
             <h3 className="mt-3 text-xl font-bold text-white">
               {step.title}
             </h3>
-            <p className="mt-3 text-[14px] leading-relaxed text-primary-100/80">
+            <p className="mt-3 text-[14px] leading-relaxed text-white/80">
               {step.description}
             </p>
           </li>
