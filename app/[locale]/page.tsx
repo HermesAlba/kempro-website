@@ -39,16 +39,15 @@ export default async function HomePage({
     <>
       {/* Hero + ClientLogos are wrapped to fill exactly one viewport
           (minus the floating nav's own height, see HEADER_OFFSET in
-          components/layout/header.tsx), so ServicesOverview's title never
-          peeks above the fold. Hero (flex-1) absorbs the leftover space and
-          centers its own content within it; ClientLogos keeps its natural
-          height and sits flush at the bottom of the block. Hero owns its
-          own background (gradient + dot pattern), ending exactly at its own
-          bottom edge — i.e. right where this carousel starts — per
-          request. */}
+          components/layout/header.tsx). Hero (flex-1) absorbs the leftover
+          space; ClientLogos keeps its natural height and sits flush at the
+          bottom of the block. Hero's own black background ends exactly at
+          its own bottom edge — i.e. right where this carousel starts —
+          per request; the carousel gets an indigo accent bottom border
+          instead (accentBottomBorder) to mark where it ends. */}
       <div className="flex flex-col md:min-h-[calc(100vh-81px)] lg:min-h-[calc(100vh-207px)]">
         <Hero />
-        <ClientLogos />
+        <ClientLogos accentBottomBorder />
       </div>
       {/* WhatWeDo: Knife River's "WHAT WE DO" block (2-col: title/tagline/
           body/CTA + 2x2 grid of service cards), on Kempro's indigo brand
