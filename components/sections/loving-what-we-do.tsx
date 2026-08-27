@@ -35,8 +35,8 @@ import { Container } from "@/components/ui/container";
 // - Section padding-bottom: 80px (KR's own section padding, `0 15px
 //   80px`), kept as the gap before the next block.
 //
-// Per request the block's background is black — matching KR's own dark
-// panel — so title/subtitle use white/light-neutral text for legibility.
+// Per request the block's background is white, so title/subtitle use dark
+// neutrals for legibility.
 //
 // Photo: a light office-desk flat lay (Envato Elements, Tirachard),
 // chosen per request for a sober, non-abstract, people-free image. Even
@@ -47,7 +47,7 @@ export function LovingWhatWeDo() {
   const t = useTranslations("Home.lovingWhatWeDo");
 
   return (
-    <section className="bg-black lg:pb-[80px]">
+    <section className="bg-white lg:pb-[80px]">
       <Container>
         <div className="flex flex-col lg:h-[430px] lg:flex-row">
           <div className="relative aspect-[6/5] w-full lg:aspect-auto lg:h-full lg:w-1/2 lg:flex-shrink-0">
@@ -62,10 +62,10 @@ export function LovingWhatWeDo() {
             </div>
           </div>
           <div className="flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:w-1/2 lg:px-[50px] lg:py-0">
-            <h2 className="whitespace-nowrap text-[32px] font-extrabold uppercase leading-[1.1] text-white sm:text-[40px]">
+            <h2 className="whitespace-nowrap text-[32px] font-extrabold uppercase leading-[1.1] text-neutral-900 sm:text-[40px]">
               {t("title")}
             </h2>
-            <p className="mt-5 max-w-[440px] text-[16px] leading-[24px] text-neutral-300">
+            <p className="mt-5 max-w-[440px] text-[16px] leading-[24px] text-neutral-600">
               {t("subtitle")}
             </p>
             <div className="mt-[35px]">
