@@ -46,11 +46,16 @@ export function Hero() {
               wrap count) so the English version — shorter, so it wraps to
               fewer lines — still occupies the same height; `lh` scales
               with each element's own line-height, so this holds at every
-              breakpoint without hardcoding per-breakpoint pixel values. */}
-          <h1 className="min-h-[3lh] text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
+              breakpoint without hardcoding per-breakpoint pixel values.
+              lg size (70px) matches Knife River's own hero title size
+              exactly (measured via getComputedStyle: 70px/800/Montserrat —
+              only the size is matched here, not the weight/family). */}
+          <h1 className="min-h-[3lh] text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-[70px]">
             {t("title")}
           </h1>
-          <p className="mt-4 min-h-[3lh] text-lg text-neutral-700 sm:text-xl">
+          {/* 18px at every breakpoint — matches Knife River's own hero
+              subtitle size exactly (measured: 18px/400/Montserrat). */}
+          <p className="mt-4 min-h-[3lh] text-[18px] text-neutral-700">
             {t("subtitle")}
           </p>
         </FadeIn>
