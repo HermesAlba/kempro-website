@@ -129,7 +129,7 @@
       },
       {
         "title": "Diseño",
-        "description": "Aquí definimos cómo se va a construir. Cada solución queda especificada con arquitectura técnica, indicadores de éxito medibles y un plan de implementación por fases, pensado para los sistemas que tu equipo ya usa. Sin plantillas genéricas ni soluciones prefabricadas — cada decisión de diseño responde a tu operación real, no a un caso de uso promedio."
+        "description": "Definimos arquitectura, indicadores de éxito y un plan por fases —sin plantillas genéricas, a la medida de tu operación."
       },
       {
         "title": "Implementación",

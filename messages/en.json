@@ -129,7 +129,7 @@
       },
       {
         "title": "Design",
-        "description": "This is where we define how it gets built. Every solution is specified with a technical architecture, measurable success metrics, and a phased implementation plan, built around the systems your team already uses. No generic templates or off-the-shelf solutions — every design decision responds to your real operation, not an average use case."
+        "description": "We define the architecture, success metrics, and a phased plan —no generic templates, built around your operation."
       },
       {
         "title": "Implementation",
