@@ -32,11 +32,13 @@ export function ProcessSteps({
         const PhaseIcon = PHASE_ICONS[index];
         return (
           <FadeIn key={step.title} delay={index * 100}>
-            {/* Same indigo used for the blog's newsletter band (see the
-                gradient section in app/[locale]/blog/page.tsx) — #5D5FEF is
-                also primary-600, so this reuses a color already established
-                elsewhere on the site instead of introducing a new one. */}
-            <li className="relative h-full overflow-hidden rounded-2xl bg-primary-600 p-6">
+            {/* primary-700 (#4949D6) — the darker end of the blog's
+                newsletter gradient (see app/[locale]/blog/page.tsx) and the
+                site's CTA-button hover color. Deliberately NOT primary-600,
+                since that's the logo's own mark color (KEMPRO_PRIMARY in
+                lib/kempro-symbol.ts) — using it here would compete with the
+                logo instead of just reusing an established brand tone. */}
+            <li className="relative h-full overflow-hidden rounded-2xl bg-primary-700 p-6">
               {/* Decorative watermark icon, one per phase — large,
                   low-opacity, and clipped by the card's own overflow-hidden
                   so it reads as a subtle background texture rather than a
