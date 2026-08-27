@@ -25,11 +25,14 @@ export function Hero() {
           sand at the very top fading to white by the bottom of this
           section, i.e. right before ClientLogos, since this section is
           flex-1 and fills the rest of the Hero+ClientLogos viewport-height
-          wrapper (see app/[locale]/page.tsx). */}
+          wrapper (see app/[locale]/page.tsx). Richer/more saturated than
+          the first pass, and fades out later (55% vs. 45%) — the original
+          was so light the white dot grid below barely showed; this keeps
+          it visible over more of the section. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
-        style={{ backgroundImage: "linear-gradient(to bottom, #F2E4CC 0%, #FAF4E9 45%, white 100%)" }}
+        style={{ backgroundImage: "linear-gradient(to bottom, #E3C089 0%, #F0DCB8 55%, white 100%)" }}
       />
       {/* White-dot grid, on its own layer (separate from the gradient
           above) so its background-position can animate independently —
