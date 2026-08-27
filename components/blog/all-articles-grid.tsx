@@ -26,11 +26,19 @@ export function ArticleCard({
   index,
   basePath,
   roundedImages,
+  dark,
 }: {
   post: ArticleGridItem;
   index: number;
   basePath: "/blog" | "/casos-de-exito";
   roundedImages?: boolean;
+  /** Switches the title/excerpt/date text to white/light-neutral for use
+   * on a dark section background — the card itself has no background
+   * panel of its own (unlike CaseCard's white box), so its text sits
+   * directly on the parent section's background. Used by LatestArticles
+   * on Home's black "Ideas y casos de uso" section only; AllArticlesGrid
+   * (blog/casos-de-exito listing pages) stays on the default white. */
+  dark?: boolean;
 }) {
   const locale = useLocale();
   const href =
@@ -65,14 +73,22 @@ export function ArticleCard({
             edge rather than pushing the card taller. */}
         <div className="flex h-1/2 flex-col gap-2 overflow-hidden pt-3">
           <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide">
-            <span style={{ color: textColor }}>{post.category}</span>
-            <span className="text-neutral-300">&bull;</span>
-            <span className="text-neutral-500">{date}</span>
+            <span style={dark ? undefined : { color: textColor }} className={dark ? "text-primary-300" : undefined}>
+              {post.category}
+            </span>
+            <span className={dark ? "text-white/30" : "text-neutral-300"}>&bull;</span>
+            <span className={dark ? "text-neutral-400" : "text-neutral-500"}>{date}</span>
           </p>
-          <h3 className="line-clamp-2 text-[18px] font-bold leading-snug text-neutral-900 transition-colors group-hover:text-primary-600">
+          <h3
+            className={`line-clamp-2 text-[18px] font-bold leading-snug transition-colors ${
+              dark
+                ? "text-white group-hover:text-primary-300"
+                : "text-neutral-900 group-hover:text-primary-600"
+            }`}
+          >
             {post.title}
           </h3>
-          <p className="line-clamp-3 text-[14px] leading-relaxed text-neutral-600">
+          <p className={`line-clamp-3 text-[14px] leading-relaxed ${dark ? "text-neutral-300" : "text-neutral-600"}`}>
             {post.excerpt}
           </p>
         </div>
