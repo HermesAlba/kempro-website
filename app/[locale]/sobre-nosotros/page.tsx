@@ -59,7 +59,7 @@ export default async function AboutPage({
               </h1>
             </FadeIn>
             <FadeIn delay={150}>
-              <p className="mt-4 max-w-[560px] text-[15px] leading-[1.7] text-neutral-600 sm:text-[16px]">
+              <p className="mt-4 max-w-[560px] text-[19px] font-medium leading-[1.5] text-neutral-800 sm:text-[22px]">
                 {t("hero.subtitle")}
               </p>
             </FadeIn>
