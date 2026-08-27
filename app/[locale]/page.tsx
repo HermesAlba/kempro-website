@@ -43,11 +43,11 @@ export default async function HomePage({
           space; ClientLogos keeps its natural height and sits flush at the
           bottom of the block. Hero's own black background ends exactly at
           its own bottom edge — i.e. right where this carousel starts —
-          per request; the carousel gets an indigo accent bottom border
-          instead (accentBottomBorder) to mark where it ends. */}
+          per request. Carousel border removed (border={false}) — per
+          request. */}
       <div className="flex flex-col md:min-h-[calc(100vh-81px)] lg:min-h-[calc(100vh-207px)]">
         <Hero />
-        <ClientLogos accentBottomBorder />
+        <ClientLogos border={false} />
       </div>
       {/* WhatWeDo: Knife River's "WHAT WE DO" block (2-col: title/tagline/
           body/CTA + 2x2 grid of service cards), on Kempro's indigo brand

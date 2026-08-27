@@ -55,7 +55,7 @@ export function ClientLogos({
   title,
   grayscale = false,
   background = "white",
-  accentBottomBorder = false,
+  border = true,
 }: {
   title?: string;
   /** Renders every logo in black-and-white instead of its original colors. */
@@ -64,14 +64,12 @@ export function ClientLogos({
    * "transparent" = no background/border of its own, so it blends into
    * whatever the page behind it already looks like. */
   background?: "white" | "transparent";
-  /** Renders the bottom border in Kempro's indigo instead of the default
-   * neutral-200 — marks where the carousel "ends" with a brand accent
-   * line. Used on Home only, per request. */
-  accentBottomBorder?: boolean;
+  /** Whether the "white" variant gets its top/bottom neutral-200 border.
+   * Set to false to render a plain white strip with no border — used on
+   * Home per request. */
+  border?: boolean;
 }) {
-  const borderClasses = accentBottomBorder
-    ? "border-t border-neutral-200 border-b-2 border-b-primary-600"
-    : "border-y border-neutral-200";
+  const borderClasses = border ? "border-y border-neutral-200" : "";
 
   return (
     <section className={background === "white" ? `${borderClasses} bg-white py-4` : "py-4"}>
