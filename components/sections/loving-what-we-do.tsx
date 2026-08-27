@@ -8,7 +8,12 @@ import { Link } from "@/i18n/navigation";
 //
 // Per request the block's total height is fixed at 11cm on desktop (lg+;
 // below that it stacks and reverts to natural/auto height, since a fixed
-// 11cm can't fit an image + text stacked on top of each other). The photo
+// 11cm can't fit an image + text stacked on top of each other). Built with
+// flexbox (not CSS Grid) specifically so the fixed height is guaranteed:
+// a flex row's items stretch to the row's own height by default — a
+// simple, unambiguous rule — rather than depending on a single implicit
+// grid row stretching to fill leftover space, which is a subtler
+// (spec-correct, but easy to get subtly wrong) mechanism. The photo
 // itself is 5mm taller than the block and absolutely positioned from the
 // top of its column, so it bleeds 5mm past the block's bottom edge —
 // Kempro's version of KR's own image-overhang treatment (KR's inner
@@ -32,8 +37,8 @@ export function LovingWhatWeDo() {
 
   return (
     <section className="bg-white">
-      <div className="grid lg:h-[11cm] lg:grid-cols-2">
-        <div className="relative aspect-[6/5] w-full lg:aspect-auto lg:h-full">
+      <div className="flex flex-col lg:h-[11cm] lg:flex-row">
+        <div className="relative aspect-[6/5] w-full lg:aspect-auto lg:w-1/2 lg:flex-shrink-0">
           <div className="absolute inset-x-0 top-0 h-full shadow-[0_20px_50px_-15px_rgba(0,0,0,0.25)] lg:h-[calc(100%+5mm)]">
             <Image
               src="/images/home/loving-what-we-do.jpg"
@@ -44,7 +49,7 @@ export function LovingWhatWeDo() {
             />
           </div>
         </div>
-        <div className="flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:px-[50px]">
+        <div className="flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:w-1/2 lg:px-[50px]">
           <h2 className="whitespace-nowrap text-[32px] font-extrabold uppercase leading-[1.1] text-neutral-900 sm:text-[40px]">
             {t("title")}
           </h2>
