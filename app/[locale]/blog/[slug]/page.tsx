@@ -9,6 +9,7 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { CategoryFallbackBackground } from "@/components/blog/category-fallback-backgrounds";
 import { BlockRenderer } from "@/components/blog/block-renderer";
 import { XIcon, YouTubeIcon } from "@/components/ui/icons";
+import { ctaButtonClasses } from "@/components/ui/cta-button-classes";
 
 const SITE_URL = "https://www.kempro.ai";
 
@@ -158,7 +159,7 @@ export default async function BlogPostPage({
                     </p>
                     <Link
                       href="/contacto"
-                      className="inline-flex items-center gap-2 rounded-[6px] bg-primary-600 px-4 py-2.5 text-[13px] text-white transition-colors hover:bg-primary-700"
+                      className={`${ctaButtonClasses} h-[35px] w-[140px] px-[20px] py-[10px]`}
                     >
                       {t("ctaBannerCta")}
                     </Link>

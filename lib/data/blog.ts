@@ -456,7 +456,7 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "El orden no es un detalle menor. Copilot Chat no organiza el conocimiento de una empresa; responde preguntas basándose en el conocimiento que ya está bien organizado y correctamente gobernado. Si se agrega esa capa de IA sobre una estructura documental caótica o mal permisada, lo único que se logra es encontrar el desorden más rápido, no resolverlo.",
+          text: "El orden no es un detalle menor. Copilot Chat no organiza el conocimiento de una empresa; responde preguntas basándose en el conocimiento que ya está bien organizado y correctamente gobernado. Si se agrega esa capa de IA sobre una estructura documental caótica o mal autorizada, lo único que se logra es encontrar el desorden más rápido, no resolverlo.",
         },
         {
           type: "paragraph",
@@ -714,7 +714,7 @@ const data: {
             "Figma — el programa donde definimos primero cómo se vería cada página: colores, tipografía y espacios, antes de escribir una sola línea de código.",
             "Cowork — el espacio donde definimos el diseño y el contenido junto con Claude, revisamos el sitio página por página y preparamos instrucciones precisas para construir cada cambio.",
             "Claude Code — el asistente que escribe y modifica el código real del sitio directamente en la terminal, a partir de esas instrucciones en lenguaje natural.",
-            "Envato Elements — un banco de video y fotografía de stock donde buscamos piezas visuales, como el video de fondo del inicio, que encajaran con la paleta de colores de la marca.",
+            "Envato Elements — un banco de video y fotografía de stock donde buscamos piezas visuales que encajaran con la paleta de colores de la marca.",
             "Sanity — el sistema con el que estamos definiendo cómo el equipo podrá editar el contenido del sitio en el futuro sin tocar código.",
             "Vercel — la plataforma donde el sitio queda publicado y disponible en internet.",
           ],
@@ -733,7 +733,7 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "Después ajustamos el detalle visual: colores, tipografía, márgenes y elementos como los videos de fondo, hasta que cada bloque se sintiera parte del mismo sitio y no una pieza pegada por separado.",
+          text: "Después ajustamos el detalle visual: colores, tipografía y márgenes, hasta que cada bloque se sintiera parte del mismo sitio y no una pieza pegada por separado.",
         },
         {
           type: "paragraph",
@@ -749,7 +749,7 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "Esto es solo un resumen. En las próximas semanas vamos a publicar un artículo más detallado, decisión por decisión — desde por qué elegimos cada color hasta cómo resolvimos que el sitio funcionara igual de bien en español y en inglés. Si te interesa el detrás de cámaras, vuelve pronto.",
+          text: "Esto es solo un resumen. En las próximas semanas vamos a publicar un artículo más detallado, decisión por decisión — desde por qué elegimos cada color hasta cómo resolvimos que el sitio funcionara igual de bien en español y en inglés.",
         },
       ],
       en: [
@@ -771,7 +771,7 @@ const data: {
             "Figma — the design tool where we first defined how each page would look: colors, typography, and spacing, before writing a single line of code.",
             "Cowork — the space where we defined design and content together with Claude, reviewed the site page by page, and prepared precise instructions for building each change.",
             "Claude Code — the assistant that writes and edits the site's actual code directly in the terminal, based on those natural-language instructions.",
-            "Envato Elements — a stock video and photography library where we sourced visual pieces, like the homepage's background video, that matched the brand's color palette.",
+            "Envato Elements — a stock video and photography library where we sourced visual pieces that matched the brand's color palette.",
             "Sanity — the system we're setting up so the team can edit the site's content in the future without touching code.",
             "Vercel — the platform where the site is published and made available on the internet.",
           ],
@@ -790,7 +790,7 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "After that, we fine-tuned the visual details: colors, typography, spacing, and elements like the background videos, until every block felt like part of the same site instead of a piece bolted on separately.",
+          text: "After that, we fine-tuned the visual details: colors, typography, and spacing, until every block felt like part of the same site instead of a piece bolted on separately.",
         },
         {
           type: "paragraph",
@@ -806,7 +806,7 @@ const data: {
         },
         {
           type: "paragraph",
-          text: "This is just a summary. In the coming weeks we'll publish a more detailed article, decision by decision — from why we chose each color to how we made sure the site worked equally well in Spanish and English. If you're curious about what happens behind the scenes, check back soon.",
+          text: "This is just a summary. In the coming weeks we'll publish a more detailed article, decision by decision — from why we chose each color to how we made sure the site worked equally well in Spanish and English.",
         },
       ],
     },
