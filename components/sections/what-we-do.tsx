@@ -80,7 +80,7 @@ export function WhatWeDo() {
                 // growing taller than row1 (173px).
                 className="hover-lift flex min-h-[173px] items-center gap-[15px] bg-black p-[20px] transition-colors hover:bg-neutral-900"
               >
-                <ServiceIconGlyph icon={service.icon} className="h-[50px] w-[50px] flex-shrink-0 text-primary-300" />
+                <ServiceIconGlyph icon={service.icon} className="h-[50px] w-[50px] flex-shrink-0 text-primary-600" />
                 <div>
                   <h3 className="text-[22px] font-extrabold uppercase leading-[1.1] text-white">
                     {service.title}
