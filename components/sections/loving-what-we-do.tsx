@@ -1,30 +1,43 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { Container } from "@/components/ui/container";
 
 // Kempro's own take on Knife River's "Loving What We Do!" homepage block —
 // a framed photo on the left next to a panel (title/subtitle/CTA) on the
-// right, on Kempro's white background.
+// right, on Kempro's white background. Every number below was re-measured
+// directly off kniferiver.com's own rendered layout (getBoundingClientRect/
+// getComputedStyle) at its own 1280px reference viewport, replacing an
+// earlier ad-hoc "11cm" pass:
 //
-// Per request the block's total height is fixed at 11cm on desktop (lg+;
-// below that it stacks and reverts to natural/auto height, since a fixed
-// 11cm can't fit an image + text stacked on top of each other). Built with
-// flexbox (not CSS Grid) specifically so the fixed height is guaranteed:
-// a flex row's items stretch to the row's own height by default — a
-// simple, unambiguous rule — rather than depending on a single implicit
-// grid row stretching to fill leftover space, which is a subtler
-// (spec-correct, but easy to get subtly wrong) mechanism. The photo
-// itself is 5mm taller than the block and absolutely positioned from the
-// top of its column, so it bleeds 5mm past the block's bottom edge —
-// Kempro's version of KR's own image-overhang treatment (KR's inner
-// section uses a `margin: 65px 0 -135px` trick to let its photo bleed
-// past its dark section; ours is a literal cm/mm spec instead since both
-// columns now share the same white background).
+// - The two columns sit inside KR's own centered content container (not
+//   flush against the viewport edge — only the section's own background
+//   photo is full-bleed) — replicated here with the site's shared
+//   <Container>, same as Hero/WhatWeDo, rather than hardcoding KR's own
+//   1140px container width.
+// - Block height (both columns' shared height): 430px. Implemented as a
+//   flex row stretched to that height — flex's default cross-axis stretch
+//   is simple/unambiguous, unlike relying on a single implicit CSS Grid
+//   row stretching to fill leftover space.
+// - Left column: the photo itself is NOT stretched to the column's
+//   height. It's a fixed 65px-from-top / 470px-tall block (KR's own
+//   inner-section: `margin: 65px 0 -135px`), so it naturally overhangs
+//   105px past the 430px block's bottom edge — Kempro's version of KR's
+//   own image-bleed treatment, now using KR's literal measured offsets
+//   instead of an invented cm/mm spec.
+// - Right column: heading sits ~100px from the column's top, which is
+//   just shy of dead-center for a ~223px-tall text block in a 430px
+//   column — so `justify-center` (already vertical-centering) reproduces
+//   this without needing a hardcoded top offset. Heading 40px/800/
+//   uppercase (44px line-height); 20px gap to subtitle; subtitle 16px/400
+//   (24px line-height); 35px gap to button; button solid-fill, 18px/30px
+//   padding, no radius, 15px/600/uppercase, 236px wide.
+// - Section padding-bottom: 80px (KR's own section padding, `0 15px
+//   80px`), kept as the gap before the next block.
 //
-// Right panel typography: heading 40px/800/uppercase (44px line-height);
-// 20px gap to subtitle; subtitle 16px/400 (24px line-height); 35px gap to
-// button; button solid-fill, 18px/30px padding, no radius, 15px/600/
-// uppercase — all measured off KR at its own 1280px reference viewport.
+// Per request the panel's dark background (KR's own) was replaced with
+// white across the whole block, so title/subtitle switched from white to
+// dark neutrals for legibility.
 //
 // Photo: a light office-desk flat lay (Envato Elements, Tirachard),
 // chosen per request for a sober, non-abstract, people-free image that
@@ -36,36 +49,38 @@ export function LovingWhatWeDo() {
   const t = useTranslations("Home.lovingWhatWeDo");
 
   return (
-    <section className="bg-white">
-      <div className="flex flex-col lg:h-[11cm] lg:flex-row">
-        <div className="relative aspect-[6/5] w-full lg:aspect-auto lg:w-1/2 lg:flex-shrink-0">
-          <div className="absolute inset-x-0 top-0 h-full shadow-[0_20px_50px_-15px_rgba(0,0,0,0.25)] lg:h-[calc(100%+5mm)]">
-            <Image
-              src="/images/home/loving-what-we-do.jpg"
-              alt=""
-              fill
-              className="object-cover object-top contrast-125"
-              sizes="(min-width: 1024px) 570px, 100vw"
-            />
+    <section className="bg-white lg:pb-[80px]">
+      <Container>
+        <div className="flex flex-col lg:h-[430px] lg:flex-row">
+          <div className="relative aspect-[6/5] w-full lg:aspect-auto lg:h-full lg:w-1/2 lg:flex-shrink-0">
+            <div className="absolute inset-x-0 top-0 h-full shadow-[0_20px_50px_-15px_rgba(0,0,0,0.25)] lg:top-[65px] lg:h-[470px]">
+              <Image
+                src="/images/home/loving-what-we-do.jpg"
+                alt=""
+                fill
+                className="object-cover object-top contrast-125"
+                sizes="(min-width: 1024px) 570px, 100vw"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:w-1/2 lg:px-[50px] lg:py-0">
+            <h2 className="whitespace-nowrap text-[32px] font-extrabold uppercase leading-[1.1] text-neutral-900 sm:text-[40px]">
+              {t("title")}
+            </h2>
+            <p className="mt-5 max-w-[440px] text-[16px] leading-[24px] text-neutral-600">
+              {t("subtitle")}
+            </p>
+            <div className="mt-[35px]">
+              <Link
+                href="/SN"
+                className="inline-flex h-[53px] items-center justify-center bg-primary-600 px-[30px] text-[15px] font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary-700"
+              >
+                {t("cta")}
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:w-1/2 lg:px-[50px]">
-          <h2 className="whitespace-nowrap text-[32px] font-extrabold uppercase leading-[1.1] text-neutral-900 sm:text-[40px]">
-            {t("title")}
-          </h2>
-          <p className="mt-5 max-w-[440px] text-[16px] leading-[24px] text-neutral-600">
-            {t("subtitle")}
-          </p>
-          <div className="mt-[35px]">
-            <Link
-              href="/SN"
-              className="inline-flex h-[53px] items-center justify-center bg-primary-600 px-[30px] text-[15px] font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary-700"
-            >
-              {t("cta")}
-            </Link>
-          </div>
-        </div>
-      </div>
+      </Container>
     </section>
   );
 }
