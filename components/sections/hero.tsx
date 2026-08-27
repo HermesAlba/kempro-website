@@ -24,9 +24,17 @@ export function Hero() {
     // base/sm/lg values keep the same proportion to the xl value as
     // before (0.285 / 0.545 / 0.9), scaled down from the previous
     // 200px-at-xl figure to this new 162px-at-xl figure.
-    <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-black pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
+    <section className="relative -mt-[81px] flex flex-1 items-start bg-black pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
       {/* Flat solid black (bg-black on the section above), no pattern —
           per request. */}
+      {/* Black bleeds 1cm past this section's own bottom edge, into the
+          top of the logo carousel below — per request. A positioned
+          element (z-index:auto) paints above the carousel's own
+          non-positioned in-flow content regardless of DOM order, so this
+          renders on top of ClientLogos without needing overflow:visible
+          tricks on the shared wrapper. The carousel's own white background
+          still shows for the rest of its height, below this 1cm strip. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-full h-[1cm] bg-black" />
       <Container className="relative z-10 pt-[46px] sm:pt-[88px] lg:pt-[146px] xl:pt-[162px]">
         <FadeIn className="mx-auto text-center">
           {/* Same format as KR's own "BUILDING STRONG." title: Montserrat
