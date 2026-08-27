@@ -89,7 +89,13 @@
       "title": "Qué hacemos",
       "tagline": "Tecnología, automatización e inteligencia artificial",
       "subtitle": "Diseñamos, integramos e implementamos soluciones de IA que transforman la manera en que tu empresa opera.",
-      "cta": "Ver todos los servicios"
+      "cta": "Ver todos los servicios",
+      "cards": {
+        "strategy": "Diagnosticamos tu madurez en IA y diseñamos una hoja de ruta clara, priorizada por impacto y viabilidad.",
+        "automation": "Diseñamos agentes que automatizan procesos operativos completos, con supervisión humana en cada paso.",
+        "integration": "Conectamos modelos de lenguaje a tus datos y sistemas de forma segura, gobernada y escalable.",
+        "web": "Diseñamos tu sitio web con apoyo de IA: SEO y GEO para que tus clientes te encuentren primero."
+      }
     },
     "logos": {
       "title": "Empresas que ya confían en Kempro"

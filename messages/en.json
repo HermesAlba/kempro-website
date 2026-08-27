@@ -89,7 +89,13 @@
       "title": "What we do",
       "tagline": "Technology, automation and artificial intelligence",
       "subtitle": "We design, integrate, and implement AI solutions that transform how your company operates.",
-      "cta": "View all services"
+      "cta": "View all services",
+      "cards": {
+        "strategy": "We assess your AI maturity and design a clear roadmap, prioritized by impact and feasibility.",
+        "automation": "We design agents that automate complete operational processes, with human oversight at every step.",
+        "integration": "We connect language models to your data and systems securely, governed and at scale.",
+        "web": "We design your website with AI support: SEO and GEO so your customers find you first."
+      }
     },
     "logos": {
       "title": "Companies that already trust Kempro"

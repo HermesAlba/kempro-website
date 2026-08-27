@@ -72,15 +72,27 @@ export function WhatWeDo() {
               <Link
                 key={service.id}
                 href={{ pathname: "/servicios/[slug]", params: { slug: service.slug } }}
-                className="hover-lift flex items-center gap-[15px] bg-black p-[20px] transition-colors hover:bg-neutral-900"
+                // min-h matches KR's own measured card height (173-197px
+                // depending on how many lines its description ran to) —
+                // shorter cards use this as a floor, and rows with a
+                // 4-line description grow past it via the grid's default
+                // align-items: stretch, same as KR's own row2 (197px)
+                // growing taller than row1 (173px).
+                className="hover-lift flex min-h-[173px] items-center gap-[15px] bg-black p-[20px] transition-colors hover:bg-neutral-900"
               >
                 <ServiceIconGlyph icon={service.icon} className="h-[50px] w-[50px] flex-shrink-0 text-primary-300" />
                 <div>
                   <h3 className="text-[22px] font-extrabold uppercase leading-[1.1] text-white">
                     {service.title}
                   </h3>
-                  <p className="mt-[5px] text-[16px] leading-[24px] text-white">
-                    {service.description}
+                  {/* Short, card-specific blurb (Home.whatWeDo.cards) rather
+                      than the full service.description used on /servicios —
+                      capped at 3-4 lines to match KR's own card text length,
+                      which is what drives the card's height to match KR's
+                      measured size (line-clamp-4 as a hard ceiling in case a
+                      future edit runs long). */}
+                  <p className="mt-[5px] line-clamp-4 text-[16px] leading-[24px] text-white">
+                    {t(`cards.${service.id}`)}
                   </p>
                 </div>
               </Link>
