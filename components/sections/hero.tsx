@@ -20,7 +20,10 @@ export function Hero() {
     // the section instead of dead-center (measured: title starts ~200px
     // below the header, well above the section's vertical midpoint).
     <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-white pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
-      {/* Dark slate (neutral-800/500/200 tokens), white at the very top,
+      {/* Deep navy (uses the brand's own primary-200/500/900 tokens — see
+          app/globals.css; primary-900 = hc-blue-dark, already used
+          elsewhere on the site, so this end of the gradient is a genuine
+          brand color, not an arbitrary pick), white at the very top,
           intensifying downward per request. NOTE: the title/subtitle are
           white text (see below) and sit near the top of this section
           (pt-[57..200px], see the Container below) — with white-at-top
@@ -31,7 +34,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:
-            "linear-gradient(to bottom, white 0%, #e2e8f0 40%, #64748b 75%, #1e293b 100%)",
+            "linear-gradient(to bottom, white 0%, #cfdcff 40%, #7682f8 75%, #2f3293 100%)",
         }}
       />
       {/* White-dot grid, on its own layer (separate from the gradient
