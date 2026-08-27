@@ -10,14 +10,17 @@ export const workSans = Work_Sans({
   variable: "--font-work-sans",
 });
 
-// Scoped to the header's two bars ONLY (see components/layout/header.tsx) —
-// matches the reference site's own header typeface exactly, per request.
-// Deliberately NOT wired into the sitewide font-sans token: every other
-// page/component still uses Work Sans, so this is an intentional exception
-// for that one component rather than a second sitewide font.
+// Scoped to specific components that need to match Knife River's own
+// typeface exactly, per request — the header's two bars (see
+// components/layout/header.tsx, weight 600/700) and the home hero title
+// (see components/sections/hero.tsx, weight 800 — matches KR's own
+// "BUILDING STRONG." title). Deliberately NOT wired into the sitewide
+// font-sans token: every other page/component still uses Work Sans, so
+// this is an intentional per-component exception rather than a second
+// sitewide font.
 export const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["600", "700", "800"],
   variable: "--font-montserrat",
 });
 

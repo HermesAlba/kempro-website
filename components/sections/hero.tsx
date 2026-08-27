@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
+import { montserrat } from "@/lib/fonts";
 
 export function Hero() {
   const t = useTranslations("Home.hero");
@@ -47,24 +48,24 @@ export function Hero() {
           hero section to its title (title top 407px − section top 207px ≈
           200px) at KR's own reference viewport (1280px). base/sm/lg scale
           proportionally to their own title size — an extra `lg` step (vs.
-          jumping straight to the xl/1280px size) was added once the title
-          went uppercase, since the wider caps text needs a slightly smaller
-          size to still fit on one line down to 1024px before the exact
-          70px/1280px match kicks in. */}
-      <Container className="relative pb-4 pt-[57px] sm:pb-4 sm:pt-[114px] lg:pb-4 lg:pt-[191px] xl:pt-[200px]">
+          jumping straight to the xl/1280px size) exists because the wider
+          caps text needs a slightly smaller size to still fit on one line
+          down to 1024px before the exact 70px/1280px match kicks in. */}
+      <Container className="relative pb-4 pt-[57px] sm:pb-4 sm:pt-[109px] lg:pb-4 lg:pt-[180px] xl:pt-[200px]">
         <FadeIn className="mx-auto text-center">
-          {/* Uppercase, per request. No max-w on the wrapper above and
-              whitespace-nowrap here so the title always renders as a single
-              line — matches KR's own title, also a single line. Sizes fit
-              on one line at every breakpoint (checked via
-              canvas.measureText on the actual uppercase string): 20px→~284,
-              40px→~568, 67px→~950, 70px→~993px — all within the Container's
-              available width at their respective breakpoints/viewports.
-              xl size (70px) matches Knife River's own hero title size
-              exactly at their own 1280px reference viewport (measured via
-              getComputedStyle: 70px/800/Montserrat — only the size is
-              matched, not the weight/family). */}
-          <h1 className="uppercase whitespace-nowrap text-[20px] font-bold tracking-tight text-neutral-900 sm:text-[40px] lg:text-[67px] xl:text-[70px]">
+          {/* Same format as KR's own "BUILDING STRONG." title: Montserrat
+              (see lib/fonts.ts), weight 800/extrabold, uppercase — measured
+              directly off KR via getComputedStyle. Sizes re-measured for
+              Montserrat 800 specifically (canvas.measureText on the actual
+              uppercase string): 20px→~300, 38px→~570, 63px→~945,
+              70px→~1050px — all within the Container's available width at
+              their respective breakpoints/viewports, so it still renders as
+              a single line (whitespace-nowrap + no max-w on the wrapper
+              above) at every size. xl size (70px) matches KR's own title
+              size exactly at their own 1280px reference viewport. */}
+          <h1
+            className={`${montserrat.className} uppercase whitespace-nowrap text-[20px] font-extrabold tracking-tight text-neutral-900 sm:text-[38px] lg:text-[63px] xl:text-[70px]`}
+          >
             {t("title")}
           </h1>
           {/* 18px at every breakpoint — matches Knife River's own hero
