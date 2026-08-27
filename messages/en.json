@@ -125,7 +125,7 @@
     "process": [
       {
         "title": "Assessment",
-        "description": "Before we propose anything, we look at your current processes, data, goals, and tools, and compare them against similar cases we've already solved. The result: a clear diagnosis of what to automate first, which AI to apply, and what to expect."
+        "description": "We look at your operation and compare it against similar cases to define what to automate first, which AI to apply, and what to expect."
       },
       {
         "title": "Design",
