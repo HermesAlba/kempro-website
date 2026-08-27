@@ -20,20 +20,18 @@ export function Hero() {
     // the section instead of dead-center (measured: title starts ~200px
     // below the header, well above the section's vertical midpoint).
     <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-white pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
-      {/* Orange tones (swapped from beige per request), inverted: white at
-          the very top, staying pale through a longer stretch (0-35%, "un
-          poco mas blanco al comienzo... mas lento"), then ramping more
-          decisively into a richer orange concentrated near the bottom of
-          this section ("enfasis al final") — i.e. right before
-          ClientLogos, since this section is flex-1 and fills the rest of
-          the Hero+ClientLogos viewport-height wrapper (see
-          app/[locale]/page.tsx). */}
+      {/* Dark slate (neutral-800/500/200 tokens), white at the very top,
+          intensifying downward per request. NOTE: the title/subtitle are
+          white text (see below) and sit near the top of this section
+          (pt-[57..200px], see the Container below) — with white-at-top
+          here, that text will have poor contrast right where it renders;
+          flagged to the user. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:
-            "linear-gradient(to bottom, white 0%, #FCEEE0 35%, #F5C99B 65%, #E8873A 100%)",
+            "linear-gradient(to bottom, white 0%, #e2e8f0 40%, #64748b 75%, #1e293b 100%)",
         }}
       />
       {/* White-dot grid, on its own layer (separate from the gradient
