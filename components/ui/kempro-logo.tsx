@@ -16,6 +16,8 @@ type KemproLogoProps = {
   variant?: KemproLogoVariant;
   /** Overrides the variant's native mark size (px); the wordmark and gap scale with it. */
   size?: number;
+  /** Overrides the mark's ring fill color (default: the indigo brand primary). Use to blend the mark into a solid background instead of standing out in indigo — e.g. black, to match a pure-black bar. */
+  markColor?: string;
   /** Overrides the variant's default wordmark color. */
   textColor?: string;
   /** Overrides the variant's default wordmark font size (px). */
@@ -41,10 +43,12 @@ const LOCKUP_DEFAULTS = {
 function KemproMark({
   spec,
   size,
+  ringColor = KEMPRO_PRIMARY,
   className,
 }: {
   spec: LogoMarkSpec;
   size: number;
+  ringColor?: string;
   className?: string;
 }) {
   return (
@@ -72,7 +76,7 @@ function KemproMark({
             cx={cx}
             cy={cy}
             r={pathRadius}
-            fill={KEMPRO_PRIMARY}
+            fill={ringColor}
             fillOpacity={ring.opacity}
             stroke={KEMPRO_WHITE}
             strokeWidth={ring.strokeWidth}
@@ -93,6 +97,7 @@ function KemproMark({
 export function KemproLogo({
   variant = "primary",
   size,
+  markColor,
   textColor,
   textSize,
   letterSpacing,
@@ -102,7 +107,14 @@ export function KemproLogo({
   const spec = VARIANT_SPEC[variant];
 
   if (variant === "standalone") {
-    return <KemproMark spec={spec} size={size ?? spec.viewBox} className={className} />;
+    return (
+      <KemproMark
+        spec={spec}
+        size={size ?? spec.viewBox}
+        ringColor={markColor}
+        className={className}
+      />
+    );
   }
 
   const defaults = LOCKUP_DEFAULTS[variant];
@@ -114,7 +126,7 @@ export function KemproLogo({
       className={`inline-flex items-center ${className ?? ""}`}
       style={{ gap: gap ?? defaults.gap * scale }}
     >
-      <KemproMark spec={spec} size={nativeMarkSize * scale} />
+      <KemproMark spec={spec} size={nativeMarkSize * scale} ringColor={markColor} />
       <span
         className="font-bold"
         style={{

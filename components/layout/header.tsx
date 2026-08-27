@@ -69,9 +69,14 @@ export function Header() {
               own h-[146px] below), so using the same 71px mark size lands
               on the same proportion. Left-aligned as the flex row's first
               child, so growing it only extends to the right; its starting x
-              position (the bar's own px-8) is unchanged. */}
+              position (the bar's own px-8) is unchanged. markColor="#000000"
+              (black, matching this bar's own bg-black) per request — the
+              mark's rings no longer read as brand indigo here, only the
+              white stroke/center dot and white wordmark stay visible. Scoped
+              to this instance only; other "dark" variant usages (e.g. the
+              footer) keep the default indigo mark. */}
           <Link href="/" className="flex-shrink-0">
-            <KemproLogo variant="dark" size={71} />
+            <KemproLogo variant="dark" size={71} markColor="#000000" />
           </Link>
           {/* Montserrat here (see lib/fonts.ts) — matches the reference's
               own header typeface. CTA below matches KR's own bold-title
