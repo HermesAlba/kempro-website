@@ -65,15 +65,7 @@ export function ClientLogos({
   background?: "white" | "transparent";
 }) {
   return (
-    // relative z-10 so this always paints above a decorative absolute
-    // background from an ancestor (e.g. the Home page's shared hero
-    // gradient — see app/[locale]/page.tsx) when used with
-    // background="transparent"; harmless no-op for the "white" usages
-    // elsewhere (casos-de-exito, HC), since there's nothing behind them to
-    // stack against.
-    <section
-      className={`relative z-10 ${background === "white" ? "border-y border-neutral-200 bg-white py-4" : "py-4"}`}
-    >
+    <section className={background === "white" ? "border-y border-neutral-200 bg-white py-4" : "py-4"}>
       {title ? (
         <p className="mx-auto mb-3 max-w-[1280px] px-6 text-center text-[13px] font-semibold text-neutral-500 sm:px-10 lg:px-20">
           {title}

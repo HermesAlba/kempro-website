@@ -9,24 +9,44 @@ export function Hero() {
   const t = useTranslations("Home.hero");
 
   return (
-    // The -mt/pt header-bleed pair (see HEADER_OFFSET in
-    // components/layout/header.tsx) moved up to the shared wrapper in
-    // app/[locale]/page.tsx, since that wrapper is now what needs to bleed
-    // up behind the sticky nav (it's the thing carrying the background —
-    // see the note there). This section itself is just a plain flex-1
-    // child now. Content is top-anchored (`items-start` + the Container's
-    // own generous pt) rather than vertically centered — matches Knife
-    // River's own hero layout, where the title/subtitle block sits in the
-    // upper portion of the section instead of dead-center (measured: title
-    // starts ~200px below the header, well above the section's vertical
-    // midpoint).
-    <section className="relative flex flex-1 items-start overflow-hidden">
-      {/* No background of its own anymore — the coral gradient (+ the
-          animated white-dot layer) now live one level up, in the shared
-          wrapper in app/[locale]/page.tsx, spanning Hero + ClientLogos +
-          PurposeTeaser so it runs continuously behind the logo carousel and
-          ends right around PurposeTeaser's video, per request. This
-          section stays transparent so that shows through. */}
+    // The -mt/pt pair (see HEADER_OFFSET in components/layout/header.tsx)
+    // bleeds this section's own background up behind the floating nav; net
+    // position of the content below is unchanged since the two cancel out.
+    // Background is scoped to this section only again — per request, the
+    // gradient must end exactly at the bottom of Hero (i.e. right where the
+    // logo carousel starts), not extend behind it or further down. `flex-1`
+    // lets this section absorb the leftover height from the home page's
+    // Hero+ClientLogos wrapper (see app/[locale]/page.tsx). Content is
+    // top-anchored (`items-start` + the Container's own generous pt) rather
+    // than vertically centered — matches Knife River's own hero layout,
+    // where the title/subtitle block sits in the upper portion of the
+    // section instead of dead-center (measured: title starts ~200px below
+    // the header, well above the section's vertical midpoint).
+    <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
+      {/* Gray tones (neutral-200/500/800 tokens — see app/globals.css),
+          white at the very top, intensifying downward, reaching its final
+          dark tone by the very bottom of this section (100% = bottom of
+          Hero = start of the logo carousel). */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, white 0%, #e2e8f0 25%, #94a3b8 55%, #475569 85%, #1e293b 100%)",
+        }}
+      />
+      {/* White-dot grid, on its own layer (separate from the gradient
+          above) so its background-position can animate independently —
+          drifts straight down on a loop, like a slow wave/rain, via
+          .animate-dot-wave (see app/globals.css). */}
+      <div
+        aria-hidden="true"
+        className="animate-dot-wave pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px)",
+          backgroundSize: "14px 14px",
+        }}
+      />
       {/* xl:pt-[200px] matches KR's own measured offset from the top of its
           hero section to its title (title top 407px − section top 207px ≈
           200px) at KR's own reference viewport (1280px). base/sm/lg scale
