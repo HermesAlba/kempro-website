@@ -4,9 +4,7 @@ import { Hero } from "@/components/sections/hero";
 import { ClientLogos } from "@/components/sections/client-logos";
 import { WhatWeDo } from "@/components/sections/what-we-do";
 import { LovingWhatWeDo } from "@/components/sections/loving-what-we-do";
-import { ServicesOverview } from "@/components/sections/services-overview";
 import { FeaturedCaseStudies } from "@/components/sections/featured-case-studies";
-import { PurposeTeaser } from "@/components/sections/purpose-teaser";
 import { LatestArticles } from "@/components/sections/latest-articles";
 import { CtaBand } from "@/components/sections/cta-band";
 
@@ -60,10 +58,8 @@ export default async function HomePage({
           dark panel with title/subtitle/CTA), right after WhatWeDo — per
           request. Placeholder image/copy for now. */}
       <LovingWhatWeDo />
-      {/* PurposeTeaser ("Quiénes somos") moved ahead of ServicesOverview
-          ("Cómo trabajamos") — right after the logo carousel — per request. */}
-      <PurposeTeaser />
-      <ServicesOverview />
+      {/* PurposeTeaser ("Quiénes somos") and ServicesOverview ("Cómo
+          trabajamos") removed from the home page per request. */}
       <FeaturedCaseStudies />
       <LatestArticles />
       <CtaBand title={t("title")} subtitle={t("subtitle")} cta={t("cta")} background="blue-grid" />
