@@ -27,13 +27,15 @@ export function LovingWhatWeDo() {
   return (
     <section className="bg-white">
       <div className="grid lg:grid-cols-2">
-        {/* Placeholder image — swap for a real photo asset later. Sized to
-            match KR's own framed-photo proportions (~570x470 at 1280px, a
-            ~6:5 aspect ratio), stretched to the panel's full height on
-            desktop via the grid's default stretch. */}
+        {/* Placeholder image — swap for a real photo asset later. White
+            background per request, with a border so the placeholder area
+            stays visible against the section's own white background.
+            Sized to match KR's own framed-photo proportions (~570x470 at
+            1280px, a ~6:5 aspect ratio), stretched to the panel's full
+            height on desktop via the grid's default stretch. */}
         <div
           aria-hidden="true"
-          className="aspect-[6/5] w-full bg-neutral-200 lg:aspect-auto lg:min-h-[470px]"
+          className="aspect-[6/5] w-full border border-neutral-200 bg-white lg:aspect-auto lg:min-h-[470px]"
         />
         <div className="flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:px-[50px]">
           <h2 className="text-[32px] font-extrabold uppercase leading-[1.1] text-neutral-900 sm:text-[40px]">
