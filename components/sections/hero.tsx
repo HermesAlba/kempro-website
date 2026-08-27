@@ -12,37 +12,11 @@ export function Hero() {
     // The -mt/pt pair (see HEADER_OFFSET in components/layout/header.tsx)
     // bleeds this section's own background up behind the floating nav; net
     // position of the content below is unchanged since the two cancel out.
-    // Background is scoped to this section only again — per request, the
-    // gradient must end exactly at the bottom of Hero (i.e. right where the
-    // logo carousel starts), not extend behind it or further down. `flex-1`
+    // Flat white background, no gradient/pattern — per request. `flex-1`
     // lets this section absorb the leftover height from the home page's
     // Hero+ClientLogos wrapper (see app/[locale]/page.tsx). Content is
     // vertically centered (`items-center`) within that space — per request.
     <section className="relative -mt-[81px] flex flex-1 items-center overflow-hidden bg-white pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
-      {/* White base (bg-white above), then this gray-tone gradient on top —
-          white at the very top, intensifying downward through gray,
-          reaching its final dark tone by the very bottom of this section
-          (100% = bottom of Hero = start of the logo carousel). */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(to bottom, white 0%, #e2e8f0 25%, #94a3b8 55%, #475569 85%, #1e293b 100%)",
-        }}
-      />
-      {/* White-dot grid, on its own layer (separate from the gradient
-          above) so its background-position can animate independently —
-          drifts straight down on a loop, like a slow wave/rain, via
-          .animate-dot-wave (see app/globals.css). */}
-      <div
-        aria-hidden="true"
-        className="animate-dot-wave pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px)",
-          backgroundSize: "14px 14px",
-        }}
-      />
       <Container className="relative z-10">
         <FadeIn className="mx-auto text-center">
           {/* Same format as KR's own "BUILDING STRONG." title: Montserrat
@@ -56,7 +30,7 @@ export function Hero() {
               above) at every size. xl size (70px) matches KR's own title
               size exactly at their own 1280px reference viewport. */}
           <h1
-            className={`${montserrat.className} uppercase whitespace-nowrap text-[20px] font-extrabold tracking-tight text-white sm:text-[38px] lg:text-[63px] xl:text-[70px]`}
+            className={`${montserrat.className} uppercase whitespace-nowrap text-[20px] font-extrabold tracking-tight text-black sm:text-[38px] lg:text-[63px] xl:text-[70px]`}
           >
             {t("title")}
           </h1>
@@ -64,7 +38,7 @@ export function Hero() {
               subtitle size exactly (measured: 18px/400/Montserrat). mt-5
               (20px) matches the gap measured between KR's own title and
               subtitle (511px - 491px ≈ 20px). */}
-          <p className="mt-5 min-h-[3lh] text-[18px] text-white">
+          <p className="mt-5 min-h-[3lh] text-[18px] text-black">
             {t("subtitle")}
           </p>
         </FadeIn>
