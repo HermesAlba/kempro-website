@@ -21,18 +21,16 @@ export function Hero() {
     // below the header, well above the section's vertical midpoint).
     <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-white pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
       {/* Warm cream tones (replaces the earlier indigo gradient, per
-          request — "que no se vea tanto indigo") — vertical variant, warm
-          sand at the very top fading to white by the bottom of this
-          section, i.e. right before ClientLogos, since this section is
-          flex-1 and fills the rest of the Hero+ClientLogos viewport-height
-          wrapper (see app/[locale]/page.tsx). Richer/more saturated than
-          the first pass, and fades out later (55% vs. 45%) — the original
-          was so light the white dot grid below barely showed; this keeps
-          it visible over more of the section. */}
+          request — "que no se vea tanto indigo"). Inverted per request:
+          white at the very top, intensifying to the richer sand tone by
+          the bottom of this section — i.e. right before ClientLogos, since
+          this section is flex-1 and fills the rest of the
+          Hero+ClientLogos viewport-height wrapper (see
+          app/[locale]/page.tsx). */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
-        style={{ backgroundImage: "linear-gradient(to bottom, #E3C089 0%, #F0DCB8 55%, white 100%)" }}
+        style={{ backgroundImage: "linear-gradient(to bottom, white 0%, #F0DCB8 45%, #E3C089 100%)" }}
       />
       {/* White-dot grid, on its own layer (separate from the gradient
           above) so its background-position can animate independently —
