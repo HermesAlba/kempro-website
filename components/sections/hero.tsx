@@ -25,16 +25,15 @@ export function Hero() {
     // before (0.285 / 0.545 / 0.9), scaled down from the previous
     // 200px-at-xl figure to this new 162px-at-xl figure.
     <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-black pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
-      {/* Black-scale gradient, top to bottom — 100% black at the very top,
-          fading down through progressively lighter blacks/dark grays (no
-          color tint, stays within the black scale — not a lighter gray
-          like slate). No dot pattern — per request. */}
+      {/* Flat solid black (bg-black on the section above) plus a moving
+          white-dot grid on top — drifts straight down on a loop via
+          .animate-dot-wave (see app/globals.css) — per request. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
+        className="animate-dot-wave pointer-events-none absolute inset-0"
         style={{
-          backgroundImage:
-            "linear-gradient(to bottom, #000000 0%, #171717 30%, #262626 60%, #404040 100%)",
+          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px)",
+          backgroundSize: "14px 14px",
         }}
       />
       <Container className="relative z-10 pt-[46px] sm:pt-[88px] lg:pt-[146px] xl:pt-[162px]">
