@@ -19,9 +19,13 @@ const featuredIds = ["strategy", "automation", "integration", "web"];
 // vertical rhythm of the left column) was taken directly off
 // kniferiver.com's own rendered layout at its own 1280px reference viewport
 // via getComputedStyle/getBoundingClientRect, the same method used for the
-// hero. Only the palette changes: Kempro's indigo brand background
-// (bg-primary-600) instead of KR's orange, real Kempro service lines instead
-// of construction materials. Copy is placeholder, not final.
+// hero. Background is white (per request — was previously Kempro's indigo,
+// KR's own is orange), so title/tagline/subtitle switched from white to
+// dark neutrals and the CTA switched from an outlined white button to a
+// solid indigo one; the black service cards on the right are unaffected
+// since they already sit on their own black background either way. Real
+// Kempro service lines instead of construction materials. Copy is
+// placeholder, not final.
 //
 // Measured off KR (1280px viewport):
 // - left column width 356px, right grid 724px, gap between them 50px
@@ -40,23 +44,23 @@ export function WhatWeDo() {
   const services = getServices(locale).filter((s) => featuredIds.includes(s.id));
 
   return (
-    <section className="bg-primary-600 py-20 sm:py-28">
+    <section className="bg-white py-20 sm:py-28">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[356fr_724fr] lg:gap-x-[50px]">
           <FadeIn direction="left">
-            <h2 className="text-[28px] font-extrabold uppercase leading-[1.1] text-white sm:text-[36px]">
+            <h2 className="text-[28px] font-extrabold uppercase leading-[1.1] text-neutral-900 sm:text-[36px]">
               {t("title")}
             </h2>
-            <p className="mt-[6px] text-[15px] font-extrabold uppercase leading-[1.1] tracking-wide text-white">
+            <p className="mt-[6px] text-[15px] font-extrabold uppercase leading-[1.1] tracking-wide text-primary-600">
               {t("tagline")}
             </p>
-            <p className="mt-[26px] text-[16px] leading-[24px] text-white">
+            <p className="mt-[26px] text-[16px] leading-[24px] text-neutral-600">
               {t("subtitle")}
             </p>
             <div className="mt-[43px]">
               <Link
                 href="/servicios"
-                className="inline-flex h-[55px] items-center justify-center border border-white px-[30px] text-[15px] font-semibold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-primary-700"
+                className="inline-flex h-[55px] items-center justify-center bg-primary-600 px-[30px] text-[15px] font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary-700"
               >
                 {t("cta")}
               </Link>
