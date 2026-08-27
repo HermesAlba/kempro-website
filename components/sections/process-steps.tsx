@@ -41,13 +41,16 @@ export function ProcessSteps({
                 lib/kempro-symbol.ts) — using it here would compete with the
                 logo instead of just reusing an established brand tone. */}
             <li className="relative h-full overflow-hidden rounded-2xl bg-primary-500 p-6">
-              {/* Decorative watermark icon, one per phase — large,
-                  low-opacity, and clipped by the card's own overflow-hidden
-                  so it reads as a subtle background texture rather than a
-                  competing visual element. pointer-events-none keeps it out
-                  of the way of any future interactive content in the card. */}
+              {/* Decorative watermark icon, one per phase — top-right
+                  corner, clipped by the card's own overflow-hidden so it
+                  reads as a background texture rather than a competing
+                  visual element. primary-900 (a deeper/higher indigo than
+                  the primary-500 card fill) gives it visible contrast
+                  instead of the near-invisible white/10 used before.
+                  pointer-events-none keeps it out of the way of any future
+                  interactive content in the card. */}
               {PhaseIcon ? (
-                <PhaseIcon className="pointer-events-none absolute -bottom-4 -right-4 h-24 w-24 text-white/10" />
+                <PhaseIcon className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 text-primary-900/40" />
               ) : null}
               <div className="relative">
                 <span className="text-[13px] font-semibold uppercase tracking-wide text-primary-100">
