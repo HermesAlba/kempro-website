@@ -53,7 +53,7 @@ export function LovingWhatWeDo() {
       <Container>
         <div className="flex flex-col lg:h-[430px] lg:flex-row">
           <div className="relative aspect-[6/5] w-full lg:aspect-auto lg:h-full lg:w-1/2 lg:flex-shrink-0">
-            <div className="absolute inset-x-0 top-0 h-full shadow-[0_20px_50px_-15px_rgba(0,0,0,0.25)] lg:top-[65px] lg:h-[470px]">
+            <div className="absolute left-[1.5cm] right-0 top-0 h-full shadow-[0_20px_50px_-15px_rgba(0,0,0,0.25)] lg:top-[65px] lg:h-[470px]">
               <Image
                 src="/images/home/loving-what-we-do.jpg"
                 alt=""
