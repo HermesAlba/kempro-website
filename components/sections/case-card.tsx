@@ -11,6 +11,7 @@ export function CaseCard({
   caseStudy,
   headerImageSrc,
   headerImageGrayscale,
+  background = "white",
 }: {
   caseStudy: CaseStudy;
   /** Overrides caseStudy's own image — opt-in per card, used by the
@@ -23,6 +24,12 @@ export function CaseCard({
    * Borrador page's black-and-white convention), or false when falling
    * back to caseStudy.image (real color, matching the detail page). */
   headerImageGrayscale?: boolean;
+  /** "white" (default) = the original white content panel with dark text,
+   * used everywhere except Home. "indigo" = brand-indigo content panel
+   * with white/light text, used by FeaturedCaseStudies on Home's
+   * black-background "Resultados reales en distintas industrias"
+   * section. */
+  background?: "white" | "indigo";
 }) {
   const locale = useLocale();
   const href = { pathname: "/casos-de-exito/[slug]", params: { slug: caseStudy.slug } } as const;
@@ -33,6 +40,7 @@ export function CaseCard({
   });
   const imageSrc = headerImageSrc ?? caseStudy.image;
   const imageGrayscale = headerImageGrayscale ?? Boolean(headerImageSrc);
+  const isIndigo = background === "indigo";
 
   return (
     // Top: IndustryHeaderBackground thumbnail (unchanged — see
@@ -74,18 +82,35 @@ export function CaseCard({
         />
       )}
 
-      <div className="flex flex-1 flex-col gap-2 overflow-hidden bg-white p-6 tracking-[-0.02em]">
+      <div
+        className={`flex flex-1 flex-col gap-2 overflow-hidden p-6 tracking-[-0.02em] ${
+          isIndigo ? "bg-primary-600" : "bg-white"
+        }`}
+      >
         <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide">
-          <span style={{ color: industryColorFor() }}>
+          <span
+            className={isIndigo ? "text-white" : undefined}
+            style={isIndigo ? undefined : { color: industryColorFor() }}
+          >
             {caseStudy.industry}
           </span>
-          <span className="text-neutral-300">&bull;</span>
-          <span className="text-neutral-500">{date}</span>
+          <span className={isIndigo ? "text-white/40" : "text-neutral-300"}>&bull;</span>
+          <span className={isIndigo ? "text-primary-100" : "text-neutral-500"}>{date}</span>
         </p>
-        <h3 className="line-clamp-2 text-[18px] font-bold leading-snug text-neutral-900 transition-colors group-hover:text-primary-600">
+        <h3
+          className={`line-clamp-2 text-[18px] font-bold leading-snug transition-colors ${
+            isIndigo
+              ? "text-white group-hover:text-primary-100"
+              : "text-neutral-900 group-hover:text-primary-600"
+          }`}
+        >
           {caseStudy.client}
         </h3>
-        <p className="line-clamp-3 text-[14px] leading-relaxed text-neutral-600">
+        <p
+          className={`line-clamp-3 text-[14px] leading-relaxed ${
+            isIndigo ? "text-primary-50" : "text-neutral-600"
+          }`}
+        >
           {caseStudy.result}
         </p>
       </div>
