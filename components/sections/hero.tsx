@@ -42,18 +42,12 @@ export function Hero() {
       />
       <Container className="relative pb-4 pt-8 sm:pb-4 sm:pt-10 lg:pb-4 lg:pt-8">
         <FadeIn className="mx-auto max-w-3xl text-center">
-          {/* text-hc-blue-dark (#2F3293) — same indigo tone already used for
-              the blog's newsletter section background
-              (app/[locale]/blog/page.tsx). */}
-          <p className="text-sm font-semibold uppercase tracking-wide text-hc-blue-dark">
-            {t("eyebrow")}
-          </p>
           {/* min-h reserves 3 lines (the Spanish title/subtitle's actual
               wrap count) so the English version — shorter, so it wraps to
               fewer lines — still occupies the same height; `lh` scales
               with each element's own line-height, so this holds at every
               breakpoint without hardcoding per-breakpoint pixel values. */}
-          <h1 className="mt-4 min-h-[3lh] text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
+          <h1 className="min-h-[3lh] text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
             {t("title")}
           </h1>
           <p className="mt-4 min-h-[3lh] text-lg text-neutral-700 sm:text-xl">
