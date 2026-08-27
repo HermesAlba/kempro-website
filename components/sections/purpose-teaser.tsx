@@ -13,11 +13,32 @@ export function PurposeTeaser() {
 
   return (
     // No border/background of its own — the coral gradient behind Hero +
-    // ClientLogos (see app/[locale]/page.tsx) continues down through this
-    // section and ends around the video below, per request. Container gets
-    // relative z-10 so the text/video render above that gradient instead of
-    // being covered by it.
-    <section className="py-20 sm:py-28">
+    // ClientLogos (see app/[locale]/page.tsx) shows through the first 2cm
+    // of this section, then an irregular "torn paper" edge cuts it off into
+    // solid coral for the rest of the section, per request (reference:
+    // Knife River's own torn-edge treatment under its hero photo). Two
+    // decorative layers, both z-index:auto and placed before Container (so
+    // Container's own z-10 always paints on top): a thin jagged strip
+    // starting at exactly 2cm from this section's top (clip-path zigzag,
+    // ~6-22px of jaggedness), then a plain solid-fill div starting a little
+    // further down that covers the remainder of the section, overlapping
+    // the strip's lower half so there's no seam between them.
+    <section className="relative py-20 sm:py-28">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 h-10"
+        style={{
+          top: "2cm",
+          backgroundColor: "#9a3412",
+          clipPath:
+            "polygon(0% 45%, 4% 15%, 8% 50%, 12% 20%, 16% 48%, 20% 12%, 24% 52%, 28% 18%, 32% 46%, 36% 22%, 40% 50%, 44% 14%, 48% 48%, 52% 20%, 56% 44%, 60% 16%, 64% 52%, 68% 24%, 72% 46%, 76% 18%, 80% 50%, 84% 14%, 88% 48%, 92% 20%, 96% 46%, 100% 40%, 100% 100%, 0% 100%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0"
+        style={{ top: "calc(2cm + 20px)", backgroundColor: "#9a3412" }}
+      />
       <Container className="relative z-10">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <FadeIn direction="left">
