@@ -15,9 +15,18 @@ export function Hero() {
     // Flat white background, no gradient/pattern — per request. `flex-1`
     // lets this section absorb the leftover height from the home page's
     // Hero+ClientLogos wrapper (see app/[locale]/page.tsx). Content is
-    // vertically centered (`items-center`) within that space — per request.
-    <section className="relative -mt-[81px] flex flex-1 items-center overflow-hidden bg-white pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
-      <Container className="relative z-10">
+    // top-anchored (`items-start` + the Container's own pt) again — per
+    // request the title now starts 1cm ABOVE where KR's own "BUILDING
+    // STRONG." starts. Re-measured directly off kniferiver.com at its own
+    // 1280px reference viewport: header 207px tall, title top at page-y
+    // 407px (200px into the hero section). Target = 407px − 1cm (37.8px)
+    // ≈ 369px from page top ≈ 162px into this section (since our header
+    // is the same 207px tall as KR's) — hence xl:pt-[162px] below.
+    // base/sm/lg values keep the same proportion to the xl value as
+    // before (0.285 / 0.545 / 0.9), scaled down from the previous
+    // 200px-at-xl figure to this new 162px-at-xl figure.
+    <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-white pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
+      <Container className="relative z-10 pt-[46px] sm:pt-[88px] lg:pt-[146px] xl:pt-[162px]">
         <FadeIn className="mx-auto text-center">
           {/* Same format as KR's own "BUILDING STRONG." title: Montserrat
               (see lib/fonts.ts), weight 800/extrabold, uppercase — measured
