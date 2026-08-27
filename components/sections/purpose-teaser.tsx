@@ -1,7 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
-import { JoiningHalves } from "@/components/ui/joining-halves";
 import { KemproLogo } from "@/components/ui/kempro-logo";
 import { Link } from "@/i18n/navigation";
 import { ctaButtonClasses } from "@/components/ui/cta-button-classes";
@@ -34,24 +33,15 @@ export function PurposeTeaser() {
             </div>
           </FadeIn>
 
-          {/* Reduced version of the gradient block used on the Sobre
-              nosotros / SN hero (same #5D5FEF→#4949D6 gradient) —
-              establishes the same visual identity without duplicating the
-              full-size hero treatment. Flat indigo only (no grid-line
-              overlay, no white icon tile) per request — the mark sits
-              directly on the gradient, scaled up to read as the block's
-              main visual instead of a small centered icon. */}
-          <FadeIn direction="right" delay={100} className="mx-auto aspect-square w-full max-w-[420px]">
-            <JoiningHalves
-              className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-xl"
-              style={{ backgroundImage: "linear-gradient(135deg, #5D5FEF 0%, #4949D6 100%)" }}
-            >
-              <KemproLogo
-                variant="standalone"
-                size={220}
-                className="h-[45%] w-[45%]"
-              />
-            </JoiningHalves>
+          {/* Per request: no more gradient card/background — just the mark
+              itself, centered and proportionally sized within the same
+              column space the old image block occupied. */}
+          <FadeIn
+            direction="right"
+            delay={100}
+            className="mx-auto flex aspect-square w-full max-w-[420px] items-center justify-center"
+          >
+            <KemproLogo variant="standalone" size={220} className="h-2/3 w-2/3" />
           </FadeIn>
         </div>
       </Container>
