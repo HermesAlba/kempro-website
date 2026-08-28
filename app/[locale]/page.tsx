@@ -41,9 +41,10 @@ export default async function HomePage({
           (minus the floating nav's own height, see HEADER_OFFSET in
           components/layout/header.tsx). Hero (flex-1) absorbs the leftover
           space; ClientLogos keeps its natural height and sits flush at the
-          bottom of the block. Hero's own black background ends exactly at
-          its own bottom edge — i.e. right where this carousel starts —
-          per request. Carousel border removed (border={false}) — per
+          bottom of the block. Hero's own background (now a photo, see
+          hero.tsx) ends exactly at its own bottom edge — i.e. right where
+          this carousel starts — per request. Carousel border removed
+          (border={false}) — per
           request. */}
       <div className="flex flex-col md:min-h-[calc(100vh-81px)] lg:min-h-[calc(100vh-207px)]">
         <Hero />
