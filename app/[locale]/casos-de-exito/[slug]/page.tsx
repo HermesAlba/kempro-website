@@ -162,7 +162,7 @@ export default async function CaseStudyPage({
 
           {/* Category + date, same meta-row size as CaseCard on that same
               listing page (see components/sections/case-card.tsx). */}
-          <p className="mt-6 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide">
+          <p className="mt-6 flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-wide">
             <span style={{ color: "#7682F8" }}>{caseStudy.industry}</span>
             <span className="text-slate-300">&bull;</span>
             <span className="text-slate-500">{formattedDate}</span>

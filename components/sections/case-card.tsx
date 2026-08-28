@@ -45,13 +45,15 @@ export function CaseCard({
   return (
     // Top: IndustryHeaderBackground thumbnail (unchanged — see
     // components/sections/industry-header-background.tsx). Bottom: same
-    // white background, sitewide font (Montserrat) + tight tracking, and content structure
-    // (colored category + date, title, excerpt) as the blog's own
-    // ArticleCard (see components/blog/all-articles-grid.tsx) — only the
-    // category color source differs (industryColorFor instead of the
-    // blog's own category palette). Hover is now just the title color
-    // shift ArticleCard itself uses, not a whole-card fill swap, to match
-    // that same "content and behavior" parity.
+    // white background, tight tracking, and content structure (colored
+    // category + date, title, excerpt) as the blog's own ArticleCard (see
+    // components/blog/all-articles-grid.tsx) — only the category color
+    // source differs (industryColorFor instead of the blog's own category
+    // palette). Hover is now just the title color shift ArticleCard itself
+    // uses, not a whole-card fill swap, to match that same "content and
+    // behavior" parity. Category/date meta-row is explicit font-sans
+    // (Montserrat, UI label) since <body>'s default is Poppins; the excerpt
+    // paragraph stays on that Poppins default (body copy, matches KR).
     <Link
       href={href}
       // w-full max-w-[342px] instead of a fixed w-[342px] — the fixed
@@ -87,7 +89,7 @@ export function CaseCard({
           isIndigo ? "bg-primary-600" : "bg-white"
         }`}
       >
-        <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide">
+        <p className="flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-wide">
           <span
             className={isIndigo ? "text-white" : undefined}
             style={isIndigo ? undefined : { color: industryColorFor() }}

@@ -267,7 +267,7 @@ export function ContactForm({
         <button
           type="submit"
           disabled={status === "submitting"}
-          className={`inline-flex items-center transition-colors disabled:cursor-not-allowed disabled:opacity-70 ${
+          className={`inline-flex items-center font-sans transition-colors disabled:cursor-not-allowed disabled:opacity-70 ${
             submitVariant === "text"
               ? "gap-2 text-[16px] text-primary-600 hover:text-primary-700 hover:underline"
               : submitVariant === "dark"

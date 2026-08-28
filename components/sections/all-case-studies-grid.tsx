@@ -29,7 +29,7 @@ function FilterPill({
     <button
       type="button"
       onClick={onClick}
-      className={`border-b-2 px-1 py-1 text-[13px] font-medium transition-colors ${
+      className={`border-b-2 px-1 py-1 font-sans text-[13px] font-medium transition-colors ${
         active
           ? "border-primary-600 text-primary-600"
           : "border-transparent text-neutral-600 hover:border-primary-300 hover:text-primary-600"

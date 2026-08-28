@@ -16,8 +16,10 @@ export function SectionHeading({
       className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : "text-left"}`}
     >
       {eyebrow ? (
+        // font-sans (Montserrat): a bold uppercase label reads as UI chrome,
+        // not body prose — <body>'s new default is Poppins (font-poppins).
         <p
-          className={`text-sm font-semibold uppercase tracking-wide ${
+          className={`font-sans text-sm font-semibold uppercase tracking-wide ${
             light ? "text-accent-300" : "text-primary-600"
           }`}
         >

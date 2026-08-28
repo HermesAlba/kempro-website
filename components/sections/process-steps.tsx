@@ -52,7 +52,7 @@ export function ProcessSteps({
                 <PhaseIcon className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 text-primary-600" />
               ) : null}
               <div className="relative">
-                <span className="text-[13px] font-semibold uppercase tracking-wide text-primary-100">
+                <span className="font-sans text-[13px] font-semibold uppercase tracking-wide text-primary-100">
                   {phaseLabel} 0{index + 1}
                 </span>
                 <h3 className="mt-3 text-xl font-bold text-white">

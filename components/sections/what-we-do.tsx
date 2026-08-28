@@ -51,7 +51,11 @@ export function WhatWeDo() {
             <h2 className="text-[28px] font-extrabold uppercase leading-[1.1] text-white sm:text-[36px]">
               {t("title")}
             </h2>
-            <p className="mt-[6px] text-[15px] font-extrabold uppercase leading-[1.1] tracking-wide text-white">
+            {/* font-sans (Montserrat): a bold display-style tagline (KR
+                measured it at 800 weight, same as a heading), not body
+                copy — <body>'s new default is Poppins (font-poppins), see
+                app/[locale]/layout.tsx. */}
+            <p className="mt-[6px] font-sans text-[15px] font-extrabold uppercase leading-[1.1] tracking-wide text-white">
               {t("tagline")}
             </p>
             <p className="mt-[26px] text-[16px] leading-[24px] text-white">
@@ -60,7 +64,7 @@ export function WhatWeDo() {
             <div className="mt-[43px]">
               <Link
                 href="/servicios"
-                className="inline-flex h-[55px] items-center justify-center border border-white px-[30px] text-[15px] font-semibold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-primary-700"
+                className="inline-flex h-[55px] items-center justify-center border border-white px-[30px] font-sans text-[15px] font-semibold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-primary-700"
               >
                 {t("cta")}
               </Link>

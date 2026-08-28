@@ -49,7 +49,7 @@ export function FeaturedBlock({
               components/blog/featured-latest-hero.tsx) exactly — plain
               colored text, not a pill. */}
           {badgeLabel ? (
-            <span className="mb-3 block text-[13px] font-semibold uppercase tracking-wide text-primary-600">
+            <span className="mb-3 block font-sans text-[13px] font-semibold uppercase tracking-wide text-primary-600">
               {badgeLabel}
             </span>
           ) : null}
@@ -64,7 +64,7 @@ export function FeaturedBlock({
             {description}
           </p>
           {category || date ? (
-            <p className="mt-3 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide">
+            <p className="mt-3 flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-wide">
               {category ? <span className="text-primary-600">{category}</span> : null}
               {category && date ? <span className="text-slate-300">&bull;</span> : null}
               {date ? <span className="text-slate-500">{date}</span> : null}
@@ -80,7 +80,7 @@ export function FeaturedBlock({
               aria-hidden="true"
               className="h-6 w-10 border-l border-t border-dashed border-slate-300"
             />
-            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-xs font-semibold uppercase tracking-wide text-white">
+            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-slate-900 px-6 py-3 font-sans text-xs font-semibold uppercase tracking-wide text-white">
               {ctaLabel}
             </span>
           </div>

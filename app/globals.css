@@ -157,12 +157,32 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
+  /* KR's own split, measured live off kniferiver.com: nav/UI chrome in
+     Montserrat (font-sans, unchanged), body copy in Poppins (new
+     font-poppins utility below — applied on <body> in
+     app/[locale]/layout.tsx, making it the actual document default). */
   --font-sans: var(--font-montserrat);
+  --font-poppins: var(--font-poppins);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Headings stay on Montserrat everywhere even though <body> below sets
+   Poppins as the document default — matches KR, where headings/nav share
+   one face and paragraph copy uses another. Every heading in this codebase
+   is a real semantic h1-h6 (see components/ui/section-heading.tsx,
+   case-card.tsx, article-card.tsx, hero.tsx, etc.), so this one rule covers
+   the whole site instead of needing a class on every heading. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-montserrat);
 }
 
 /* Hover lift used by service/case-study/blog cards: subtle elevation with a

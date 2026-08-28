@@ -90,7 +90,7 @@ export function NewsletterCard() {
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="inline-flex w-fit items-center gap-2 rounded-md bg-neutral-900 px-6 py-3 text-[13px] font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-70"
+                className="inline-flex w-fit items-center gap-2 rounded-md bg-neutral-900 px-6 py-3 font-sans text-[13px] font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {t("newsletterSubmit")}
               </button>

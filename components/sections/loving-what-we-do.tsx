@@ -71,7 +71,7 @@ export function LovingWhatWeDo() {
             <div className="mt-[35px]">
               <Link
                 href="/SN"
-                className="inline-flex h-[53px] items-center justify-center bg-primary-600 px-[30px] text-[15px] font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary-700"
+                className="inline-flex h-[53px] items-center justify-center bg-primary-600 px-[30px] font-sans text-[15px] font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary-700"
               >
                 {t("cta")}
               </Link>

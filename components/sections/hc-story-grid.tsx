@@ -25,7 +25,7 @@ function FilterTab({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-full border px-4 py-1.5 text-[13px] font-medium transition-colors ${
+      className={`rounded-full border px-4 py-1.5 font-sans text-[13px] font-medium transition-colors ${
         active
           ? "border-[var(--color-hc-blue)] text-[var(--color-hc-blue)]"
           : "border-neutral-200 text-neutral-600 hover:border-[var(--color-hc-blue)] hover:text-[var(--color-hc-blue)]"

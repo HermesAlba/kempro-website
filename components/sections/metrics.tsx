@@ -23,7 +23,10 @@ export function Metrics() {
               className="text-center"
             >
               <dt className="sr-only">{item.label}</dt>
-              <dd className="text-3xl font-bold text-primary-600 sm:text-4xl">
+              {/* font-sans (Montserrat): a large bold statistic reads as a
+                  headline figure, not body prose — <body>'s default is
+                  Poppins. */}
+              <dd className="font-sans text-3xl font-bold text-primary-600 sm:text-4xl">
                 <AnimatedCounter value={item.value} />
               </dd>
               <p className="mt-2 text-sm text-neutral-600">{item.label}</p>

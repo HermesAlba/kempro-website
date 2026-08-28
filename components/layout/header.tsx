@@ -180,7 +180,11 @@ export function Header() {
       </div>
 
       {open ? (
-        <div className="border-t border-primary-700 bg-primary-600 lg:hidden">
+        // montserrat.className: matches the desktop nav's font (see the
+        // comment above it) — body's document default is now Poppins, and
+        // this mobile drawer isn't nested inside that other Montserrat
+        // wrapper, so it needs its own explicit override.
+        <div className={`border-t border-primary-700 bg-primary-600 lg:hidden ${montserrat.className}`}>
           <div className="flex flex-col gap-1 px-6 py-4">
             {navItems.map((item) => {
               const isActive = pathname === item.href;

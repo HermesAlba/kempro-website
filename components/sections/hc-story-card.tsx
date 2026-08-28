@@ -32,7 +32,7 @@ export function HcStoryCard({
       <div className="flex flex-1 flex-col gap-2 p-6">
         {story.category.label ? (
           <p
-            className="text-[11px] font-semibold uppercase tracking-wide"
+            className="font-sans text-[11px] font-semibold uppercase tracking-wide"
             style={{ color: "var(--color-hc-blue)" }}
           >
             {story.category.label}

@@ -50,7 +50,9 @@ export function Footer() {
             </div>
           </div>
 
-          <nav className="flex flex-wrap items-center justify-center gap-8">
+          {/* font-sans (Montserrat): real site navigation, matching the
+              header's own nav treatment — <body>'s default is Poppins. */}
+          <nav className="flex flex-wrap items-center justify-center gap-8 font-sans">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (

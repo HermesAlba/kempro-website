@@ -12,8 +12,11 @@ const variantClasses: Record<Variant, string> = {
     "border border-white/30 text-white hover:bg-white/10 focus-visible:outline-white",
 };
 
+// font-sans (Montserrat) explicit: <body>'s document default is now
+// font-poppins (see app/[locale]/layout.tsx), matching KR's split of
+// Poppins for body copy vs. Montserrat for buttons/nav/UI chrome.
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold shadow-sm transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-sans text-sm font-semibold shadow-sm transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
 
 type ButtonLinkProps = ComponentProps<typeof Link> & {
   variant?: Variant;

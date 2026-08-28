@@ -110,7 +110,7 @@ export function CalBookingButton({
       className={
         variant === "dark"
           ? `${variantClasses} ${className ?? ""}`
-          : `inline-flex items-center justify-center gap-2 transition-colors ${variantClasses} ${className ?? ""}`
+          : `inline-flex items-center justify-center gap-2 font-sans transition-colors ${variantClasses} ${className ?? ""}`
       }
       data-cal-link={CAL_LINK}
       data-cal-namespace={CAL_NAMESPACE}

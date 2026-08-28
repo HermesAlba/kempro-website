@@ -16,7 +16,7 @@ export function PurposeTeaser() {
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <FadeIn direction="left">
-            <p className="text-sm font-semibold uppercase tracking-wide text-primary-600">
+            <p className="font-sans text-sm font-semibold uppercase tracking-wide text-primary-600">
               {tAbout("eyebrow")}
             </p>
             <h2 className="mt-3 text-[24px] font-bold leading-tight text-neutral-900 sm:text-[28px]">

@@ -72,7 +72,7 @@ export function ArticleCard({
             fits" within the fixed h-1/2 remainder, clipped at the bottom
             edge rather than pushing the card taller. */}
         <div className="flex h-1/2 flex-col gap-2 overflow-hidden pt-3">
-          <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide">
+          <p className="flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-wide">
             <span style={dark ? undefined : { color: textColor }} className={dark ? "text-primary-300" : undefined}>
               {post.category}
             </span>
@@ -110,7 +110,7 @@ function FilterPill({
     <button
       type="button"
       onClick={onClick}
-      className={`border-b-2 px-1 py-1 text-[13px] font-medium transition-colors ${
+      className={`border-b-2 px-1 py-1 font-sans text-[13px] font-medium transition-colors ${
         active
           ? "border-primary-600 text-primary-600"
           : "border-transparent text-neutral-600 hover:border-primary-300 hover:text-primary-600"

@@ -107,7 +107,7 @@ export default async function ServicesPage({
 
         <Container className="relative">
           <FadeIn className="mx-auto max-w-2xl text-center">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.02em] text-neutral-700">
+            <p className="font-sans text-[13px] font-semibold uppercase tracking-[0.02em] text-neutral-700">
               {t("groups.strategy.label")}
             </p>
             <h2 className="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">

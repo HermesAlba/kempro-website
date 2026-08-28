@@ -8,7 +8,7 @@ import { Footer } from "@/components/layout/footer";
 import { CookieConsentBanner } from "@/components/cookie-consent/cookie-consent-banner";
 import { GoogleAnalytics } from "@/components/cookie-consent/google-analytics";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
-import { montserrat } from "@/lib/fonts";
+import { montserrat, poppins } from "@/lib/fonts";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -64,8 +64,13 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={montserrat.variable}>
-      <body className="flex min-h-screen flex-col bg-primary-50/50 font-sans text-neutral-900 antialiased">
+    <html lang={locale} className={`${montserrat.variable} ${poppins.variable}`}>
+      {/* font-poppins (not font-sans/Montserrat) is the actual document
+          default — matches KR's own split (Poppins for body copy). Headings
+          override back to Montserrat via the global h1-h6 rule in
+          globals.css; nav, buttons, and UI-chrome labels override
+          explicitly where needed (see lib/fonts.ts for the full rationale). */}
+      <body className="flex min-h-screen flex-col bg-primary-50/50 font-poppins text-neutral-900 antialiased">
         <NextIntlClientProvider>
           <Header />
           <main className="flex-1">{children}</main>

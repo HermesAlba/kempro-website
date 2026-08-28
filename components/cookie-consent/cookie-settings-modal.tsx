@@ -111,14 +111,14 @@ export function CookieSettingsModal({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-full px-5 py-2.5 text-sm font-semibold text-neutral-600 transition-colors hover:text-neutral-900"
+            className="rounded-full px-5 py-2.5 font-sans text-sm font-semibold text-neutral-600 transition-colors hover:text-neutral-900"
           >
             {t("cancel")}
           </button>
           <button
             type="button"
             onClick={() => onSave({ analytics })}
-            className="rounded-full bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
+            className="rounded-full bg-primary-600 px-5 py-2.5 font-sans text-sm font-semibold text-white transition-colors hover:bg-primary-700"
           >
             {t("save")}
           </button>

@@ -98,7 +98,7 @@ export default async function BlogPostPage({
 
         <FadeIn className="relative px-6 pb-10 pt-8 sm:px-10 lg:px-20">
           <div className="mx-auto flex max-w-[750px] flex-col items-center gap-6 text-center">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.02em] text-primary-600">
+            <p className="font-sans text-[12px] font-semibold uppercase tracking-[0.02em] text-primary-600">
               {post.category}
             </p>
             <p className="text-sm font-medium text-neutral-800">

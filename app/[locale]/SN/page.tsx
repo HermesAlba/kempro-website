@@ -55,7 +55,7 @@ export default async function SNPage({
         <div className="mx-auto flex max-w-[1280px] flex-col lg:flex-row">
           <div className="flex flex-1 flex-col justify-center gap-6 px-6 py-16 sm:px-10 sm:py-20 lg:w-[640px] lg:flex-none lg:py-20 lg:pl-[95px] lg:pr-10">
             <FadeIn>
-              <p className="text-[13px] font-semibold uppercase tracking-[0.02em] text-primary-600">
+              <p className="font-sans text-[13px] font-semibold uppercase tracking-[0.02em] text-primary-600">
                 {t("hero.eyebrow")}
               </p>
             </FadeIn>

@@ -77,7 +77,7 @@ export function HcHero({
         </div>
 
         <FadeIn className="relative mx-auto flex max-w-[720px] flex-col items-center gap-5 px-6 py-20 text-center sm:px-10 sm:py-28">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.08em] text-white/80">
+          <p className="font-sans text-[13px] font-semibold uppercase tracking-[0.08em] text-white/80">
             {eyebrow}
           </p>
           <h1 className="text-[32px] font-bold leading-[1.15] tracking-[-0.02em] text-white sm:text-[40px] lg:text-[48px]">

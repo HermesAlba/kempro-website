@@ -262,7 +262,7 @@ export function SiteSearch({ triggerClassName }: { triggerClassName?: string }) 
                       ) : (
                         groups.map((group) => (
                           <div key={group.key} className="py-2">
-                            <p className="px-3 pb-1 text-[11px] font-semibold uppercase tracking-wide text-neutral-400">
+                            <p className="px-3 pb-1 font-sans text-[11px] font-semibold uppercase tracking-wide text-neutral-400">
                               {group.label}
                             </p>
                             {group.items.map((item) => (

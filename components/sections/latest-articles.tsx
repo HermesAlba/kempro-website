@@ -28,7 +28,7 @@ export function LatestArticles() {
               CTA on its own black section. */}
           <Link
             href="/blog"
-            className="inline-flex h-[35px] items-center justify-center gap-2 rounded-[6px] bg-primary-600 px-[20px] text-[13px] tracking-[-0.02em] text-white transition-colors hover:bg-primary-700"
+            className="inline-flex h-[35px] items-center justify-center gap-2 rounded-[6px] bg-primary-600 px-[20px] font-sans text-[13px] tracking-[-0.02em] text-white transition-colors hover:bg-primary-700"
           >
             {t("cta")}
           </Link>

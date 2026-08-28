@@ -15,7 +15,7 @@ function formatDate(date: string, locale: string) {
 
 function SectionBadge({ label }: { label: string }) {
   return (
-    <span className="text-[13px] font-semibold uppercase tracking-wide text-primary-600">
+    <span className="font-sans text-[13px] font-semibold uppercase tracking-wide text-primary-600">
       {label}
     </span>
   );
@@ -24,7 +24,7 @@ function SectionBadge({ label }: { label: string }) {
 function MetaRow({ post, locale }: { post: BlogPost; locale: string }) {
   const { textColor } = paletteFor(post.categoryKey);
   return (
-    <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide">
+    <p className="flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-wide">
       <span style={{ color: textColor }}>{post.category}</span>
       <span className="text-neutral-300">&bull;</span>
       <span className="text-neutral-500">{formatDate(post.date, locale)}</span>

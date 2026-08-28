@@ -83,7 +83,7 @@ export default async function CustomerStoryPage({
       >
         <FadeIn className="mx-auto flex max-w-[750px] flex-col items-center gap-6 px-6 pb-10 pt-8 text-center sm:px-10">
           {story.category.label ? (
-            <p className="text-[12px] font-semibold uppercase tracking-[0.02em] text-white/80">
+            <p className="font-sans text-[12px] font-semibold uppercase tracking-[0.02em] text-white/80">
               {story.category.label}
             </p>
           ) : null}

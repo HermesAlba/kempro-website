@@ -264,7 +264,7 @@ export default async function PrivacyNoticePage({
         />
         <Container className="relative z-10">
           <FadeIn className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center rounded-full bg-[#E5EDFF] px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-hc-blue-dark">
+            <span className="inline-flex items-center rounded-full bg-[#E5EDFF] px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-wide text-hc-blue-dark">
               {t("heroBadge")}
             </span>
             <h1 className="mt-6 text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
