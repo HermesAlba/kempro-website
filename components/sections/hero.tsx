@@ -33,7 +33,7 @@ export function Hero() {
           any given region of the photo is. */}
       <div className="absolute inset-0" aria-hidden="true">
         <Image
-          src="/images/home/hero-background.jpg"
+          src="/images/home/hero-glass-blocks.jpg"
           alt=""
           fill
           priority
