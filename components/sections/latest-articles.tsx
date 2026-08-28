@@ -13,7 +13,7 @@ export function LatestArticles() {
   const posts = getBlogPosts(locale).slice(0, 3);
 
   return (
-    <section className="bg-primary-900 py-20 sm:py-28">
+    <section className="bg-black py-20 sm:py-28">
       <Container>
         <SectionHeading title={t("title")} subtitle={t("subtitle")} light />
         <div className="mt-14 grid gap-x-7 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
