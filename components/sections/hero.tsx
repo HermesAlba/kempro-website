@@ -32,18 +32,17 @@ export function Hero() {
           gets instead, via accentBottomBorder in app/[locale]/page.tsx). */}
       <Container className="relative z-10 pt-[46px] sm:pt-[88px] lg:pt-[146px] xl:pt-[162px]">
         <FadeIn className="mx-auto text-center">
-          {/* Same format as KR's own "BUILDING STRONG." title: Montserrat
-              (see lib/fonts.ts), weight 800/extrabold, uppercase — measured
-              directly off KR via getComputedStyle. Sizes re-measured for
-              Montserrat 800 specifically (canvas.measureText on the actual
-              uppercase string): 20px→~300, 38px→~570, 63px→~945,
-              70px→~1050px — all within the Container's available width at
-              their respective breakpoints/viewports, so it still renders as
-              a single line (whitespace-nowrap + no max-w on the wrapper
-              above) at every size. xl size (70px) matches KR's own title
-              size exactly at their own 1280px reference viewport. */}
+          {/* Montserrat (see lib/fonts.ts), weight 800/extrabold, uppercase,
+              same format as KR's own "BUILDING STRONG." title. Sizes were
+              originally measured to fit "CRECIMIENTO INTELIGENTE." as a
+              single line (whitespace-nowrap, no max-w) at every breakpoint's
+              tightest viewport width. "CRECIENDO CON INTELIGENCIA." is ~12%
+              longer, so every size below is scaled down by that same ratio
+              to keep the line the same rendered width (and stay inside the
+              lg breakpoint's ~960px available width, the tightest fit)
+              instead of overflowing: 18px, 34px, 56px, 62px. */}
           <h1
-            className={`${montserrat.className} uppercase whitespace-nowrap text-[20px] font-extrabold tracking-tight text-white sm:text-[38px] lg:text-[63px] xl:text-[70px]`}
+            className={`${montserrat.className} uppercase whitespace-nowrap text-[18px] font-extrabold tracking-tight text-white sm:text-[34px] lg:text-[56px] xl:text-[62px]`}
           >
             {t("title")}
           </h1>
