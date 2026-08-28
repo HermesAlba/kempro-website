@@ -62,7 +62,10 @@
   --ring-dark-opacity-3: 0.6;
   --ring-dark-opacity-4: 0.4;
 
-  --logo-font-family: "Work Sans", sans-serif;
+  /* --logo-font-family removed: was "Work Sans", left over from before
+     Montserrat became the sitewide font. Never actually read anywhere —
+     components/ui/kempro-logo.tsx renders the wordmark with the iceberg
+     font (see lib/fonts.ts) via JS, not this CSS var. */
   --logo-font-weight: 700;
   --logo-letter-spacing: -0.03em;
   --logo-font-size-primary: 56px;

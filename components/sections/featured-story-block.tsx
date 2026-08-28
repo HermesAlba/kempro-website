@@ -80,7 +80,7 @@ export function FeaturedBlock({
               aria-hidden="true"
               className="h-6 w-10 border-l border-t border-dashed border-slate-300"
             />
-            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-slate-900 px-6 py-3 font-mono text-xs uppercase tracking-wide text-white">
+            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-xs font-semibold uppercase tracking-wide text-white">
               {ctaLabel}
             </span>
           </div>
