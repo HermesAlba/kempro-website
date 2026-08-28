@@ -51,6 +51,17 @@ const LOCKUP_DEFAULTS = {
 // (native 240x51 viewBox = the wordmark's bounding box at 56px).
 const KEMPRO_WORDMARK_VIEWBOX = { width: 240, height: 51 };
 const KEMPRO_WORDMARK_BASE_SIZE = 56;
+// The exported viewBox's own vertical center (height/2 = 25.5) is NOT the
+// "K"'s vertical center: the box also has to fit the "p"'s descender (down
+// to y=50.68), which pulls the box's midpoint lower than the cap letter.
+// The "K" glyph itself (last path below, local x 0-42) spans local y 0
+// (cap-height top) to y=39.76 (baseline) — its own center is (0+39.76)/2 =
+// 19.88, which sits 5.62 units above the box's center. So centering the
+// mark against the wordmark's flex box (as before) actually centers it
+// against empty descender space, not the "K" — it visibly sat too high.
+// Shifting the wordmark down by this offset (scaled) makes the mark's own
+// center land on the K's center instead of the box's.
+const KEMPRO_WORDMARK_CAP_CENTER_OFFSET = 5.62;
 
 function KemproWordmark({
   size,
@@ -71,6 +82,7 @@ function KemproWordmark({
       fill="none"
       aria-hidden="true"
       className={className}
+      style={{ transform: `translateY(${KEMPRO_WORDMARK_CAP_CENTER_OFFSET * scale}px)` }}
     >
       <path d="M221.133 40.6C210.493 40.6 202.765 35.336 202.765 25.704C202.765 16.072 210.493 10.92 221.133 10.92C231.773 10.92 239.501 16.072 239.501 25.704C239.501 35.336 231.773 40.6 221.133 40.6ZM221.133 32.872C224.717 32.872 227.069 30.352 227.069 25.704C227.069 21 224.717 18.648 221.133 18.648C217.549 18.648 215.197 21 215.197 25.704C215.197 30.352 217.549 32.872 221.133 32.872Z" fill={color} />
       <path d="M189.041 19.712C190.553 14.168 194.361 11.032 200.129 11.032C200.969 11.032 201.361 11.032 201.865 11.144V22.12C200.801 21.952 199.681 21.84 198.393 21.84C195.873 21.84 193.801 22.456 192.513 23.576C190.945 24.864 190.161 27.104 190.161 29.792V39.76H177.841V11.76H189.041V19.712Z" fill={color} />
