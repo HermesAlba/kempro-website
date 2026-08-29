@@ -84,7 +84,7 @@ export function Footer() {
 
           <div className="flex flex-wrap items-center justify-center gap-6">
             <p className="text-xs text-neutral-400">
-              &copy; {year} Kempro. {t("rights")}
+              &copy; {year} Kempro SAS. {t("rights")}
             </p>
             <Link
               href="/aviso-de-privacidad"
