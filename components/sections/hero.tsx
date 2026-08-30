@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
@@ -25,6 +26,22 @@ export function Hero() {
     // before (0.285 / 0.545 / 0.9), scaled down from the previous
     // 200px-at-xl figure to this new 162px-at-xl figure.
     <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-dark-900 pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
+      {/* Full-bleed background photo (abstract network/mesh graphic, per
+          request). Fills the whole section (including the -mt/pt
+          header-bleed area above); a dark overlay on top guarantees the
+          white title/subtitle stay readable. Distinct filename from any
+          prior hero image to avoid a stale-cache collision on the URL. */}
+      <div className="absolute inset-0" aria-hidden="true">
+        <Image
+          src="/images/home/hero-network-mesh.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black/45" />
+      </div>
       <Container className="relative z-10 pt-[46px] sm:pt-[88px] lg:pt-[146px] xl:pt-[162px]">
         <FadeIn className="mx-auto text-center">
           {/* Montserrat (see lib/fonts.ts), weight 800/extrabold, uppercase,
