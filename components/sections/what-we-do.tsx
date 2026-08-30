@@ -11,7 +11,11 @@ import type { Locale } from "@/i18n/routing";
 // keep this as a "what we do" overview of the broad service lines, distinct
 // from ServicesOverview just below (which shows the "Cómo trabajamos"
 // process steps, not a service list) and from /servicios (the full catalog
-// of all 6). No content is duplicated between the three.
+// of all 6). No content is duplicated between the three. This array's order
+// is also the card display order (per request) — deliberately independent
+// from the global `order` in lib/data/services.ts (used by /servicios and
+// the locale switcher), which stays untouched so this section can have its
+// own order without reshuffling the full catalog elsewhere.
 const featuredIds = ["strategy", "automation", "integration", "web"];
 
 // Kempro's own take on Knife River's "WHAT WE DO" section — every measurement
@@ -41,7 +45,12 @@ const featuredIds = ["strategy", "automation", "integration", "web"];
 export function WhatWeDo() {
   const t = useTranslations("Home.whatWeDo");
   const locale = useLocale() as Locale;
-  const services = getServices(locale).filter((s) => featuredIds.includes(s.id));
+  const allServices = getServices(locale);
+  // .map + find (not .filter) so the rendered order follows featuredIds
+  // above, not getServices' own global order.
+  const services = featuredIds
+    .map((id) => allServices.find((s) => s.id === id))
+    .filter((s): s is (typeof allServices)[number] => s !== undefined);
 
   return (
     <section className="bg-primary-600 py-20 sm:py-28">
