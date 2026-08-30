@@ -38,11 +38,14 @@ import { Container } from "@/components/ui/container";
 // Per request the block's background is white, so title/subtitle use dark
 // neutrals for legibility.
 //
-// Photo: a light office-desk flat lay (Envato Elements, Tirachard),
-// chosen per request for a sober, non-abstract, people-free image. Even
-// on the black background, a soft shadow (not a border — a border reads
-// as the "línea divisoria" removed earlier) plus a contrast boost on the
-// image itself keep its edges well defined.
+// Photo: an abstract 3D render — dark geometric cubes threaded together by
+// a tangled indigo network/mesh of connected nodes — swapped in per
+// request to replace the earlier office-desk flat lay. object-center (not
+// object-top, which suited the old photo's framing) since this
+// composition is centered both ways. A soft shadow (not a border — a
+// border reads as the "línea divisoria" removed earlier) plus a contrast
+// boost on the image itself keep its edges well defined against the
+// white section background.
 export function LovingWhatWeDo() {
   const t = useTranslations("Home.lovingWhatWeDo");
 
@@ -53,10 +56,10 @@ export function LovingWhatWeDo() {
           <div className="relative aspect-[6/5] w-full lg:aspect-auto lg:h-full lg:w-1/2 lg:flex-shrink-0">
             <div className="absolute left-[1.5cm] right-0 top-0 h-full shadow-[0_20px_50px_-15px_rgba(0,0,0,0.25)] lg:top-[65px] lg:h-[470px]">
               <Image
-                src="/images/home/loving-what-we-do.jpg"
+                src="/images/home/metodo-con-alma-cubes.jpg"
                 alt=""
                 fill
-                className="object-cover object-top contrast-125"
+                className="object-cover object-center contrast-125"
                 sizes="(min-width: 1024px) 570px, 100vw"
               />
             </div>
