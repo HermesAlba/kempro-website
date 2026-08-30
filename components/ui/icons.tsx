@@ -135,6 +135,21 @@ const icons: Record<ServiceIcon, (props: IconProps) => React.ReactElement> = {
   process: ProcessIcon,
 };
 
+// Custom-generated glyphs (public/images/icons/) for the 4 core service
+// lines featured in WhatWeDo + the /servicios cards — per request, replacing
+// the hand-drawn line-icon equivalents above for just these 4 (intranet and
+// process keep their original SVG icons). Pre-colored to #5D5FEF, the exact
+// hex behind --color-primary-600 (see app/globals.css), so they read as the
+// same brand indigo the old currentColor-based SVGs used — just baked into
+// the raster instead of inherited from `text-primary-600` on the wrapper,
+// since a raster image can't pick up currentColor.
+const RASTER_ICON_SRC: Partial<Record<ServiceIcon, string>> = {
+  strategy: "/images/icons/service-strategy.png",
+  automation: "/images/icons/service-automation.png",
+  integration: "/images/icons/service-integration.png",
+  web: "/images/icons/service-web.png",
+};
+
 export function ServiceIconGlyph({
   icon,
   className,
@@ -142,6 +157,15 @@ export function ServiceIconGlyph({
   icon: ServiceIcon;
   className?: string;
 }) {
+  const rasterSrc = RASTER_ICON_SRC[icon];
+  if (rasterSrc) {
+    // Plain <img> (not next/image) — these are already tiny, pre-optimized
+    // PNGs, and a plain img lets the caller's className (e.g. h-9 w-9,
+    // h-[50px] w-[50px]) size it directly without next/image's required
+    // intrinsic width/height.
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={rasterSrc} alt="" aria-hidden="true" className={`${className ?? ""} object-contain`} />;
+  }
   const Icon = icons[icon];
   return <Icon className={className} />;
 }
