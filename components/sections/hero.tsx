@@ -27,34 +27,23 @@ export function Hero() {
     // 200px-at-xl figure to this new 162px-at-xl figure.
     <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-dark-900 pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
       {/* Background photo (abstract network/mesh graphic, per request) —
-          object-contain (not cover) so the full image is always visible,
-          uncropped. IMPORTANT: this wrapper is capped to a fixed height
-          (not inset-0 / the section's full flex-1 height) and anchored at
-          the top, matching roughly where the title+subtitle block sits.
-          With object-contain, when a box is taller than needed the image
-          just fills it edge-to-edge (object-position has no visible
-          effect) — so on a tall hero the old inset-0 version stretched
-          the photo across the WHOLE section, well past the title, instead
-          of framing it. Capping the height keeps the picture "hugging"
-          the title instead. Below this box, the section's own bg-dark-900
-          shows through as a plain dark background down to ClientLogos.
-          A dark overlay on top guarantees the white title/subtitle stay
-          readable. Distinct filename from any prior hero image to avoid a
-          stale-cache collision on the URL. overflow-hidden here (in
-          addition to the section's own) clips the slow Ken Burns
-          zoom/drift below (see .animate-hero-bg-drift in globals.css) so
-          it never spills past this box's edges. */}
-      <div
-        className="absolute inset-x-0 top-0 h-[320px] overflow-hidden sm:h-[420px] lg:h-[560px] xl:h-[620px]"
-        aria-hidden="true"
-      >
+          full-bleed cover: fills the entire section edge-to-edge (cropped
+          as needed) down to where ClientLogos starts, per the reference
+          screenshot. A dark overlay on top guarantees the white
+          title/subtitle stay readable. Distinct filename from any prior
+          hero image to avoid a stale-cache collision on the URL.
+          overflow-hidden (in addition to the section's own) clips the
+          slow Ken Burns zoom/drift below (see .animate-hero-bg-drift in
+          globals.css) so the scaled-up image never peeks past the
+          section's edges. */}
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <Image
           src="/images/home/hero-network-mesh.jpg"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="animate-hero-bg-drift object-contain"
+          className="animate-hero-bg-drift object-cover"
         />
         <div className="absolute inset-0 bg-black/45" />
       </div>
