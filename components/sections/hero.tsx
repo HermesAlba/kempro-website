@@ -33,9 +33,9 @@ export function Hero() {
           title/subtitle stay readable. Distinct filename from any prior
           hero image to avoid a stale-cache collision on the URL.
           overflow-hidden (in addition to the section's own) clips the
-          slow Ken Burns zoom/drift below (see .animate-hero-bg-drift in
-          globals.css) so the scaled-up image never peeks past the
-          section's edges. */}
+          single left-to-right wave sweep below (see .animate-hero-bg-wave
+          in globals.css, plays once on load) so the scaled-up image never
+          peeks past the section's edges. */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <Image
           src="/images/home/hero-network-mesh.jpg"
@@ -43,7 +43,7 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="animate-hero-bg-drift object-cover"
+          className="animate-hero-bg-wave object-cover"
         />
         <div className="absolute inset-0 bg-black/45" />
       </div>

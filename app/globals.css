@@ -261,28 +261,27 @@ h6 {
   }
 }
 
-/* Home Hero background photo (components/sections/hero.tsx) — a slow,
-   subtle Ken Burns-style zoom/drift so the network-mesh graphic doesn't
-   sit completely static. scale(1.08) keeps the edges covered as it pans
-   so no letterboxing/empty edge is ever exposed; ease-in-out + alternate
-   makes the loop breathe back and forth instead of snapping at the loop
-   point. 22s is intentionally slow/ambient — meant to be felt more than
-   seen. */
-@keyframes hero-bg-drift {
+/* Home Hero background photo (components/sections/hero.tsx) — replaces the
+   earlier continuous Ken Burns drift with a single left-to-right wave
+   sweep: plays once on load (not infinite/alternate) and holds its end
+   position (forwards). scale(1.06) keeps a small overflow margin on both
+   sides so the pan never exposes an empty edge. ease-in-out gives the
+   sweep a soft "wave" acceleration/deceleration instead of a linear slide. */
+@keyframes hero-bg-wave {
   from {
-    transform: scale(1.08) translate(0, 0);
+    transform: scale(1.06) translateX(-2.5%);
   }
   to {
-    transform: scale(1.08) translate(-1.5%, -1.5%);
+    transform: scale(1.06) translateX(2.5%);
   }
 }
 
-.animate-hero-bg-drift {
-  animation: hero-bg-drift 22s ease-in-out infinite alternate;
+.animate-hero-bg-wave {
+  animation: hero-bg-wave 3s ease-in-out 1 forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-hero-bg-drift {
+  .animate-hero-bg-wave {
     animation: none;
   }
 }
