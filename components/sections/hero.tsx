@@ -28,12 +28,23 @@ export function Hero() {
     <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-dark-900 pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
       {/* Background photo (abstract network/mesh graphic, per request) —
           object-contain (not cover) so the full image is always visible,
-          uncropped, letterboxed on the bg-dark-900 section background
-          when the section's aspect ratio doesn't match the photo's. A
-          dark overlay on top guarantees the white title/subtitle stay
+          uncropped. IMPORTANT: this wrapper is capped to a fixed height
+          (not inset-0 / the section's full flex-1 height) and anchored at
+          the top, matching roughly where the title+subtitle block sits.
+          With object-contain, when a box is taller than needed the image
+          just fills it edge-to-edge (object-position has no visible
+          effect) — so on a tall hero the old inset-0 version stretched
+          the photo across the WHOLE section, well past the title, instead
+          of framing it. Capping the height keeps the picture "hugging"
+          the title instead. Below this box, the section's own bg-dark-900
+          shows through as a plain dark background down to ClientLogos.
+          A dark overlay on top guarantees the white title/subtitle stay
           readable. Distinct filename from any prior hero image to avoid a
           stale-cache collision on the URL. */}
-      <div className="absolute inset-0" aria-hidden="true">
+      <div
+        className="absolute inset-x-0 top-0 h-[320px] sm:h-[420px] lg:h-[560px] xl:h-[620px]"
+        aria-hidden="true"
+      >
         <Image
           src="/images/home/hero-network-mesh.jpg"
           alt=""
