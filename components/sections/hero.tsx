@@ -26,11 +26,13 @@ export function Hero() {
     // before (0.285 / 0.545 / 0.9), scaled down from the previous
     // 200px-at-xl figure to this new 162px-at-xl figure.
     <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-dark-900 pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
-      {/* Full-bleed background photo (abstract network/mesh graphic, per
-          request). Fills the whole section (including the -mt/pt
-          header-bleed area above); a dark overlay on top guarantees the
-          white title/subtitle stay readable. Distinct filename from any
-          prior hero image to avoid a stale-cache collision on the URL. */}
+      {/* Background photo (abstract network/mesh graphic, per request) —
+          object-contain (not cover) so the full image is always visible,
+          uncropped, letterboxed on the bg-dark-900 section background
+          when the section's aspect ratio doesn't match the photo's. A
+          dark overlay on top guarantees the white title/subtitle stay
+          readable. Distinct filename from any prior hero image to avoid a
+          stale-cache collision on the URL. */}
       <div className="absolute inset-0" aria-hidden="true">
         <Image
           src="/images/home/hero-network-mesh.jpg"
@@ -38,7 +40,7 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-contain"
         />
         <div className="absolute inset-0 bg-black/45" />
       </div>
