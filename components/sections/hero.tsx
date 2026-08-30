@@ -40,9 +40,12 @@ export function Hero() {
           shows through as a plain dark background down to ClientLogos.
           A dark overlay on top guarantees the white title/subtitle stay
           readable. Distinct filename from any prior hero image to avoid a
-          stale-cache collision on the URL. */}
+          stale-cache collision on the URL. overflow-hidden here (in
+          addition to the section's own) clips the slow Ken Burns
+          zoom/drift below (see .animate-hero-bg-drift in globals.css) so
+          it never spills past this box's edges. */}
       <div
-        className="absolute inset-x-0 top-0 h-[320px] sm:h-[420px] lg:h-[560px] xl:h-[620px]"
+        className="absolute inset-x-0 top-0 h-[320px] overflow-hidden sm:h-[420px] lg:h-[560px] xl:h-[620px]"
         aria-hidden="true"
       >
         <Image
@@ -51,7 +54,7 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-contain"
+          className="animate-hero-bg-drift object-contain"
         />
         <div className="absolute inset-0 bg-black/45" />
       </div>
