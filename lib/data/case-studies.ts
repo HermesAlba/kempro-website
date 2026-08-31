@@ -167,40 +167,6 @@ const data: {
   isInternal?: boolean;
 }[] = [
   {
-    id: "fintech-analisis-documentos",
-    slug: { es: "fintech-analisis-documentos", en: "fintech-document-analysis" },
-    client: { es: "Fintech en etapa de crecimiento", en: "Growth-stage fintech" },
-    industry: { es: "Cajas de Compensación", en: "Cajas de Compensación" },
-    industryKey: "cajas-compensacion",
-    date: "2026-05-10",
-    problem: {
-      es: "El análisis manual de documentación financiera y contractual tomaba entre 3 y 5 días por cliente, retrasando la originación de créditos.",
-      en: "Manual review of financial and contractual documentation took 3 to 5 days per client, delaying loan origination.",
-    },
-    solution: {
-      es: "Integramos un LLM con arquitectura RAG sobre la documentación regulatoria y contractual de la empresa, con validación de analistas en el circuito.",
-      en: "We integrated an LLM with a RAG architecture over the company's regulatory and contractual documentation, with analysts validating outputs in the loop.",
-    },
-    result: {
-      es: "El tiempo de análisis se redujo a menos de 4 horas, manteniendo un alto nivel de precisión validado por el equipo humano.",
-      en: "Analysis time dropped to under 4 hours, while maintaining high accuracy validated by the human team.",
-    },
-    metrics: {
-      es: [
-        { value: "<4h", label: "tiempo de análisis por cliente" },
-        { value: "95%", label: "precisión validada por analistas" },
-      ],
-      en: [
-        { value: "<4h", label: "analysis time per client" },
-        { value: "95%", label: "accuracy validated by analysts" },
-      ],
-    },
-    advantage: {
-      es: "Kempro no reemplazó al equipo de analistas: diseñó el sistema para que la IA acelere la lectura de documentos y ellos mantengan la última palabra en cada validación, sin ceder el control regulatorio que exige el negocio.",
-      en: "Kempro didn't replace the analyst team: the system was designed so AI speeds up document review while analysts keep the final say on every validation — without giving up the regulatory control the business requires.",
-    },
-  },
-  {
     id: "servicios-profesionales-roadmap-ia",
     slug: { es: "servicios-profesionales-roadmap-ia", en: "professional-services-ai-roadmap" },
     client: { es: "Firma de servicios profesionales", en: "Professional services firm" },
@@ -232,40 +198,6 @@ const data: {
     advantage: {
       es: "En vez de entregar una lista larga de casos de uso de moda, Kempro priorizó los pilotos según el impacto real y la viabilidad técnica de esta firma en particular, para que el primer resultado llegara en semanas y no al final de un roadmap de dos años.",
       en: "Instead of handing over a long list of trendy use cases, Kempro prioritized pilots based on this specific firm's real impact and technical feasibility, so the first result arrived in weeks — not at the end of a two-year roadmap.",
-    },
-  },
-  {
-    id: "educacion-asistente-admisiones",
-    slug: { es: "educacion-asistente-admisiones", en: "education-admissions-assistant" },
-    client: { es: "Institución de educación superior", en: "Higher education institution" },
-    industry: { es: "Cajas de Compensación", en: "Cajas de Compensación" },
-    industryKey: "cajas-compensacion",
-    date: "2026-03-18",
-    problem: {
-      es: "El equipo de admisiones no alcanzaba a responder a tiempo las preguntas de miles de aspirantes durante los picos de convocatoria.",
-      en: "The admissions team couldn't respond in time to thousands of applicant questions during peak enrollment periods.",
-    },
-    solution: {
-      es: "Creamos un asistente de IA disponible 24/7 que responde preguntas frecuentes, guía el proceso de aplicación y deriva casos complejos a un asesor.",
-      en: "We created a 24/7 AI assistant that answers frequently asked questions, guides applicants through the process and routes complex cases to an advisor.",
-    },
-    result: {
-      es: "Los aspirantes reciben respuesta inmediata a cualquier hora, y la tasa de finalización del proceso de aplicación aumentó de forma notable.",
-      en: "Applicants get an immediate answer at any hour, and the application completion rate rose noticeably.",
-    },
-    metrics: {
-      es: [
-        { value: "+25%", label: "tasa de finalización de la aplicación" },
-        { value: "24/7", label: "atención a aspirantes" },
-      ],
-      en: [
-        { value: "+25%", label: "application completion rate" },
-        { value: "24/7", label: "applicant support" },
-      ],
-    },
-    advantage: {
-      es: "El asistente se construyó a partir del proceso real de admisiones de la institución, no de una plantilla genérica de preguntas frecuentes, y deriva a un asesor humano exactamente en los casos donde una respuesta automática no basta.",
-      en: "The assistant was built from the institution's actual admissions process, not a generic FAQ template, and hands off to a human advisor precisely in the cases where an automated answer isn't enough.",
     },
   },
   {
