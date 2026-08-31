@@ -7,7 +7,8 @@ export type IndustryKey =
   | "arquitectura"
   | "construccion"
   | "cajas-compensacion"
-  | "tecnologia";
+  | "tecnologia"
+  | "retail";
 
 export type CaseStudy = {
   id: string;
@@ -39,10 +40,11 @@ export type CaseStudy = {
 
 // One real photo per industry — reused across every case study in that
 // industry rather than requiring a unique photo per story. Partial —
-// "tecnologia" (Kempro's own internal case studies) has no real client
-// photo, so it's intentionally left out; getCaseStudies leaves `image`
-// undefined for it, and every place that renders a case study photo
-// already falls back to IndustryHeaderBackground when it's missing.
+// "retail" has no real client photo yet (added for the WhatsApp wine-store
+// bot case study; no stock photo was sourced for it), so it's intentionally
+// left out; getCaseStudies leaves `image` undefined for it, and every place
+// that renders a case study photo already falls back to
+// IndustryHeaderBackground (its own ShoppingBagIcon) when it's missing.
 const INDUSTRY_IMAGE: Partial<Record<IndustryKey, string>> = {
   salud: "/images/case-studies/salud.jpg",
   restaurantes: "/images/case-studies/restaurantes.jpg",
@@ -454,6 +456,36 @@ const data: {
       en: [
         { value: "+25%", label: "application completion rate" },
         { value: "24/7", label: "applicant support" },
+      ],
+    },
+  },
+  {
+    id: "retail-vinos-whatsapp-bot",
+    slug: { es: "vinos-whatsapp-bot", en: "wine-whatsapp-bot" },
+    client: { es: "Distribuidora de vinos", en: "Wine distributor" },
+    industry: { es: "Distribución y Retail", en: "Retail & Distribution" },
+    industryKey: "retail",
+    date: "2026-08-20",
+    problem: {
+      es: "Una distribuidora de vinos con más de cien referencias gestionaba todas sus ventas manualmente por WhatsApp — fotos del catálogo, cálculo de totales y seguimiento de pedidos a mano —, un modelo que se volvía insostenible a medida que crecía el volumen de clientes.",
+      en: "A wine distributor with more than a hundred products managed all of its sales manually over WhatsApp — sending catalog photos, calculating totals, and tracking orders by hand — a model that became unsustainable as its customer volume grew.",
+    },
+    solution: {
+      es: "Kempro diseñó y desplegó, junto a la propietaria del negocio (sin experiencia técnica previa), un bot de WhatsApp con catálogo, carrito persistente y cobro integrado, adaptando el módulo de pagos y la verificación de WhatsApp Business sobre la marcha cuando surgieron bloqueos de proveedores externos.",
+      en: "Kempro designed and deployed, together with the business owner (who had no prior technical experience), a WhatsApp bot with a catalog, a persistent cart, and integrated checkout — adapting the payment module and the WhatsApp Business verification on the fly when third-party blockers came up.",
+    },
+    result: {
+      es: "La arquitectura quedó completamente lista y probada de extremo a extremo antes de conectar el número de producción: el negocio podrá atender pedidos las 24 horas sin intervención manual y sin errores de cálculo en los totales.",
+      en: "The architecture is fully built and tested end to end, ready to go live: the business will be able to handle orders 24/7 without manual intervention and with no calculation errors in order totals.",
+    },
+    metrics: {
+      es: [
+        { value: "+100", label: "referencias del catálogo digitalizadas" },
+        { value: "24/7", label: "atención de pedidos sin intervención manual" },
+      ],
+      en: [
+        { value: "+100", label: "catalog products digitized" },
+        { value: "24/7", label: "order handling without manual intervention" },
       ],
     },
   },

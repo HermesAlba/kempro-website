@@ -391,6 +391,28 @@ export function ArrowRightIcon({ className }: IconProps) {
   );
 }
 
+// Retail/commerce category icon (see components/sections/industry-header-
+// background.tsx) — a simple shopping bag, same 24x24/1.75-stroke line style
+// as the other category icons in that file.
+export function ShoppingBagIcon({ className, style }: IconProps) {
+  return (
+    <svg
+      className={className}
+      style={style}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.75}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M6 8h12l-1 12.5a1.5 1.5 0 0 1-1.5 1.5h-7a1.5 1.5 0 0 1-1.5-1.5L6 8Z" />
+      <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+    </svg>
+  );
+}
+
 export function SearchIcon({ className }: IconProps) {
   return (
     <svg

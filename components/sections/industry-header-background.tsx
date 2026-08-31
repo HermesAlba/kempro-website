@@ -7,6 +7,7 @@ import {
   BuildingConstructionIcon,
   UsersIcon,
   WebIcon,
+  ShoppingBagIcon,
 } from "@/components/ui/icons";
 
 type IconProps = { className?: string; style?: React.CSSProperties };
@@ -43,6 +44,7 @@ const INDUSTRY_ICONS: Record<IndustryKey, { Icon: ComponentType<IconProps> }> = 
   construccion: { Icon: BuildingConstructionIcon },
   "cajas-compensacion": { Icon: UsersIcon },
   tecnologia: { Icon: WebIcon },
+  retail: { Icon: ShoppingBagIcon },
 };
 
 // Exposes the shared indigo icon color so other elements (e.g. the
