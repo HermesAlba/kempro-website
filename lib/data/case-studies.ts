@@ -463,8 +463,8 @@ const data: {
     id: "retail-vinos-whatsapp-bot",
     slug: { es: "vinos-whatsapp-bot", en: "wine-whatsapp-bot" },
     client: { es: "Distribuidora de vinos", en: "Wine distributor" },
-    industry: { es: "Distribución y Retail", en: "Retail & Distribution" },
-    industryKey: "retail",
+    industry: { es: "Restaurantes", en: "Restaurants" },
+    industryKey: "restaurantes",
     date: "2026-08-20",
     problem: {
       es: "Una distribuidora de vinos con más de cien referencias gestionaba todas sus ventas manualmente por WhatsApp — fotos del catálogo, cálculo de totales y seguimiento de pedidos a mano —, un modelo que se volvía insostenible a medida que crecía el volumen de clientes.",
