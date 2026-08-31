@@ -69,21 +69,20 @@ export function Header() {
           own primary-600/700 treatment instead, sized down to match. */}
       <div className="hidden bg-black lg:block">
         <div className="mx-auto flex h-[146px] max-w-7xl items-center justify-between px-8">
-          {/* size=71 matches KR's own logo proportion within its top bar:
-              their logo image renders at 71px tall inside a 146px-tall bar
-              (71/146 ≈ 48.6%) — measured via getBoundingClientRect. Kempro's
-              own top bar is already the same 146px height (see the bar's
-              own h-[146px] below), so using the same 71px mark size lands
-              on the same proportion. Left-aligned as the flex row's first
-              child, so growing it only extends to the right; its starting x
-              position (the bar's own px-8) is unchanged. markColor="#000000"
-              (black, matching this bar's own bg-black) per request — the
-              mark's rings no longer read as brand indigo here, only the
-              white stroke/center dot and white wordmark stay visible. Scoped
-              to this instance only; other "dark" variant usages (e.g. the
-              footer) keep the default indigo mark. */}
+          {/* size=57: originally 71 (matching KR's own logo proportion
+              within its top bar — 71/146 ≈ 48.6% of the bar's height,
+              measured via getBoundingClientRect), scaled down to 80% of
+              that (71 * 0.8 = 56.8 ≈ 57) per request. Left-aligned as the
+              flex row's first child, so shrinking it only pulls in from
+              the right; its starting x position (the bar's own px-8) is
+              unchanged. markColor="#000000" (black, matching this bar's
+              own bg-black) per request — the mark's rings no longer read
+              as brand indigo here, only the white stroke/center dot and
+              white wordmark stay visible. Scoped to this instance only;
+              other "dark" variant usages (e.g. the footer) keep the
+              default indigo mark. */}
           <Link href="/" className="flex-shrink-0">
-            <KemproLogo variant="dark" size={71} markColor="#000000" />
+            <KemproLogo variant="dark" size={57} markColor="#000000" />
           </Link>
           {/* Social icons — positioned right after the logo (not bundled
               with search/language/CTA on the right), matching KR's own top
@@ -130,10 +129,12 @@ export function Header() {
           HEADER_OFFSET). */}
       <div className="bg-primary-600">
         <div className="mx-auto flex h-[81px] max-w-7xl items-center px-6 lg:h-[61px] lg:px-8">
-          {/* Mobile: logo + search + hamburger */}
+          {/* Mobile: logo + search + hamburger. size=24: originally 30,
+              scaled down to 80% (30 * 0.8 = 24) per request, matching the
+              desktop bar's own 80% reduction above. */}
           <div className="flex w-full items-center justify-between lg:hidden">
             <Link href="/" onClick={() => setOpen(false)} className="flex-shrink-0">
-              <KemproLogo variant="dark" size={30} />
+              <KemproLogo variant="dark" size={24} />
             </Link>
             <div className="flex items-center gap-1">
               <SiteSearch triggerClassName="flex items-center justify-center rounded-md p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white" />
