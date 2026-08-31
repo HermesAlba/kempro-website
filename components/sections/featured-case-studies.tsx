@@ -10,16 +10,18 @@ import { CaseCard } from "@/components/sections/case-card";
 
 // Three different industries and three different automation capabilities
 // (document governance/Copilot corporate assistant, WhatsApp sales bot,
-// computer-vision quality control) — picked deliberately for variety across
-// industries and metric types, not the first 3 entries in the data file.
-// retail-atencion-al-cliente (placeholder) and salud-triage-pacientes
-// ("Red de clínicas ambulatorias", placeholder) were both deleted from the
-// data file entirely per request; swapped in the real health-insurer
-// Copilot case for the salud slot instead of picking another placeholder.
+// corporate travel-optimization methodology) — picked deliberately for
+// variety across industries and metric types, not the first 3 entries in
+// the data file. retail-atencion-al-cliente, salud-triage-pacientes
+// ("Red de clínicas ambulatorias"), manufactura-control-calidad-vision
+// ("Planta de manufactura industrial") and logistica-optimizacion-rutas
+// ("Operador logístico nacional") were all placeholders, deleted from the
+// data file entirely per request — swapped in real client stories instead
+// of picking other placeholders each time.
 const FEATURED_IDS = [
   "salud-gobernanza-documental-copilot",
   "retail-vinos-whatsapp-bot",
-  "manufactura-control-calidad-vision",
+  "construccion-optimizacion-viajes-corporativos",
 ];
 
 export function FeaturedCaseStudies() {

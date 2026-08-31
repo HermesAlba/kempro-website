@@ -161,36 +161,6 @@ const data: {
   isInternal?: boolean;
 }[] = [
   {
-    id: "logistica-optimizacion-rutas",
-    slug: { es: "logistica-optimizacion-rutas", en: "logistics-route-optimization" },
-    client: { es: "Operador logístico nacional", en: "National logistics operator" },
-    industry: { es: "Construcción", en: "Construction" },
-    industryKey: "construccion",
-    date: "2026-06-20",
-    problem: {
-      es: "La planificación manual de rutas y la asignación de flota consumían más de 15 horas semanales del equipo de operaciones.",
-      en: "Manual route planning and fleet assignment consumed more than 15 hours per week of the operations team.",
-    },
-    solution: {
-      es: "Diseñamos un agente de IA que analiza pedidos, condiciones de tráfico y capacidad disponible para sugerir rutas óptimas en minutos.",
-      en: "We designed an AI agent that analyzes orders, traffic conditions and available capacity to suggest optimal routes in minutes.",
-    },
-    result: {
-      es: "La empresa redujo sus costos operativos y mejoró significativamente su cumplimiento de entregas a tiempo.",
-      en: "The company reduced operating costs and significantly improved on-time delivery performance.",
-    },
-    metrics: {
-      es: [
-        { value: "-30%", label: "costos de combustible" },
-        { value: "+18%", label: "entregas a tiempo" },
-      ],
-      en: [
-        { value: "-30%", label: "fuel costs" },
-        { value: "+18%", label: "on-time deliveries" },
-      ],
-    },
-  },
-  {
     id: "fintech-analisis-documentos",
     slug: { es: "fintech-analisis-documentos", en: "fintech-document-analysis" },
     client: { es: "Fintech en etapa de crecimiento", en: "Growth-stage fintech" },
@@ -247,36 +217,6 @@ const data: {
       en: [
         { value: "5", label: "validated use cases" },
         { value: "90 days", label: "to first pilot with positive ROI" },
-      ],
-    },
-  },
-  {
-    id: "manufactura-control-calidad-vision",
-    slug: { es: "manufactura-control-calidad-vision", en: "manufacturing-quality-control-vision" },
-    client: { es: "Planta de manufactura industrial", en: "Industrial manufacturing plant" },
-    industry: { es: "Construcción", en: "Construction" },
-    industryKey: "construccion",
-    date: "2026-08-01",
-    problem: {
-      es: "La inspección de calidad en línea era manual y muestral, dejando pasar defectos que se detectaban tarde, ya en etapas posteriores del proceso.",
-      en: "Quality inspection on the line was manual and sample-based, letting defects slip through undetected until later stages of the process.",
-    },
-    solution: {
-      es: "Implementamos un sistema de visión por computador con IA que inspecciona el 100% de las piezas en tiempo real y alerta al equipo ante cualquier desviación.",
-      en: "We deployed a computer-vision AI system that inspects 100% of parts in real time and alerts the team to any deviation.",
-    },
-    result: {
-      es: "Los defectos se detectan en el momento en que ocurren, reduciendo el desperdicio y los reprocesos en la planta.",
-      en: "Defects are now caught the moment they occur, reducing waste and rework on the floor.",
-    },
-    metrics: {
-      es: [
-        { value: "-45%", label: "defectos no detectados" },
-        { value: "100%", label: "de piezas inspeccionadas" },
-      ],
-      en: [
-        { value: "-45%", label: "undetected defects" },
-        { value: "100%", label: "of parts inspected" },
       ],
     },
   },
