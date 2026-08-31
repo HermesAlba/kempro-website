@@ -5,7 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { getServices } from "@/lib/data/services";
 import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
-import { PageHero } from "@/components/sections/page-hero";
+import { Hero } from "@/components/sections/hero";
 import { ServiceCard } from "@/components/sections/service-card";
 import { ProcessSteps } from "@/components/sections/process-steps";
 import { CtaBand } from "@/components/sections/cta-band";
@@ -53,11 +53,20 @@ export default async function ServicesPage({
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} gradient />
+      {/* Primer bloque — mismo Hero del home (foto de fondo, overlay
+          oscuro, onda animada), sin el carrusel de logos, con el mismo
+          alto (min-h-[calc(100vh-HEADER_OFFSET)]) para que, junto con el
+          menú, ocupe exactamente una pantalla — per request. Texto propio
+          de esta página (Services.eyebrow/title/subtitle, sin cambios).
+          Reemplaza el PageHero anterior (banda plana con gradiente). */}
+      <div className="flex flex-col md:min-h-[calc(100vh-81px)] lg:min-h-[calc(100vh-207px)]">
+        <Hero eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
+      </div>
 
       {/* "Cómo trabajamos" — moved here as the second block (right after the
           hero) so visitors see the process before the service groups. No
-          border-t since PageHero already has its own border-b right above.
+          border-t: the bg-primary-50/50 fill below already reads as a
+          distinct block against the Hero's dark bg-dark-900 right above it.
           Uses <Container> (same px-6 lg:px-8 / max-w-7xl as every other
           section on this page and the rest of the site) instead of a
           bespoke px-6 sm:px-10 lg:px-[95px] wrapper — the previous

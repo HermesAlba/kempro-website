@@ -6,8 +6,25 @@ import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
 import { montserrat } from "@/lib/fonts";
 
-export function Hero() {
+export function Hero({
+  eyebrow,
+  title,
+  subtitle,
+}: {
+  /** Small uppercase label above the title (e.g. "SERVICIOS") — omitted by
+   * default (Home's own hero has none). Used when this same hero is reused
+   * as another page's first block with its own copy. */
+  eyebrow?: string;
+  /** Overrides t("title")/t("subtitle") (Home.hero) — used to reuse this
+   * exact hero (same background photo, wave animation, dark overlay, and
+   * layout) as the first block of other top-level pages with their own
+   * copy instead of Home's. */
+  title?: string;
+  subtitle?: string;
+}) {
   const t = useTranslations("Home.hero");
+  const resolvedTitle = title ?? t("title");
+  const resolvedSubtitle = subtitle ?? t("subtitle");
 
   return (
     // The -mt/pt pair (see HEADER_OFFSET in components/layout/header.tsx)
@@ -49,26 +66,44 @@ export function Hero() {
       </div>
       <Container className="relative z-10 pt-[46px] sm:pt-[88px] lg:pt-[146px] xl:pt-[162px]">
         <FadeIn className="mx-auto text-center">
+          {eyebrow ? (
+            // text-primary-300 (brand indigo family) rather than the
+            // cyan accent-300 SectionHeading's own "light" eyebrow variant
+            // uses — that cyan isn't used anywhere live on the site and
+            // would clash with this hero's indigo-branded photo/overlay.
+            <p className="font-sans text-[13px] font-semibold uppercase tracking-[0.02em] text-primary-300">
+              {eyebrow}
+            </p>
+          ) : null}
           {/* Montserrat (see lib/fonts.ts), weight 800/extrabold, uppercase,
               same format as KR's own "BUILDING STRONG." title. Sizes were
               originally measured to fit "CRECIMIENTO INTELIGENTE." as a
-              single line (whitespace-nowrap, no max-w) at every breakpoint's
-              tightest viewport width. "CRECIENDO CON INTELIGENCIA." is ~12%
-              longer, so every size below is scaled down by that same ratio
-              to keep the line the same rendered width (and stay inside the
-              lg breakpoint's ~960px available width, the tightest fit)
-              instead of overflowing: 18px, 34px, 56px, 62px. */}
+              single line at every breakpoint's tightest viewport width.
+              "CRECIENDO CON INTELIGENCIA." is ~12% longer, so every size
+              below is scaled down by that same ratio to keep the line the
+              same rendered width: 18px, 34px, 56px, 62px.
+              whitespace-nowrap removed (was only needed to guarantee Home's
+              own short title never wraps) so a longer overridden title
+              (another page's own copy, e.g. Services) wraps onto multiple
+              lines instead of overflowing — Home's short title already fits
+              within Container's width at every breakpoint on its own, so it
+              still renders on a single line exactly as before. */}
           <h1
-            className={`${montserrat.className} uppercase whitespace-nowrap text-[18px] font-extrabold tracking-tight text-white sm:text-[34px] lg:text-[56px] xl:text-[62px]`}
+            className={`${montserrat.className} ${eyebrow ? "mt-3 " : ""}uppercase text-[18px] font-extrabold tracking-tight text-white sm:text-[34px] lg:text-[56px] xl:text-[62px]`}
           >
-            {t("title")}
+            {resolvedTitle}
           </h1>
           {/* 18px at every breakpoint — matches Knife River's own hero
               subtitle size exactly (measured: 18px/400/Montserrat). mt-5
               (20px) matches the gap measured between KR's own title and
-              subtitle (511px - 491px ≈ 20px). */}
-          <p className="mt-5 min-h-[3lh] text-[18px] text-white">
-            {t("subtitle")}
+              subtitle (511px - 491px ≈ 20px). max-w-2xl only applies when
+              subtitle is overridden — it centers/wraps a longer subtitle at
+              a readable line length instead of stretching edge to edge at
+              wide breakpoints; Home's own default subtitle keeps its
+              original full-width single line (adding the cap there would
+              force it to wrap where it didn't before). */}
+          <p className={`mt-5 min-h-[3lh] text-[18px] text-white ${subtitle ? "mx-auto max-w-2xl" : ""}`}>
+            {resolvedSubtitle}
           </p>
         </FadeIn>
       </Container>
