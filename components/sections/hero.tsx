@@ -78,7 +78,18 @@ export function Hero({
           <div className="absolute inset-0 bg-black/45" />
         </div>
       ) : null}
-      <Container className="relative z-10 pt-[46px] sm:pt-[88px] lg:pt-[146px] xl:pt-[162px]">
+      {/* background="white" (Services) starts the text 1cm (38px at 96dpi)
+          higher than the photo variant (Home) — each pt value below is
+          38px less, per request. Photo variant's own pt values stay
+          untouched (still tuned to KR's reference position, see the
+          section-level comment above). */}
+      <Container
+        className={`relative z-10 ${
+          isPhoto
+            ? "pt-[46px] sm:pt-[88px] lg:pt-[146px] xl:pt-[162px]"
+            : "pt-[8px] sm:pt-[50px] lg:pt-[108px] xl:pt-[124px]"
+        }`}
+      >
         <FadeIn className="mx-auto text-center">
           {eyebrow ? (
             // Photo variant: text-primary-300 (brand indigo family) rather
