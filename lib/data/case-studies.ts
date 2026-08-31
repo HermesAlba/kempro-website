@@ -298,8 +298,8 @@ const data: {
       en: "The technical and sales teams of a windows-and-doors supplier traveled regularly to support projects and coordinate installations, booking each trip reactively and without taking advantage of the benefits already included in their corporate card — generating avoidable overcosts month after month.",
     },
     solution: {
-      es: "Kempro puso a prueba su metodología de optimización de viajes en un piloto que abarcó todos los viajes corporativos de un trimestre: comparó tarifas día por día alrededor de cada fecha objetivo, ajustó el nivel de servicio de cada viajero según su necesidad real, y auditó los beneficios ya incluidos en la tarjeta corporativa para evitar pagar dos veces por lo mismo — todo documentado en reportes replicables por el propio equipo de viajes.",
-      en: "Kempro tested its travel-optimization methodology in a pilot that covered every corporate trip over a full quarter: comparing day-by-day fares around each target date, adjusting each traveler's service level to their actual need, and auditing the benefits already included in the corporate card to avoid paying twice for the same thing — all documented in reports the company's own travel team can repeat on its own.",
+      es: "Kempro puso a prueba su metodología de optimización de viajes en un piloto que abarcó todos los viajes corporativos de un trimestre: comparó tarifas día por día alrededor de cada fecha objetivo, ajustó el nivel de servicio de cada viajero según su necesidad real, y auditó los beneficios ya incluidos en la tarjeta corporativa para evitar pagar dos veces por lo mismo. Toda la optimización se implementó con Claude Cowork, que generó un artefacto — en palabras sencillas, una herramienta interactiva y reutilizable, sin necesidad de instalar nada — disponible también desde el celular, para que el equipo comercial pudiera consultar tarifas y aplicar la metodología por su cuenta en cualquier momento.",
+      en: "Kempro tested its travel-optimization methodology in a pilot that covered every corporate trip over a full quarter: comparing day-by-day fares around each target date, adjusting each traveler's service level to their actual need, and auditing the benefits already included in the corporate card to avoid paying twice for the same thing. The whole optimization was built with Claude Cowork, which generated an artifact — in simple terms, a reusable interactive tool with nothing to install — also available on mobile, so the sales team could check fares and apply the methodology on their own, anytime.",
     },
     result: {
       es: "El piloto trimestral logró un ahorro total del 25% en los viajes corporativos del equipo técnico y comercial, manteniendo la misma cobertura de equipaje y de los servicios que sí eran necesarios.",
@@ -308,11 +308,11 @@ const data: {
     metrics: {
       es: [
         { value: "-25%", label: "ahorro total en viajes corporativos durante el trimestre piloto" },
-        { value: "3 pasos", label: "metodología replicable por el propio equipo de viajes" },
+        { value: "100% móvil", label: "artefacto de Claude Cowork, reutilizable y disponible en el celular del equipo comercial" },
       ],
       en: [
         { value: "-25%", label: "total savings on corporate trips during the pilot quarter" },
-        { value: "3 steps", label: "replicable methodology, run by the company's own travel team" },
+        { value: "100% mobile", label: "reusable Claude Cowork artifact, available on the sales team's phones" },
       ],
     },
   },
