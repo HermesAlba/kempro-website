@@ -2,17 +2,20 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { FadeIn } from "@/components/ui/fade-in";
-import { JoiningHalves } from "@/components/ui/joining-halves";
-import { KemproLogo } from "@/components/ui/kempro-logo";
+import { Hero } from "@/components/sections/hero";
 import { OriginImageFrame } from "@/components/sections/origin-image-frame";
 import { ctaButtonClasses } from "@/components/ui/cta-button-classes";
 import { SearchIcon, RulerIcon, BalanceIcon, EyeIcon, TargetIcon } from "@/components/ui/icons";
 
-// Unlinked draft copy of app/[locale]/sobre-nosotros/page.tsx — same
-// pattern as app/[locale]/HC/page.tsx: a standalone route (not in nav or
-// sitemap) for iterating on this page's content/layout separately from
-// the live "Sobre nosotros" page. Reuses the same About translations, so
-// edits to those keys affect both routes until this page diverges.
+// IMPORTANT: despite the name and the comment this used to have, this is
+// the LIVE "Sobre nosotros" page in Spanish — components/layout/header.tsx
+// links the "about" nav item to href="/SN", and i18n/routing.ts rewrites
+// "/SN" to the URL "/sobre-nosotros" for es (and keeps "/SN" for en). The
+// actual app/[locale]/sobre-nosotros/page.tsx folder is a SEPARATE,
+// unlinked page instead (only reachable at /sobre-nosotros1 es /
+// /about en) — the two have diverged in content. Any "Sobre nosotros"
+// request should be applied HERE, not to the sobre-nosotros folder, unless
+// the routing mixup itself gets fixed.
 const VALUE_ICONS = [SearchIcon, RulerIcon, BalanceIcon, EyeIcon, TargetIcon];
 
 export async function generateMetadata({
@@ -47,64 +50,17 @@ export default async function SNPage({
 
   return (
     <>
-      {/* Hero — bleeds up behind the floating nav (see HEADER_OFFSET in
-          components/layout/header.tsx); the inner columns keep their own
-          padding untouched since the -mt/pt pair only shifts where this
-          section's background starts, not where its children render. */}
-      <section className="-mt-[81px] min-h-[calc(100vh+19px)] bg-primary-50/50 pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
-        <div className="mx-auto flex max-w-[1280px] flex-col lg:flex-row">
-          <div className="flex flex-1 flex-col justify-center gap-6 px-6 py-16 sm:px-10 sm:py-20 lg:w-[640px] lg:flex-none lg:py-20 lg:pl-[95px] lg:pr-10">
-            <FadeIn>
-              <p className="font-sans text-[13px] font-semibold uppercase tracking-[0.02em] text-primary-600">
-                {t("hero.eyebrow")}
-              </p>
-            </FadeIn>
-            <FadeIn delay={100}>
-              <h1 className="text-[24px] font-bold leading-[1.15] tracking-[-0.02em] text-neutral-900 sm:text-[28px]">
-                {t("hero.statement")}
-              </h1>
-            </FadeIn>
-            <FadeIn delay={150}>
-              <p className="mt-4 max-w-[560px] text-[15px] leading-[1.7] text-neutral-600 sm:text-[16px]">
-                {t("hero.subtitle")}
-              </p>
-            </FadeIn>
-          </div>
-
-          <div className="relative top-[19px] min-h-[280px] flex-1 sm:min-h-[400px] lg:min-h-[560px] lg:w-[640px] lg:flex-none">
-            {/* Movement here is the two halves visibly sliding together and
-                meeting at the center seam (see JoiningHalves) rather than a
-                plain fade/slide of the whole rectangle. */}
-            <JoiningHalves
-              className="relative h-full w-full overflow-hidden rounded-xl"
-              style={{ backgroundImage: "linear-gradient(135deg, #5D5FEF 0%, #4949D6 100%)" }}
-            >
-              {/* Graph-paper grid — two repeating linear gradients (one
-                  horizontal, one vertical) rather than a background image, so
-                  the line weight/color stay crisp at any size. White lines,
-                  since this mid-indigo base would swallow the dark-indigo
-                  grid the pattern normally uses. */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)," +
-                    "linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px)",
-                  backgroundSize: "64px 64px",
-                }}
-              />
-              {/* White card with the Kempro standalone mark centered. */}
-              <div className="absolute left-1/2 top-1/2 flex h-[180px] w-[180px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[24px] border border-white/20 bg-white sm:h-[220px] sm:w-[220px] sm:rounded-[28px] lg:h-[260px] lg:w-[260px] lg:rounded-[32px]">
-                <KemproLogo
-                  variant="standalone"
-                  size={120}
-                  className="h-[84px] w-[84px] sm:h-[102px] sm:w-[102px] lg:h-[120px] lg:w-[120px]"
-                />
-              </div>
-            </JoiningHalves>
-          </div>
-        </div>
-      </section>
+      {/* Primer bloque — mismo Hero que Servicios (background="white": sin
+          foto, sin overlay, sin animación de onda, texto oscuro), sin
+          carrusel de logos, con el mismo alto
+          (min-h-[calc(100vh-HEADER_OFFSET)]) para que, junto con el menú,
+          ocupe exactamente una pantalla — per request. Texto de la imagen
+          adjunta, que coincide con About.hero (eyebrow/statement/subtitle,
+          sin cambios). Reemplaza el hero anterior (columnas de texto +
+          JoiningHalves), que se removió por completo. */}
+      <div className="flex flex-col md:min-h-[calc(100vh-81px)] lg:min-h-[calc(100vh-207px)]">
+        <Hero eyebrow={t("hero.eyebrow")} title={t("hero.statement")} subtitle={t("hero.subtitle")} background="white" />
+      </div>
 
       {/* Divider between blocks 1 and 2 — same line language as
           HeroBodyDivider on the case-studies detail pages (see
