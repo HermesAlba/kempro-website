@@ -377,6 +377,49 @@ const data: {
     },
   },
   {
+    id: "cajas-compensacion-ecosistema-digital",
+    slug: {
+      es: "ecosistema-digital-caja-compensacion",
+      en: "digital-ecosystem-compensation-fund",
+    },
+    client: {
+      es: "Caja de compensación familiar en Colombia",
+      en: "Colombian family compensation fund",
+    },
+    industry: { es: "Cajas de Compensación", en: "Cajas de Compensación" },
+    industryKey: "cajas-compensacion",
+    // Proyecto real de hace ~4 años (ver referencia en el boletín de
+    // prensa aportado) — fecha aproximada, no exacta, ya que el nombre del
+    // cliente se mantiene anónimo por solicitud explícita.
+    date: "2022-06-10",
+    problem: {
+      es: "Una caja de compensación familiar en Colombia necesitaba modernizar su ecosistema digital completo —sitio web, portal de trámites y canales de atención— para ofrecer una mejor experiencia a sus afiliados, pero no contaba con una arquitectura de información definida ni con indicadores que permitieran medir el desempeño real de sus plataformas.",
+      en: "A Colombian family compensation fund needed to modernize its entire digital ecosystem — website, self-service portal, and service channels — to offer a better experience to its members, but had no defined information architecture and no indicators to measure how its platforms were actually performing.",
+    },
+    solution: {
+      es: "Kempro lideró la definición conceptual del nuevo ecosistema digital en dos fases: primero, un diagnóstico técnico del sitio existente y la integración de Google Analytics, Tag Manager y Data Studio para obtener KPIs en tiempo real, junto con el diseño de una nueva arquitectura de información y la evaluación de los CMS del mercado; después, el rediseño del flujo de más de veinte servicios digitales críticos —pagos, afiliaciones, radicación de PQRS, reservas de hotelería y recreación, cuota monetaria y subsidios, y nuevos canales como WhatsApp y chat en línea. El alcance de este proyecto llegó hasta la entrega de esa hoja de ruta y el diseño detallado; la implementación técnica no estuvo a cargo de Kempro, ya que no formaba parte del alcance contratado en ese momento.",
+      en: "Kempro led the conceptual definition of the new digital ecosystem in two phases: first, a technical diagnostic of the existing site and the integration of Google Analytics, Tag Manager, and Data Studio for real-time KPIs, along with a new information architecture and an evaluation of the CMS options on the market; then, the redesign of more than twenty critical digital service flows — payments, affiliations, PQRS filing, hotel and recreation-venue bookings, monetary subsidies, and new channels like WhatsApp and live chat. This project's scope ended at delivering that roadmap and detailed design; the technical implementation was not carried out by Kempro, since it wasn't part of the scope contracted at the time.",
+    },
+    result: {
+      es: "La caja de compensación recibió una hoja de ruta clara y accionable para modernizar su ecosistema digital, con la arquitectura de información, la selección de CMS y el rediseño de más de veinte servicios ya definidos y listos para pasar a implementación.",
+      en: "The compensation fund received a clear, actionable roadmap to modernize its digital ecosystem, with the information architecture, CMS selection, and redesign of more than twenty services already defined and ready to move into implementation.",
+    },
+    metrics: {
+      es: [
+        { value: "+20", label: "servicios digitales críticos rediseñados en el diagnóstico" },
+        { value: "2 fases", label: "de la hoja de ruta: analítica y arquitectura, luego servicios digitales" },
+      ],
+      en: [
+        { value: "+20", label: "critical digital services redesigned in the diagnostic" },
+        { value: "2 phases", label: "roadmap: analytics and architecture, then digital services" },
+      ],
+    },
+    advantage: {
+      es: "Este proyecto se hizo hace aproximadamente cuatro años, con un equipo consultor trabajando de forma manual cada auditoría, evaluación de CMS y diagrama de arquitectura. Hoy Kempro aborda este mismo tipo de proyecto de otra manera: usa Claude para estructurar diagnósticos y hojas de ruta completas en días en lugar de semanas, Copilot para acelerar documentación y automatización de procesos internos, y Gemini para el análisis y la síntesis de información dispersa entre plataformas — lo que le permite entregar hoy, en mucho menos tiempo, un alcance que en su momento tomó meses, y llegar con más frecuencia hasta la implementación misma, no solo hasta el diseño.",
+      en: "This project was done about four years ago, with a consulting team working manually through every audit, CMS evaluation, and architecture diagram. Today Kempro approaches this same type of project differently: it uses Claude to structure full diagnostics and roadmaps in days instead of weeks, Copilot to speed up documentation and internal process automation, and Gemini to analyze and synthesize information scattered across platforms — letting it deliver, in far less time, a scope that back then took months, and more often carry the work through to actual implementation, not just the design.",
+    },
+  },
+  {
     id: "kempro-sitio-con-claude",
     slug: { es: "nuestro-propio-sitio-con-claude", en: "our-own-website-with-claude" },
     client: { es: "Kempro", en: "Kempro" },
