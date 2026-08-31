@@ -133,6 +133,10 @@
     "eyebrow": "Services",
     "title": "Strategy, automation, and AI integration",
     "subtitle": "We support your company through every stage of AI adoption, from defining strategy to the daily operation of your systems.",
+    "photoHero": {
+      "title": "Our Services.",
+      "subtitle": "We support your company through every stage of AI adoption, from defining strategy to the daily operation of your systems."
+    },
     "benefitsTitle": "Benefits",
     "cardCta": "Learn more",
     "processTitle": "How we work",
@@ -233,6 +237,10 @@
       "eyebrow": "Who we are",
       "statement": "We power your business with technology, automation, and AI.",
       "subtitle": "We diagnose before we recommend, support the full cycle — from strategy to implementation —, measure results, and build with governance and human oversight at every step."
+    },
+    "photoHero": {
+      "title": "Who We Are.",
+      "subtitle": "We power your business with technology, automation, and AI."
     },
     "story": {
       "title": "We learned there's no one-size-fits-all formula",

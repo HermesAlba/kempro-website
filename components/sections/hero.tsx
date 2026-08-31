@@ -6,8 +6,22 @@ import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
 import { montserrat } from "@/lib/fonts";
 
-export function Hero() {
+export function Hero({
+  title,
+  subtitle,
+}: {
+  /** Overrides t("title")/t("subtitle") (Home.hero) — used to reuse this
+   * exact hero (same background photo, wave animation, dark overlay, and
+   * layout) as the first block of other top-level pages (Sobre Nosotros,
+   * Servicios) with their own copy, instead of Home's. Both must be passed
+   * together or not at all; each page's own translation namespace supplies
+   * them (e.g. About.photoHero, Services.photoHero). */
+  title?: string;
+  subtitle?: string;
+}) {
   const t = useTranslations("Home.hero");
+  const resolvedTitle = title ?? t("title");
+  const resolvedSubtitle = subtitle ?? t("subtitle");
 
   return (
     // The -mt/pt pair (see HEADER_OFFSET in components/layout/header.tsx)
@@ -61,14 +75,14 @@ export function Hero() {
           <h1
             className={`${montserrat.className} uppercase whitespace-nowrap text-[18px] font-extrabold tracking-tight text-white sm:text-[34px] lg:text-[56px] xl:text-[62px]`}
           >
-            {t("title")}
+            {resolvedTitle}
           </h1>
           {/* 18px at every breakpoint — matches Knife River's own hero
               subtitle size exactly (measured: 18px/400/Montserrat). mt-5
               (20px) matches the gap measured between KR's own title and
               subtitle (511px - 491px ≈ 20px). */}
           <p className="mt-5 min-h-[3lh] text-[18px] text-white">
-            {t("subtitle")}
+            {resolvedSubtitle}
           </p>
         </FadeIn>
       </Container>

@@ -133,6 +133,10 @@
     "eyebrow": "Servicios",
     "title": "Estrategia, automatización e integración de IA",
     "subtitle": "Acompañamos a tu empresa en cada etapa de la adopción de IA, desde la definición de la estrategia hasta la operación diaria de los sistemas.",
+    "photoHero": {
+      "title": "Nuestros Servicios.",
+      "subtitle": "Acompañamos a tu empresa en cada etapa de la adopción de IA, desde la definición de la estrategia hasta la operación diaria de los sistemas."
+    },
     "benefitsTitle": "Beneficios",
     "cardCta": "Conocer más",
     "processTitle": "Cómo trabajamos",
@@ -233,6 +237,10 @@
       "eyebrow": "Quiénes somos",
       "statement": "Impulsamos tu empresa con tecnología, automatización e IA.",
       "subtitle": "Diagnosticamos antes de recomendar, acompañamos todo el ciclo — de la estrategia a la implementación —, medimos resultados y construimos con gobernanza y supervisión humana en cada paso."
+    },
+    "photoHero": {
+      "title": "Quiénes Somos.",
+      "subtitle": "Impulsamos tu empresa con tecnología, automatización e IA."
     },
     "story": {
       "title": "Aprendimos que no hay una fórmula única",
