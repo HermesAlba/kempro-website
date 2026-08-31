@@ -53,14 +53,16 @@ export default async function ServicesPage({
 
   return (
     <>
-      {/* Primer bloque — mismo Hero del home (foto de fondo, overlay
-          oscuro, onda animada), sin el carrusel de logos, con el mismo
-          alto (min-h-[calc(100vh-HEADER_OFFSET)]) para que, junto con el
-          menú, ocupe exactamente una pantalla — per request. Texto propio
-          de esta página (Services.eyebrow/title/subtitle, sin cambios).
-          Reemplaza el PageHero anterior (banda plana con gradiente). */}
+      {/* Primer bloque — mismo Hero del home (misma estructura/tipografía/
+          alto), pero en fondo blanco y sin foto (background="white": sin
+          imagen, sin overlay, sin animación de onda, texto oscuro) y sin
+          el carrusel de logos, per request. Mismo alto
+          (min-h-[calc(100vh-HEADER_OFFSET)]) para que, junto con el menú,
+          ocupe exactamente una pantalla. Texto propio de esta página
+          (Services.eyebrow/title/subtitle, sin cambios). Reemplaza el
+          PageHero anterior (banda plana con gradiente). */}
       <div className="flex flex-col md:min-h-[calc(100vh-81px)] lg:min-h-[calc(100vh-207px)]">
-        <Hero eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
+        <Hero eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} background="white" />
       </div>
 
       {/* "Cómo trabajamos" — moved here as the second block (right after the

@@ -10,21 +10,28 @@ export function Hero({
   eyebrow,
   title,
   subtitle,
+  background = "photo",
 }: {
   /** Small uppercase label above the title (e.g. "SERVICIOS") — omitted by
    * default (Home's own hero has none). Used when this same hero is reused
    * as another page's first block with its own copy. */
   eyebrow?: string;
   /** Overrides t("title")/t("subtitle") (Home.hero) — used to reuse this
-   * exact hero (same background photo, wave animation, dark overlay, and
-   * layout) as the first block of other top-level pages with their own
-   * copy instead of Home's. */
+   * exact hero (same layout/typography/sizing) as the first block of other
+   * top-level pages with their own copy instead of Home's. */
   title?: string;
   subtitle?: string;
+  /** "photo" (default) = Home's own look: full-bleed background photo,
+   * dark overlay, single wave-sweep animation, white text. "white" = no
+   * photo/overlay/animation at all — flat bg-white with dark text instead,
+   * same layout/sizing/typography otherwise (used by Services, per
+   * request — same full-screen hero block, just without the image). */
+  background?: "photo" | "white";
 }) {
   const t = useTranslations("Home.hero");
   const resolvedTitle = title ?? t("title");
   const resolvedSubtitle = subtitle ?? t("subtitle");
+  const isPhoto = background === "photo";
 
   return (
     // The -mt/pt pair (see HEADER_OFFSET in components/layout/header.tsx)
@@ -42,7 +49,11 @@ export function Hero({
     // base/sm/lg values keep the same proportion to the xl value as
     // before (0.285 / 0.545 / 0.9), scaled down from the previous
     // 200px-at-xl figure to this new 162px-at-xl figure.
-    <section className="relative -mt-[81px] flex flex-1 items-start overflow-hidden bg-dark-900 pt-[81px] lg:-mt-[207px] lg:pt-[207px]">
+    <section
+      className={`relative -mt-[81px] flex flex-1 items-start overflow-hidden pt-[81px] lg:-mt-[207px] lg:pt-[207px] ${
+        isPhoto ? "bg-dark-900" : "bg-white"
+      }`}
+    >
       {/* Background photo (abstract network/mesh graphic, per request) —
           full-bleed cover: fills the entire section edge-to-edge (cropped
           as needed) down to where ClientLogos starts, per the reference
@@ -52,26 +63,36 @@ export function Hero({
           overflow-hidden (in addition to the section's own) clips the
           single left-to-right wave sweep below (see .animate-hero-bg-wave
           in globals.css, plays once on load) so the scaled-up image never
-          peeks past the section's edges. */}
-      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <Image
-          src="/images/home/hero-network-mesh.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="animate-hero-bg-wave object-cover"
-        />
-        <div className="absolute inset-0 bg-black/45" />
-      </div>
+          peeks past the section's edges. Skipped entirely for
+          background="white" — no photo, no overlay, no animation. */}
+      {isPhoto ? (
+        <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+          <Image
+            src="/images/home/hero-network-mesh.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="animate-hero-bg-wave object-cover"
+          />
+          <div className="absolute inset-0 bg-black/45" />
+        </div>
+      ) : null}
       <Container className="relative z-10 pt-[46px] sm:pt-[88px] lg:pt-[146px] xl:pt-[162px]">
         <FadeIn className="mx-auto text-center">
           {eyebrow ? (
-            // text-primary-300 (brand indigo family) rather than the
-            // cyan accent-300 SectionHeading's own "light" eyebrow variant
-            // uses — that cyan isn't used anywhere live on the site and
-            // would clash with this hero's indigo-branded photo/overlay.
-            <p className="font-sans text-[13px] font-semibold uppercase tracking-[0.02em] text-primary-300">
+            // Photo variant: text-primary-300 (brand indigo family) rather
+            // than the cyan accent-300 SectionHeading's own "light" eyebrow
+            // variant uses — that cyan isn't used anywhere live on the site
+            // and would clash with this hero's indigo-branded photo/overlay.
+            // White variant: text-primary-600, same eyebrow color used on
+            // every other light-background section (e.g. SectionHeading's
+            // own default, non-"light" eyebrow).
+            <p
+              className={`font-sans text-[13px] font-semibold uppercase tracking-[0.02em] ${
+                isPhoto ? "text-primary-300" : "text-primary-600"
+              }`}
+            >
               {eyebrow}
             </p>
           ) : null}
@@ -89,7 +110,9 @@ export function Hero({
               within Container's width at every breakpoint on its own, so it
               still renders on a single line exactly as before. */}
           <h1
-            className={`${montserrat.className} ${eyebrow ? "mt-3 " : ""}uppercase text-[18px] font-extrabold tracking-tight text-white sm:text-[34px] lg:text-[56px] xl:text-[62px]`}
+            className={`${montserrat.className} ${eyebrow ? "mt-3 " : ""}uppercase text-[18px] font-extrabold tracking-tight sm:text-[34px] lg:text-[56px] xl:text-[62px] ${
+              isPhoto ? "text-white" : "text-neutral-900"
+            }`}
           >
             {resolvedTitle}
           </h1>
@@ -102,7 +125,11 @@ export function Hero({
               wide breakpoints; Home's own default subtitle keeps its
               original full-width single line (adding the cap there would
               force it to wrap where it didn't before). */}
-          <p className={`mt-5 min-h-[3lh] text-[18px] text-white ${subtitle ? "mx-auto max-w-2xl" : ""}`}>
+          <p
+            className={`mt-5 min-h-[3lh] text-[18px] ${isPhoto ? "text-white" : "text-neutral-600"} ${
+              subtitle ? "mx-auto max-w-2xl" : ""
+            }`}
+          >
             {resolvedSubtitle}
           </p>
         </FadeIn>
