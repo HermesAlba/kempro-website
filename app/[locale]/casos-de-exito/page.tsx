@@ -84,7 +84,7 @@ export default async function CaseStudiesPage({
           own detail page hero). -mt-[38px] = 1cm at 96dpi, shifting the
           block up. */}
       <div className="-mt-[38px]">
-        <AllCaseStudiesGrid caseStudies={caseStudies} background="primary-50" />
+        <AllCaseStudiesGrid caseStudies={caseStudies} background="dark-900" />
       </div>
 
       <CtaBand
