@@ -66,22 +66,25 @@ export default async function ServicesPage({
       </div>
 
       {/* "Cómo trabajamos" — moved here as the second block (right after the
-          hero) so visitors see the process before the service groups. No
-          border-t: the bg-primary-50/50 fill below already reads as a
-          distinct block against the Hero's dark bg-dark-900 right above it.
-          Uses <Container> (same px-6 lg:px-8 / max-w-7xl as every other
-          section on this page and the rest of the site) instead of a
-          bespoke px-6 sm:px-10 lg:px-[95px] wrapper — the previous
-          one-off padding made this section's left/right margin drift
-          from the Strategy band and CtaBand below, which both already go
-          through Container. */}
-      <section className="bg-primary-50/50 py-16 sm:py-20">
+          hero) so visitors see the process before the service groups.
+          bg-dark-900 (was bg-primary-50/50), per request — reads as a
+          distinct block against the Hero's white bg right above it. Title/
+          subtitle switched to their light-on-dark colors to match; the
+          phase cards below (ProcessSteps) already read fine on black,
+          switched from primary-500 to primary-600 (the site's own indigo)
+          per request. Uses <Container> (same px-6 lg:px-8 / max-w-7xl as
+          every other section on this page and the rest of the site)
+          instead of a bespoke px-6 sm:px-10 lg:px-[95px] wrapper — the
+          previous one-off padding made this section's left/right margin
+          drift from the Strategy band and CtaBand below, which both
+          already go through Container. */}
+      <section className="bg-dark-900 py-16 sm:py-20">
         <Container>
           <FadeIn direction="left">
-            <h2 className="text-[24px] font-bold leading-tight text-neutral-900 sm:text-[28px]">
+            <h2 className="text-[24px] font-bold leading-tight text-white sm:text-[28px]">
               {t("processTitle")}
             </h2>
-            <p className="mt-3 max-w-2xl text-[16px] leading-[1.6] text-neutral-600">
+            <p className="mt-3 max-w-2xl text-[16px] leading-[1.6] text-neutral-300">
               {t("processSubtitle")}
             </p>
           </FadeIn>

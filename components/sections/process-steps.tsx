@@ -32,24 +32,23 @@ export function ProcessSteps({
         const PhaseIcon = PHASE_ICONS[index];
         return (
           <FadeIn key={step.title} delay={index * 100}>
-            {/* primary-500 (#7682F8) — the base indigo of the blog's
-                "Automatización" category pattern (see
-                AutomatizacionPetalsFallback in
-                components/blog/category-fallback-backgrounds.tsx), a lighter
-                tone than primary-700. Deliberately NOT primary-600, since
-                that's the logo's own mark color (KEMPRO_PRIMARY in
-                lib/kempro-symbol.ts) — using it here would compete with the
-                logo instead of just reusing an established brand tone. */}
-            <li className="relative h-full overflow-hidden rounded-2xl bg-primary-500 p-6">
+            {/* bg-primary-600 (#5D5FEF) — "el color indigo del sitio" per
+                request: the same brand indigo as the logo's own mark
+                (KEMPRO_PRIMARY in lib/kempro-symbol.ts) and the CTA-button
+                hover fill, not the lighter primary-500 this card used
+                before. The watermark icon below now uses primary-700 (one
+                step darker) instead of primary-600, since both can no
+                longer share that same tone once the card fill itself moved
+                to primary-600 — primary-700 still reads as a subtle darker
+                texture against the card without disappearing into it. */}
+            <li className="relative h-full overflow-hidden rounded-2xl bg-primary-600 p-6">
               {/* Decorative watermark icon, one per phase — top-right
                   corner, clipped by the card's own overflow-hidden so it
                   reads as a background texture rather than a competing
-                  visual element. primary-600 — the logo's own mark color
-                  (KEMPRO_PRIMARY in lib/kempro-symbol.ts) — per request.
-                  pointer-events-none keeps it out of the way of any future
-                  interactive content in the card. */}
+                  visual element. pointer-events-none keeps it out of the
+                  way of any future interactive content in the card. */}
               {PhaseIcon ? (
-                <PhaseIcon className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 text-primary-600" />
+                <PhaseIcon className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 text-primary-700" />
               ) : null}
               <div className="relative">
                 <span className="font-sans text-[13px] font-semibold uppercase tracking-wide text-primary-100">
