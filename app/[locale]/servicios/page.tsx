@@ -5,8 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { getServices } from "@/lib/data/services";
 import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
-import { Hero } from "@/components/sections/hero";
-import { ClientLogos } from "@/components/sections/client-logos";
+import { PageHero } from "@/components/sections/page-hero";
 import { ServiceCard } from "@/components/sections/service-card";
 import { ProcessSteps } from "@/components/sections/process-steps";
 import { CtaBand } from "@/components/sections/cta-band";
@@ -54,21 +53,11 @@ export default async function ServicesPage({
 
   return (
     <>
-      {/* Primer bloque — mismo Hero (foto de fondo, overlay oscuro,
-          animación de onda) + carrusel de logos de clientes que el home,
-          con el mismo alto (min-h-[calc(100vh-HEADER_OFFSET)]) para que,
-          junto con el menú, ocupe exactamente una pantalla — per request.
-          Texto propio de esta página (Services.photoHero). Reemplaza el
-          PageHero anterior (banda plana con eyebrow/título/subtítulo). */}
-      <div className="flex flex-col md:min-h-[calc(100vh-81px)] lg:min-h-[calc(100vh-207px)]">
-        <Hero title={t("photoHero.title")} subtitle={t("photoHero.subtitle")} />
-        <ClientLogos border={false} />
-      </div>
+      <PageHero eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} gradient />
 
       {/* "Cómo trabajamos" — moved here as the second block (right after the
           hero) so visitors see the process before the service groups. No
-          border-t: the bg-primary-50/50 fill below already reads as a
-          distinct block against ClientLogos' white strip right above it.
+          border-t since PageHero already has its own border-b right above.
           Uses <Container> (same px-6 lg:px-8 / max-w-7xl as every other
           section on this page and the rest of the site) instead of a
           bespoke px-6 sm:px-10 lg:px-[95px] wrapper — the previous
