@@ -253,8 +253,8 @@ const data: {
     id: "retail-atencion-al-cliente",
     slug: { es: "retail-atencion-al-cliente", en: "retail-customer-support" },
     client: { es: "Cadena de retail regional", en: "Regional retail chain" },
-    industry: { es: "Distribución y Retail", en: "Retail & Distribution" },
-    industryKey: "retail",
+    industry: { es: "Restaurantes", en: "Restaurants" },
+    industryKey: "restaurantes",
     date: "2026-07-15",
     problem: {
       es: "El equipo de soporte recibía más de 5,000 tickets al mes y los tiempos de primera respuesta superaban las 24 horas, afectando la satisfacción del cliente.",
