@@ -142,12 +142,12 @@ export default async function ServicesPage({
         </Container>
       </section>
 
-      {/* Group 2 — Implementation & automation. bg-white per request (was
-          bg-primary-50/50) — ServiceCard's own border-neutral-200 +
-          shadow-sm still separate the cards from the page even without a
-          tinted section fill behind them. Same Container swap as "Cómo
-          trabajamos" above, for the same left/right-margin consistency
-          reason. */}
+      {/* Group 2 — Implementation & automation. Section is bg-white (was
+          bg-primary-50/50, per earlier request); the ServiceCard tiles
+          themselves are now black (dark prop, per request) — their own
+          border-white/10 + shadow separate them from the white section
+          fill. Same Container swap as "Cómo trabajamos" above, for the
+          same left/right-margin consistency reason. */}
       <section className="bg-white py-16 sm:py-20">
         <Container>
           <FadeIn direction="left">
@@ -162,7 +162,7 @@ export default async function ServicesPage({
           <div className="mt-10 grid gap-8 sm:grid-cols-2">
             {implementationServices.map((service, index) => (
               <FadeIn key={service.slug} delay={(index + 1) * 100} direction={index % 2 === 0 ? "left" : "right"}>
-                <ServiceCard service={service} detailed />
+                <ServiceCard service={service} detailed dark />
               </FadeIn>
             ))}
           </div>
