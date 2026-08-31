@@ -40,3 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local point-in-time backups (not part of the deployed site — was
+# breaking Vercel's build: its stale copy of a since-removed lib/fonts.ts
+# export got type-checked as part of the project because tsconfig's
+# include glob swept it up too)
+/_backups
