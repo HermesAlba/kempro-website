@@ -142,10 +142,13 @@ export default async function ServicesPage({
         </Container>
       </section>
 
-      {/* Group 2 — Implementation & automation. Same Container swap as
-          "Cómo trabajamos" above, for the same left/right-margin
-          consistency reason. */}
-      <section className="bg-primary-50/50 py-16 sm:py-20">
+      {/* Group 2 — Implementation & automation. bg-white per request (was
+          bg-primary-50/50) — ServiceCard's own border-neutral-200 +
+          shadow-sm still separate the cards from the page even without a
+          tinted section fill behind them. Same Container swap as "Cómo
+          trabajamos" above, for the same left/right-margin consistency
+          reason. */}
+      <section className="bg-white py-16 sm:py-20">
         <Container>
           <FadeIn direction="left">
             <h2 className="text-[24px] font-bold leading-tight text-neutral-900 sm:text-[28px]">
