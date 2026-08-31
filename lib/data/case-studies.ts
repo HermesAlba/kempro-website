@@ -250,36 +250,6 @@ const data: {
   isInternal?: boolean;
 }[] = [
   {
-    id: "retail-atencion-al-cliente",
-    slug: { es: "retail-atencion-al-cliente", en: "retail-customer-support" },
-    client: { es: "Cadena de retail regional", en: "Regional retail chain" },
-    industry: { es: "Restaurantes", en: "Restaurants" },
-    industryKey: "restaurantes",
-    date: "2026-07-15",
-    problem: {
-      es: "El equipo de soporte recibía más de 5,000 tickets al mes y los tiempos de primera respuesta superaban las 24 horas, afectando la satisfacción del cliente.",
-      en: "The support team received more than 5,000 tickets per month, with first-response times over 24 hours, hurting customer satisfaction.",
-    },
-    solution: {
-      es: "Implementamos un agente de IA conectado a WhatsApp y al CRM existente, capaz de resolver consultas de primer nivel y escalar casos complejos a agentes humanos.",
-      en: "We deployed an AI agent connected to WhatsApp and the existing CRM, able to resolve first-level inquiries and escalate complex cases to human agents.",
-    },
-    result: {
-      es: "El tiempo de primera respuesta se redujo drásticamente y una parte significativa de los tickets se resuelve hoy sin intervención humana.",
-      en: "First-response time dropped drastically and a significant share of tickets are now resolved without human intervention.",
-    },
-    metrics: {
-      es: [
-        { value: "-62%", label: "tiempo de primera respuesta" },
-        { value: "40%", label: "tickets resueltos sin intervención humana" },
-      ],
-      en: [
-        { value: "-62%", label: "first-response time" },
-        { value: "40%", label: "tickets resolved without human intervention" },
-      ],
-    },
-  },
-  {
     id: "logistica-optimizacion-rutas",
     slug: { es: "logistica-optimizacion-rutas", en: "logistics-route-optimization" },
     client: { es: "Operador logístico nacional", en: "National logistics operator" },
