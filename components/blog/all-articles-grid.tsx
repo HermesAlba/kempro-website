@@ -7,7 +7,6 @@ import type { BlogPost } from "@/lib/data/blog";
 import { CoverImage } from "@/components/blog/cover-image";
 import { paletteFor } from "@/lib/blog-categories";
 import { FadeIn } from "@/components/ui/fade-in";
-import { ctaButtonClasses } from "@/components/ui/cta-button-classes";
 import { normalizeSearch } from "@/lib/normalize-search";
 import { SearchIcon } from "@/components/ui/icons";
 
@@ -36,8 +35,8 @@ export function ArticleCard({
    * on a dark section background — the card itself has no background
    * panel of its own (unlike CaseCard's white box), so its text sits
    * directly on the parent section's background. Used by LatestArticles
-   * on Home's black "Ideas y casos de uso" section only; AllArticlesGrid
-   * (blog/casos-de-exito listing pages) stays on the default white. */
+   * on Home's black "Ideas y casos de uso" section, and by AllArticlesGrid
+   * itself (blog's "Todos los artículos" block is now bg-dark-900 too). */
   dark?: boolean;
 }) {
   const locale = useLocale();
@@ -110,10 +109,15 @@ function FilterPill({
     <button
       type="button"
       onClick={onClick}
+      // Light-on-dark variant — this block now sits on a black section
+      // (see the wrapping <section> below). Bumped to near-white per
+      // request (neutral-400 read as too dim/low-contrast against
+      // bg-dark-900) — active is solid white with the indigo underline,
+      // inactive is white/70 so it still reads as secondary next to it.
       className={`border-b-2 px-1 py-1 font-sans text-[13px] font-medium transition-colors ${
         active
-          ? "border-primary-600 text-primary-600"
-          : "border-transparent text-neutral-600 hover:border-primary-300 hover:text-primary-600"
+          ? "border-primary-400 text-white"
+          : "border-transparent text-white/70 hover:border-primary-300/60 hover:text-white"
       }`}
     >
       {label}
@@ -193,10 +197,14 @@ export function AllArticlesGrid({
   }
 
   return (
-    <section className="border-t border-neutral-200 bg-white px-6 py-16 sm:px-10 lg:px-20 lg:py-20">
+    // Black background (same bg-dark-900 as the Hero/CTA band), per
+    // request — was bg-white with a neutral-200 top border; text/pills/
+    // search/cards below are all switched to their light-on-dark variants
+    // to match (ArticleCard already had a `dark` prop for exactly this).
+    <section className="border-t border-white/10 bg-dark-900 px-6 py-16 sm:px-10 lg:px-20 lg:py-20">
       <div className="mx-auto max-w-[1280px]">
         <FadeIn className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-[20px] font-bold text-neutral-900">{title ?? t("allArticlesTitle")}</h2>
+          <h2 className="text-[20px] font-bold text-white">{title ?? t("allArticlesTitle")}</h2>
           <div className="flex flex-wrap items-center gap-6">
             <FilterPill
               label={t("allCategoriesFilter")}
@@ -221,18 +229,21 @@ export function AllArticlesGrid({
             category + search combine instead of competing. */}
         <FadeIn className="mt-4 max-w-sm">
           <label className="relative block">
-            <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
+            {/* Bumped to white/70 (icon) and white/60 placeholder — the
+                original neutral-500/white-5 combo read as too faint on
+                bg-dark-900, per request. */}
+            <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/70" />
             <input
               type="text"
               value={query}
               onChange={(event) => handleQueryChange(event.target.value)}
               placeholder={t("searchPlaceholder")}
-              className="w-full rounded-full border border-neutral-200 bg-white py-2 pl-9 pr-4 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-100"
+              className="w-full rounded-full border border-white/25 bg-white/10 py-2 pl-9 pr-4 text-sm text-white placeholder:text-white/60 focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-400/30"
             />
           </label>
         </FadeIn>
         {filtered.length === 0 ? (
-          <p className="mt-10 text-center text-sm text-neutral-500">
+          <p className="mt-10 text-center text-sm text-neutral-400">
             {t("searchNoResults", { query: trimmedQuery })}
           </p>
         ) : (
@@ -244,16 +255,22 @@ export function AllArticlesGrid({
                 index={index}
                 basePath={basePath}
                 roundedImages={roundedImages}
+                dark
               />
             ))}
           </div>
         )}
         {hasMore ? (
           <div className="mt-14 flex justify-center">
+            {/* Explicit bg-primary-600 instead of ctaButtonClasses
+                (bg-neutral-900): on this section's new bg-dark-900 that
+                button is nearly invisible until hover — same fix already
+                applied to LatestArticles' and FeaturedCaseStudies' CTAs on
+                their own black sections. */}
             <button
               type="button"
               onClick={() => setVisibleCount((current) => Math.min(current + PAGE_SIZE, filtered.length))}
-              className={`${ctaButtonClasses} h-[35px] px-[20px] py-[10px]`}
+              className="inline-flex h-[35px] items-center justify-center gap-2 rounded-[6px] bg-primary-600 px-[20px] font-sans text-[13px] tracking-[-0.02em] text-white transition-colors hover:bg-primary-700"
             >
               {t("viewMoreLabel")}
             </button>
@@ -263,7 +280,7 @@ export function AllArticlesGrid({
             <button
               type="button"
               onClick={() => setVisibleCount(PAGE_SIZE)}
-              className={`${ctaButtonClasses} h-[35px] px-[20px] py-[10px]`}
+              className="inline-flex h-[35px] items-center justify-center gap-2 rounded-[6px] bg-primary-600 px-[20px] font-sans text-[13px] tracking-[-0.02em] text-white transition-colors hover:bg-primary-700"
             >
               {t("viewLessLabel")}
             </button>
