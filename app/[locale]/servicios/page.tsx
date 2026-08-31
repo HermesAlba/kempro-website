@@ -96,38 +96,40 @@ export default async function ServicesPage({
           section (edge to edge, like CtaBand) instead of an inset rounded
           card — same height (py-20/py-24) and graph-paper grid, same
           centered text layout and dark button as the CtaBand "Hablemos
-          sobre..." block below. Background is #B1C4FF — same indigo as the
-          top of the home Hero's gradient (see components/sections/hero.tsx).
-          Text stays dark (neutral-900/700) since this light fill needs it. */}
+          sobre..." block below. bg-primary-600 (#5D5FEF) — "el color
+          indigo de la marca" per request (was #B1C4FF, the light indigo at
+          the top of the home Hero's gradient). Text switched to its
+          light-on-indigo colors to match (was dark neutral-900/700, tuned
+          for that lighter fill); the grid overlay lines switched from dark
+          to white for the same reason. */}
       <section
         // Same min-height/flex treatment as CtaBand (see comment there) so
         // both bands match in height despite this one having an extra
         // eyebrow line and a longer subtitle.
         // Same 384px (6 grid cells) as CtaBand's "Hablemos sobre..." — see
         // comment there.
-        className="relative flex min-h-[384px] items-center overflow-hidden py-12"
-        style={{ backgroundColor: "#B1C4FF" }}
+        className="relative flex min-h-[384px] items-center overflow-hidden bg-primary-600 py-12"
       >
         <div
           aria-hidden="true"
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px)," +
-              "linear-gradient(90deg, rgba(15, 23, 42, 0.08) 1px, transparent 1px)",
+              "linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)," +
+              "linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px)",
             backgroundSize: "64px 64px",
           }}
         />
 
         <Container className="relative">
           <FadeIn className="mx-auto max-w-2xl text-center">
-            <p className="font-sans text-[13px] font-semibold uppercase tracking-[0.02em] text-neutral-700">
+            <p className="font-sans text-[13px] font-semibold uppercase tracking-[0.02em] text-primary-100">
               {t("groups.strategy.label")}
             </p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
               {t("groups.strategy.title")}
             </h2>
-            <p className="mt-4 text-lg text-neutral-700">
+            <p className="mt-4 text-lg text-primary-50">
               {t("groups.strategy.description")}
             </p>
             <div className="mt-8">
