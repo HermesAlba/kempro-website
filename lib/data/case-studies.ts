@@ -460,6 +460,36 @@ const data: {
     },
   },
   {
+    id: "salud-gobernanza-documental-copilot",
+    slug: { es: "gobernanza-documental-con-copilot", en: "document-governance-with-copilot" },
+    client: { es: "Aseguradora de salud internacional", en: "International health insurer" },
+    industry: { es: "Salud", en: "Healthcare" },
+    industryKey: "salud",
+    date: "2026-08-25",
+    problem: {
+      es: "La documentación de procesos normativos y regulatorios vivía dispersa entre las distintas líneas de negocio de una aseguradora y prestadora de servicios de salud, sin un repositorio único, sin control de acceso por negocio, y sin garantía de que las versiones en uso fueran realmente las vigentes.",
+      en: "Regulatory and process documentation lived scattered across the business lines of a health insurer and healthcare provider, with no single repository, no per-business access control, and no guarantee that the versions in use were actually current.",
+    },
+    solution: {
+      es: "Kempro consolidó toda la documentación normativa en un sitio de comunicaciones de SharePoint organizado por línea de negocio, con control de acceso por negocio; automatizó con Power Automate la aprobación de nuevas versiones por parte de los propietarios de cada proceso, junto con un flujo de revalidación anual obligatoria; y construyó sobre esa arquitectura un asistente corporativo con Copilot Chat que pone la información al alcance de todos con los mismos rigores de acceso, incluida su disponibilidad omnicanal para los clientes.",
+      en: "Kempro consolidated all regulatory documentation into a SharePoint communication site organized by business line, with access control per business; automated new-version approval through Power Automate, routed to each process owner, along with a mandatory annual revalidation flow; and built a corporate AI assistant with Copilot Chat on top of that architecture, making the information available to everyone under the same access controls — including omnichannel availability for clients.",
+    },
+    result: {
+      es: "La empresa pasó de documentación dispersa a un repositorio único, gobernado y siempre vigente, con un asistente de IA que responde con la información oficial respetando los permisos de cada negocio.",
+      en: "The company moved from scattered documentation to a single, governed, always-current repository, with an AI assistant that answers using official information while respecting each business's access permissions.",
+    },
+    metrics: {
+      es: [
+        { value: "100%", label: "procesos normativos centralizados en un solo sitio, con control de acceso por negocio" },
+        { value: "Anual", label: "revalidación automática de la vigencia de cada proceso" },
+      ],
+      en: [
+        { value: "100%", label: "normative processes centralized in one site, with per-business access control" },
+        { value: "Annual", label: "automatic revalidation of each process's currency" },
+      ],
+    },
+  },
+  {
     id: "kempro-sitio-con-claude",
     slug: { es: "nuestro-propio-sitio-con-claude", en: "our-own-website-with-claude" },
     client: { es: "Kempro", en: "Kempro" },
