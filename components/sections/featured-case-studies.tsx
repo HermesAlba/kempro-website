@@ -9,14 +9,15 @@ import { ctaButtonClasses } from "@/components/ui/cta-button-classes";
 import { CaseCard } from "@/components/sections/case-card";
 
 // Three different industries and three different automation capabilities
-// (healthcare triage/scheduling, WhatsApp sales bot, computer-vision quality
-// control) — picked deliberately for variety across industries and metric
-// types, not the first 3 entries in the data file. retail-atencion-al-cliente
-// (the old 2nd slot) was deleted from the data file entirely per request;
-// swapped in the real wine-distributor WhatsApp case instead of picking
-// another placeholder story.
+// (document governance/Copilot corporate assistant, WhatsApp sales bot,
+// computer-vision quality control) — picked deliberately for variety across
+// industries and metric types, not the first 3 entries in the data file.
+// retail-atencion-al-cliente (placeholder) and salud-triage-pacientes
+// ("Red de clínicas ambulatorias", placeholder) were both deleted from the
+// data file entirely per request; swapped in the real health-insurer
+// Copilot case for the salud slot instead of picking another placeholder.
 const FEATURED_IDS = [
-  "salud-triage-pacientes",
+  "salud-gobernanza-documental-copilot",
   "retail-vinos-whatsapp-bot",
   "manufactura-control-calidad-vision",
 ];

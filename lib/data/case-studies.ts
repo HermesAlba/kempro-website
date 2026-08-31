@@ -370,36 +370,6 @@ const data: {
     },
   },
   {
-    id: "salud-triage-pacientes",
-    slug: { es: "salud-triage-pacientes", en: "healthcare-patient-triage" },
-    client: { es: "Red de clínicas ambulatorias", en: "Outpatient clinic network" },
-    industry: { es: "Salud", en: "Healthcare" },
-    industryKey: "salud",
-    date: "2026-07-02",
-    problem: {
-      es: "El agendamiento y la clasificación inicial de pacientes dependían por completo del personal administrativo, generando largas esperas telefónicas.",
-      en: "Scheduling and initial patient triage relied entirely on administrative staff, causing long phone wait times.",
-    },
-    solution: {
-      es: "Desarrollamos un asistente de IA que clasifica la urgencia de cada caso, agenda citas automáticamente y escala a personal humano cuando es necesario.",
-      en: "We built an AI assistant that triages each case's urgency, books appointments automatically and escalates to human staff when needed.",
-    },
-    result: {
-      es: "Los pacientes son atendidos y agendados en minutos, y el personal administrativo se enfoca en los casos que realmente requieren su intervención.",
-      en: "Patients are triaged and scheduled within minutes, freeing administrative staff to focus on the cases that truly need their attention.",
-    },
-    metrics: {
-      es: [
-        { value: "-70%", label: "tiempo de espera para agendar" },
-        { value: "35%", label: "citas gestionadas sin intervención humana" },
-      ],
-      en: [
-        { value: "-70%", label: "wait time to schedule" },
-        { value: "35%", label: "appointments handled without human intervention" },
-      ],
-    },
-  },
-  {
     id: "educacion-asistente-admisiones",
     slug: { es: "educacion-asistente-admisiones", en: "education-admissions-assistant" },
     client: { es: "Institución de educación superior", en: "Higher education institution" },

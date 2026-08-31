@@ -31,9 +31,11 @@ export default async function CaseStudiesPage({
   setRequestLocale(locale);
   const t = await getTranslations("CaseStudies");
   const caseStudies = getCaseStudies(locale as Locale);
-  // "Red de clínicas ambulatorias" — the salud case study, used as this
-  // page's own featured story.
-  const featuredCaseStudy = getCaseStudyById(locale as Locale, "salud-triage-pacientes")!;
+  // The health-insurer Copilot governance case study, used as this page's
+  // own featured story. Was "salud-triage-pacientes" ("Red de clínicas
+  // ambulatorias") until that placeholder case study was deleted per
+  // request.
+  const featuredCaseStudy = getCaseStudyById(locale as Locale, "salud-gobernanza-documental-copilot")!;
   const featuredDate = new Date(featuredCaseStudy.date).toLocaleDateString(locale, {
     year: "numeric",
     month: "short",
