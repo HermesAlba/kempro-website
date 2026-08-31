@@ -169,21 +169,21 @@ export default async function ServicesPage({
         </Container>
       </section>
 
-      {/* Group 3 — Specialized, ready-to-implement products. Same
-          Container swap as above. bg-neutral-50 (not bg-white) so the
-          white ServiceCard tiles below have something to contrast
-          against — this was the only card section on the page still
-          sitting on pure white, which made its cards blend into the page
-          instead of standing out like Group 2's do against
-          bg-primary-50/50. Neutral instead of another primary-50/50 tint
-          so the page doesn't repeat the same indigo band three times. */}
-      <section className="bg-neutral-50 py-16 sm:py-20">
+      {/* Group 3 — Specialized, ready-to-implement products. bg-dark-900
+          per request (was bg-neutral-50) — the white ServiceCard tiles
+          below (unchanged, still the plain light variant) contrast against
+          it just as well as they did against neutral-50, and this creates
+          an alternating rhythm down the page: white section/black cards
+          (Group 2) → black section/white cards (Group 3). Title/subtitle
+          switched to their light-on-dark colors to match. Same Container
+          swap as above. */}
+      <section className="bg-dark-900 py-16 sm:py-20">
         <Container>
           <FadeIn direction="left">
-            <h2 className="text-[24px] font-bold leading-tight text-neutral-900 sm:text-[28px]">
+            <h2 className="text-[24px] font-bold leading-tight text-white sm:text-[28px]">
               {t("groups.specialized.title")}
             </h2>
-            <p className="mt-3 max-w-2xl text-[16px] leading-[1.6] text-neutral-600">
+            <p className="mt-3 max-w-2xl text-[16px] leading-[1.6] text-neutral-300">
               {t("groups.specialized.description")}
             </p>
           </FadeIn>
