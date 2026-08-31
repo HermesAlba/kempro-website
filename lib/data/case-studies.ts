@@ -430,6 +430,42 @@ const data: {
     },
   },
   {
+    id: "construccion-optimizacion-viajes-corporativos",
+    slug: {
+      es: "optimizacion-viajes-corporativos-ventanas-puertas",
+      en: "corporate-travel-optimization-windows-doors",
+    },
+    client: {
+      es: "Proveedor de ventanas y puertas para edificaciones",
+      en: "Windows & doors supplier for construction",
+    },
+    industry: { es: "Construcción", en: "Construction" },
+    industryKey: "construccion",
+    date: "2026-08-28",
+    problem: {
+      es: "Los equipos técnicos y comerciales de un proveedor de ventanas y puertas viajaban con regularidad para atender obras y coordinar instalaciones, reservando de forma reactiva y sin aprovechar los beneficios ya incluidos en su tarjeta corporativa, lo que generaba sobrecostos evitables en cada viaje.",
+      en: "The technical and sales teams of a windows-and-doors supplier traveled regularly to support projects and coordinate installations, booking trips reactively and without taking advantage of the benefits already included in their corporate card — generating avoidable overcosts on every trip.",
+    },
+    solution: {
+      es: "Kempro aplicó su metodología de optimización de viajes a un viaje corporativo piloto (equipo de tres personas, seis noches): comparó tarifas día por día alrededor de la fecha objetivo, ajustó el nivel de servicio de cada viajero según su necesidad real, y auditó los beneficios ya incluidos en la tarjeta corporativa para evitar pagar dos veces por lo mismo — todo documentado en un reporte replicable por el propio equipo de viajes.",
+      en: "Kempro applied its travel-optimization methodology to a pilot corporate trip (a three-person team, six nights): comparing day-by-day fares around the target date, adjusting each traveler's service level to their actual need, and auditing the benefits already included in the corporate card to avoid paying twice for the same thing — all documented in a report the company's own travel team can repeat on its own.",
+    },
+    result: {
+      es: "El viaje piloto redujo el costo total en 9,3% y el gasto de transporte aéreo en 39,5%, manteniendo la misma duración de estadía y sin perder cobertura de equipaje ni de los servicios que sí eran necesarios.",
+      en: "The pilot trip cut total cost by 9.3% and air transport spend by 39.5%, keeping the same length of stay and without losing baggage coverage or any service that was actually needed.",
+    },
+    metrics: {
+      es: [
+        { value: "-9,3%", label: "costo total del viaje piloto (transporte + alojamiento)" },
+        { value: "-39,5%", label: "gasto de transporte aéreo del equipo" },
+      ],
+      en: [
+        { value: "-9.3%", label: "total pilot trip cost (transport + lodging)" },
+        { value: "-39.5%", label: "team's air transport spend" },
+      ],
+    },
+  },
+  {
     id: "salud-gobernanza-documental-copilot",
     slug: { es: "gobernanza-documental-con-copilot", en: "document-governance-with-copilot" },
     client: { es: "Aseguradora de salud internacional", en: "International health insurer" },
