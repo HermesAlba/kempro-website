@@ -54,13 +54,24 @@ const INDUSTRY_IMAGE: Partial<Record<IndustryKey, string>> = {
   tecnologia: "/images/case-studies/tecnologia.jpg",
 };
 
-// Builds the detail page's 5-section body (Overview / Challenge / Solution
-// / Business Impact / Kempro Advantage) from a case study's own resolved
-// fields, instead of hand-authoring ~14 paragraphs per story per locale.
-// Every sentence either reuses the existing problem/solution/result text
-// verbatim (already accurate, already reviewed) or paraphrases it — no new
-// facts are invented beyond what's already in problem/solution/result/
-// metrics/client/industry.
+// Builds the detail page's 4-section body (Overview / Solution / Business
+// Impact / Kempro Advantage) from a case study's own resolved fields,
+// instead of hand-authoring ~14 paragraphs per story per locale.
+//
+// Previously this had a 5th "El reto"/"The Challenge" section filled with
+// fixed boilerplate (a canned "cuello de botella"/"bottleneck" line, a
+// generic "dependía de procesos manuales..." paragraph, and a fixed
+// 3-item bullet list) repeated verbatim, word for word, across every case
+// study on the site — and factually mismatched for stories that aren't
+// "an AI agent handling first-level tickets" (e.g. a travel-cost
+// methodology, or a SharePoint/Copilot documentation project). Same
+// problem in the old "La solución" section's own fixed intro/outro
+// sentences and its own fixed 3-item capabilities list. Removed — every
+// sentence below now comes directly from this case's own problem/
+// solution/result/metrics fields, with only a single short (and clearly
+// generic/brand-voice, not fake-specific) connective sentence per
+// section, so nothing invents details that may not be true for a given
+// story, and nothing repeats identically story to story.
 function buildContent(
   locale: Locale,
   fields: {
@@ -77,7 +88,7 @@ function buildContent(
     isInternal?: boolean;
   },
 ): ContentBlock[] {
-  const { client, industry, problem, solution, result, metrics, isInternal } = fields;
+  const { client, problem, solution, result, metrics, isInternal } = fields;
 
   if (locale === "en") {
     return [
@@ -85,55 +96,13 @@ function buildContent(
       {
         type: "paragraph",
         text: isInternal
-          ? `Kempro applied its own AI-driven approach to a real internal challenge: designing and launching its own bilingual website using the same process it offers clients. The project became a live, verifiable example of that process rather than a theoretical pitch.`
-          : `${client} partnered with Kempro to transform a critical part of its operation using AI. The engagement focused on a specific bottleneck that was directly affecting both the team's efficiency and the experience of the people it served.`,
+          ? `Kempro applied its own approach to a real internal challenge: designing and launching its own bilingual website using the same process it offers clients.`
+          : `${client} partnered with Kempro to work through a specific challenge in its operation.`,
       },
       { type: "paragraph", text: problem },
 
-      { type: "heading", text: "The Challenge" },
-      {
-        type: "paragraph",
-        text: isInternal
-          ? `Before this project, Kempro's own team relied on the same manual, ad-hoc process many companies use to build a website — scattered decisions, no single source of truth for content, and design choices that were hard to keep consistent across pages.`
-          : `Before working with Kempro, the ${industry.toLowerCase()} team relied on manual processes that were difficult to scale and left little room for error.`,
-      },
-      {
-        type: "paragraph",
-        text: `Without automation, every case required full manual handling, which limited the team's capacity and made consistent, timely service hard to guarantee as volume grew.`,
-      },
-      { type: "paragraph", text: "Key challenges included:" },
-      {
-        type: "list",
-        items: [
-          "Manual processes that consumed significant team time.",
-          "Response times that hurt the end-user experience.",
-          "Limited visibility and consistency across repetitive tasks.",
-        ],
-      },
-
       { type: "heading", text: "The Solution" },
-      {
-        type: "paragraph",
-        text: `Kempro designed and implemented an AI solution tailored to ${client}'s specific needs, starting with a detailed diagnostic of the existing process.`,
-      },
       { type: "paragraph", text: solution },
-      {
-        type: "paragraph",
-        text: `The solution was integrated with the tools the team already used day to day, minimizing the learning curve and speeding up adoption.`,
-      },
-      { type: "paragraph", text: "Key capabilities included:" },
-      {
-        type: "list",
-        items: [
-          "AI-driven handling of first-level cases with human escalation when needed.",
-          "Integration with existing systems and workflows.",
-          "Real-time visibility into performance and outcomes.",
-        ],
-      },
-      {
-        type: "paragraph",
-        text: `The result was a robust, maintainable solution built to scale alongside ${client}'s future needs.`,
-      },
 
       { type: "heading", text: "Business Impact" },
       { type: "paragraph", text: result },
@@ -145,15 +114,7 @@ function buildContent(
       { type: "heading", text: "Kempro Advantage" },
       {
         type: "paragraph",
-        text: "Kempro's approach starts with a real diagnostic of each company's specific conditions, rather than applying a one-size-fits-all formula.",
-      },
-      {
-        type: "paragraph",
-        text: "The Kempro team stays involved from the initial diagnostic through full adoption, making sure the technology actually becomes part of day-to-day operations rather than a one-off pilot.",
-      },
-      {
-        type: "paragraph",
-        text: `For ${client}, that meant moving from a manual, limited process to a faster, measurable operation built to grow.`,
+        text: "Kempro starts from a real diagnostic of each company's specific conditions rather than a one-size-fits-all formula, and stays involved through adoption — not just the initial rollout.",
       },
     ];
   }
@@ -163,55 +124,13 @@ function buildContent(
     {
       type: "paragraph",
       text: isInternal
-        ? `Kempro aplicó su propio método de IA a un reto interno real: diseñar y lanzar su propio sitio web bilingüe usando el mismo proceso que ofrece a sus clientes. El proyecto se convirtió en un ejemplo real y verificable de ese método, no en una promesa teórica.`
-        : `${client} se asoció con Kempro para transformar una parte crítica de su operación mediante inteligencia artificial. El proyecto se centró en un cuello de botella específico que afectaba directamente la eficiencia del equipo y la experiencia de las personas a las que atendía.`,
+        ? `Kempro aplicó su propio método a un reto interno real: diseñar y lanzar su propio sitio web bilingüe usando el mismo proceso que ofrece a sus clientes.`
+        : `${client} se asoció con Kempro para resolver un reto específico de su operación.`,
     },
     { type: "paragraph", text: problem },
 
-    { type: "heading", text: "El reto" },
-    {
-      type: "paragraph",
-      text: isInternal
-        ? `Antes de este proyecto, el propio equipo de Kempro dependía de los mismos procesos manuales e improvisados que usan muchas empresas para construir un sitio web: decisiones dispersas, sin una única fuente de verdad para el contenido, y un diseño difícil de mantener consistente entre páginas.`
-        : `Antes de trabajar con Kempro, el equipo del sector ${industry.toLowerCase()} dependía de procesos manuales difíciles de escalar y con poco margen para el error.`,
-    },
-    {
-      type: "paragraph",
-      text: `Sin automatización, cada caso requería atención manual completa, lo que limitaba la capacidad del equipo y dificultaba mantener un servicio consistente y oportuno a medida que crecía el volumen.`,
-    },
-    { type: "paragraph", text: "Los principales retos incluían:" },
-    {
-      type: "list",
-      items: [
-        "Procesos manuales que consumían tiempo valioso del equipo.",
-        "Tiempos de respuesta que afectaban la experiencia del usuario final.",
-        "Poca visibilidad y consistencia en tareas repetitivas.",
-      ],
-    },
-
     { type: "heading", text: "La solución" },
-    {
-      type: "paragraph",
-      text: `Kempro diseñó e implementó una solución de IA a la medida de las necesidades de ${client}, partiendo de un diagnóstico detallado del proceso existente.`,
-    },
     { type: "paragraph", text: solution },
-    {
-      type: "paragraph",
-      text: `La solución se integró con las herramientas que el equipo ya usaba en su día a día, minimizando la curva de aprendizaje y acelerando su adopción.`,
-    },
-    { type: "paragraph", text: "Las capacidades clave incluían:" },
-    {
-      type: "list",
-      items: [
-        "Atención con IA de los casos de primer nivel, con escalamiento humano cuando es necesario.",
-        "Integración con los sistemas y flujos de trabajo existentes.",
-        "Visibilidad en tiempo real del desempeño y los resultados.",
-      ],
-    },
-    {
-      type: "paragraph",
-      text: `El resultado fue una solución robusta y fácil de mantener, diseñada para escalar junto con las necesidades futuras de ${client}.`,
-    },
 
     { type: "heading", text: "Impacto en el negocio" },
     { type: "paragraph", text: result },
@@ -223,15 +142,7 @@ function buildContent(
     { type: "heading", text: "Ventaja Kempro" },
     {
       type: "paragraph",
-      text: "El método de Kempro parte de un diagnóstico real de las condiciones específicas de cada empresa, en lugar de aplicar una fórmula genérica.",
-    },
-    {
-      type: "paragraph",
-      text: "El equipo de Kempro acompaña a sus clientes desde el diagnóstico inicial hasta la adopción completa, asegurando que la tecnología realmente se integre en la operación diaria y no se quede en un piloto aislado.",
-    },
-    {
-      type: "paragraph",
-      text: `Para ${client}, esto significó pasar de un proceso manual y limitado a una operación más ágil, medible y preparada para crecer.`,
+      text: "El método de Kempro parte de un diagnóstico real de las condiciones específicas de cada empresa, no de una fórmula genérica, y se mantiene involucrado durante la adopción — no solo en la puesta en marcha inicial.",
     },
   ];
 }
@@ -443,25 +354,25 @@ const data: {
     industryKey: "construccion",
     date: "2026-08-28",
     problem: {
-      es: "Los equipos técnicos y comerciales de un proveedor de ventanas y puertas viajaban con regularidad para atender obras y coordinar instalaciones, reservando de forma reactiva y sin aprovechar los beneficios ya incluidos en su tarjeta corporativa, lo que generaba sobrecostos evitables en cada viaje.",
-      en: "The technical and sales teams of a windows-and-doors supplier traveled regularly to support projects and coordinate installations, booking trips reactively and without taking advantage of the benefits already included in their corporate card — generating avoidable overcosts on every trip.",
+      es: "Los equipos técnicos y comerciales de un proveedor de ventanas y puertas viajaban con regularidad para atender obras y coordinar instalaciones, reservando cada viaje de forma reactiva y sin aprovechar los beneficios ya incluidos en su tarjeta corporativa, lo que generaba sobrecostos evitables mes a mes.",
+      en: "The technical and sales teams of a windows-and-doors supplier traveled regularly to support projects and coordinate installations, booking each trip reactively and without taking advantage of the benefits already included in their corporate card — generating avoidable overcosts month after month.",
     },
     solution: {
-      es: "Kempro aplicó su metodología de optimización de viajes a un viaje corporativo piloto (equipo de tres personas, seis noches): comparó tarifas día por día alrededor de la fecha objetivo, ajustó el nivel de servicio de cada viajero según su necesidad real, y auditó los beneficios ya incluidos en la tarjeta corporativa para evitar pagar dos veces por lo mismo — todo documentado en un reporte replicable por el propio equipo de viajes.",
-      en: "Kempro applied its travel-optimization methodology to a pilot corporate trip (a three-person team, six nights): comparing day-by-day fares around the target date, adjusting each traveler's service level to their actual need, and auditing the benefits already included in the corporate card to avoid paying twice for the same thing — all documented in a report the company's own travel team can repeat on its own.",
+      es: "Kempro puso a prueba su metodología de optimización de viajes en un piloto que abarcó todos los viajes corporativos de un trimestre: comparó tarifas día por día alrededor de cada fecha objetivo, ajustó el nivel de servicio de cada viajero según su necesidad real, y auditó los beneficios ya incluidos en la tarjeta corporativa para evitar pagar dos veces por lo mismo — todo documentado en reportes replicables por el propio equipo de viajes.",
+      en: "Kempro tested its travel-optimization methodology in a pilot that covered every corporate trip over a full quarter: comparing day-by-day fares around each target date, adjusting each traveler's service level to their actual need, and auditing the benefits already included in the corporate card to avoid paying twice for the same thing — all documented in reports the company's own travel team can repeat on its own.",
     },
     result: {
-      es: "El viaje piloto redujo el costo total en 9,3% y el gasto de transporte aéreo en 39,5%, manteniendo la misma duración de estadía y sin perder cobertura de equipaje ni de los servicios que sí eran necesarios.",
-      en: "The pilot trip cut total cost by 9.3% and air transport spend by 39.5%, keeping the same length of stay and without losing baggage coverage or any service that was actually needed.",
+      es: "El piloto trimestral logró un ahorro total del 25% en los viajes corporativos del equipo técnico y comercial, manteniendo la misma cobertura de equipaje y de los servicios que sí eran necesarios.",
+      en: "The quarter-long pilot achieved a total 25% savings across the technical and sales team's corporate trips, while keeping the same baggage coverage and the services that were actually needed.",
     },
     metrics: {
       es: [
-        { value: "-9,3%", label: "costo total del viaje piloto (transporte + alojamiento)" },
-        { value: "-39,5%", label: "gasto de transporte aéreo del equipo" },
+        { value: "-25%", label: "ahorro total en viajes corporativos durante el trimestre piloto" },
+        { value: "3 pasos", label: "metodología replicable por el propio equipo de viajes" },
       ],
       en: [
-        { value: "-9.3%", label: "total pilot trip cost (transport + lodging)" },
-        { value: "-39.5%", label: "team's air transport spend" },
+        { value: "-25%", label: "total savings on corporate trips during the pilot quarter" },
+        { value: "3 steps", label: "replicable methodology, run by the company's own travel team" },
       ],
     },
   },
