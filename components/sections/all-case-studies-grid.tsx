@@ -184,6 +184,7 @@ export function AllCaseStudiesGrid({
                     caseStudy={caseStudy}
                     headerImageSrc={override?.src}
                     headerImageGrayscale={override?.grayscale}
+                    background={dark ? "indigo" : "white"}
                   />
                 </FadeIn>
               );
