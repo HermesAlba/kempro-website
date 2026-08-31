@@ -81,6 +81,12 @@ function buildContent(
     solution: string;
     result: string;
     metrics: { value: string; label: string }[];
+    /** The specific differentiator for THIS engagement — what Kempro
+     * actually did differently here, not a generic "we diagnose before we
+     * build" line. Every case study defines its own (see the `advantage`
+     * field in `data` below); there is no shared fallback sentence, since a
+     * single fixed sentence is exactly the genericness this field replaced. */
+    advantage: string;
     /** True only for Kempro's own internal case studies ("we used our own
      * process on ourselves") — swaps the couple of sentences that would
      * otherwise read as "Kempro partnered with Kempro" when the client and
@@ -88,7 +94,7 @@ function buildContent(
     isInternal?: boolean;
   },
 ): ContentBlock[] {
-  const { client, problem, solution, result, metrics, isInternal } = fields;
+  const { client, problem, solution, result, metrics, advantage, isInternal } = fields;
 
   if (locale === "en") {
     return [
@@ -112,10 +118,7 @@ function buildContent(
       },
 
       { type: "heading", text: "Kempro Advantage" },
-      {
-        type: "paragraph",
-        text: "Kempro starts from a real diagnostic of each company's specific conditions rather than a one-size-fits-all formula, and stays involved through adoption — not just the initial rollout.",
-      },
+      { type: "paragraph", text: advantage },
     ];
   }
 
@@ -140,10 +143,7 @@ function buildContent(
     },
 
     { type: "heading", text: "Ventaja Kempro" },
-    {
-      type: "paragraph",
-      text: "El método de Kempro parte de un diagnóstico real de las condiciones específicas de cada empresa, no de una fórmula genérica, y se mantiene involucrado durante la adopción — no solo en la puesta en marcha inicial.",
-    },
+    { type: "paragraph", text: advantage },
   ];
 }
 
@@ -158,6 +158,12 @@ const data: {
   solution: Record<Locale, string>;
   result: Record<Locale, string>;
   metrics: Record<Locale, { value: string; label: string }[]>;
+  /** The "Ventaja Kempro" paragraph — must name the actual differentiator
+   * of THIS engagement (a decision, a tradeoff, a specific thing Kempro did
+   * or didn't do), not a restatement of Kempro's general philosophy. See
+   * buildContent's comment above for why this stopped being one shared
+   * sentence. */
+  advantage: Record<Locale, string>;
   isInternal?: boolean;
 }[] = [
   {
@@ -189,6 +195,10 @@ const data: {
         { value: "95%", label: "accuracy validated by analysts" },
       ],
     },
+    advantage: {
+      es: "Kempro no reemplazó al equipo de analistas: diseñó el sistema para que la IA acelere la lectura de documentos y ellos mantengan la última palabra en cada validación, sin ceder el control regulatorio que exige el negocio.",
+      en: "Kempro didn't replace the analyst team: the system was designed so AI speeds up document review while analysts keep the final say on every validation — without giving up the regulatory control the business requires.",
+    },
   },
   {
     id: "servicios-profesionales-roadmap-ia",
@@ -218,6 +228,10 @@ const data: {
         { value: "5", label: "validated use cases" },
         { value: "90 days", label: "to first pilot with positive ROI" },
       ],
+    },
+    advantage: {
+      es: "En vez de entregar una lista larga de casos de uso de moda, Kempro priorizó los pilotos según el impacto real y la viabilidad técnica de esta firma en particular, para que el primer resultado llegara en semanas y no al final de un roadmap de dos años.",
+      en: "Instead of handing over a long list of trendy use cases, Kempro prioritized pilots based on this specific firm's real impact and technical feasibility, so the first result arrived in weeks — not at the end of a two-year roadmap.",
     },
   },
   {
@@ -249,6 +263,10 @@ const data: {
         { value: "24/7", label: "applicant support" },
       ],
     },
+    advantage: {
+      es: "El asistente se construyó a partir del proceso real de admisiones de la institución, no de una plantilla genérica de preguntas frecuentes, y deriva a un asesor humano exactamente en los casos donde una respuesta automática no basta.",
+      en: "The assistant was built from the institution's actual admissions process, not a generic FAQ template, and hands off to a human advisor precisely in the cases where an automated answer isn't enough.",
+    },
   },
   {
     id: "retail-vinos-whatsapp-bot",
@@ -278,6 +296,10 @@ const data: {
         { value: "+100", label: "catalog products digitized" },
         { value: "24/7", label: "order handling without manual intervention" },
       ],
+    },
+    advantage: {
+      es: "Kempro trabajó codo a codo con la propietaria del negocio, sin experiencia técnica previa, y ajustó el módulo de pagos sobre la marcha cuando surgieron bloqueos de proveedores externos — en vez de entregar un bot genérico y desentenderse de los obstáculos reales de la implementación.",
+      en: "Kempro worked side by side with the business owner, who had no prior technical experience, adjusting the payment module on the fly when real third-party blockers came up — instead of handing over a generic bot and walking away from the actual implementation hurdles.",
     },
   },
   {
@@ -315,6 +337,10 @@ const data: {
         { value: "100% mobile", label: "reusable Claude Cowork artifact, available on the sales team's phones" },
       ],
     },
+    advantage: {
+      es: "El resultado no fue solo un ahorro puntual: el equipo comercial quedó con una herramienta propia, construida con Claude Cowork y disponible en el celular, para seguir aplicando la metodología trimestre a trimestre sin depender de Kempro.",
+      en: "The result wasn't just a one-time saving: the sales team was left with its own tool, built with Claude Cowork and available on mobile, to keep applying the methodology quarter after quarter without depending on Kempro.",
+    },
   },
   {
     id: "salud-gobernanza-documental-copilot",
@@ -344,6 +370,10 @@ const data: {
         { value: "100%", label: "normative processes centralized in one site, with per-business access control" },
         { value: "Annual", label: "automatic revalidation of each process's currency" },
       ],
+    },
+    advantage: {
+      es: "La arquitectura se construyó sobre lo que la aseguradora ya tenía —procesos documentados—, así que la adopción no dependió de convencer a nadie de empezar de cero; y la revalidación anual automática hace que la gobernanza se sostenga sola en el tiempo, sin depender de que alguien se acuerde de actualizarla.",
+      en: "The architecture was built on what the insurer already had — documented processes — so adoption didn't hinge on convincing anyone to start from scratch; and the automatic annual revalidation keeps governance sustaining itself over time, without relying on someone remembering to update it.",
     },
   },
   {
@@ -376,6 +406,10 @@ const data: {
         { value: "100%", label: "real content, no placeholder text, from the first draft" },
       ],
     },
+    advantage: {
+      es: "Kempro no solo recomienda este método: lo usó en carne propia para su propio sitio, con las mismas herramientas e instrucciones precisas que aplica en cada proyecto de cliente.",
+      en: "Kempro doesn't just recommend this method: it used it on itself for its own site, with the same tools and precise instructions it applies on every client project.",
+    },
   },
 ];
 
@@ -402,6 +436,7 @@ export function getCaseStudies(locale: Locale): CaseStudy[] {
     const solution = c.solution[locale];
     const result = c.result[locale];
     const metrics = c.metrics[locale];
+    const advantage = c.advantage[locale];
 
     return {
       id: c.id,
@@ -415,7 +450,7 @@ export function getCaseStudies(locale: Locale): CaseStudy[] {
       result,
       metrics,
       image: INDUSTRY_IMAGE[c.industryKey],
-      content: buildContent(locale, { client, industry, problem, solution, result, metrics, isInternal: c.isInternal }),
+      content: buildContent(locale, { client, industry, problem, solution, result, metrics, advantage, isInternal: c.isInternal }),
     };
   });
 }
