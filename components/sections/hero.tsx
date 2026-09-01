@@ -102,18 +102,26 @@ export function Hero({
           <div className="absolute inset-0 bg-black/45" />
         </div>
       ) : null}
-      {/* Same corner-gradient treatment as PageHero's own `gradient` prop
-          and the /servicios/[slug] detail hero (see the identical
-          radial-gradient + dot-grid style there) — colored top-left corner
-          fading to white toward the bottom-right, per request. */}
+      {/* Same base treatment as PageHero's own `gradient` prop and the
+          /servicios/[slug] detail hero (dot grid + a colored-corner
+          radial-gradient fading to white) — extended here to all four
+          corners instead of just the top-left one, per request. Each
+          corner gets its own identical ellipse gradient; backgroundSize
+          has one "100% 100%" entry per corner layer, matching the dot
+          grid's own "14px 14px" entry in order. */}
       {!isPhoto && cornerGradient ? (
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0"
           style={{
-            backgroundImage:
-              "radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px), radial-gradient(ellipse 1400px 600px at top left, #B1C4FF 0%, #CFDCFF 45%, transparent 85%)",
-            backgroundSize: "14px 14px, 100% 100%",
+            backgroundImage: [
+              "radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px)",
+              "radial-gradient(ellipse 1400px 600px at top left, #B1C4FF 0%, #CFDCFF 45%, transparent 85%)",
+              "radial-gradient(ellipse 1400px 600px at top right, #B1C4FF 0%, #CFDCFF 45%, transparent 85%)",
+              "radial-gradient(ellipse 1400px 600px at bottom left, #B1C4FF 0%, #CFDCFF 45%, transparent 85%)",
+              "radial-gradient(ellipse 1400px 600px at bottom right, #B1C4FF 0%, #CFDCFF 45%, transparent 85%)",
+            ].join(", "),
+            backgroundSize: "14px 14px, 100% 100%, 100% 100%, 100% 100%, 100% 100%",
           }}
         />
       ) : null}
