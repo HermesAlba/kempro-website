@@ -51,7 +51,15 @@ export function Hero({
     // 200px-at-xl figure to this new 162px-at-xl figure.
     <section
       className={`relative -mt-[81px] flex flex-1 items-start overflow-hidden pt-[81px] lg:-mt-[207px] lg:pt-[207px] ${
-        isPhoto ? "bg-dark-900" : "bg-white"
+        // Photo variant (Home) only, mobile only (reset at sm and up, where
+        // the wrapping div's own md/lg min-h takes over instead): forces
+        // this section to the same natural height Services' own hero
+        // renders at on mobile (measured live: 248.5px at a 375px
+        // viewport, content-driven off its eyebrow+2-line-title+longer
+        // subtitle) — per request, so ClientLogos right after it starts at
+        // the exact same point Services' "Cómo trabajamos" band does,
+        // instead of wherever Home's own shorter copy happens to end.
+        isPhoto ? "min-h-[249px] bg-dark-900 sm:min-h-0" : "bg-white"
       }`}
     >
       {/* Background photo (abstract network/mesh graphic, per request) —
