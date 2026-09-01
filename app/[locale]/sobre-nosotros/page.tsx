@@ -59,17 +59,13 @@ export default async function SobreNosotrosPage({
         />
       </div>
 
-      {/* Divider between blocks 1 and 2 — same line language as
-          HeroBodyDivider on the case-studies detail pages (see
-          casos-de-exito/[slug]/page.tsx), just as a static border instead
-          of a runtime-measured line, since this transition is between two
-          fixed-height blocks, not two viewport-relative ones. Symmetric
-          py-[57px] (114px = 3cm total) centers the line in the block. */}
-      <div className="bg-primary-50/50 px-6 py-[57px] sm:px-10 lg:px-[95px]">
-        <div className="mx-auto max-w-[1280px] border-t border-neutral-300" />
-      </div>
 
-      <section className="bg-primary-50/50 px-6 py-16 sm:px-10 lg:px-[95px]">
+      {/* pt-[26px] instead of the section's own py-16 (64px) top value —
+          64px − 38px (1cm at 96dpi) = 26px, per request: raises this
+          block's start 1cm now that the divider line above it (previously
+          a separate 114px-tall strip) has been removed entirely. pb-16
+          keeps the original bottom padding unchanged. */}
+      <section className="bg-primary-50/50 px-6 pb-16 pt-[26px] sm:px-10 lg:px-[95px]">
         <div className="mx-auto max-w-[1280px]">
           <div className="relative flex flex-col lg:flex-row" data-origin-row>
             <FadeIn
