@@ -60,18 +60,23 @@ export function Hero({
     // position of the content below is unchanged since the two cancel out.
     // `flex-1` lets this section absorb the leftover height from the home
     // page's Hero+ClientLogos wrapper (see app/[locale]/page.tsx). Content
-    // is top-anchored (`items-start` + the Container's own pt) — per
-    // request the title starts 1cm ABOVE where KR's own "BUILDING
-    // STRONG." starts. Re-measured directly off kniferiver.com at its own
-    // 1280px reference viewport: header 207px tall, title top at page-y
-    // 407px (200px into the hero section). Target = 407px − 1cm (37.8px)
-    // ≈ 369px from page top ≈ 162px into this section (since our header
-    // is the same 207px tall as KR's) — hence xl:pt-[162px] below.
+    // is top-anchored from sm up (`sm:items-start` + the Container's own
+    // pt) — per request the title starts 1cm ABOVE where KR's own
+    // "BUILDING STRONG." starts. Re-measured directly off kniferiver.com at
+    // its own 1280px reference viewport: header 207px tall, title top at
+    // page-y 407px (200px into the hero section). Target = 407px − 1cm
+    // (37.8px) ≈ 369px from page top ≈ 162px into this section (since our
+    // header is the same 207px tall as KR's) — hence xl:pt-[162px] below.
     // base/sm/lg values keep the same proportion to the xl value as
     // before (0.285 / 0.545 / 0.9), scaled down from the previous
-    // 200px-at-xl figure to this new 162px-at-xl figure.
+    // 200px-at-xl figure to this new 162px-at-xl figure. Mobile only
+    // (below sm) is `items-center` instead — per request, the title/
+    // subtitle block is vertically centered within this section's fixed
+    // 326px mobile height (see min-h below) rather than pinned near the
+    // top; the Container's own pt is zeroed at that breakpoint (see below)
+    // so the centering isn't skewed by a leftover top offset.
     <section
-      className={`relative -mt-[81px] flex flex-1 items-start overflow-hidden pt-[81px] lg:-mt-[207px] lg:pt-[207px] ${
+      className={`relative -mt-[81px] flex flex-1 items-center sm:items-start overflow-hidden pt-[81px] lg:-mt-[207px] lg:pt-[207px] ${
         isPhoto ? "bg-dark-900" : isIndigo ? "bg-primary-600" : "bg-white"
       } ${
         // Mobile only (reset at sm and up, where each page's own wrapping
@@ -138,12 +143,12 @@ export function Hero({
           higher than the photo variant (Home) at sm and up — each pt value
           below sm is 38px less, per request. Photo variant's sm/lg/xl pt
           values stay untouched (still tuned to KR's reference position,
-          see the section-level comment above). On mobile only (below sm),
-          both variants now share the same tight pt-[8px] start — per
-          request, so Home's hero occupies the same footprint on mobile as
-          Services' hero does, before ClientLogos renders underneath it. */}
+          see the section-level comment above). Mobile only (below sm) has
+          no top padding at all now — the section's own `items-center`
+          (see above) vertically centers this Container within the fixed
+          326px mobile height instead, per request. */}
       <Container
-        className={`relative z-10 pt-[8px] ${
+        className={`relative z-10 ${
           isPhoto
             ? "sm:pt-[88px] lg:pt-[146px] xl:pt-[162px]"
             : "sm:pt-[50px] lg:pt-[108px] xl:pt-[124px]"
