@@ -21,13 +21,26 @@ function SectionBadge({ label }: { label: string }) {
   );
 }
 
-function MetaRow({ post, locale }: { post: BlogPost; locale: string }) {
+function MetaRow({
+  post,
+  locale,
+  hideDateOnMobile,
+}: {
+  post: BlogPost;
+  locale: string;
+  /** Hides the "• <date>" part on mobile only (still shown from sm up) —
+   * used by the "latest" column's thumbnails per request, not by the
+   * featured post's own meta row. */
+  hideDateOnMobile?: boolean;
+}) {
   const { textColor } = paletteFor(post.categoryKey);
   return (
     <p className="flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-wide">
       <span style={{ color: textColor }}>{post.category}</span>
-      <span className="text-neutral-300">&bull;</span>
-      <span className="text-neutral-500">{formatDate(post.date, locale)}</span>
+      <span className={`${hideDateOnMobile ? "hidden sm:inline" : ""} text-neutral-300`}>&bull;</span>
+      <span className={`${hideDateOnMobile ? "hidden sm:inline" : ""} text-neutral-500`}>
+        {formatDate(post.date, locale)}
+      </span>
     </p>
   );
 }
@@ -110,7 +123,7 @@ export function FeaturedLatestHero({
                           {post.title}
                         </Link>
                       </h3>
-                      <MetaRow post={post} locale={locale} />
+                      <MetaRow post={post} locale={locale} hideDateOnMobile />
                     </div>
                   </div>
                 );
