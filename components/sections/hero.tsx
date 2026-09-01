@@ -79,15 +79,18 @@ export function Hero({
         </div>
       ) : null}
       {/* background="white" (Services) starts the text 1cm (38px at 96dpi)
-          higher than the photo variant (Home) — each pt value below is
-          38px less, per request. Photo variant's own pt values stay
-          untouched (still tuned to KR's reference position, see the
-          section-level comment above). */}
+          higher than the photo variant (Home) at sm and up — each pt value
+          below sm is 38px less, per request. Photo variant's sm/lg/xl pt
+          values stay untouched (still tuned to KR's reference position,
+          see the section-level comment above). On mobile only (below sm),
+          both variants now share the same tight pt-[8px] start — per
+          request, so Home's hero occupies the same footprint on mobile as
+          Services' hero does, before ClientLogos renders underneath it. */}
       <Container
-        className={`relative z-10 ${
+        className={`relative z-10 pt-[8px] ${
           isPhoto
-            ? "pt-[46px] sm:pt-[88px] lg:pt-[146px] xl:pt-[162px]"
-            : "pt-[8px] sm:pt-[50px] lg:pt-[108px] xl:pt-[124px]"
+            ? "sm:pt-[88px] lg:pt-[146px] xl:pt-[162px]"
+            : "sm:pt-[50px] lg:pt-[108px] xl:pt-[124px]"
         }`}
       >
         <FadeIn className="mx-auto text-center">
