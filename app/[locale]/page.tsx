@@ -48,14 +48,7 @@ export default async function HomePage({
           request. */}
       <div className="flex flex-col md:min-h-[calc(100vh-81px)] lg:min-h-[calc(100vh-207px)]">
         <Hero />
-        {/* Mobile only (reset at sm and up): pushes the carousel's start
-            down by exactly its own current rendered height (77px at a
-            375px viewport: py-4 top/bottom padding + its ~45px logo row) —
-            per request. Desktop/tablet layout (md/lg min-h wrapper above)
-            is unaffected. */}
-        <div className="mt-[77px] sm:mt-0">
-          <ClientLogos border={false} />
-        </div>
+        <ClientLogos border={false} />
       </div>
       {/* WhatWeDo: Knife River's "WHAT WE DO" block (2-col: title/tagline/
           body/CTA + 2x2 grid of service cards), on Kempro's indigo brand

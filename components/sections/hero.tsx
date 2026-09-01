@@ -73,14 +73,16 @@ export function Hero({
     <section
       className={`relative -mt-[81px] flex flex-1 items-start overflow-hidden pt-[81px] lg:-mt-[207px] lg:pt-[207px] ${
         // Photo variant (Home) only, mobile only (reset at sm and up, where
-        // the wrapping div's own md/lg min-h takes over instead): forces
-        // this section to the same natural height Services' own hero
-        // renders at on mobile (measured live: 248.5px at a 375px
-        // viewport, content-driven off its eyebrow+2-line-title+longer
-        // subtitle) — per request, so ClientLogos right after it starts at
-        // the exact same point Services' "Cómo trabajamos" band does,
-        // instead of wherever Home's own shorter copy happens to end.
-        isPhoto ? "min-h-[249px] bg-dark-900 sm:min-h-0" : isIndigo ? "bg-primary-600" : "bg-white"
+        // the wrapping div's own md/lg min-h takes over instead): base
+        // height (249px) matches Services' own hero natural height on
+        // mobile (measured live: 248.5px at a 375px viewport). +77px on
+        // top of that (326px total) — per request, so this section's own
+        // background/content extends down into the space ClientLogos used
+        // to start at, instead of leaving a blank gap before it (see the
+        // "mt-[77px] sm:mt-0" wrapper this replaced in app/[locale]/
+        // page.tsx — ClientLogos itself is back to starting immediately
+        // after this section, which is now simply taller).
+        isPhoto ? "min-h-[326px] bg-dark-900 sm:min-h-0" : isIndigo ? "bg-primary-600" : "bg-white"
       }`}
     >
       {/* Background photo (abstract network/mesh graphic, per request) —
