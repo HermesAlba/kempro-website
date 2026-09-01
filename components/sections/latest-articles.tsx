@@ -18,7 +18,15 @@ export function LatestArticles() {
         <SectionHeading title={t("title")} subtitle={t("subtitle")} light />
         <div className="mt-14 grid gap-x-7 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post, index) => (
-            <ArticleCard key={post.slug} post={post} index={index} basePath="/blog" roundedImages dark />
+            <ArticleCard
+              key={post.slug}
+              post={post}
+              index={index}
+              basePath="/blog"
+              roundedImages
+              dark
+              hideDateOnMobile
+            />
           ))}
         </div>
         <div className="mt-12 text-center">

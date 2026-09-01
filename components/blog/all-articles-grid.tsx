@@ -26,6 +26,7 @@ export function ArticleCard({
   basePath,
   roundedImages,
   dark,
+  hideDateOnMobile,
 }: {
   post: ArticleGridItem;
   index: number;
@@ -38,6 +39,10 @@ export function ArticleCard({
    * on Home's black "Ideas y casos de uso" section, and by AllArticlesGrid
    * itself (blog's "Todos los artículos" block is now bg-dark-900 too). */
   dark?: boolean;
+  /** Hides the "• <date>" part of the meta row on mobile only (still
+   * shown from sm up) — opt-in per usage, scoped to LatestArticles' cards
+   * on Home per request, without touching the full blog grid. */
+  hideDateOnMobile?: boolean;
 }) {
   const locale = useLocale();
   const href =
@@ -75,8 +80,16 @@ export function ArticleCard({
             <span style={dark ? undefined : { color: textColor }} className={dark ? "text-primary-300" : undefined}>
               {post.category}
             </span>
-            <span className={dark ? "text-white/30" : "text-neutral-300"}>&bull;</span>
-            <span className={dark ? "text-neutral-400" : "text-neutral-500"}>{date}</span>
+            <span
+              className={`${hideDateOnMobile ? "hidden sm:inline" : ""} ${dark ? "text-white/30" : "text-neutral-300"}`}
+            >
+              &bull;
+            </span>
+            <span
+              className={`${hideDateOnMobile ? "hidden sm:inline" : ""} ${dark ? "text-neutral-400" : "text-neutral-500"}`}
+            >
+              {date}
+            </span>
           </p>
           <h3
             className={`line-clamp-2 text-[18px] font-bold leading-snug transition-colors ${
