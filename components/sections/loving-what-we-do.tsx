@@ -65,7 +65,7 @@ export function LovingWhatWeDo() {
             </div>
           </div>
           <div className="flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:w-1/2 lg:px-[50px] lg:py-0">
-            <h2 className="whitespace-nowrap text-[32px] font-extrabold uppercase leading-[1.1] text-neutral-900 sm:text-[40px]">
+            <h2 className="text-[32px] font-extrabold uppercase leading-[1.1] text-neutral-900 sm:whitespace-nowrap sm:text-[40px]">
               {t("title")}
             </h2>
             <p className="mt-5 max-w-[440px] text-[16px] leading-[24px] text-neutral-600">
