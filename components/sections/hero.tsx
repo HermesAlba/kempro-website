@@ -11,6 +11,7 @@ export function Hero({
   title,
   subtitle,
   background = "photo",
+  subtitleNoWrap,
 }: {
   /** Small uppercase label above the title (e.g. "SERVICIOS") — omitted by
    * default (Home's own hero has none). Used when this same hero is reused
@@ -27,6 +28,13 @@ export function Hero({
    * same layout/sizing/typography otherwise (used by Services, per
    * request — same full-screen hero block, just without the image). */
   background?: "photo" | "white";
+  /** Forces the subtitle onto a single line from lg up (and drops the
+   * max-w-2xl cap there, letting it size to its own content instead of
+   * wrapping inside that box) — opt-in per usage, since a longer subtitle
+   * (e.g. Sobre Nosotros') would overflow if forced onto one line the
+   * same way. Below lg the max-w-2xl cap still applies and it still wraps
+   * normally. */
+  subtitleNoWrap?: boolean;
 }) {
   const t = useTranslations("Home.hero");
   const resolvedTitle = title ?? t("title");
@@ -148,9 +156,9 @@ export function Hero({
               original full-width single line (adding the cap there would
               force it to wrap where it didn't before). */}
           <p
-            className={`mt-5 min-h-[3lh] text-[18px] ${isPhoto ? "text-white" : "text-neutral-600"} ${
-              subtitle ? "mx-auto max-w-2xl" : ""
-            }`}
+            className={`mt-5 min-h-[3lh] text-[18px] ${subtitleNoWrap ? "lg:whitespace-nowrap " : ""}${
+              isPhoto ? "text-white" : "text-neutral-600"
+            } ${subtitle ? (subtitleNoWrap ? "mx-auto lg:max-w-none max-w-2xl" : "mx-auto max-w-2xl") : ""}`}
           >
             {resolvedSubtitle}
           </p>
