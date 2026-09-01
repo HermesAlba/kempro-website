@@ -11,6 +11,7 @@ export function Hero({
   title,
   subtitle,
   background = "photo",
+  titleOnlyMobile,
 }: {
   /** Small uppercase label above the title (e.g. "SERVICIOS") — omitted by
    * default (Home's own hero has none). Used when this same hero is reused
@@ -27,6 +28,10 @@ export function Hero({
    * same layout/sizing/typography otherwise (used by Services, per
    * request — same full-screen hero block, just without the image). */
   background?: "photo" | "white";
+  /** Hides the eyebrow and subtitle on mobile only (still shown from sm
+   * up), leaving just the centered title — used by Servicios and Sobre
+   * Nosotros per request, not by Home. */
+  titleOnlyMobile?: boolean;
 }) {
   const t = useTranslations("Home.hero");
   const resolvedTitle = title ?? t("title");
@@ -112,8 +117,8 @@ export function Hero({
             // own default, non-"light" eyebrow).
             <p
               className={`font-sans text-[13px] font-semibold uppercase tracking-[0.02em] ${
-                isPhoto ? "text-primary-300" : "text-primary-600"
-              }`}
+                titleOnlyMobile ? "hidden sm:block " : ""
+              }${isPhoto ? "text-primary-300" : "text-primary-600"}`}
             >
               {eyebrow}
             </p>
@@ -132,7 +137,7 @@ export function Hero({
               within Container's width at every breakpoint on its own, so it
               still renders on a single line exactly as before. */}
           <h1
-            className={`${montserrat.className} ${eyebrow ? "mt-3 " : ""}uppercase text-[18px] font-extrabold tracking-tight sm:text-[34px] lg:text-[56px] xl:text-[62px] ${
+            className={`${montserrat.className} ${eyebrow ? (titleOnlyMobile ? "sm:mt-3 " : "mt-3 ") : ""}uppercase text-[18px] font-extrabold tracking-tight sm:text-[34px] lg:text-[56px] xl:text-[62px] ${
               isPhoto ? "text-white" : "text-neutral-900"
             }`}
           >
@@ -148,9 +153,9 @@ export function Hero({
               original full-width single line (adding the cap there would
               force it to wrap where it didn't before). */}
           <p
-            className={`mt-5 min-h-[3lh] text-[18px] ${isPhoto ? "text-white" : "text-neutral-600"} ${
-              subtitle ? "mx-auto max-w-2xl" : ""
-            }`}
+            className={`mt-5 min-h-[3lh] text-[18px] ${titleOnlyMobile ? "hidden sm:block " : ""}${
+              isPhoto ? "text-white" : "text-neutral-600"
+            } ${subtitle ? "mx-auto max-w-2xl" : ""}`}
           >
             {resolvedSubtitle}
           </p>

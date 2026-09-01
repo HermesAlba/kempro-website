@@ -62,7 +62,7 @@ export default async function ServicesPage({
           (Services.eyebrow/title/subtitle, sin cambios). Reemplaza el
           PageHero anterior (banda plana con gradiente). */}
       <div className="flex flex-col md:min-h-[calc(100vh-81px)] lg:min-h-[calc(100vh-207px)]">
-        <Hero eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} background="white" />
+        <Hero eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} background="white" titleOnlyMobile />
       </div>
 
       {/* "Cómo trabajamos" — moved here as the second block (right after the
