@@ -54,7 +54,15 @@ export function LovingWhatWeDo() {
       <Container>
         <div className="flex flex-col lg:h-[430px] lg:flex-row">
           <div className="relative aspect-[6/5] w-full lg:aspect-auto lg:h-full lg:w-1/2 lg:flex-shrink-0">
-            <div className="absolute left-[1.5cm] right-0 top-0 h-full shadow-[0_20px_50px_-15px_rgba(0,0,0,0.25)] lg:top-[65px] lg:h-[470px]">
+            {/* inset-x-0 (edge-to-edge within the column, so the image is
+                centered by simply filling it) on mobile — the lg:left-
+                [1.5cm]/lg:right-0 asymmetric offset below is part of KR's
+                own desktop overhang treatment (see the block comment
+                above) and only makes sense once this column sits at half
+                width next to the text column; at full width on mobile it
+                just pushed the image off-center (bigger gap on the left
+                than the right), per request. */}
+            <div className="absolute inset-x-0 top-0 h-full shadow-[0_20px_50px_-15px_rgba(0,0,0,0.25)] lg:inset-x-auto lg:left-[1.5cm] lg:right-0 lg:top-[65px] lg:h-[470px]">
               <Image
                 src="/images/home/metodo-con-alma-cubes.jpg"
                 alt=""
