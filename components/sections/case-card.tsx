@@ -12,6 +12,7 @@ export function CaseCard({
   headerImageSrc,
   headerImageGrayscale,
   background = "white",
+  hideDateOnMobile = false,
 }: {
   caseStudy: CaseStudy;
   /** Overrides caseStudy's own image — opt-in per card, used by the
@@ -30,6 +31,11 @@ export function CaseCard({
    * black-background "Resultados reales en distintas industrias"
    * section. */
   background?: "white" | "indigo";
+  /** Hides the "• <date>" part of the meta row on mobile only (still shown
+   * from sm up) — opt-in per usage, scoped to FeaturedCaseStudies' cards
+   * on Home per request, without touching the full Casos de Éxito grid or
+   * any other page that reuses this same card. */
+  hideDateOnMobile?: boolean;
 }) {
   const locale = useLocale();
   const href = { pathname: "/casos-de-exito/[slug]", params: { slug: caseStudy.slug } } as const;
@@ -96,8 +102,16 @@ export function CaseCard({
           >
             {caseStudy.industry}
           </span>
-          <span className={isIndigo ? "text-white/40" : "text-neutral-300"}>&bull;</span>
-          <span className={isIndigo ? "text-primary-100" : "text-neutral-500"}>{date}</span>
+          <span
+            className={`${hideDateOnMobile ? "hidden sm:inline" : ""} ${isIndigo ? "text-white/40" : "text-neutral-300"}`}
+          >
+            &bull;
+          </span>
+          <span
+            className={`${hideDateOnMobile ? "hidden sm:inline" : ""} ${isIndigo ? "text-primary-100" : "text-neutral-500"}`}
+          >
+            {date}
+          </span>
         </p>
         <h3
           className={`line-clamp-2 text-[18px] font-bold leading-snug transition-colors ${

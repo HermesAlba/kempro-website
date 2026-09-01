@@ -45,7 +45,7 @@ export function FeaturedCaseStudies() {
               delay={index * 100}
               direction={index % 2 === 0 ? "up" : "left"}
             >
-              <CaseCard caseStudy={caseStudy} background="indigo" />
+              <CaseCard caseStudy={caseStudy} background="indigo" hideDateOnMobile />
             </FadeIn>
           ))}
         </div>
