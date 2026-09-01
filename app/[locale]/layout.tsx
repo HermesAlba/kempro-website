@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/footer";
 import { CookieConsentBanner } from "@/components/cookie-consent/cookie-consent-banner";
 import { GoogleAnalytics } from "@/components/cookie-consent/google-analytics";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
+import { ScrollRestorationFix } from "@/components/ui/scroll-restoration-fix";
 import { montserrat, poppins } from "@/lib/fonts";
 import "../globals.css";
 
@@ -72,6 +73,7 @@ export default async function LocaleLayout({
           explicitly where needed (see lib/fonts.ts for the full rationale). */}
       <body className="flex min-h-screen flex-col bg-primary-50/50 font-poppins text-neutral-900 antialiased">
         <NextIntlClientProvider>
+          <ScrollRestorationFix />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
