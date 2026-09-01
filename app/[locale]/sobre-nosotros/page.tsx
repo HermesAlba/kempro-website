@@ -41,22 +41,23 @@ export default async function SobreNosotrosPage({
 
   return (
     <>
-      {/* Primer bloque — mismo Hero que Servicios (background="white": sin
-          foto, sin overlay, sin animación de onda, texto oscuro), sin
-          carrusel de logos, con el mismo alto
+      {/* Primer bloque — mismo Hero que Servicios (misma estructura/
+          tipografía), pero background="indigo" (bg-primary-600 sólido,
+          texto blanco/claro) en vez de "white" — per request, para que
+          este primer bloque se lea indigo en vez de blanco. Sin carrusel
+          de logos, con el mismo alto
           (min-h-[calc(100vh-HEADER_OFFSET)]) para que, junto con el menú,
-          ocupe exactamente una pantalla — per request. Texto de la imagen
-          adjunta, que coincide con About.hero (eyebrow/statement/subtitle,
-          sin cambios). Reemplaza el hero anterior (columnas de texto +
+          ocupe exactamente una pantalla. Texto de la imagen adjunta, que
+          coincide con About.hero (eyebrow/statement/subtitle, sin
+          cambios). Reemplaza el hero anterior (columnas de texto +
           JoiningHalves), que se removió por completo. */}
       <div className="flex flex-col md:min-h-[calc(100vh-81px)] lg:min-h-[calc(100vh-207px)]">
         <Hero
           eyebrow={t("hero.eyebrow")}
           title={t("hero.statement")}
           subtitle={t("hero.subtitle")}
-          background="white"
+          background="indigo"
           subtitleNoWrap
-          cornerGradient
         />
       </div>
 

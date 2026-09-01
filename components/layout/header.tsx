@@ -52,6 +52,14 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  // Sobre Nosotros gets its own header palette on desktop, per request:
+  // the logo bar (normally black) becomes white, and the nav/menu bar
+  // (normally brand indigo) becomes black — roughly a swap of the two
+  // bars' colors, scoped to this one page. Mobile keeps the site-wide
+  // indigo single bar unchanged (it merges the logo + hamburger into one
+  // bar, so the desktop-only swap doesn't map cleanly onto it).
+  const isAboutPage = pathname === "/sobre-nosotros";
+
   return (
     <header className="relative z-50">
       {/* Top info bar — desktop only. True black (#000000) — matches the
@@ -66,8 +74,11 @@ export function Header() {
           added. The CTA button below deliberately does NOT reuse the
           shared ctaButtonClasses constant (bg-neutral-900, a near-black
           that would nearly disappear against true black) — it gets its
-          own primary-600/700 treatment instead, sized down to match. */}
-      <div className="hidden bg-black lg:block">
+          own primary-600/700 treatment instead, sized down to match.
+          On /sobre-nosotros this bar flips to white (isAboutPage) — see
+          comment above isAboutPage — so the logo/social/search/locale
+          colors below also flip to their dark-on-white equivalents. */}
+      <div className={`hidden lg:block ${isAboutPage ? "bg-white" : "bg-black"}`}>
         <div className="mx-auto flex h-[146px] max-w-7xl items-center justify-between px-8">
           {/* size=57: originally 71 (matching KR's own logo proportion
               within its top bar — 71/146 ≈ 48.6% of the bar's height,
@@ -80,9 +91,16 @@ export function Header() {
               as brand indigo here, only the white stroke/center dot and
               white wordmark stay visible. Scoped to this instance only;
               other "dark" variant usages (e.g. the footer) keep the
-              default indigo mark. */}
+              default indigo mark. On /sobre-nosotros (white bar) this
+              switches to variant="primary" instead (indigo mark, black
+              wordmark — the variant meant for light backgrounds) with no
+              markColor override, so it reads correctly against white. */}
           <Link href="/" className="flex-shrink-0">
-            <KemproLogo variant="dark" size={57} markColor="#000000" />
+            {isAboutPage ? (
+              <KemproLogo variant="primary" size={57} />
+            ) : (
+              <KemproLogo variant="dark" size={57} markColor="#000000" />
+            )}
           </Link>
           {/* Social icons — positioned right after the logo (not bundled
               with search/language/CTA on the right), matching KR's own top
@@ -98,7 +116,11 @@ export function Header() {
                 aria-label={name}
                 aria-disabled="true"
                 onClick={(event) => event.preventDefault()}
-                className="flex h-8 w-8 cursor-not-allowed items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                className={`flex h-8 w-8 cursor-not-allowed items-center justify-center rounded-full transition-colors ${
+                  isAboutPage
+                    ? "text-neutral-500 hover:bg-neutral-100 hover:text-neutral-900"
+                    : "text-white/70 hover:bg-white/10 hover:text-white"
+                }`}
               >
                 <Icon className="h-4 w-4" />
               </a>
@@ -108,8 +130,14 @@ export function Header() {
               own header typeface. CTA below matches KR's own bold-title
               size (17px) but stays font-normal (not bold), per request. */}
           <div className={`flex items-center gap-5 ${montserrat.className}`}>
-            <SiteSearch triggerClassName="flex items-center justify-center rounded-md p-1.5 text-white/70 transition-colors hover:bg-white/10 hover:text-white" />
-            <LocaleSwitcher dark />
+            <SiteSearch
+              triggerClassName={`flex items-center justify-center rounded-md p-1.5 transition-colors ${
+                isAboutPage
+                  ? "text-neutral-500 hover:bg-neutral-100 hover:text-neutral-900"
+                  : "text-white/70 hover:bg-white/10 hover:text-white"
+              }`}
+            />
+            <LocaleSwitcher dark={!isAboutPage} />
             <Link
               href="/contacto"
               className="inline-flex h-[34px] items-center justify-center gap-2 rounded-[6px] bg-primary-600 px-4 text-[17px] font-normal tracking-normal text-white transition-colors hover:bg-primary-700"
@@ -126,8 +154,12 @@ export function Header() {
           ONLY bar (top info bar is hidden), so it carries the logo +
           hamburger there instead of the desktop nav row — its own height
           (81px) is unrelated to the reference measurement above (see
-          HEADER_OFFSET). */}
-      <div className="bg-primary-600">
+          HEADER_OFFSET). On /sobre-nosotros this flips to black at lg
+          only (isAboutPage) — mobile (below lg) keeps bg-primary-600
+          regardless, per request (see isAboutPage comment above). Link
+          text/hover colors are unchanged: white/85 with a primary-700
+          hover reads fine against black too. */}
+      <div className={isAboutPage ? "bg-primary-600 lg:bg-black" : "bg-primary-600"}>
         <div className="mx-auto flex h-[81px] max-w-7xl items-center px-6 lg:h-[61px] lg:px-8">
           {/* Mobile: logo + search + hamburger. size=24: originally 30,
               scaled down to 80% (30 * 0.8 = 24) per request, matching the

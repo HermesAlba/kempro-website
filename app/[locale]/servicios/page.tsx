@@ -68,7 +68,6 @@ export default async function ServicesPage({
           subtitle={t("subtitle")}
           background="white"
           subtitleNoWrap
-          cornerGradient
         />
       </div>
 

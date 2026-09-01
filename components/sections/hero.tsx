@@ -27,8 +27,12 @@ export function Hero({
    * dark overlay, single wave-sweep animation, white text. "white" = no
    * photo/overlay/animation at all — flat bg-white with dark text instead,
    * same layout/sizing/typography otherwise (used by Services, per
-   * request — same full-screen hero block, just without the image). */
-  background?: "photo" | "white";
+   * request — same full-screen hero block, just without the image).
+   * "indigo" = flat bg-primary-600 (the brand indigo) with white/light
+   * text, same layout/sizing otherwise — used by Sobre Nosotros' first
+   * block, per request. cornerGradient is ignored here (a colored corner
+   * fade doesn't read against an already-solid indigo fill). */
+  background?: "photo" | "white" | "indigo";
   /** Forces the subtitle onto a single line from lg up (and drops the
    * max-w-2xl cap there, letting it size to its own content instead of
    * wrapping inside that box) — opt-in per usage, since a longer subtitle
@@ -48,6 +52,7 @@ export function Hero({
   const resolvedTitle = title ?? t("title");
   const resolvedSubtitle = subtitle ?? t("subtitle");
   const isPhoto = background === "photo";
+  const isIndigo = background === "indigo";
 
   return (
     // The -mt/pt pair (see HEADER_OFFSET in components/layout/header.tsx)
@@ -75,7 +80,7 @@ export function Hero({
         // subtitle) — per request, so ClientLogos right after it starts at
         // the exact same point Services' "Cómo trabajamos" band does,
         // instead of wherever Home's own shorter copy happens to end.
-        isPhoto ? "min-h-[249px] bg-dark-900 sm:min-h-0" : "bg-white"
+        isPhoto ? "min-h-[249px] bg-dark-900 sm:min-h-0" : isIndigo ? "bg-primary-600" : "bg-white"
       }`}
     >
       {/* Background photo (abstract network/mesh graphic, per request) —
@@ -109,7 +114,7 @@ export function Hero({
           corner gets its own identical ellipse gradient; backgroundSize
           has one "100% 100%" entry per corner layer, matching the dot
           grid's own "14px 14px" entry in order. */}
-      {!isPhoto && cornerGradient ? (
+      {!isPhoto && !isIndigo && cornerGradient ? (
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0"
@@ -151,7 +156,7 @@ export function Hero({
             // own default, non-"light" eyebrow).
             <p
               className={`font-sans text-[13px] font-semibold uppercase tracking-[0.02em] ${
-                isPhoto ? "text-primary-300" : "text-primary-600"
+                isPhoto ? "text-primary-300" : isIndigo ? "text-primary-100" : "text-primary-600"
               }`}
             >
               {eyebrow}
@@ -172,7 +177,7 @@ export function Hero({
               still renders on a single line exactly as before. */}
           <h1
             className={`${montserrat.className} ${eyebrow ? "mt-3 " : ""}uppercase text-[18px] font-extrabold tracking-tight sm:text-[34px] lg:text-[56px] xl:text-[62px] ${
-              isPhoto ? "text-white" : "text-neutral-900"
+              isPhoto || isIndigo ? "text-white" : "text-neutral-900"
             }`}
           >
             {resolvedTitle}
@@ -188,7 +193,7 @@ export function Hero({
               force it to wrap where it didn't before). */}
           <p
             className={`mt-5 min-h-[3lh] text-[18px] ${subtitleNoWrap ? "lg:whitespace-nowrap " : ""}${
-              isPhoto ? "text-white" : "text-neutral-600"
+              isPhoto ? "text-white" : isIndigo ? "text-primary-50" : "text-neutral-600"
             } ${subtitle ? (subtitleNoWrap ? "mx-auto lg:max-w-none max-w-2xl" : "mx-auto max-w-2xl") : ""}`}
           >
             {resolvedSubtitle}
