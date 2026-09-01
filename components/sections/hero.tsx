@@ -72,17 +72,19 @@ export function Hero({
     // 200px-at-xl figure to this new 162px-at-xl figure.
     <section
       className={`relative -mt-[81px] flex flex-1 items-start overflow-hidden pt-[81px] lg:-mt-[207px] lg:pt-[207px] ${
-        // Photo variant (Home) only, mobile only (reset at sm and up, where
-        // the wrapping div's own md/lg min-h takes over instead): base
-        // height (249px) matches Services' own hero natural height on
-        // mobile (measured live: 248.5px at a 375px viewport). +77px on
-        // top of that (326px total) — per request, so this section's own
-        // background/content extends down into the space ClientLogos used
-        // to start at, instead of leaving a blank gap before it (see the
-        // "mt-[77px] sm:mt-0" wrapper this replaced in app/[locale]/
-        // page.tsx — ClientLogos itself is back to starting immediately
-        // after this section, which is now simply taller).
-        isPhoto ? "min-h-[326px] bg-dark-900 sm:min-h-0" : isIndigo ? "bg-primary-600" : "bg-white"
+        isPhoto ? "bg-dark-900" : isIndigo ? "bg-primary-600" : "bg-white"
+      } ${
+        // Mobile only (reset at sm and up, where each page's own wrapping
+        // div — see app/[locale]/page.tsx, servicios/page.tsx, sobre-
+        // nosotros/page.tsx — takes over with its own md/lg min-h): every
+        // variant now shares this same 326px mobile height, so Home,
+        // Servicios, and Sobre Nosotros all render the exact same first-
+        // block footprint on mobile — per request. 326px = the photo
+        // variant's own figure (249px, matching Services' natural mobile
+        // height at the time it was measured, +77px so Home's hero
+        // background extends into the space ClientLogos used to start at
+        // — see the git history for that change's own reasoning).
+        "min-h-[326px] sm:min-h-0"
       }`}
     >
       {/* Background photo (abstract network/mesh graphic, per request) —
