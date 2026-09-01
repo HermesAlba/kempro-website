@@ -12,6 +12,7 @@ export function Hero({
   subtitle,
   background = "photo",
   subtitleNoWrap,
+  cornerGradient,
 }: {
   /** Small uppercase label above the title (e.g. "SERVICIOS") — omitted by
    * default (Home's own hero has none). Used when this same hero is reused
@@ -35,6 +36,13 @@ export function Hero({
    * same way. Below lg the max-w-2xl cap still applies and it still wraps
    * normally. */
   subtitleNoWrap?: boolean;
+  /** "white" variant only: swaps the flat bg-white for the same corner
+   * gradient (colored top-left fading to white, plus a subtle dot grid)
+   * used on the /servicios/[slug] detail hero and PageHero's own
+   * `gradient` prop — e.g. the treatment behind "Agentes y Automatización"
+   * when viewing that service's page. Opt-in per usage; ignored when
+   * background="photo". */
+  cornerGradient?: boolean;
 }) {
   const t = useTranslations("Home.hero");
   const resolvedTitle = title ?? t("title");
@@ -93,6 +101,21 @@ export function Hero({
           />
           <div className="absolute inset-0 bg-black/45" />
         </div>
+      ) : null}
+      {/* Same corner-gradient treatment as PageHero's own `gradient` prop
+          and the /servicios/[slug] detail hero (see the identical
+          radial-gradient + dot-grid style there) — colored top-left corner
+          fading to white toward the bottom-right, per request. */}
+      {!isPhoto && cornerGradient ? (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px), radial-gradient(ellipse 1400px 600px at top left, #B1C4FF 0%, #CFDCFF 45%, transparent 85%)",
+            backgroundSize: "14px 14px, 100% 100%",
+          }}
+        />
       ) : null}
       {/* background="white" (Services) starts the text 1cm (38px at 96dpi)
           higher than the photo variant (Home) at sm and up — each pt value

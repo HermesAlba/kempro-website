@@ -56,6 +56,7 @@ export default async function SobreNosotrosPage({
           subtitle={t("hero.subtitle")}
           background="white"
           subtitleNoWrap
+          cornerGradient
         />
       </div>
 
