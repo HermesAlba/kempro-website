@@ -1,8 +1,8 @@
 // Copia de app/[locale]/blog/page.tsx para iterar por separado — misma
-// lógica, mismo namespace de traducciones ("Blog"/"Metadata.blog"), mismo
-// patrón que SN/page.tsx respecto a sobre-nosotros: ruta standalone que
-// reutiliza las mismas keys, así que los cambios de contenido en "Blog"
-// afectan a ambas rutas hasta que se quiera diferenciarlas.
+// lógica, mismo namespace de traducciones ("Blog"/"Metadata.blog"): ruta
+// standalone que reutiliza las mismas keys, así que los cambios de
+// contenido en "Blog" afectan a ambas rutas hasta que se quiera
+// diferenciarlas.
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";

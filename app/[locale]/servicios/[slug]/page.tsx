@@ -160,7 +160,7 @@ export default async function ServiceDetailPage({
               into its own highlighted card. Uses the site's own brand
               gradient (#5D5FEF → #4949D6, 135deg — same one already used
               a few sections up on this very page's "Cómo trabajamos" band,
-              plus Sobre nosotros/SN/CtaBand). Checks use the lighter
+              plus Sobre nosotros/CtaBand). Checks use the lighter
               accent-300 for contrast on the dark fill. */}
           <FadeIn direction="right" delay={100} className="lg:sticky lg:top-24">
             <div

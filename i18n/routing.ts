@@ -30,12 +30,8 @@ export const routing = defineRouting({
       es: "/HC/[slug]",
       en: "/HS/[slug]",
     },
-    "/SN": {
-      es: "/sobre-nosotros",
-      en: "/SN",
-    },
     "/sobre-nosotros": {
-      es: "/sobre-nosotros1",
+      es: "/sobre-nosotros",
       en: "/about",
     },
     "/blog": {

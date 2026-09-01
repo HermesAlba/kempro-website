@@ -73,7 +73,7 @@ export function LovingWhatWeDo() {
             </p>
             <div className="mt-[35px]">
               <Link
-                href="/SN"
+                href="/sobre-nosotros"
                 className="inline-flex h-[53px] items-center justify-center bg-primary-600 px-[30px] font-sans text-[15px] font-semibold uppercase tracking-wide text-white transition-colors hover:bg-primary-700"
               >
                 {t("cta")}
