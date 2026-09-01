@@ -116,10 +116,10 @@ export function Hero({
           style={{
             backgroundImage: [
               "radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1.5px)",
-              "radial-gradient(ellipse 1400px 600px at top left, #B1C4FF 0%, #CFDCFF 45%, transparent 85%)",
-              "radial-gradient(ellipse 1400px 600px at top right, #B1C4FF 0%, #CFDCFF 45%, transparent 85%)",
-              "radial-gradient(ellipse 1400px 600px at bottom left, #B1C4FF 0%, #CFDCFF 45%, transparent 85%)",
-              "radial-gradient(ellipse 1400px 600px at bottom right, #B1C4FF 0%, #CFDCFF 45%, transparent 85%)",
+              "radial-gradient(ellipse 1400px 600px at top left, rgba(177,196,255,0.45) 0%, rgba(207,220,255,0.3) 40%, transparent 70%)",
+              "radial-gradient(ellipse 1400px 600px at top right, rgba(177,196,255,0.45) 0%, rgba(207,220,255,0.3) 40%, transparent 70%)",
+              "radial-gradient(ellipse 1400px 600px at bottom left, rgba(177,196,255,0.45) 0%, rgba(207,220,255,0.3) 40%, transparent 70%)",
+              "radial-gradient(ellipse 1400px 600px at bottom right, rgba(177,196,255,0.45) 0%, rgba(207,220,255,0.3) 40%, transparent 70%)",
             ].join(", "),
             backgroundSize: "14px 14px, 100% 100%, 100% 100%, 100% 100%, 100% 100%",
           }}
