@@ -50,13 +50,7 @@ export default async function SobreNosotrosPage({
           sin cambios). Reemplaza el hero anterior (columnas de texto +
           JoiningHalves), que se removió por completo. */}
       <div className="flex flex-col md:min-h-[calc(100vh-81px)] lg:min-h-[calc(100vh-207px)]">
-        <Hero
-          eyebrow={t("hero.eyebrow")}
-          title={t("hero.statement")}
-          subtitle={t("hero.subtitle")}
-          background="white"
-          titleOnlyMobile
-        />
+        <Hero eyebrow={t("hero.eyebrow")} title={t("hero.statement")} subtitle={t("hero.subtitle")} background="white" />
       </div>
 
       {/* Divider between blocks 1 and 2 — same line language as
