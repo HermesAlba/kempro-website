@@ -6,32 +6,16 @@ export type TeamMember = {
   initials: string;
 };
 
+// Placeholder team members (María Fernanda Ríos, Santiago Londoño, Camila
+// Torres, Andrés Gómez) were removed — they weren't real people and were
+// never actually rendered anywhere on the site (the TeamGrid component that
+// reads this data isn't used on any page). Add real team members here when
+// available.
 const data: {
   name: string;
   role: Record<Locale, string>;
   initials: string;
-}[] = [
-  {
-    name: "María Fernanda Ríos",
-    role: { es: "CEO y Fundadora", en: "CEO & Founder" },
-    initials: "MR",
-  },
-  {
-    name: "Santiago Londoño",
-    role: { es: "Head of AI Engineering", en: "Head of AI Engineering" },
-    initials: "SL",
-  },
-  {
-    name: "Camila Torres",
-    role: { es: "Lead AI Strategist", en: "Lead AI Strategist" },
-    initials: "CT",
-  },
-  {
-    name: "Andrés Gómez",
-    role: { es: "Head of Client Solutions", en: "Head of Client Solutions" },
-    initials: "AG",
-  },
-];
+}[] = [];
 
 export function getTeam(locale: Locale): TeamMember[] {
   return data.map((m) => ({
