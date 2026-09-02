@@ -56,6 +56,31 @@ export default async function ServiceDetailPage({
 
   return (
     <>
+      {/* Service JSON-LD — per-service structured data (name, description,
+          provider, canonical url). Sits alongside the sitewide
+          Organization+WebSite schema in the locale layout; this is the
+          per-page complement AI answer engines and Google use to resolve
+          "what does Kempro offer" down to individual, citable services
+          rather than one undifferentiated block of prose. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: service.title,
+            description: service.description,
+            url: shareUrl,
+            inLanguage: locale,
+            provider: {
+              "@type": "Organization",
+              name: "Kempro",
+              url: SITE_URL,
+            },
+          }),
+        }}
+      />
+
       {/* Hero — bleeds up behind the floating nav (see HEADER_OFFSET in
           components/layout/header.tsx), same pattern as the other page
           heroes on the site. No breadcrumb here anymore — it moved to its

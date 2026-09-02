@@ -74,8 +74,56 @@ export default async function BlogPostPage({
     (block, index) => index >= Math.floor(post.content.length / 2) && block.type === "paragraph",
   );
 
+  // No post currently sets a real coverImage (see lib/data/blog.ts — the
+  // field exists but nothing populates it yet), so Article schema falls
+  // back to the sitewide OG image rather than shipping `image` empty —
+  // Google/AI crawlers treat a present-but-empty image field worse than a
+  // sensible default.
+  const articleImage = post.coverImage
+    ? post.coverImage.startsWith("http")
+      ? post.coverImage
+      : `${SITE_URL}${post.coverImage}`
+    : `${SITE_URL}/og-image.png`;
+
   return (
     <article className="bg-white">
+      {/* Article JSON-LD — per-post structured data (headline, author,
+          dates, publisher). Complements the sitewide Organization+WebSite
+          schema in the locale layout: this is what lets an AI answer
+          engine attribute a specific claim to this specific post ("Kempro
+          says X, published on Y") instead of just the domain in general. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: post.title,
+            description: post.excerpt,
+            image: [articleImage],
+            datePublished: post.date,
+            dateModified: post.date,
+            inLanguage: locale,
+            author: {
+              "@type": "Person",
+              name: post.author,
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Kempro",
+              logo: {
+                "@type": "ImageObject",
+                url: `${SITE_URL}/kempro-logo-full.png`,
+              },
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": shareUrl,
+            },
+          }),
+        }}
+      />
+
       {/* Bleeds up behind the floating nav (see HEADER_OFFSET in
           components/layout/header.tsx) so this background shows through
           the nav's side margins instead of the generic header strip; the
