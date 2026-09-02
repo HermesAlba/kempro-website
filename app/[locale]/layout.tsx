@@ -72,6 +72,43 @@ export default async function LocaleLayout({
           globals.css; nav, buttons, and UI-chrome labels override
           explicitly where needed (see lib/fonts.ts for the full rationale). */}
       <body className="flex min-h-screen flex-col bg-primary-50/50 font-poppins text-neutral-900 antialiased">
+        {/* Organization + WebSite JSON-LD — sitewide, not tied to any one
+            page's content. Helps traditional SEO (eligibility for the
+            Knowledge Panel / sitelinks searchbox) and matters even more for
+            GEO: AI answer engines (ChatGPT, Perplexity, Google AI Overviews)
+            lean on structured, machine-readable facts like this — name,
+            official URL, contact channel — to decide whether and how to
+            cite a site, rather than re-parsing prose to guess at them. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "Kempro",
+                url: "https://www.kempro.ai",
+                logo: "https://www.kempro.ai/kempro-logo-full.png",
+                email: "marketing@kemprocol.com",
+                telephone: "+57 310 462 3473",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "Calle 7 Sur #42-70, Barrio El Poblado",
+                  addressLocality: "Medellín",
+                  addressRegion: "Antioquia",
+                  addressCountry: "CO",
+                },
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "Kempro",
+                url: "https://www.kempro.ai",
+                inLanguage: ["es", "en"],
+              },
+            ]),
+          }}
+        />
         <NextIntlClientProvider>
           <ScrollRestorationFix />
           <Header />
