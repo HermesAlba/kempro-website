@@ -3,10 +3,7 @@ import { Resend } from "resend";
 import { getWriteClient } from "@/sanity/lib/write-client";
 import { projectId } from "@/sanity/env";
 
-const CONTACT_NOTIFICATION_RECIPIENTS = [
-  "marketing@kemprocol.com",
-  "hermesalba@gmail.com",
-];
+const CONTACT_NOTIFICATION_RECIPIENTS = ["hermesalba@gmail.com"];
 
 type ContactPayload = {
   name?: unknown;
