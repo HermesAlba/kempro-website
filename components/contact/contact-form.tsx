@@ -125,9 +125,15 @@ export function ContactForm({
   // field instead — same treatment as the light variant's input, just with
   // a soft shadow to read as "lifted" off the purple rather than blending
   // into the light variant's own white page background.
+  // text-base (16px) below sm, dropping to the tighter 13px design size
+  // only once sm kicks in: iOS Safari auto-zooms the whole page on focus
+  // for any input/textarea whose font-size is under 16px, which is what
+  // was causing the form to "desconfigurarse y salir más ancha" the
+  // moment a field was tapped on a phone — the page itself was fine, iOS
+  // was just zooming into it. 16px on mobile sidesteps that entirely.
   const inputClasses = dark
-    ? "mt-1.5 block w-full rounded-lg border border-transparent bg-white px-3.5 py-2 text-[13px] text-neutral-900 shadow-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-white/60"
-    : "mt-1.5 block w-full rounded-lg border border-neutral-300 bg-white px-3.5 py-2 text-[13px] text-neutral-900 placeholder:text-neutral-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30";
+    ? "mt-1.5 block w-full rounded-lg border border-transparent bg-white px-3.5 py-2 text-base text-neutral-900 shadow-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-white/60 sm:text-[13px]"
+    : "mt-1.5 block w-full rounded-lg border border-neutral-300 bg-white px-3.5 py-2 text-base text-neutral-900 placeholder:text-neutral-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30 sm:text-[13px]";
   const labelClasses = dark
     ? "text-[13px] font-semibold text-white/90"
     : "text-[13px] font-semibold text-neutral-700";
