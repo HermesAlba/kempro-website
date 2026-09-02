@@ -77,7 +77,7 @@ export async function POST(request: Request) {
       // it only throws on network-level errors. Both cases must be checked
       // and logged, or a failed send looks identical to a skipped one.
       const { data, error } = await resend.emails.send({
-        from: "Kempro Website <notificaciones@kemprocol.com>",
+        from: "Kempro Website <notificaciones@kempro.ai>",
         to: CONTACT_NOTIFICATION_RECIPIENTS,
         subject: `Nuevo contacto de ${name}`,
         replyTo: email,
