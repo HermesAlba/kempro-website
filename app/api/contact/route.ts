@@ -72,16 +72,27 @@ export async function POST(request: Request) {
   if (process.env.RESEND_API_KEY) {
     try {
       const resend = new Resend(process.env.RESEND_API_KEY);
-      await resend.emails.send({
+      // The Resend SDK resolves with { data, error } instead of throwing on
+      // API-level failures (invalid key, unverified sending domain, etc.) —
+      // it only throws on network-level errors. Both cases must be checked
+      // and logged, or a failed send looks identical to a skipped one.
+      const { data, error } = await resend.emails.send({
         from: "Kempro Website <notificaciones@kemprocol.com>",
         to: CONTACT_NOTIFICATION_RECIPIENTS,
         subject: `Nuevo contacto de ${name}`,
         replyTo: email,
         text: `Nombre: ${name}\nEmail: ${email}\nEmpresa: ${company || "N/A"}\n\n${message}`,
       });
+      if (error) {
+        console.error("[contact] resend rejected the email", error);
+      } else {
+        console.info("[contact] notification email sent", { id: data?.id });
+      }
     } catch (error) {
       console.error("[contact] failed to send notification email", error);
     }
+  } else {
+    console.warn("[contact] RESEND_API_KEY not set — skipping notification email");
   }
 
   // Store the submission in Sanity so it shows up in the Studio. Skipped
