@@ -440,3 +440,12 @@ export function getCaseStudy(locale: Locale, slug: string): CaseStudy | undefine
 export function getCaseStudyById(locale: Locale, id: string): CaseStudy | undefined {
   return getCaseStudies(locale).find((c) => c.id === id);
 }
+
+// Exposes the raw bilingual records (both locales in one object per case
+// study, including `advantage`/`isInternal` which getCaseStudies() doesn't
+// return directly — they're only baked into its derived `content` blocks)
+// — used only by the one-off Sanity migration script
+// (scripts/migrate-to-sanity.ts). Not used anywhere in the app itself.
+export function getCaseStudiesRaw() {
+  return { data, industryImage: INDUSTRY_IMAGE };
+}

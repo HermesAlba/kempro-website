@@ -405,3 +405,12 @@ export function getServices(locale: Locale): Service[] {
 export function getService(locale: Locale, slug: string): Service | undefined {
   return getServices(locale).find((s) => s.slug === slug);
 }
+
+// Exposes the raw bilingual records (both locales in one object per
+// service, including howItWorks/idealFor which getServices() doesn't
+// return directly — they're only baked into its derived `content` blocks)
+// — used only by the one-off Sanity migration script
+// (scripts/migrate-to-sanity.ts). Not used anywhere in the app itself.
+export function getServicesRaw() {
+  return { data, order };
+}

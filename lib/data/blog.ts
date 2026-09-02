@@ -1082,3 +1082,12 @@ export function getBlogPosts(locale: Locale): BlogPost[] {
 export function getBlogPost(locale: Locale, slug: string): BlogPost | undefined {
   return getBlogPosts(locale).find((p) => p.slug === slug);
 }
+
+// Exposes the raw bilingual records (both locales in one object per post)
+// instead of the locale-resolved view above — used only by the one-off
+// Sanity migration script (scripts/migrate-to-sanity.ts), which needs both
+// languages of every field to build a single bilingual Sanity document per
+// post. Not used anywhere in the app itself.
+export function getBlogPostsRaw() {
+  return data;
+}

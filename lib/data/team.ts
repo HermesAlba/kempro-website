@@ -40,3 +40,10 @@ export function getTeam(locale: Locale): TeamMember[] {
     initials: m.initials,
   }));
 }
+
+// Exposes the raw bilingual records (both locales in one object per member)
+// — used only by the one-off Sanity migration script
+// (scripts/migrate-to-sanity.ts). Not used anywhere in the app itself.
+export function getTeamRaw() {
+  return data;
+}
