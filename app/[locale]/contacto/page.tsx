@@ -102,57 +102,40 @@ export default async function ContactPage({
         </div>
       </FadeIn>
 
-      {/* FormSide — three stacked full-bleed bands spanning the column's
-          entire height. The outer wrapper's own -mt/pt only bleeds ITS
-          background to y=0; the pt then pushes every flex child (both
-          columns) back down below the header, so without its own
-          correction this column's box would still start at y=81/207px, not
-          y=0. md:-mt/lg:-mt here cancels exactly that push (only once row
-          layout kicks in, so mobile's stacked columns are untouched),
-          pulling this column's own top back up to y=0 so its background
-          reaches the very top of the screen behind the header — nothing
-          textual sits there (the top band is decorative/aria-hidden) so
-          there's no content to protect from being covered. The top/bottom
-          bands are flex-1, so they simply absorb whatever space is left
-          over above and below the middle band; the middle band is sized by
-          its own content (heading + ContactForm + AddToContactsButton)
-          rather than a fixed height, so it starts exactly at the "Envíanos
-          un mensaje" heading and ends exactly after the "Enviar mensaje"
-          button+disclaimer — no hardcoded pixel math needed. On mobile,
-          where this column has no enforced viewport height, the top/bottom
-          bands simply collapse toward 0 and the middle band ends up filling
-          the column, which still satisfies the same alignment rule (nothing
-          above the heading, nothing below the form). IntroSide keeps its
-          own (unchanged) background. */}
+      {/* FormSide — a plain flex column matching IntroSide's own layout
+          (flex-1, justify-center, same responsive padding scale) instead of
+          the previous three-band -mt/flex-1 bleed trick. That trick relied
+          on the top/bottom flex-1 bands auto-absorbing exactly
+          HEADER_OFFSET worth of space to keep the heading clear of the
+          header — which only held at the specific viewport height it was
+          tuned against. At shorter viewports (or once the middle band's
+          own content grew) the top band shrank toward zero and the
+          heading/top padding ended up rendered behind the header, cutting
+          off "Envíanos un mensaje" entirely (reported: column 2 "se ve
+          mal" after the reCAPTCHA badge/script were added, which added
+          just enough height to trigger it). justify-center + padding is
+          exactly IntroSide's own proven approach, so it's used here too.
+          GrainOverlay is now a single absolute inset-0 layer (it's already
+          self-positioning) instead of three separate relative bands. */}
       <FadeIn
         direction="right"
         delay={100}
-        className="relative flex flex-1 flex-col overflow-hidden rounded-xl bg-[#5D5FEF] md:-mt-[81px] lg:-mt-[207px]"
+        className="relative flex flex-1 flex-col justify-center overflow-hidden rounded-xl bg-[#5D5FEF] px-6 py-10 sm:px-10 lg:px-14 xl:px-16"
       >
-        <div aria-hidden="true" className="relative flex-1">
-          <GrainOverlay />
+        <GrainOverlay />
+
+        <div className="relative mb-6">
+          <h2 className="text-[18px] font-bold text-white">{t("formTitle")}</h2>
+          <p className="mt-1 text-[13px] text-white/80">{t("formNote")}</p>
         </div>
 
-        <div className="relative px-6 py-10 sm:px-10 lg:px-14 xl:px-16">
-          <GrainOverlay />
+        <div className="relative">
+          <ContactForm dark showCompany={false} submitVariant="dark" />
 
-          <div className="relative mb-6">
-            <h2 className="text-[18px] font-bold text-white">{t("formTitle")}</h2>
-            <p className="mt-1 text-[13px] text-white/80">{t("formNote")}</p>
-          </div>
-
-          <div className="relative">
-            <ContactForm dark showCompany={false} submitVariant="dark" />
-
-            {/* Useful on mobile (opens the native contacts app directly);
-                on desktop it's just a .vcf download few people import, so
-                it's hidden there to keep the page focused. */}
-            <AddToContactsButton className="mt-4 text-white hover:text-white/80 sm:hidden" />
-          </div>
-        </div>
-
-        <div aria-hidden="true" className="relative flex-1">
-          <GrainOverlay />
+          {/* Useful on mobile (opens the native contacts app directly);
+              on desktop it's just a .vcf download few people import, so
+              it's hidden there to keep the page focused. */}
+          <AddToContactsButton className="mt-4 text-white hover:text-white/80 sm:hidden" />
         </div>
       </FadeIn>
     </div>
