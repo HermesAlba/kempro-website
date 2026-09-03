@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 import { getWriteClient } from "@/sanity/lib/write-client";
 import { projectId } from "@/sanity/env";
 
@@ -25,9 +26,35 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
   }
 
-  // Pending #37: final newsletter provider still to be decided. For now,
-  // store the subscriber as a Sanity document — same "skip gracefully until
-  // configured" pattern as the contact form (see app/api/contact/route.ts).
+  // Resend Contacts — this is what actually makes the subscriber reachable:
+  // any contact added here shows up in the Resend dashboard's Audience and
+  // can be sent a Broadcast (Resend's built-in newsletter-sending feature).
+  // Reuses the same RESEND_API_KEY already configured for the contact form
+  // — no new provider/account needed. Skipped gracefully until configured,
+  // same "degrade, don't break" pattern as the rest of this route.
+  if (process.env.RESEND_API_KEY) {
+    try {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const { data, error } = await resend.contacts.create({
+        email,
+        unsubscribed: false,
+      });
+      if (error) {
+        console.error("[newsletter] resend rejected the contact", error);
+      } else {
+        console.info("[newsletter] contact added to Resend audience", { id: data?.id });
+      }
+    } catch (error) {
+      console.error("[newsletter] failed to add contact to Resend", error);
+    }
+  } else {
+    console.warn("[newsletter] RESEND_API_KEY not set — skipping Resend contact");
+  }
+
+  // Also store the subscriber as a Sanity document, so the raw signup
+  // (including locale, for future segmentation) shows up in the Studio too
+  // — an internal record independent of whichever sending provider is in
+  // use. Skipped gracefully until configured, same pattern as above.
   if (projectId && process.env.SANITY_API_WRITE_TOKEN) {
     try {
       await getWriteClient().create({

@@ -305,7 +305,7 @@
     "newsletterPlaceholder": "you@company.com",
     "newsletterConsent": "By subscribing, you agree to receive communications from Kempro under our",
     "newsletterSubmit": "Subscribe",
-    "newsletterSuccess": "You're in! Check your inbox to confirm.",
+    "newsletterSuccess": "You're subscribed!",
     "newsletterError": "We couldn't process your subscription. Please try again.",
     "newsletterErrorInvalid": "Enter a valid email address."
   },
