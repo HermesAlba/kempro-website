@@ -29,12 +29,15 @@ export async function POST(request: Request) {
   // Resend Contacts — this is what actually makes the subscriber reachable:
   // any contact added here shows up in the Resend dashboard's Audience and
   // can be sent a Broadcast (Resend's built-in newsletter-sending feature).
-  // Reuses the same RESEND_API_KEY already configured for the contact form
-  // — no new provider/account needed. Skipped gracefully until configured,
-  // same "degrade, don't break" pattern as the rest of this route.
-  if (process.env.RESEND_API_KEY) {
+  // Uses its own RESEND_NEWSLETTER_API_KEY rather than the contact form's
+  // RESEND_API_KEY: that key was deliberately scoped to "Sending access"
+  // only (least privilege), and the Contacts API requires "Full access" —
+  // Resend has no narrower "contacts only" scope. Skipped gracefully until
+  // configured, same "degrade, don't break" pattern as the rest of this
+  // route.
+  if (process.env.RESEND_NEWSLETTER_API_KEY) {
     try {
-      const resend = new Resend(process.env.RESEND_API_KEY);
+      const resend = new Resend(process.env.RESEND_NEWSLETTER_API_KEY);
       const { data, error } = await resend.contacts.create({
         email,
         unsubscribed: false,
@@ -48,7 +51,7 @@ export async function POST(request: Request) {
       console.error("[newsletter] failed to add contact to Resend", error);
     }
   } else {
-    console.warn("[newsletter] RESEND_API_KEY not set — skipping Resend contact");
+    console.warn("[newsletter] RESEND_NEWSLETTER_API_KEY not set — skipping Resend contact");
   }
 
   // Also store the subscriber as a Sanity document, so the raw signup
