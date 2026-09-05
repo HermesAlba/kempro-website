@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
 import { montserrat } from "@/lib/fonts";
@@ -13,6 +14,7 @@ export function Hero({
   background = "photo",
   subtitleNoWrap,
   cornerGradient,
+  showMobileCta,
 }: {
   /** Small uppercase label above the title (e.g. "SERVICIOS") — omitted by
    * default (Home's own hero has none). Used when this same hero is reused
@@ -47,6 +49,12 @@ export function Hero({
    * when viewing that service's page. Opt-in per usage; ignored when
    * background="photo". */
   cornerGradient?: boolean;
+  /** Mobile-only pair of stacked CTA buttons below the subtitle ("Contáctanos"
+   * / "Ver servicios"), per a reference mobile design (bold headline +
+   * subtitle + two stacked solid buttons, sm:hidden so desktop's already
+   * pixel-tuned layout — see comments below — stays untouched). Home-only;
+   * every other Hero usage omits this prop and renders exactly as before. */
+  showMobileCta?: boolean;
 }) {
   const t = useTranslations("Home.hero");
   const resolvedTitle = title ?? t("title");
@@ -89,7 +97,7 @@ export function Hero({
         // height at the time it was measured, +77px so Home's hero
         // background extends into the space ClientLogos used to start at
         // — see the git history for that change's own reasoning).
-        "min-h-[326px] sm:min-h-0"
+        showMobileCta ? "py-12 sm:min-h-0 sm:py-0" : "min-h-[326px] sm:min-h-0"
       }`}
     >
       {/* Background photo (abstract network/mesh graphic, per request) —
@@ -207,6 +215,30 @@ export function Hero({
           >
             {resolvedSubtitle}
           </p>
+          {/* Mobile-only pair of stacked CTA buttons — see showMobileCta
+              above. sm:hidden keeps every other breakpoint (already tuned
+              to match the reference site's own desktop hero, see the
+              section-level comment near the top of this file) completely
+              unaffected. Both buttons share the same solid treatment
+              (matching the reference design, where both stacked buttons
+              use identical styling rather than a primary/secondary
+              split). */}
+          {showMobileCta ? (
+            <div className="mt-8 flex flex-col gap-3 sm:hidden">
+              <Link
+                href="/contacto"
+                className={`${montserrat.className} inline-flex items-center justify-center rounded-md bg-primary-600 px-6 py-3 text-[14px] font-bold uppercase tracking-wide text-white transition-colors hover:bg-primary-700`}
+              >
+                {t("ctaContact")}
+              </Link>
+              <Link
+                href="/servicios"
+                className={`${montserrat.className} inline-flex items-center justify-center rounded-md bg-primary-600 px-6 py-3 text-[14px] font-bold uppercase tracking-wide text-white transition-colors hover:bg-primary-700`}
+              >
+                {t("ctaServices")}
+              </Link>
+            </div>
+          ) : null}
         </FadeIn>
       </Container>
     </section>

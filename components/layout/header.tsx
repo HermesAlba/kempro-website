@@ -161,25 +161,27 @@ export function Header() {
           hover reads fine against black too. */}
       <div className={isAboutPage ? "bg-primary-600 lg:bg-black" : "bg-primary-600"}>
         <div className="mx-auto flex h-[81px] max-w-7xl items-center px-6 lg:h-[61px] lg:px-8">
-          {/* Mobile: logo + search + hamburger. size=24: originally 30,
-              scaled down to 80% (30 * 0.8 = 24) per request, matching the
-              desktop bar's own 80% reduction above. */}
+          {/* Mobile: logo + hamburger only — search moved into the mobile
+              dropdown below (see the SiteSearch row there) per a reference
+              mobile design where the top bar carries nothing but a logo and
+              a hamburger button rendered as its own solid-colored square
+              "chip" (primary-800, a shade darker than this bar's own
+              primary-600 fill) rather than a plain transparent icon button.
+              size=24: originally 30, scaled down to 80% (30 * 0.8 = 24) per
+              request, matching the desktop bar's own 80% reduction above. */}
           <div className="flex w-full items-center justify-between lg:hidden">
             <Link href="/" onClick={() => setOpen(false)} className="flex-shrink-0">
               <KemproLogo variant="dark" size={24} />
             </Link>
-            <div className="flex items-center gap-1">
-              <SiteSearch triggerClassName="flex items-center justify-center rounded-md p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white" />
-              <button
-                type="button"
-                className="flex items-center justify-center rounded-md p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-                aria-expanded={open}
-                aria-label={open ? t("closeMenu") : t("openMenu")}
-                onClick={() => setOpen((v) => !v)}
-              >
-                {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
-              </button>
-            </div>
+            <button
+              type="button"
+              className="flex items-center justify-center rounded-md bg-primary-800 p-2.5 text-white transition-colors hover:bg-primary-900"
+              aria-expanded={open}
+              aria-label={open ? t("closeMenu") : t("openMenu")}
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+            </button>
           </div>
 
           {/* Desktop: full-width nav row, each item its own full-height tab
@@ -219,6 +221,15 @@ export function Header() {
         // wrapper, so it needs its own explicit override.
         <div className={`border-t border-primary-700 bg-primary-600 lg:hidden ${montserrat.className}`}>
           <div className="flex flex-col gap-1 px-6 py-4">
+            {/* Search — moved here from the top bar (see the mobile
+                logo+hamburger row above) so the bar itself stays down to
+                just those two elements, per the reference design. showLabel
+                renders the "Buscar" text next to the icon, matching this
+                row's sibling nav links below. */}
+            <SiteSearch
+              showLabel
+              triggerClassName="flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-base font-medium text-white/85 transition-colors hover:bg-primary-700"
+            />
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
