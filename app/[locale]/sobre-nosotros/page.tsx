@@ -82,7 +82,11 @@ export default async function SobreNosotrosPage({
                   {t("story.originTitle")}
                 </h2>
               </div>
-              <p className="text-[16px] leading-[1.6] text-neutral-600">{t("story.originParagraph1")}</p>
+              <p className="text-[16px] leading-[1.6] text-neutral-600">
+                {t.rich("story.originParagraph1", {
+                  bold: (chunks) => <strong className="font-semibold text-neutral-900">{chunks}</strong>,
+                })}
+              </p>
               <p className="text-[16px] leading-[1.6] text-neutral-600">{t("story.originParagraph2")}</p>
               <p className="text-[16px] leading-[1.6] text-neutral-600">{t("story.originParagraph3")}</p>
               <Link
