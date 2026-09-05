@@ -84,7 +84,7 @@ export default async function SobreNosotrosPage({
               </div>
               <p className="text-[16px] leading-[1.6] text-neutral-600">
                 {t.rich("story.originParagraph1", {
-                  bold: (chunks) => <strong className="font-semibold text-neutral-900">{chunks}</strong>,
+                  bold: (chunks) => <strong className="font-bold text-neutral-900">{chunks}</strong>,
                 })}
               </p>
               <p className="text-[16px] leading-[1.6] text-neutral-600">{t("story.originParagraph2")}</p>
