@@ -47,7 +47,7 @@ export default async function HomePage({
           (border={false}) — per
           request. */}
       <div className="flex flex-col md:min-h-[calc(100vh-81px)] lg:min-h-[calc(100vh-207px)]">
-        <Hero showMobileCta />
+        <Hero />
         <ClientLogos border={false} />
       </div>
       {/* WhatWeDo: Knife River's "WHAT WE DO" block (2-col: title/tagline/

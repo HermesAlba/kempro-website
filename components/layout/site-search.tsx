@@ -85,17 +85,7 @@ function SearchResultLink({
 // drift from what's actually published — no separate search index to keep
 // in sync. Filtering runs entirely client-side (useMemo over the small,
 // static dataset), so there's no network round-trip per keystroke.
-export function SiteSearch({
-  triggerClassName,
-  showLabel,
-}: {
-  triggerClassName?: string;
-  /** Renders the "Buscar" label text next to the icon — used when this
-   * trigger is a full-width row inside the mobile menu (see
-   * components/layout/header.tsx) rather than a standalone icon button in
-   * the header bar, where the icon alone is enough. */
-  showLabel?: boolean;
-}) {
+export function SiteSearch({ triggerClassName }: { triggerClassName?: string }) {
   const locale = useLocale() as Locale;
   const t = useTranslations("Search");
   const shouldReduceMotion = useReducedMotion();
@@ -217,7 +207,6 @@ export function SiteSearch({
         }
       >
         <SearchIcon className="h-5 w-5" />
-        {showLabel ? <span>{t("openSearch")}</span> : null}
       </button>
 
       {mounted
