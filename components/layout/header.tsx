@@ -55,12 +55,14 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
-  // Sobre Nosotros gets its own header palette on desktop, per request:
-  // the logo bar (normally black) becomes white, and the nav/menu bar
+  // Sobre Nosotros gets its own header palette, per request: the top info
+  // bar (normally black, desktop only) becomes white, and the nav/menu bar
   // (normally brand indigo) becomes black — roughly a swap of the two
-  // bars' colors, scoped to this one page. Mobile keeps the site-wide
-  // indigo single bar unchanged (it merges the logo + hamburger into one
-  // bar, so the desktop-only swap doesn't map cleanly onto it).
+  // bars' colors, scoped to this one page. The nav/menu bar's black swap
+  // now applies at every breakpoint (mobile included, see the "menu en
+  // negro" comment on that bar below) — mobile's own logo-only row stays
+  // black regardless either way, since it's already the same color this
+  // page's swap would apply.
   const isAboutPage = pathname === "/sobre-nosotros";
 
   return (
@@ -178,12 +180,13 @@ export function Header() {
           carries just the hamburger + search (the logo moved to its own
           row above) — 64px tall (h-16), the other part of
           HEADER_OFFSET.mobile alongside the 112px logo row above. On
-          /sobre-nosotros this flips to black at lg only (isAboutPage) —
-          mobile (below lg) keeps bg-primary-600 regardless, per request
-          (see isAboutPage comment above). Link text/hover colors are
-          unchanged: white/85 with a primary-700 hover reads fine against
-          black too. */}
-      <div className={isAboutPage ? "bg-primary-600 lg:bg-black" : "bg-primary-600"}>
+          /sobre-nosotros this flips to black (isAboutPage) at every
+          breakpoint, mobile included — per a follow-up request ("menu en
+          negro"); this bar used to stay bg-primary-600 on mobile
+          regardless of isAboutPage (only the lg+ desktop bar flipped), but
+          that carve-out was removed. Link text/hover colors are unchanged:
+          white/85 with a primary-700 hover reads fine against black too. */}
+      <div className={isAboutPage ? "bg-black" : "bg-primary-600"}>
         <div className="mx-auto flex h-16 max-w-7xl items-center px-6 lg:h-[61px] lg:px-8">
           {/* Mobile: hamburger + search, at opposite ends of the bar — per
               request: "sobre fondo indigo debe quedar la hamburguesa y el
