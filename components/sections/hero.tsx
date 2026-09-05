@@ -79,7 +79,7 @@ export function Hero({
     // is zeroed at that breakpoint (see below) so the centering isn't
     // skewed by a leftover top offset.
     <section
-      className={`relative -mt-[120px] flex flex-1 items-center sm:items-start overflow-hidden pt-[120px] lg:-mt-[207px] lg:pt-[207px] ${
+      className={`relative -mt-[176px] flex flex-1 items-center sm:items-start overflow-hidden pt-[176px] lg:-mt-[207px] lg:pt-[207px] ${
         isPhoto ? "bg-dark-900" : isIndigo ? "bg-primary-600" : "bg-white"
       }`}
     >

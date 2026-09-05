@@ -43,7 +43,7 @@ export default async function ContactPage({
     // Getting this wrong by subtracting the header height leaves a gap
     // where Footer peeks through above the fold. Each column centers its
     // content vertically within that space.
-    <div className="relative -mt-[120px] flex flex-col overflow-hidden bg-white pt-[120px] md:min-h-screen md:flex-row lg:-mt-[207px] lg:pt-[207px]">
+    <div className="relative -mt-[176px] flex flex-col overflow-hidden bg-white pt-[176px] md:min-h-screen md:flex-row lg:-mt-[207px] lg:pt-[207px]">
       {/* IntroSide — pitch, lightweight schedule link, and the icon-only
           contact channels. */}
       <FadeIn direction="left" className="flex flex-1 flex-col justify-center px-6 py-10 sm:px-10 lg:px-14 xl:px-16">

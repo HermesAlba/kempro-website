@@ -44,13 +44,18 @@ export default async function HomePage({
           bottom of the block. Hero's own background (a photo, see
           hero.tsx) ends exactly at its own bottom edge — i.e. right where
           this carousel starts — per request. Carousel border removed
-          (border={false}) — per request. Below lg (min-h-[calc(92vh-120px)])
-          the wrapper is deliberately ~8vh short of a full screen — per
-          request, so the client-logos carousel is glimpsed within the first
-          mobile screen instead of sitting entirely below the fold; at lg
-          the wrapper goes back to filling the full viewport exactly (no
-          peek) as before. */}
-      <div className="flex flex-col min-h-[calc(92vh-120px)] lg:min-h-[calc(100vh-207px)]">
+          (border={false}) — per request. Below lg
+          (min-h-[calc(92dvh-176px)]) the wrapper is deliberately ~8% short
+          of a full screen — per request, so the client-logos carousel is
+          glimpsed within the first mobile screen instead of sitting
+          entirely below the fold; at lg the wrapper goes back to filling
+          the full viewport exactly (no peek) as before. dvh (not vh) here
+          specifically — vh locks to the browser's largest possible
+          viewport (address bar hidden), which on first paint (address bar
+          still visible) is taller than what's actually on screen, pushing
+          the carousel below the real fold; dvh tracks the real, currently-
+          visible viewport instead so the carousel reliably shows in full. */}
+      <div className="flex flex-col min-h-[calc(92dvh-176px)] lg:min-h-[calc(100vh-207px)]">
         <Hero />
         <ClientLogos border={false} />
       </div>

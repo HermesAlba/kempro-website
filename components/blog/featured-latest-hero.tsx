@@ -64,7 +64,7 @@ export function FeaturedLatestHero({
     // components/layout/header.tsx); the inner div keeps its own padding
     // untouched since the -mt/pt pair only shifts where this section's
     // background starts, not where its children render.
-    <section className="-mt-[120px] bg-white pt-[120px] lg:-mt-[207px] lg:pt-[207px]">
+    <section className="-mt-[176px] bg-white pt-[176px] lg:-mt-[207px] lg:pt-[207px]">
       <div className="mx-auto max-w-[1280px] px-6 py-12 sm:px-10 lg:px-0 lg:py-10">
         {/* Inner column mx-auto max-w-[1052px] centers with the same 114px
             margins kore.ai uses at the 1280px reference width, instead of

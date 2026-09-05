@@ -61,10 +61,13 @@ export default async function ServicesPage({
           ocupe exactamente una pantalla en lg+. Texto propio de esta página
           (Services.eyebrow/title/subtitle, sin cambios). Reemplaza el
           PageHero anterior (banda plana con gradiente). Below lg
-          (min-h-[calc(92vh-120px)]) queda ~8vh corto de una pantalla
+          (min-h-[calc(92dvh-176px)]) queda ~8% corto de una pantalla
           completa — per request, para que se note que hay más contenido
-          justo debajo en la primera pantalla móvil. */}
-      <div className="flex flex-col min-h-[calc(92vh-120px)] lg:min-h-[calc(100vh-207px)]">
+          justo debajo en la primera pantalla móvil. dvh en vez de vh: vh se
+          fija al viewport más grande posible (barra de direcciones oculta),
+          que en la primera pintada (barra aún visible) es más alto que lo
+          realmente visible; dvh sigue el viewport real. */}
+      <div className="flex flex-col min-h-[calc(92dvh-176px)] lg:min-h-[calc(100vh-207px)]">
         <Hero
           eyebrow={t("eyebrow")}
           title={t("title")}

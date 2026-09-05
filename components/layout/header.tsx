@@ -36,10 +36,12 @@ const navItems = [
 // directly off the reference site's own two bars via getComputedStyle/
 // getBoundingClientRect (146.1px and 60.5px respectively) so Kempro's
 // header matches its exact proportions, not just its colors/layout. Mobile
-// is 120 (56px logo-only bar + 64px hamburger/search bar) — split into two
+// is 176 (112px logo-only bar + 64px hamburger/search bar) — split into two
 // stacked bars per request, matching the reference site's own two-row
-// mobile header shape (was a single merged 81px bar).
-export const HEADER_OFFSET = { mobile: 120, desktop: 207 } as const;
+// mobile header shape (was a single merged 81px bar). The logo bar was
+// doubled from its initial 56px to 112px per a follow-up request, with the
+// logo itself scaled up proportionally (24 → 48) to match.
+export const HEADER_OFFSET = { mobile: 176, desktop: 207 } as const;
 
 // Two-tier layout (reference: a construction-industry site's header — dark
 // info bar on top, full-width accent nav bar below with the current section
@@ -149,20 +151,23 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile row 1 — logo only, black, 56px tall (h-14). Own bar (not
+      {/* Mobile row 1 — logo only, black, 112px tall (h-28). Own bar (not
           the desktop top info bar, which stays hidden below lg) — per
-          request: "en la primera linea solo el logo de kempro". Always
+          request: "en la primera linea solo el logo de kempro", later
+          doubled to 112px (was 56px/h-14) per a follow-up request. Always
           black regardless of isAboutPage — the desktop white/black palette
           swap (see isAboutPage comment above) doesn't extend to mobile,
           matching the precedent already set by the row below (mobile stays
           bg-primary-600 on /sobre-nosotros even though its desktop
-          counterpart flips to black). size=24 matches the mobile logo size
-          used before this split. Part of HEADER_OFFSET.mobile (120 = this
-          bar's 56px + the 64px bar below). */}
+          counterpart flips to black). size=48: scaled up from 24 in the
+          same proportion as the bar itself (2x), so the logo still reads
+          at the same relative size within the taller bar. Part of
+          HEADER_OFFSET.mobile (176 = this bar's 112px + the 64px bar
+          below). */}
       <div className="bg-black lg:hidden">
-        <div className="mx-auto flex h-14 max-w-7xl items-center px-6">
+        <div className="mx-auto flex h-28 max-w-7xl items-center px-6">
           <Link href="/" onClick={() => setOpen(false)} className="flex-shrink-0">
-            <KemproLogo variant="dark" size={24} markColor="#000000" />
+            <KemproLogo variant="dark" size={48} markColor="#000000" />
           </Link>
         </div>
       </div>
@@ -171,8 +176,8 @@ export function Header() {
           orange bar. Desktop height (61px) matches that orange bar's own
           measured height (60.5px, was 69px here). On mobile this now
           carries just the hamburger + search (the logo moved to its own
-          row above) — 64px tall (h-16), the other half of
-          HEADER_OFFSET.mobile alongside the 56px logo row. On
+          row above) — 64px tall (h-16), the other part of
+          HEADER_OFFSET.mobile alongside the 112px logo row above. On
           /sobre-nosotros this flips to black at lg only (isAboutPage) —
           mobile (below lg) keeps bg-primary-600 regardless, per request
           (see isAboutPage comment above). Link text/hover colors are
