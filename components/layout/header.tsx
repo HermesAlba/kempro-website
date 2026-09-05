@@ -153,23 +153,28 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile row 1 — logo only, black, 112px tall (h-28). Own bar (not
-          the desktop top info bar, which stays hidden below lg) — per
-          request: "en la primera linea solo el logo de kempro", later
-          doubled to 112px (was 56px/h-14) per a follow-up request. Always
-          black regardless of isAboutPage — the desktop white/black palette
-          swap (see isAboutPage comment above) doesn't extend to mobile,
-          matching the precedent already set by the row below (mobile stays
-          bg-primary-600 on /sobre-nosotros even though its desktop
-          counterpart flips to black). size=48: scaled up from 24 in the
-          same proportion as the bar itself (2x), so the logo still reads
-          at the same relative size within the taller bar. Part of
+      {/* Mobile row 1 — logo only, 112px tall (h-28). Own bar (not the
+          desktop top info bar, which stays hidden below lg) — per request:
+          "en la primera linea solo el logo de kempro", later doubled to
+          112px (was 56px/h-14) per a follow-up request. Black by default;
+          on /sobre-nosotros this now flips to white (isAboutPage) — per a
+          follow-up request specifying the full mobile color order for that
+          page ("el logo en fondo blanco, menu en fondo negro y luego el
+          primer bloque en indigo") — mirroring the same swap the desktop
+          top info bar already gets (see isAboutPage comment above), now
+          extended to this row too. size=48: scaled up from 24 in the same
+          proportion as the bar itself (2x), so the logo still reads at the
+          same relative size within the taller bar. Part of
           HEADER_OFFSET.mobile (176 = this bar's 112px + the 64px bar
           below). */}
-      <div className="bg-black lg:hidden">
+      <div className={`lg:hidden ${isAboutPage ? "bg-white" : "bg-black"}`}>
         <div className="mx-auto flex h-28 max-w-7xl items-center px-6">
           <Link href="/" onClick={() => setOpen(false)} className="flex-shrink-0">
-            <KemproLogo variant="dark" size={48} markColor="#000000" />
+            {isAboutPage ? (
+              <KemproLogo variant="primary" size={48} />
+            ) : (
+              <KemproLogo variant="dark" size={48} markColor="#000000" />
+            )}
           </Link>
         </div>
       </div>

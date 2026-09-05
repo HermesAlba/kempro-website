@@ -31,12 +31,14 @@ export function Hero({
    * same layout/sizing/typography otherwise (used by Services, per
    * request — same full-screen hero block, just without the image).
    * "indigo" = flat bg-primary-600 (the brand indigo) with white/light
-   * text, same layout/sizing otherwise — used by Sobre Nosotros' first
-   * block, per request. On mobile only (below sm) this variant is flat
-   * white with dark text instead — per a follow-up request ("primer
-   * bloque en blanco" on mobile) — switching to the indigo fill/light
-   * text from sm up. cornerGradient is ignored here (a colored corner
-   * fade doesn't read against an already-solid indigo fill). */
+   * text, same layout/sizing otherwise, at every breakpoint including
+   * mobile — used by Sobre Nosotros' first block, per request. (Briefly
+   * went flat white with dark text on mobile only per an intermediate
+   * request, then reverted back to indigo everywhere per a follow-up
+   * request spelling out the full mobile color order for that page: white
+   * logo bar, black menu bar, indigo first block.) cornerGradient is
+   * ignored here (a colored corner fade doesn't read against an
+   * already-solid indigo fill). */
   background?: "photo" | "white" | "indigo";
   /** Forces the subtitle onto a single line from lg up (and drops the
    * max-w-2xl cap there, letting it size to its own content instead of
@@ -85,11 +87,7 @@ export function Hero({
     // skewed by a leftover top offset.
     <section
       className={`relative -mt-[176px] flex flex-1 items-center sm:items-start overflow-hidden pt-[176px] lg:-mt-[207px] lg:pt-[207px] ${
-        // Sobre Nosotros (isIndigo) is white on mobile and only switches to
-        // the brand indigo fill from sm up — per request ("primer bloque en
-        // blanco" on mobile). Photo and white variants are unaffected
-        // (unchanged across breakpoints).
-        isPhoto ? "bg-dark-900" : isIndigo ? "bg-white sm:bg-primary-600" : "bg-white"
+        isPhoto ? "bg-dark-900" : isIndigo ? "bg-primary-600" : "bg-white"
       }`}
     >
       {/* Background photo (abstract network/mesh graphic, per request) —
@@ -165,11 +163,7 @@ export function Hero({
             // own default, non-"light" eyebrow).
             <p
               className={`font-sans text-[13px] font-semibold uppercase tracking-[0.02em] ${
-                isPhoto
-                  ? "text-primary-300"
-                  : isIndigo
-                    ? "text-primary-600 sm:text-primary-100"
-                    : "text-primary-600"
+                isPhoto ? "text-primary-300" : isIndigo ? "text-primary-100" : "text-primary-600"
               }`}
             >
               {eyebrow}
@@ -197,11 +191,7 @@ export function Hero({
               still renders on a single line exactly as before. */}
           <h1
             className={`${montserrat.className} ${eyebrow ? "mt-3 " : ""}uppercase text-[28px] font-extrabold tracking-tight sm:text-[34px] lg:text-[56px] xl:text-[62px] ${
-              isPhoto
-                ? "text-white"
-                : isIndigo
-                  ? "text-neutral-900 sm:text-white"
-                  : "text-neutral-900"
+              isPhoto || isIndigo ? "text-white" : "text-neutral-900"
             }`}
           >
             {resolvedTitle}
@@ -221,11 +211,7 @@ export function Hero({
               to wrap where it didn't before). */}
           <p
             className={`mt-5 min-h-[3lh] text-[18px] ${subtitleNoWrap ? "lg:whitespace-nowrap " : ""}${
-              isPhoto
-                ? "text-white"
-                : isIndigo
-                  ? "text-neutral-600 sm:text-primary-50"
-                  : "text-neutral-600"
+              isPhoto ? "text-white" : isIndigo ? "text-primary-50" : "text-neutral-600"
             } ${subtitle ? (subtitleNoWrap ? "mx-auto lg:max-w-none max-w-2xl" : "mx-auto max-w-2xl") : ""}`}
           >
             {resolvedSubtitle}
