@@ -37,16 +37,20 @@ export default async function HomePage({
 
   return (
     <>
-      {/* Hero + ClientLogos are wrapped to fill exactly one viewport
+      {/* Hero + ClientLogos are wrapped to fill (almost) one viewport
           (minus the floating nav's own height, see HEADER_OFFSET in
           components/layout/header.tsx). Hero (flex-1) absorbs the leftover
           space; ClientLogos keeps its natural height and sits flush at the
           bottom of the block. Hero's own background (a photo, see
           hero.tsx) ends exactly at its own bottom edge — i.e. right where
           this carousel starts — per request. Carousel border removed
-          (border={false}) — per
-          request. */}
-      <div className="flex flex-col md:min-h-[calc(100vh-81px)] lg:min-h-[calc(100vh-207px)]">
+          (border={false}) — per request. Below lg (min-h-[calc(92vh-120px)])
+          the wrapper is deliberately ~8vh short of a full screen — per
+          request, so the client-logos carousel is glimpsed within the first
+          mobile screen instead of sitting entirely below the fold; at lg
+          the wrapper goes back to filling the full viewport exactly (no
+          peek) as before. */}
+      <div className="flex flex-col min-h-[calc(92vh-120px)] lg:min-h-[calc(100vh-207px)]">
         <Hero />
         <ClientLogos border={false} />
       </div>

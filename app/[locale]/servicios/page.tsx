@@ -58,10 +58,13 @@ export default async function ServicesPage({
           imagen, sin overlay, sin animación de onda, texto oscuro) y sin
           el carrusel de logos, per request. Mismo alto
           (min-h-[calc(100vh-HEADER_OFFSET)]) para que, junto con el menú,
-          ocupe exactamente una pantalla. Texto propio de esta página
+          ocupe exactamente una pantalla en lg+. Texto propio de esta página
           (Services.eyebrow/title/subtitle, sin cambios). Reemplaza el
-          PageHero anterior (banda plana con gradiente). */}
-      <div className="flex flex-col md:min-h-[calc(100vh-81px)] lg:min-h-[calc(100vh-207px)]">
+          PageHero anterior (banda plana con gradiente). Below lg
+          (min-h-[calc(92vh-120px)]) queda ~8vh corto de una pantalla
+          completa — per request, para que se note que hay más contenido
+          justo debajo en la primera pantalla móvil. */}
+      <div className="flex flex-col min-h-[calc(92vh-120px)] lg:min-h-[calc(100vh-207px)]">
         <Hero
           eyebrow={t("eyebrow")}
           title={t("title")}

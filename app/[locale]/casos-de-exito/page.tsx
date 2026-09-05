@@ -54,7 +54,7 @@ export default async function CaseStudiesPage({
           95px per side that alone exceeds a 375px viewport's width, so
           px-6/sm:px-10 carry mobile/tablet instead); pt-[95px] = 2.5cm gap
           below the header/menu. */}
-      <div className="min-h-[calc(100vh-81px)] bg-white px-6 pb-16 pt-[95px] sm:px-10 lg:min-h-[calc(100vh-207px)] lg:px-[95px]">
+      <div className="min-h-[calc(100vh-120px)] bg-white px-6 pb-16 pt-[95px] sm:px-10 lg:min-h-[calc(100vh-207px)] lg:px-[95px]">
         <div className="mx-auto max-w-7xl">
           <FeaturedBlock
             badgeLabel={t("featuredBadge")}

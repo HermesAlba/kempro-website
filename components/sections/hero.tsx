@@ -70,26 +70,17 @@ export function Hero({
     // base/sm/lg values keep the same proportion to the xl value as
     // before (0.285 / 0.545 / 0.9), scaled down from the previous
     // 200px-at-xl figure to this new 162px-at-xl figure. Mobile only
-    // (below sm) is `items-center` instead — per request, the title/
-    // subtitle block is vertically centered within this section's fixed
-    // 326px mobile height (see min-h below) rather than pinned near the
-    // top; the Container's own pt is zeroed at that breakpoint (see below)
-    // so the centering isn't skewed by a leftover top offset.
+    // (below sm) is `items-center` instead — the title/subtitle block is
+    // vertically centered within whatever height this section ends up
+    // absorbing via flex-1 (no fixed mobile min-h here anymore — each of
+    // the 3 pages that use this component now sets its own near-full-
+    // viewport min-h on the wrapper, see app/[locale]/page.tsx,
+    // servicios/page.tsx, sobre-nosotros/page.tsx); the Container's own pt
+    // is zeroed at that breakpoint (see below) so the centering isn't
+    // skewed by a leftover top offset.
     <section
-      className={`relative -mt-[81px] flex flex-1 items-center sm:items-start overflow-hidden pt-[81px] lg:-mt-[207px] lg:pt-[207px] ${
+      className={`relative -mt-[120px] flex flex-1 items-center sm:items-start overflow-hidden pt-[120px] lg:-mt-[207px] lg:pt-[207px] ${
         isPhoto ? "bg-dark-900" : isIndigo ? "bg-primary-600" : "bg-white"
-      } ${
-        // Mobile only (reset at sm and up, where each page's own wrapping
-        // div — see app/[locale]/page.tsx, servicios/page.tsx, sobre-
-        // nosotros/page.tsx — takes over with its own md/lg min-h): every
-        // variant now shares this same 326px mobile height, so Home,
-        // Servicios, and Sobre Nosotros all render the exact same first-
-        // block footprint on mobile — per request. 326px = the photo
-        // variant's own figure (249px, matching Services' natural mobile
-        // height at the time it was measured, +77px so Home's hero
-        // background extends into the space ClientLogos used to start at
-        // — see the git history for that change's own reasoning).
-        "min-h-[326px] sm:min-h-0"
       }`}
     >
       {/* Background photo (abstract network/mesh graphic, per request) —

@@ -75,7 +75,7 @@ export default async function CustomerStoryPage({
           the plain white area after the hero, not overlaid on the
           gradient. */}
       <section
-        className="-mt-[81px] pt-[81px] lg:-mt-[207px] lg:pt-[207px]"
+        className="-mt-[120px] pt-[120px] lg:-mt-[207px] lg:pt-[207px]"
         style={{
           backgroundImage:
             "linear-gradient(135deg, var(--color-hc-blue) 0%, var(--color-hc-blue-dark) 100%)",

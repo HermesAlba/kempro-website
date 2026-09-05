@@ -36,9 +36,10 @@ const navItems = [
 // directly off the reference site's own two bars via getComputedStyle/
 // getBoundingClientRect (146.1px and 60.5px respectively) so Kempro's
 // header matches its exact proportions, not just its colors/layout. Mobile
-// is untouched at 81 (its one merged bar) since the reference's own mobile
-// header collapses differently and wasn't part of what was measured.
-export const HEADER_OFFSET = { mobile: 81, desktop: 207 } as const;
+// is 120 (56px logo-only bar + 64px hamburger/search bar) — split into two
+// stacked bars per request, matching the reference site's own two-row
+// mobile header shape (was a single merged 81px bar).
+export const HEADER_OFFSET = { mobile: 120, desktop: 207 } as const;
 
 // Two-tier layout (reference: a construction-industry site's header — dark
 // info bar on top, full-width accent nav bar below with the current section
@@ -148,38 +149,52 @@ export function Header() {
         </div>
       </div>
 
+      {/* Mobile row 1 — logo only, black, 56px tall (h-14). Own bar (not
+          the desktop top info bar, which stays hidden below lg) — per
+          request: "en la primera linea solo el logo de kempro". Always
+          black regardless of isAboutPage — the desktop white/black palette
+          swap (see isAboutPage comment above) doesn't extend to mobile,
+          matching the precedent already set by the row below (mobile stays
+          bg-primary-600 on /sobre-nosotros even though its desktop
+          counterpart flips to black). size=24 matches the mobile logo size
+          used before this split. Part of HEADER_OFFSET.mobile (120 = this
+          bar's 56px + the 64px bar below). */}
+      <div className="bg-black lg:hidden">
+        <div className="mx-auto flex h-14 max-w-7xl items-center px-6">
+          <Link href="/" onClick={() => setOpen(false)} className="flex-shrink-0">
+            <KemproLogo variant="dark" size={24} markColor="#000000" />
+          </Link>
+        </div>
+      </div>
+
       {/* Nav bar — primary-600, full width, standing in for the reference's
           orange bar. Desktop height (61px) matches that orange bar's own
-          measured height (60.5px, was 69px here). On mobile this is the
-          ONLY bar (top info bar is hidden), so it carries the logo +
-          hamburger there instead of the desktop nav row — its own height
-          (81px) is unrelated to the reference measurement above (see
-          HEADER_OFFSET). On /sobre-nosotros this flips to black at lg
-          only (isAboutPage) — mobile (below lg) keeps bg-primary-600
-          regardless, per request (see isAboutPage comment above). Link
-          text/hover colors are unchanged: white/85 with a primary-700
-          hover reads fine against black too. */}
+          measured height (60.5px, was 69px here). On mobile this now
+          carries just the hamburger + search (the logo moved to its own
+          row above) — 64px tall (h-16), the other half of
+          HEADER_OFFSET.mobile alongside the 56px logo row. On
+          /sobre-nosotros this flips to black at lg only (isAboutPage) —
+          mobile (below lg) keeps bg-primary-600 regardless, per request
+          (see isAboutPage comment above). Link text/hover colors are
+          unchanged: white/85 with a primary-700 hover reads fine against
+          black too. */}
       <div className={isAboutPage ? "bg-primary-600 lg:bg-black" : "bg-primary-600"}>
-        <div className="mx-auto flex h-[81px] max-w-7xl items-center px-6 lg:h-[61px] lg:px-8">
-          {/* Mobile: logo + search + hamburger. size=24: originally 30,
-              scaled down to 80% (30 * 0.8 = 24) per request, matching the
-              desktop bar's own 80% reduction above. */}
+        <div className="mx-auto flex h-16 max-w-7xl items-center px-6 lg:h-[61px] lg:px-8">
+          {/* Mobile: hamburger + search, at opposite ends of the bar — per
+              request: "sobre fondo indigo debe quedar la hamburguesa y el
+              buscador, en ambos extremos". size=24 unchanged from before
+              this split. */}
           <div className="flex w-full items-center justify-between lg:hidden">
-            <Link href="/" onClick={() => setOpen(false)} className="flex-shrink-0">
-              <KemproLogo variant="dark" size={24} />
-            </Link>
-            <div className="flex items-center gap-1">
-              <SiteSearch triggerClassName="flex items-center justify-center rounded-md p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white" />
-              <button
-                type="button"
-                className="flex items-center justify-center rounded-md p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-                aria-expanded={open}
-                aria-label={open ? t("closeMenu") : t("openMenu")}
-                onClick={() => setOpen((v) => !v)}
-              >
-                {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
-              </button>
-            </div>
+            <button
+              type="button"
+              className="flex items-center justify-center rounded-md p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+              aria-expanded={open}
+              aria-label={open ? t("closeMenu") : t("openMenu")}
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+            </button>
+            <SiteSearch triggerClassName="flex items-center justify-center rounded-md p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white" />
           </div>
 
           {/* Desktop: full-width nav row, each item its own full-height tab
