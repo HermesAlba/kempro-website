@@ -78,7 +78,8 @@
   "Home": {
     "hero": {
       "title": "Intelligent growth.",
-      "subtitle": "We understand your business first, then apply the right technology."
+      "subtitle": "We understand your business first, then apply the right technology.",
+      "ctaContact": "Contact us"
     },
     "services": {
       "title": "How we help your business",

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
+import { Link } from "@/i18n/navigation";
+import { ctaButtonClasses } from "@/components/ui/cta-button-classes";
 import { montserrat } from "@/lib/fonts";
 
 export function Hero({
@@ -168,7 +170,14 @@ export function Hero({
               single line at every breakpoint's tightest viewport width.
               "CRECIENDO CON INTELIGENCIA." is ~12% longer, so every size
               below is scaled down by that same ratio to keep the line the
-              same rendered width: 18px, 34px, 56px, 62px.
+              same rendered width at sm/lg/xl: 34px, 56px, 62px. Mobile
+              (below sm) is 28px, not scaled down from those — per request,
+              it now matches the "Qué hacemos" section's own mobile h2 size
+              (see components/sections/what-we-do.tsx, text-[28px]) instead
+              of being tuned to fit Home's own short title on one line;
+              longer overridden titles (e.g. Services/Sobre Nosotros' own
+              copy) now wrap onto multiple lines at this bigger mobile size,
+              same as they already did at sm and up.
               whitespace-nowrap removed (was only needed to guarantee Home's
               own short title never wraps) so a longer overridden title
               (another page's own copy, e.g. Services) wraps onto multiple
@@ -176,21 +185,25 @@ export function Hero({
               within Container's width at every breakpoint on its own, so it
               still renders on a single line exactly as before. */}
           <h1
-            className={`${montserrat.className} ${eyebrow ? "mt-3 " : ""}uppercase text-[18px] font-extrabold tracking-tight sm:text-[34px] lg:text-[56px] xl:text-[62px] ${
+            className={`${montserrat.className} ${eyebrow ? "mt-3 " : ""}uppercase text-[28px] font-extrabold tracking-tight sm:text-[34px] lg:text-[56px] xl:text-[62px] ${
               isPhoto || isIndigo ? "text-white" : "text-neutral-900"
             }`}
           >
             {resolvedTitle}
           </h1>
           {/* 18px at every breakpoint — matches Knife River's own hero
-              subtitle size exactly (measured: 18px/400/Montserrat). mt-5
-              (20px) matches the gap measured between KR's own title and
-              subtitle (511px - 491px ≈ 20px). max-w-2xl only applies when
-              subtitle is overridden — it centers/wraps a longer subtitle at
-              a readable line length instead of stretching edge to edge at
-              wide breakpoints; Home's own default subtitle keeps its
-              original full-width single line (adding the cap there would
-              force it to wrap where it didn't before). */}
+              subtitle size exactly (measured: 18px/400/Montserrat). Stays
+              at 18px on mobile even after the title above grew to 28px —
+              per request ("mantener jerarquía entre título y subtítulo"),
+              keeping the subtitle clearly smaller than the title, same
+              relationship as every other breakpoint. mt-5 (20px) matches
+              the gap measured between KR's own title and subtitle (511px -
+              491px ≈ 20px). max-w-2xl only applies when subtitle is
+              overridden — it centers/wraps a longer subtitle at a readable
+              line length instead of stretching edge to edge at wide
+              breakpoints; Home's own default subtitle keeps its original
+              full-width single line (adding the cap there would force it
+              to wrap where it didn't before). */}
           <p
             className={`mt-5 min-h-[3lh] text-[18px] ${subtitleNoWrap ? "lg:whitespace-nowrap " : ""}${
               isPhoto ? "text-white" : isIndigo ? "text-primary-50" : "text-neutral-600"
@@ -198,6 +211,21 @@ export function Hero({
           >
             {resolvedSubtitle}
           </p>
+          {/* Mobile-only "Contáctanos" CTA — per request, added to this
+              first block on every page that uses Hero (Home, Servicios,
+              Sobre Nosotros). sm:hidden since this was only asked for the
+              mobile version; desktop keeps this hero CTA-less as before.
+              Reuses the shared ctaButtonClasses (same button used by the
+              header's own mobile-menu CTA and elsewhere on the site)
+              rather than inventing a new style. */}
+          <div className="mt-6 sm:hidden">
+            <Link
+              href="/contacto"
+              className={`${ctaButtonClasses} h-[44px] px-[24px] text-[14px]`}
+            >
+              {t("ctaContact")}
+            </Link>
+          </div>
         </FadeIn>
       </Container>
     </section>
