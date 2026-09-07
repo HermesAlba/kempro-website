@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
-import { Link } from "@/i18n/navigation";
+import { Link, getPathname } from "@/i18n/navigation";
+import { buildLocaleUrls, canonicalAlternates } from "@/lib/seo/canonical";
 import { getServices } from "@/lib/data/services";
 import { Container } from "@/components/ui/container";
 import { FadeIn } from "@/components/ui/fade-in";
@@ -18,11 +19,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata.services" });
+  const urls = buildLocaleUrls((loc) => getPathname({ locale: loc, href: "/servicios" }));
 
   return {
     title: t("title"),
     description: t("description"),
     openGraph: { title: t("title"), description: t("description") },
+    alternates: canonicalAlternates(locale as Locale, urls),
   };
 }
 

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
+import { getPathname } from "@/i18n/navigation";
+import { buildLocaleUrls, canonicalAlternates } from "@/lib/seo/canonical";
 import { getCaseStudies, getCaseStudyById } from "@/lib/data/case-studies";
 import { FeaturedBlock } from "@/components/sections/featured-story-block";
 import { ClientLogos } from "@/components/sections/client-logos";
@@ -14,11 +16,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata.caseStudies" });
+  const urls = buildLocaleUrls((loc) => getPathname({ locale: loc, href: "/casos-de-exito" }));
 
   return {
     title: t("title"),
     description: t("description"),
     openGraph: { title: t("title"), description: t("description") },
+    alternates: canonicalAlternates(locale as Locale, urls),
   };
 }
 

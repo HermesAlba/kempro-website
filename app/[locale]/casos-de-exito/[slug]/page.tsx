@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
+import { getPathname } from "@/i18n/navigation";
+import { buildLocaleUrls, canonicalAlternates, SITE_URL } from "@/lib/seo/canonical";
 import { getCaseStudies, getCaseStudy } from "@/lib/data/case-studies";
 import { FadeIn } from "@/components/ui/fade-in";
 import { BlockRenderer } from "@/components/blog/block-renderer";
@@ -12,7 +14,6 @@ import { PhotoClearance } from "@/components/sections/photo-clearance";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { XIcon, YouTubeIcon } from "@/components/ui/icons";
 
-const SITE_URL = "https://www.kempro.ai";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -32,10 +33,22 @@ export async function generateMetadata({
     return {};
   }
 
+  // Id-matched cross-locale slug resolution, same pattern as
+  // app/sitemap.ts / locale-switcher.tsx / servicios/[slug].
+  const urls = buildLocaleUrls((loc) => {
+    const localizedCaseStudy =
+      loc === locale ? caseStudy : getCaseStudies(loc).find((c) => c.id === caseStudy.id);
+    return getPathname({
+      locale: loc,
+      href: { pathname: "/casos-de-exito/[slug]", params: { slug: (localizedCaseStudy ?? caseStudy).slug } },
+    });
+  });
+
   return {
     title: caseStudy.client,
     description: caseStudy.result,
     openGraph: { title: caseStudy.client, description: caseStudy.result },
+    alternates: canonicalAlternates(locale as Locale, urls),
   };
 }
 

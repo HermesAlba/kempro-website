@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import type { Locale } from "@/i18n/routing";
+import { getPathname } from "@/i18n/navigation";
+import { buildLocaleUrls, canonicalAlternates } from "@/lib/seo/canonical";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ContactForm } from "@/components/contact/contact-form";
 import { AddToContactsButton } from "@/components/contact/add-to-contacts-button";
@@ -17,11 +20,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata.contact" });
+  const urls = buildLocaleUrls((loc) => getPathname({ locale: loc, href: "/contacto" }));
 
   return {
     title: t("title"),
     description: t("description"),
     openGraph: { title: t("title"), description: t("description") },
+    alternates: canonicalAlternates(locale as Locale, urls),
   };
 }
 

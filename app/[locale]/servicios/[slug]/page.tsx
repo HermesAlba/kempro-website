@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
+import { getPathname } from "@/i18n/navigation";
+import { buildLocaleUrls, canonicalAlternates, SITE_URL } from "@/lib/seo/canonical";
 import { getServices, getService } from "@/lib/data/services";
 import { FadeIn } from "@/components/ui/fade-in";
 import { BlockRenderer } from "@/components/blog/block-renderer";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { CtaBand } from "@/components/sections/cta-band";
 import { CheckIcon, XIcon, YouTubeIcon } from "@/components/ui/icons";
-
-const SITE_URL = "https://www.kempro.ai";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -29,10 +29,23 @@ export async function generateMetadata({
     return {};
   }
 
+  // Same id-matched cross-locale slug resolution as app/sitemap.ts and
+  // locale-switcher.tsx: this service's own slug differs per locale, so
+  // each language's URL has to be rebuilt from that locale's own equivalent
+  // service (found by shared `id`), not by reusing this locale's slug.
+  const urls = buildLocaleUrls((loc) => {
+    const localizedService = loc === locale ? service : getServices(loc).find((s) => s.id === service.id);
+    return getPathname({
+      locale: loc,
+      href: { pathname: "/servicios/[slug]", params: { slug: (localizedService ?? service).slug } },
+    });
+  });
+
   return {
     title: service.title,
     description: service.description,
     openGraph: { title: service.title, description: service.description },
+    alternates: canonicalAlternates(locale as Locale, urls),
   };
 }
 

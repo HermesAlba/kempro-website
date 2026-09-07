@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
-import { Link } from "@/i18n/navigation";
+import { Link, getPathname } from "@/i18n/navigation";
+import { buildLocaleUrls, canonicalAlternates, SITE_URL } from "@/lib/seo/canonical";
 import { getBlogPost, getBlogPosts } from "@/lib/data/blog";
 import { FadeIn } from "@/components/ui/fade-in";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
@@ -11,7 +12,6 @@ import { BlockRenderer } from "@/components/blog/block-renderer";
 import { XIcon, YouTubeIcon } from "@/components/ui/icons";
 import { ctaButtonClasses } from "@/components/ui/cta-button-classes";
 
-const SITE_URL = "https://www.kempro.ai";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -31,9 +31,20 @@ export async function generateMetadata({
     return {};
   }
 
+  // Id-matched cross-locale slug resolution, same pattern as
+  // app/sitemap.ts / locale-switcher.tsx / servicios/[slug].
+  const urls = buildLocaleUrls((loc) => {
+    const localizedPost = loc === locale ? post : getBlogPosts(loc).find((p) => p.id === post.id);
+    return getPathname({
+      locale: loc,
+      href: { pathname: "/blog/[slug]", params: { slug: (localizedPost ?? post).slug } },
+    });
+  });
+
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: canonicalAlternates(locale as Locale, urls),
     openGraph: {
       title: post.title,
       description: post.excerpt,

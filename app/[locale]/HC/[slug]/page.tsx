@@ -3,13 +3,13 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
+import { getPathname } from "@/i18n/navigation";
+import { buildLocaleUrls, canonicalAlternates, SITE_URL } from "@/lib/seo/canonical";
 import { getCustomerStories, getCustomerStory } from "@/lib/data/customer-stories";
 import { FadeIn } from "@/components/ui/fade-in";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { CtaBand } from "@/components/sections/cta-band";
 import { XIcon, YouTubeIcon } from "@/components/ui/icons";
-
-const SITE_URL = "https://www.kempro.ai";
 
 export async function generateStaticParams() {
   const params = await Promise.all(
@@ -33,10 +33,31 @@ export async function generateMetadata({
     return {};
   }
 
+  // Id-matched cross-locale slug resolution, same pattern as
+  // app/sitemap.ts / locale-switcher.tsx / servicios/[slug]. getCustomerStories
+  // is async (Sanity-backed), so the other locales' equivalents are fetched
+  // up front, then buildLocaleUrls just does a synchronous lookup.
+  const otherLocales = routing.locales.filter((loc) => loc !== locale);
+  const otherStoriesByLocale = Object.fromEntries(
+    await Promise.all(
+      otherLocales.map(async (loc) => [loc, await getCustomerStories(loc)] as const),
+    ),
+  ) as Partial<Record<Locale, Awaited<ReturnType<typeof getCustomerStories>>>>;
+
+  const urls = buildLocaleUrls((loc) => {
+    const localizedStory =
+      loc === locale ? story : otherStoriesByLocale[loc]?.find((s) => s.id === story.id);
+    return getPathname({
+      locale: loc,
+      href: { pathname: "/HC/[slug]", params: { slug: (localizedStory ?? story).slug } },
+    });
+  });
+
   return {
     title: story.title,
     description: story.summary,
     openGraph: { title: story.title, description: story.summary },
+    alternates: canonicalAlternates(locale as Locale, urls),
   };
 }
 
