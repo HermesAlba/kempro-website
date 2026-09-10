@@ -24,8 +24,11 @@ const BASE_SECURITY_HEADERS = [
 
 // Public site CSP: allows only the third-party origins the site actually
 // calls — Sanity's image CDN, Google Analytics (gated behind cookie
-// consent, see components/cookie-consent/google-analytics.tsx), and
-// reCAPTCHA v3 (components/contact/contact-form.tsx). 'unsafe-inline' on
+// consent, see components/cookie-consent/google-analytics.tsx), reCAPTCHA
+// v3 (components/contact/contact-form.tsx), and the Cal.com booking embed
+// (components/contact/cal-booking-button.tsx, "Agendar consultoría" CTA on
+// the contact page — lazily injects https://app.cal.com/embed/embed.js and
+// opens a modal iframe from https://cal.com). 'unsafe-inline' on
 // script-src is required for Next.js's own streaming/hydration inline
 // scripts and the GA bootstrap snippet; nonce-based CSP would remove it
 // but needs per-request nonce plumbing through every next/script call,
@@ -35,12 +38,12 @@ const BASE_SECURITY_HEADERS = [
 // are inert data, not executed script, so CSP does not affect them.
 const PUBLIC_SITE_CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google.com https://www.gstatic.com",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google.com https://www.gstatic.com https://app.cal.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: https://cdn.sanity.io https://www.google-analytics.com https://www.googletagmanager.com",
+  "img-src 'self' data: https://cdn.sanity.io https://www.google-analytics.com https://www.googletagmanager.com https://cal.com https://app.cal.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://*.sanity.io https://cdn.sanity.io",
-  "frame-src https://www.google.com",
+  "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://*.sanity.io https://cdn.sanity.io https://cal.com https://app.cal.com",
+  "frame-src https://www.google.com https://cal.com https://app.cal.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
