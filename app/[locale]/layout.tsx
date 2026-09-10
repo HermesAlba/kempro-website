@@ -114,7 +114,13 @@ export default async function LocaleLayout({
           <SkipLink />
           <ScrollRestorationFix />
           <Header />
-          <main id="main" className="flex-1">
+          {/* tabindex={-1}: <main> isn't naturally focusable, so without
+              this the skip link's #main jump only scrolls the viewport —
+              some browsers/screen readers won't actually move keyboard
+              focus there. -1 keeps it out of the normal Tab order (it's
+              still only reachable via the skip link's hash jump) while
+              letting .focus() / the URL-fragment jump target it directly. */}
+          <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">
             {children}
           </main>
           <Footer />
