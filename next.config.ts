@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
+import { withSentryConfig } from "@sentry/nextjs";
 
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
@@ -25,24 +26,27 @@ const BASE_SECURITY_HEADERS = [
 // Public site CSP: allows only the third-party origins the site actually
 // calls — Sanity's image CDN, Google Analytics (gated behind cookie
 // consent, see components/cookie-consent/google-analytics.tsx), reCAPTCHA
-// v3 (components/contact/contact-form.tsx), and the Cal.com booking embed
+// v3 (components/contact/contact-form.tsx), the Cal.com booking embed
 // (components/contact/cal-booking-button.tsx, "Agendar consultoría" CTA on
 // the contact page — lazily injects https://app.cal.com/embed/embed.js and
-// opens a modal iframe from https://cal.com). 'unsafe-inline' on
-// script-src is required for Next.js's own streaming/hydration inline
-// scripts and the GA bootstrap snippet; nonce-based CSP would remove it
-// but needs per-request nonce plumbing through every next/script call,
-// which isn't in place yet. script-src still blocks any *other* origin,
-// which is what stops the overwhelming majority of real-world injected-
-// script XSS payloads. JSON-LD <script type="application/ld+json"> tags
-// are inert data, not executed script, so CSP does not affect them.
+// opens a modal iframe from https://cal.com), and Sentry error reporting
+// (instrumentation-client.ts — the browser SDK POSTs error events straight
+// to this ingest host, no <script src> involved, so it only needs
+// connect-src, not script-src). 'unsafe-inline' on script-src is required
+// for Next.js's own streaming/hydration inline scripts and the GA
+// bootstrap snippet; nonce-based CSP would remove it but needs per-request
+// nonce plumbing through every next/script call, which isn't in place yet.
+// script-src still blocks any *other* origin, which is what stops the
+// overwhelming majority of real-world injected-script XSS payloads.
+// JSON-LD <script type="application/ld+json"> tags are inert data, not
+// executed script, so CSP does not affect them.
 const PUBLIC_SITE_CSP = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google.com https://www.gstatic.com https://app.cal.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https://cdn.sanity.io https://www.google-analytics.com https://www.googletagmanager.com https://cal.com https://app.cal.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://*.sanity.io https://cdn.sanity.io https://cal.com https://app.cal.com",
+  "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://*.sanity.io https://cdn.sanity.io https://cal.com https://app.cal.com https://o4512064069566464.ingest.us.sentry.io",
   "frame-src https://www.google.com https://cal.com https://app.cal.com",
   "object-src 'none'",
   "base-uri 'self'",
@@ -106,4 +110,20 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withNextIntl(nextConfig);
+export default withSentryConfig(withNextIntl(nextConfig), {
+  org: "kempro-sas",
+  project: "javascript-nextjs",
+  // Only prints Sentry's own build-time logs in CI (Vercel), keeps local
+  // `next build` output quiet.
+  silent: !process.env.CI,
+  // Uploads source maps on build so Sentry shows real file/line numbers
+  // instead of minified bundle positions — needs SENTRY_AUTH_TOKEN set as
+  // an env var in Vercel (Project Settings → Environment Variables,
+  // generated at sentry.io/settings/account/api/auth-tokens/). Without
+  // it, the build still succeeds; it just skips the upload step and
+  // stack traces stay minified.
+  widenClientFileUpload: true,
+  disableLogger: true,
+  // Not using Sentry's Vercel Cron Monitor integration.
+  automaticVercelMonitors: false,
+});

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import * as Sentry from "@sentry/nextjs";
 import { getWriteClient } from "@/sanity/lib/write-client";
 import { projectId } from "@/sanity/env";
 
@@ -36,6 +37,7 @@ async function verifyRecaptcha(token: string | undefined): Promise<boolean> {
     );
   } catch (error) {
     console.error("[contact] recaptcha verification request failed", error);
+    Sentry.captureException(error, { tags: { route: "contact", step: "recaptcha" } });
     return false;
   }
 }
@@ -85,11 +87,18 @@ export async function POST(request: Request) {
       });
       if (error) {
         console.error("[contact] resend rejected the email", error);
+        // Resend resolves with { error } instead of throwing on API-level
+        // failures, so this needs its own explicit report — otherwise a
+        // silently-dropped customer inquiry never reaches Sentry at all.
+        Sentry.captureException(new Error(`Resend rejected email: ${error.message}`), {
+          tags: { route: "contact", step: "resend-send" },
+        });
       } else {
         console.info("[contact] notification email sent", { id: data?.id });
       }
     } catch (error) {
       console.error("[contact] failed to send notification email", error);
+      Sentry.captureException(error, { tags: { route: "contact", step: "resend-send" } });
     }
   } else {
     console.warn("[contact] RESEND_API_KEY not set — skipping notification email");
@@ -110,6 +119,7 @@ export async function POST(request: Request) {
       });
     } catch (error) {
       console.error("[contact] failed to save submission to Sanity", error);
+      Sentry.captureException(error, { tags: { route: "contact", step: "sanity-write" } });
     }
   }
 
