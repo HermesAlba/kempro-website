@@ -33,6 +33,10 @@
       "title": "Términos de servicio",
       "description": "Condiciones de uso del sitio web de Kempro SAS."
     },
+    "accessibilityStatement": {
+      "title": "Declaración de accesibilidad",
+      "description": "Qué hemos implementado en kempro.ai para que el sitio sea usable por la mayor cantidad de personas posible, y cómo reportar un problema."
+    },
     "hc": {
       "title": "Historias de clientes",
       "description": "Historias destacadas, reseñas y contenido en video de clientes que han convertido la IA en resultados medibles con Kempro."
@@ -73,7 +77,11 @@
     "followUs": "Síguenos",
     "privacy": "Aviso de privacidad",
     "terms": "Términos de servicio",
+    "accessibility": "Declaración de accesibilidad",
     "rights": "Todos los derechos reservados."
+  },
+  "A11y": {
+    "skipToContent": "Saltar al contenido"
   },
   "Home": {
     "hero": {
@@ -504,6 +512,65 @@
         "question": "¿Inquietudes sobre Habeas Data?",
         "paragraphs": [
           "Si tiene inquietudes o desea ejercer sus derechos de Habeas Data sobre sus datos personales, escríbanos y le responderemos con gusto."
+        ],
+        "email": "marketing@kemprocol.com"
+      }
+    ]
+  },
+  "AccessibilityStatement": {
+    "heroBadge": "Accesibilidad",
+    "title": "Declaración de Accesibilidad",
+    "lastUpdated": "Última actualización: 10 de septiembre de 2026",
+    "sections": [
+      {
+        "number": 1,
+        "title": "Nuestro Compromiso",
+        "shortDescription": "Por qué esto nos importa.",
+        "layout": "plain",
+        "paragraphs": [
+          "En Kempro creemos que un sitio web debe ser usable por la mayor cantidad de personas posible, incluyendo quienes navegan con teclado, usan un lector de pantalla, o tienen alguna condición visual, motriz o cognitiva. La accesibilidad no es un proyecto que se termina una vez: es un trabajo continuo que revisamos y mejoramos con el tiempo."
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Estándar de Referencia",
+        "shortDescription": "A qué normativa aspiramos.",
+        "layout": "plain",
+        "paragraphs": [
+          "Tomamos como referencia las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1, nivel AA, desarrolladas por el W3C. Esto significa que es el estándar al que aspiramos activamente, no una certificación formal de cumplimiento total: seguimos incorporando mejoras y no afirmamos haber completado una auditoría exhaustiva de todas las páginas del sitio."
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Qué Hemos Implementado",
+        "shortDescription": "Medidas de accesibilidad ya activas en el sitio.",
+        "layout": "numbered",
+        "items": [
+          "Enlace \"Saltar al contenido\" al inicio de cada página, para que quienes navegan con teclado puedan evitar repetir el menú de navegación en cada visita.",
+          "Texto alternativo (alt) en las imágenes del sitio, para que lectores de pantalla puedan describirlas.",
+          "Jerarquía de encabezados ordenada, con un único título principal (H1) por página.",
+          "Formularios con etiquetas visibles y mensajes de error claros, incluyendo el formulario de contacto.",
+          "Conexión segura (HTTPS) en todo el sitio.",
+          "Banner de consentimiento de cookies operable completamente con teclado."
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Limitaciones Conocidas",
+        "shortDescription": "Lo que aún no hemos verificado o completado.",
+        "layout": "plain",
+        "paragraphs": [
+          "Todavía no hemos realizado una auditoría exhaustiva de contraste de color ni pruebas completas de compatibilidad con lectores de pantalla en la totalidad de las páginas del sitio. Si encuentra alguna barrera de accesibilidad al navegar kempro.ai, le pedimos que nos lo haga saber — ver la sección de contacto más abajo."
+        ]
+      },
+      {
+        "number": 5,
+        "title": "Reportar un Problema",
+        "shortDescription": "Cómo avisarnos si algo no funciona bien para usted.",
+        "layout": "contactHighlight",
+        "question": "¿Encontró una barrera de accesibilidad?",
+        "paragraphs": [
+          "Escríbanos describiendo la página y el problema que encontró, y lo revisaremos."
         ],
         "email": "marketing@kemprocol.com"
       }

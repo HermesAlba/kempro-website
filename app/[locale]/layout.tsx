@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { SkipLink } from "@/components/layout/skip-link";
 import { CookieConsentBanner } from "@/components/cookie-consent/cookie-consent-banner";
 import { GoogleAnalytics } from "@/components/cookie-consent/google-analytics";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
@@ -110,9 +111,12 @@ export default async function LocaleLayout({
           }}
         />
         <NextIntlClientProvider>
+          <SkipLink />
           <ScrollRestorationFix />
           <Header />
-          <main className="flex-1">{children}</main>
+          <main id="main" className="flex-1">
+            {children}
+          </main>
           <Footer />
           <ScrollToTop />
           <CookieConsentBanner />

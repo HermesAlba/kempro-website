@@ -58,6 +58,10 @@ export const routing = defineRouting({
       es: "/terminos-de-servicio",
       en: "/terms-of-service",
     },
+    "/declaracion-de-accesibilidad": {
+      es: "/declaracion-de-accesibilidad",
+      en: "/accessibility-statement",
+    },
   },
 });
 

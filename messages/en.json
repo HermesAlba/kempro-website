@@ -33,6 +33,10 @@
       "title": "Terms of service",
       "description": "Terms of use for the Kempro SAS website."
     },
+    "accessibilityStatement": {
+      "title": "Accessibility statement",
+      "description": "What we've implemented on kempro.ai to make the site usable by as many people as possible, and how to report a problem."
+    },
     "hc": {
       "title": "Customer Stories",
       "description": "Featured stories, reviews, and video content from customers who turned AI into measurable results with Kempro."
@@ -73,7 +77,11 @@
     "followUs": "Follow us",
     "privacy": "Privacy notice",
     "terms": "Terms of service",
+    "accessibility": "Accessibility statement",
     "rights": "All rights reserved."
+  },
+  "A11y": {
+    "skipToContent": "Skip to content"
   },
   "Home": {
     "hero": {
@@ -504,6 +512,65 @@
         "question": "Questions about Habeas Data?",
         "paragraphs": [
           "If you have questions or want to exercise your Habeas Data rights over your personal data, write to us and we'll be glad to help."
+        ],
+        "email": "marketing@kemprocol.com"
+      }
+    ]
+  },
+  "AccessibilityStatement": {
+    "heroBadge": "Accessibility",
+    "title": "Accessibility Statement",
+    "lastUpdated": "Last updated: September 10, 2026",
+    "sections": [
+      {
+        "number": 1,
+        "title": "Our Commitment",
+        "shortDescription": "Why this matters to us.",
+        "layout": "plain",
+        "paragraphs": [
+          "At Kempro we believe a website should be usable by as many people as possible, including those who navigate with a keyboard, use a screen reader, or have a visual, motor, or cognitive condition. Accessibility isn't a one-time project: it's ongoing work we keep reviewing and improving."
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Reference Standard",
+        "shortDescription": "What standard we're aiming for.",
+        "layout": "plain",
+        "paragraphs": [
+          "We use the Web Content Accessibility Guidelines (WCAG) 2.1, level AA, developed by the W3C, as our reference. This is a standard we're actively working toward, not a formal certification of full compliance: we keep making improvements and don't claim to have completed an exhaustive audit of every page on the site."
+        ]
+      },
+      {
+        "number": 3,
+        "title": "What We've Implemented",
+        "shortDescription": "Accessibility measures already active on the site.",
+        "layout": "numbered",
+        "items": [
+          "A \"Skip to content\" link at the top of every page, so keyboard users can bypass the repeated navigation menu on each visit.",
+          "Alternative text (alt) on site images, so screen readers can describe them.",
+          "An ordered heading hierarchy, with a single main heading (H1) per page.",
+          "Forms with visible labels and clear error messages, including the contact form.",
+          "Secure connection (HTTPS) across the entire site.",
+          "A cookie consent banner that is fully operable with a keyboard."
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Known Limitations",
+        "shortDescription": "What we haven't verified or completed yet.",
+        "layout": "plain",
+        "paragraphs": [
+          "We haven't yet run an exhaustive color-contrast audit or full screen-reader compatibility testing across every page on the site. If you run into an accessibility barrier while browsing kempro.ai, please let us know — see the contact section below."
+        ]
+      },
+      {
+        "number": 5,
+        "title": "Report a Problem",
+        "shortDescription": "How to let us know if something isn't working for you.",
+        "layout": "contactHighlight",
+        "question": "Found an accessibility barrier?",
+        "paragraphs": [
+          "Write to us describing the page and the problem you found, and we'll look into it."
         ],
         "email": "marketing@kemprocol.com"
       }

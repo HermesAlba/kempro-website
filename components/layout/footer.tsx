@@ -98,6 +98,12 @@ export function Footer() {
             >
               {t("terms")}
             </Link>
+            <Link
+              href="/declaracion-de-accesibilidad"
+              className="text-xs text-neutral-500 hover:text-primary-600"
+            >
+              {t("accessibility")}
+            </Link>
           </div>
         </div>
       </div>
