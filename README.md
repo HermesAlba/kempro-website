@@ -71,7 +71,7 @@ npm run lint    # ESLint
 
 ## Formulario de contacto
 
-El formulario en `/contacto` envía los datos a la API route `app/api/contact/route.ts`, que valida el payload, lo registra en el log del servidor, guarda el envío en Sanity (ver abajo) y envía un correo de notificación por [Resend](https://resend.com) a `marketing@kemprocol.com` y `hermesalba@gmail.com`.
+El formulario en `/contacto` envía los datos a la API route `app/api/contact/route.ts`, que valida el payload, lo registra en el log del servidor, guarda el envío en Sanity (ver abajo) y envía un correo de notificación por [Resend](https://resend.com) a los destinatarios listados en `CONTACT_NOTIFICATION_RECIPIENTS` (actualmente `hermesalba@gmail.com`). El correo de contacto público del sitio (footer, vCard, avisos legales) es `mercadeo@kempro.ai`.
 
 ### Configuración del correo de notificación (Resend)
 

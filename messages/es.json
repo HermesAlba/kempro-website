@@ -329,7 +329,7 @@
       "whatsapp": "WhatsApp",
       "location": "Sede Medellín"
     },
-    "email": "marketing@kemprocol.com",
+    "email": "mercadeo@kempro.ai",
     "location": "Calle 7 Sur #42 - 70, Barrio El Poblado, Medellín, Antioquia, Colombia",
     "locationShort": "Calle 7 Sur #42 - 70, Medellin, Col",
     "formTitle": "Envíanos un mensaje",
@@ -360,7 +360,7 @@
       "successDescription": "Gracias por escribirnos. Te contactaremos en menos de 24 horas hábiles.",
       "sendAnother": "Enviar otro mensaje",
       "errorTitle": "No pudimos enviar tu mensaje",
-      "errorDescription": "Ocurrió un error inesperado. Por favor intenta nuevamente o escríbenos directamente a marketing@kemprocol.com.",
+      "errorDescription": "Ocurrió un error inesperado. Por favor intenta nuevamente o escríbenos directamente a mercadeo@kempro.ai.",
       "errors": {
         "nameRequired": "Ingresa tu nombre",
         "emailRequired": "Ingresa tu correo electrónico",
@@ -385,7 +385,7 @@
           "Kempro SAS (\"Kempro\", \"nosotros\"), con domicilio en Calle 7 Sur #42-70, Barrio El Poblado, Medellín, Antioquia, Colombia, es responsable del tratamiento de los datos personales que usted nos proporciona a través de este sitio web. Puede contactarnos en:"
         ],
         "address": "Calle 7 Sur #42-70, Barrio El Poblado, Medellín, Antioquia, Colombia",
-        "email": "marketing@kemprocol.com",
+        "email": "mercadeo@kempro.ai",
         "phone": "+57 310 462 3473"
       },
       {
@@ -473,8 +473,8 @@
             "description": "Acceder de forma gratuita a sus datos personales."
           }
         ],
-        "closingNote": "Para ejercer estos derechos, escríbanos a marketing@kemprocol.com.",
-        "email": "marketing@kemprocol.com"
+        "closingNote": "Para ejercer estos derechos, escríbanos a mercadeo@kempro.ai.",
+        "email": "mercadeo@kempro.ai"
       },
       {
         "id": "cookies",
@@ -513,7 +513,7 @@
         "paragraphs": [
           "Si tiene inquietudes o desea ejercer sus derechos de Habeas Data sobre sus datos personales, escríbanos y le responderemos con gusto."
         ],
-        "email": "marketing@kemprocol.com"
+        "email": "mercadeo@kempro.ai"
       }
     ]
   },
@@ -572,7 +572,7 @@
         "paragraphs": [
           "Escríbanos describiendo la página y el problema que encontró, y lo revisaremos."
         ],
-        "email": "marketing@kemprocol.com"
+        "email": "mercadeo@kempro.ai"
       }
     ]
   },
@@ -651,9 +651,9 @@
         "layout": "contactHighlight",
         "question": "¿Preguntas sobre estos términos?",
         "paragraphs": [
-          "Para preguntas sobre estos términos, escríbanos a marketing@kemprocol.com."
+          "Para preguntas sobre estos términos, escríbanos a mercadeo@kempro.ai."
         ],
-        "email": "marketing@kemprocol.com"
+        "email": "mercadeo@kempro.ai"
       }
     ]
   },

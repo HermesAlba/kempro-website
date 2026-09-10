@@ -329,7 +329,7 @@
       "whatsapp": "WhatsApp",
       "location": "Medellín office"
     },
-    "email": "marketing@kemprocol.com",
+    "email": "mercadeo@kempro.ai",
     "location": "Calle 7 Sur #42 - 70, Barrio El Poblado, Medellín, Antioquia, Colombia",
     "locationShort": "Calle 7 Sur #42 - 70, Medellin, Col",
     "formTitle": "Send us a message",
@@ -360,7 +360,7 @@
       "successDescription": "Thanks for reaching out. We'll get back to you within 24 business hours.",
       "sendAnother": "Send another message",
       "errorTitle": "We couldn't send your message",
-      "errorDescription": "An unexpected error occurred. Please try again or email us directly at marketing@kemprocol.com.",
+      "errorDescription": "An unexpected error occurred. Please try again or email us directly at mercadeo@kempro.ai.",
       "errors": {
         "nameRequired": "Enter your name",
         "emailRequired": "Enter your email address",
@@ -385,7 +385,7 @@
           "Kempro SAS (\"Kempro,\" \"we,\" \"us\"), located at Calle 7 Sur #42-70, Barrio El Poblado, Medellín, Antioquia, Colombia, is responsible for processing the personal data you provide through this website. You can contact us at:"
         ],
         "address": "Calle 7 Sur #42-70, Barrio El Poblado, Medellín, Antioquia, Colombia",
-        "email": "marketing@kemprocol.com",
+        "email": "mercadeo@kempro.ai",
         "phone": "+57 310 462 3473"
       },
       {
@@ -473,8 +473,8 @@
             "description": "Access your personal data free of charge."
           }
         ],
-        "closingNote": "To exercise these rights, write to us at marketing@kemprocol.com.",
-        "email": "marketing@kemprocol.com"
+        "closingNote": "To exercise these rights, write to us at mercadeo@kempro.ai.",
+        "email": "mercadeo@kempro.ai"
       },
       {
         "id": "cookies",
@@ -513,7 +513,7 @@
         "paragraphs": [
           "If you have questions or want to exercise your Habeas Data rights over your personal data, write to us and we'll be glad to help."
         ],
-        "email": "marketing@kemprocol.com"
+        "email": "mercadeo@kempro.ai"
       }
     ]
   },
@@ -572,7 +572,7 @@
         "paragraphs": [
           "Write to us describing the page and the problem you found, and we'll look into it."
         ],
-        "email": "marketing@kemprocol.com"
+        "email": "mercadeo@kempro.ai"
       }
     ]
   },
@@ -651,9 +651,9 @@
         "layout": "contactHighlight",
         "question": "Questions about these terms?",
         "paragraphs": [
-          "For questions about these terms, write to us at marketing@kemprocol.com."
+          "For questions about these terms, write to us at mercadeo@kempro.ai."
         ],
-        "email": "marketing@kemprocol.com"
+        "email": "mercadeo@kempro.ai"
       }
     ]
   },

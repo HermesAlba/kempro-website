@@ -90,7 +90,7 @@ export default async function LocaleLayout({
                 name: "Kempro",
                 url: "https://www.kempro.ai",
                 logo: "https://www.kempro.ai/kempro-logo-full.png",
-                email: "marketing@kemprocol.com",
+                email: "mercadeo@kempro.ai",
                 telephone: "+57 310 462 3473",
                 address: {
                   "@type": "PostalAddress",
