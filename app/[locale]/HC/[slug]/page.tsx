@@ -76,11 +76,14 @@ export default async function CustomerStoryPage({
     notFound();
   }
 
+  // timeZone: "UTC" — see lib/format-date.ts for why this must be pinned
+  // (server/client timezone mismatches otherwise shift the displayed day).
   const formattedDate = story.date
     ? new Date(story.date).toLocaleDateString(locale, {
         year: "numeric",
         month: "long",
         day: "numeric",
+        timeZone: "UTC",
       })
     : null;
   const bodyParagraphs = story.body.split("\n").filter((paragraph) => paragraph.trim().length > 0);

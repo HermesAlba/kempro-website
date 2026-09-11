@@ -70,10 +70,13 @@ export default async function BlogPostPage({
     notFound();
   }
 
+  // timeZone: "UTC" — see lib/format-date.ts for why this must be pinned
+  // (server/client timezone mismatches otherwise shift the displayed day).
   const formattedDate = new Date(post.date).toLocaleDateString(locale, {
     year: "numeric",
     month: "long",
     day: "numeric",
+    timeZone: "UTC",
   });
 
   const shareUrl = `${SITE_URL}/${locale}/blog/${post.slug}`;

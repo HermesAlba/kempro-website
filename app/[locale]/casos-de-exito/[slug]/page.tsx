@@ -6,6 +6,7 @@ import { routing, type Locale } from "@/i18n/routing";
 import { getPathname } from "@/i18n/navigation";
 import { buildLocaleUrls, canonicalAlternates, SITE_URL } from "@/lib/seo/canonical";
 import { getCaseStudies, getCaseStudy } from "@/lib/data/case-studies";
+import { formatDisplayDate } from "@/lib/format-date";
 import { FadeIn } from "@/components/ui/fade-in";
 import { BlockRenderer } from "@/components/blog/block-renderer";
 import { AlignedBodyContent } from "@/components/sections/aligned-body-content";
@@ -66,11 +67,7 @@ export default async function CaseStudyPage({
     notFound();
   }
 
-  const formattedDate = new Date(caseStudy.date).toLocaleDateString(locale, {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+  const formattedDate = formatDisplayDate(caseStudy.date, locale);
 
   const shareUrl = `${SITE_URL}/${locale}/casos-de-exito/${caseStudy.slug}`;
   const shareHref = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(caseStudy.client)}`;

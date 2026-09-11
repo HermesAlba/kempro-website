@@ -8,6 +8,7 @@ import { CoverImage } from "@/components/blog/cover-image";
 import { paletteFor } from "@/lib/blog-categories";
 import { FadeIn } from "@/components/ui/fade-in";
 import { normalizeSearch } from "@/lib/normalize-search";
+import { formatDisplayDate } from "@/lib/format-date";
 import { SearchIcon } from "@/components/ui/icons";
 
 const PAGE_SIZE = 6;
@@ -50,11 +51,7 @@ export function ArticleCard({
       ? ({ pathname: "/casos-de-exito/[slug]", params: { slug: post.slug } } as const)
       : ({ pathname: "/blog/[slug]", params: { slug: post.slug } } as const);
   const { textColor } = paletteFor(post.categoryKey);
-  const date = new Date(post.date).toLocaleDateString(locale, {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+  const date = formatDisplayDate(post.date, locale);
 
   return (
     <FadeIn delay={index * 100}>

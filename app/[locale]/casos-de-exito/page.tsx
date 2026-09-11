@@ -4,6 +4,7 @@ import type { Locale } from "@/i18n/routing";
 import { getPathname } from "@/i18n/navigation";
 import { buildLocaleUrls, canonicalAlternates } from "@/lib/seo/canonical";
 import { getCaseStudies, getCaseStudyById } from "@/lib/data/case-studies";
+import { formatDisplayDate } from "@/lib/format-date";
 import { FeaturedBlock } from "@/components/sections/featured-story-block";
 import { ClientLogos } from "@/components/sections/client-logos";
 import { AllCaseStudiesGrid } from "@/components/sections/all-case-studies-grid";
@@ -40,11 +41,7 @@ export default async function CaseStudiesPage({
   // ambulatorias") until that placeholder case study was deleted per
   // request.
   const featuredCaseStudy = getCaseStudyById(locale as Locale, "salud-gobernanza-documental-copilot")!;
-  const featuredDate = new Date(featuredCaseStudy.date).toLocaleDateString(locale, {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+  const featuredDate = formatDisplayDate(featuredCaseStudy.date, locale);
 
   return (
     <>

@@ -4,14 +4,7 @@ import type { BlogPost } from "@/lib/data/blog";
 import { CoverImage } from "@/components/blog/cover-image";
 import { paletteFor } from "@/lib/blog-categories";
 import { FadeIn } from "@/components/ui/fade-in";
-
-function formatDate(date: string, locale: string) {
-  return new Date(date).toLocaleDateString(locale, {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-}
+import { formatDisplayDate as formatDate } from "@/lib/format-date";
 
 function SectionBadge({ label }: { label: string }) {
   return (

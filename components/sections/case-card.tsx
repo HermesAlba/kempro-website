@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { CaseStudy } from "@/lib/data/case-studies";
+import { formatDisplayDate } from "@/lib/format-date";
 import {
   IndustryHeaderBackground,
   industryColorFor,
@@ -33,11 +34,7 @@ export function CaseCard({
 }) {
   const locale = useLocale();
   const href = { pathname: "/casos-de-exito/[slug]", params: { slug: caseStudy.slug } } as const;
-  const date = new Date(caseStudy.date).toLocaleDateString(locale, {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+  const date = formatDisplayDate(caseStudy.date, locale);
   const imageSrc = headerImageSrc ?? caseStudy.image;
   const imageGrayscale = headerImageGrayscale ?? Boolean(headerImageSrc);
   const isIndigo = background === "indigo";
