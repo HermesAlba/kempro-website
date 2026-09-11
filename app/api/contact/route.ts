@@ -3,8 +3,16 @@ import { Resend } from "resend";
 import * as Sentry from "@sentry/nextjs";
 import { getWriteClient } from "@/sanity/lib/write-client";
 import { projectId } from "@/sanity/env";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 const CONTACT_NOTIFICATION_RECIPIENTS = ["hermesalba@gmail.com"];
+
+// 5 submissions per IP per 10 minutes — generous for a real visitor (who
+// submits once, maybe retries once or twice after a validation error) but
+// enough to blunt a script hammering the endpoint. See lib/rate-limit.ts
+// for what this does and doesn't guarantee on Vercel's serverless runtime.
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 
 type ContactPayload = {
   name?: unknown;
@@ -43,6 +51,20 @@ async function verifyRecaptcha(token: string | undefined): Promise<boolean> {
 }
 
 export async function POST(request: Request) {
+  const ip = getClientIp(request);
+  const { limited, retryAfterSeconds } = checkRateLimit(
+    `contact:${ip}`,
+    RATE_LIMIT_MAX,
+    RATE_LIMIT_WINDOW_MS,
+  );
+  if (limited) {
+    console.warn("[contact] rate limit exceeded", { ip });
+    return NextResponse.json(
+      { error: "Too many requests" },
+      { status: 429, headers: { "Retry-After": String(retryAfterSeconds) } },
+    );
+  }
+
   let payload: ContactPayload;
 
   try {
