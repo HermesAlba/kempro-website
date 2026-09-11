@@ -172,6 +172,18 @@ Todo cambio se desarrolla primero en la rama `develop`, no directo en `main`:
 
 Nota sobre variables de entorno: los deployments de preview usan las variables marcadas para el entorno **Preview** en Project Settings → Environment Variables, no las de **Production**. Si una variable (por ejemplo `NEXT_PUBLIC_SENTRY_DSN`) solo está configurada para Production, en preview el código simplemente la trata como no configurada (ver los comentarios "Skipped gracefully..." en este README) — no rompe el build, solo desactiva esa integración en preview.
 
+### Revertir un cambio (rollback)
+
+Cada commit es una versión completa del sitio en ese momento — no hace falta un esquema de versionado (v1.0, v1.1...) aparte, el historial de `git log` ya cumple ese rol. Dos formas de volver atrás, según la urgencia:
+
+**Producción ya rota, hay que arreglarla ya:** no toques git. En Vercel → Deployments, busca un deployment de Production anterior que sabías que funcionaba, abre el menú `...` de esa fila y elige **"Promote to Production"** (o el botón de rollback instantáneo, si Vercel lo ofrece ahí mismo). Reapunta kempro.ai a ese build en segundos, sin pushear nada. Es siempre el primer paso ante algo roto en vivo — después, con calma, se decide si además hay que revertir el código.
+
+**Volver el código mismo a un punto anterior** (en `develop`, o en `main` si ya se resolvió lo urgente arriba):
+
+1. Ubica el commit al que quieres volver: `git log --oneline` (el hash corto, ej. `c2c13b5`).
+2. `git revert <hash>` — crea un commit *nuevo* que deshace ese cambio, sin borrar historial. Es el método por defecto, seguro incluso si ya se hizo `push`.
+3. `git reset --hard <hash>` — mueve la rama entera hacia atrás, descartando todo commit posterior. Reescribe historial: si la rama ya tiene `push` hecho, hace falta `git push --force` para subir el reset, y los commits descartados dejan de verse en el historial normal (recuperables por un tiempo vía `git reflog`, pero no es trivial). Usar solo cuando se sabe con certeza qué se está descartando.
+
 Antes de dar por cerrado un cambio, valida siempre con:
 
 ```bash
