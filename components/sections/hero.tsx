@@ -76,7 +76,7 @@ export function Hero({
     // header is the same 207px tall as KR's) — hence xl:pt-[162px] below.
     // base/sm/lg values keep the same proportion to the xl value as
     // before (0.285 / 0.545 / 0.9), scaled down from the previous
-    // 200px-at-xl figure to this new 162px-at-xl figure. Mobile only
+    // 200px-at-xl figure to this new 162px-at-xl figure. Mobile
     // (below sm) is `items-center` instead — the title/subtitle block is
     // vertically centered within whatever height this section ends up
     // absorbing via flex-1 (no fixed mobile min-h here anymore — each of
@@ -84,9 +84,16 @@ export function Hero({
     // viewport min-h on the wrapper, see app/[locale]/page.tsx,
     // servicios/page.tsx, sobre-nosotros/page.tsx); the Container's own pt
     // is zeroed at that breakpoint (see below) so the centering isn't
-    // skewed by a leftover top offset.
+    // skewed by a leftover top offset. `md:items-center` re-applies that
+    // same centered treatment specifically at tablet width (iPad
+    // portrait/landscape both land in md, before lg's 1024px desktop
+    // cutoff) — per request, tablet had inherited the desktop-style
+    // top-anchored layout (via sm:items-start) despite having roughly
+    // mobile-proportioned height, which looked off-center; `lg:items-start`
+    // reverts back to the original top-anchored desktop behavior once past
+    // the tablet range.
     <section
-      className={`relative -mt-[176px] flex flex-1 items-center sm:items-start overflow-hidden pt-[176px] lg:-mt-[207px] lg:pt-[207px] ${
+      className={`relative -mt-[176px] flex flex-1 items-center sm:items-start md:items-center lg:items-start overflow-hidden pt-[176px] lg:-mt-[207px] lg:pt-[207px] ${
         isPhoto ? "bg-dark-900" : isIndigo ? "bg-primary-600" : "bg-white"
       }`}
     >
@@ -141,15 +148,20 @@ export function Hero({
           higher than the photo variant (Home) at sm and up — each pt value
           below sm is 38px less, per request. Photo variant's sm/lg/xl pt
           values stay untouched (still tuned to KR's reference position,
-          see the section-level comment above). Mobile only (below sm) has
-          no top padding at all now — the section's own `items-center`
-          (see above) vertically centers this Container within the fixed
-          326px mobile height instead, per request. */}
+          see the section-level comment above). Mobile (below sm) has no
+          top padding at all — the section's own `items-center` (see
+          above) vertically centers this Container within the fixed 326px
+          mobile height instead, per request. `md:pt-0` re-zeroes it at
+          tablet too, matching the section's `md:items-center` above —
+          without this the inherited sm padding would fight the centering,
+          pushing the title down instead of centering it in the tablet
+          viewport; `lg:pt-*` below restores the desktop top-anchored
+          offset as before. */}
       <Container
         className={`relative z-10 ${
           isPhoto
-            ? "sm:pt-[88px] lg:pt-[146px] xl:pt-[162px]"
-            : "sm:pt-[50px] lg:pt-[108px] xl:pt-[124px]"
+            ? "sm:pt-[88px] md:pt-0 lg:pt-[146px] xl:pt-[162px]"
+            : "sm:pt-[50px] md:pt-0 lg:pt-[108px] xl:pt-[124px]"
         }`}
       >
         <FadeIn className="mx-auto text-center">
@@ -188,9 +200,16 @@ export function Hero({
               (another page's own copy, e.g. Services) wraps onto multiple
               lines instead of overflowing — Home's short title already fits
               within Container's width at every breakpoint on its own, so it
-              still renders on a single line exactly as before. */}
+              still renders on a single line exactly as before.
+              md:text-[44px] — tablet had inherited the sm value (34px),
+              which sat too close in size to the 18px subtitle right below
+              it once the two were vertically centered together in a
+              shorter viewport (see md:items-center above); bumping it
+              partway toward the lg value (56px) restores clear visual
+              hierarchy between title and subtitle at iPad width without
+              going as large as desktop. */}
           <h1
-            className={`${montserrat.className} ${eyebrow ? "mt-3 " : ""}uppercase text-[28px] font-extrabold tracking-tight sm:text-[34px] lg:text-[56px] xl:text-[62px] ${
+            className={`${montserrat.className} ${eyebrow ? "mt-3 " : ""}uppercase text-[28px] font-extrabold tracking-tight sm:text-[34px] md:text-[44px] lg:text-[56px] xl:text-[62px] ${
               isPhoto || isIndigo ? "text-white" : "text-neutral-900"
             }`}
           >
@@ -216,10 +235,13 @@ export function Hero({
           >
             {resolvedSubtitle}
           </p>
-          {/* Mobile-only "Contáctanos" CTA — per request, added to this
-              first block on every page that uses Hero (Home, Servicios,
-              Sobre Nosotros). sm:hidden since this was only asked for the
-              mobile version; desktop keeps this hero CTA-less as before.
+          {/* "Contáctanos" CTA — per request, added to this first block on
+              every page that uses Hero (Home, Servicios, Sobre Nosotros).
+              Originally mobile-only (sm:hidden, desktop CTA-less); now also
+              shown at tablet (md:block) per a follow-up request, then
+              hidden again from lg up (lg:hidden) so real desktop stays
+              CTA-less as originally designed — net effect: visible on
+              mobile and tablet, hidden only at actual desktop widths.
               Reuses the shared ctaButtonClasses (same button used by the
               header's own mobile-menu CTA and elsewhere on the site) for
               the white/indigo variants, where its near-black bg already
@@ -227,7 +249,7 @@ export function Hero({
               bg instead — per request ("cambiar el fondo del boton de
               Contactanos" on home) — since neutral-900 barely stood out
               against the hero's own dark photo/overlay background. */}
-          <div className="mt-6 sm:hidden">
+          <div className="mt-6 sm:hidden md:block lg:hidden">
             <Link
               href="/contacto"
               className={`${
