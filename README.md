@@ -153,7 +153,24 @@ En producción (Vercel), agrega las mismas tres variables en **Project Settings 
 1. Sube el repositorio a GitHub/GitLab/Bitbucket.
 2. En [vercel.com/new](https://vercel.com/new), importa el repositorio — Vercel detecta Next.js automáticamente y no requiere configuración adicional.
 3. Si vas a conectar un proveedor de email (ver sección anterior), agrega las variables de entorno necesarias (por ejemplo `RESEND_API_KEY`) en **Project Settings → Environment Variables**.
-4. Despliega. Cada push a la rama principal genera un nuevo deployment de producción.
+4. Despliega. Cada push a `main` (rama de producción en Vercel) genera un nuevo deployment de producción en kempro.ai.
+
+### Flujo de trabajo: staging antes de producción
+
+Todo cambio se desarrolla primero en la rama `develop`, no directo en `main`:
+
+1. Los commits del cambio se hacen sobre `develop`.
+2. `git push` (con `develop` como rama activa) sube esos commits — Vercel genera automáticamente una URL de preview propia para esa rama (Project → Deployments, o el link que Vercel comenta en el push/PR de GitHub), sin tocar producción.
+3. Se revisa el cambio en esa URL de preview.
+4. Solo una vez confirmado, se integra a producción:
+   ```bash
+   git checkout main
+   git merge develop
+   git push
+   ```
+   Ese último `git push` (ya en `main`) es el que dispara el deployment real a kempro.ai.
+
+Nota sobre variables de entorno: los deployments de preview usan las variables marcadas para el entorno **Preview** en Project Settings → Environment Variables, no las de **Production**. Si una variable (por ejemplo `NEXT_PUBLIC_SENTRY_DSN`) solo está configurada para Production, en preview el código simplemente la trata como no configurada (ver los comentarios "Skipped gracefully..." en este README) — no rompe el build, solo desactiva esa integración en preview.
 
 Antes de dar por cerrado un cambio, valida siempre con:
 
