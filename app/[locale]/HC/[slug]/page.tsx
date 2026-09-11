@@ -90,9 +90,50 @@ export default async function CustomerStoryPage({
 
   const shareUrl = `${SITE_URL}/${locale}/HC/${story.slug}`;
   const shareHref = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(story.title)}`;
+  const storyImage = story.coverImageUrl ?? `${SITE_URL}/og-image.png`;
 
   return (
     <article className="bg-white">
+      {/* Article JSON-LD — same pattern as the blog post and case study
+          detail pages (see app/[locale]/blog/[slug]/page.tsx and
+          app/[locale]/casos-de-exito/[slug]/page.tsx): per-story
+          structured data. datePublished/dateModified are omitted when
+          story.date is null (Sanity field is optional) rather than
+          emitting an invalid date. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: story.title,
+            description: story.summary,
+            image: [storyImage],
+            ...(story.date ? { datePublished: story.date, dateModified: story.date } : {}),
+            inLanguage: locale,
+            ...(story.category.label
+              ? { about: { "@type": "Thing", name: story.category.label } }
+              : {}),
+            author: {
+              "@type": "Organization",
+              name: "Kempro",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Kempro",
+              logo: {
+                "@type": "ImageObject",
+                url: `${SITE_URL}/kempro-logo-full.png`,
+              },
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": shareUrl,
+            },
+          }),
+        }}
+      />
+
       {/* No breadcrumb inside the hero anymore — it moved to its own block
           right below, matching the blog article pattern (see
           app/[locale]/blog/[slug]/page.tsx): breadcrumb + divider live in

@@ -71,9 +71,53 @@ export default async function CaseStudyPage({
 
   const shareUrl = `${SITE_URL}/${locale}/casos-de-exito/${caseStudy.slug}`;
   const shareHref = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(caseStudy.client)}`;
+  const caseStudyImage = caseStudy.image ? `${SITE_URL}${caseStudy.image}` : `${SITE_URL}/og-image.png`;
 
   return (
     <article className="relative overflow-hidden bg-slate-50 lg:min-h-screen">
+      {/* Article JSON-LD — same pattern as the blog post detail page (see
+          app/[locale]/blog/[slug]/page.tsx): per-case-study structured
+          data (headline, dates, industry via `about`, publisher). Case
+          studies previously had no JSON-LD of their own, only the sitewide
+          Organization+WebSite schema in the locale layout — this is what
+          lets Google/AI answer engines cite this specific client result
+          instead of just the domain in general. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: caseStudy.client,
+            description: caseStudy.result,
+            image: [caseStudyImage],
+            datePublished: caseStudy.date,
+            dateModified: caseStudy.date,
+            inLanguage: locale,
+            about: {
+              "@type": "Thing",
+              name: caseStudy.industry,
+            },
+            author: {
+              "@type": "Organization",
+              name: "Kempro",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Kempro",
+              logo: {
+                "@type": "ImageObject",
+                url: `${SITE_URL}/kempro-logo-full.png`,
+              },
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": shareUrl,
+            },
+          }),
+        }}
+      />
+
       {/* Subtle indigo gradient in the top-left corner, fading into
           bg-slate-50 — same "quiet" background treatment as the listing
           page, just corner-anchored instead of full-bleed. */}
